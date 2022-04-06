@@ -1,0 +1,39 @@
+@mixin centralFlex($type: center) {
+	display: flex;
+	justify-content: $type;
+	align-items: center;
+}
+
+@mixin positioning($position, $top, $left, $width: unset, $height: unset) {
+	position: $position;
+	top: $top;
+	left: $left;
+	width: $width;
+	height: $height;
+}
+
+@mixin objectForm($width, $height, $br) {
+	width: $width;
+	height: $height;
+	border-radius: $br;
+}
+
+@mixin fonts($lh, $fw, $fs, $txt-a, $ls, $text-t) {
+	line-height: $lh;
+	font-weight: $fw;
+	font-size: $fs;
+	text-align: $txt-a;
+	letter-spacing: $ls;
+	text-transform: $text-t;
+}
+
+@mixin headerBeforeAfter($width, $height: 4px) {
+	content: ' ';
+	position: absolute;
+	width: $width;
+	height: $height;
+	background-color: $accent-color;
+	bottom: -1px;
+	right: 0;
+	border-radius: 2px;
+}
