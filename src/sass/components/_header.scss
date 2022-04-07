@@ -201,13 +201,13 @@
   }
 }
 
-.btn-wrapper {
+.library__btn-list {
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
 
-.btn_watched {
+.btn__watched {
   background-color: var(--accent-color);
   color: var(--first-text-color);
   padding: 14px 38px 12px;
@@ -223,7 +223,7 @@
   // }
 }
 
-.btn_queue {
+.btn__queue {
   background-color: transparent;
   padding: 12px 45px 12px;
   border-radius: 5px;

@@ -1,11 +1,11 @@
-<header class='header__library'>
+<div class='header__library'>
   <div class='container'>
     <div class='header__container'>
       <button class='header__logo' id='button__logo'>
         <svg class='header__icon' width='32' height='32'>
           <use href='../images/sprite.svg#icon-film'></use>
         </svg>
-        <h1 class='header__logo--text header__library--text'>Filmoteka</h1>
+        <h1 class='header__logo--text'>Filmoteka</h1>
       </button>
       <nav class='navigation'>
         <ul class='navigation__list'>
@@ -21,9 +21,17 @@
         </ul>
       </nav>
     </div>
-    <div class='btn-wrapper'>
-      <button type='button' class='btn_watched'>watched</button>
-      <button type='button' class='btn_queue'>queue</button>
-    </div>
+    <ul class='library__btn-list'>
+      <li class='btn-list__item'><button
+          type='button'
+          class='btn__watched'
+          id='btn__watched'
+        >watched</button></li>
+      <li class='btn-list__item'><button
+          type='button'
+          class='btn__queue'
+          id='btn__queue'
+        >queue</button></li>
+    </ul>
   </div>
-</header>
+</div>
