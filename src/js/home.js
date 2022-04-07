@@ -1,11 +1,20 @@
-import compiledTemplateLibrary from '../markup/header-library.hbs';
-import { onHome } from './home';
+import compiledTemplateHome from '../markup/header-home.hbs';
+import { onLibrary } from './library';
+import MoviesApiService from './fetch_api';
+
+const moviesApiService = new MoviesApiService();
 
 const body = document.querySelector('body');
 
-export default function onLibrary() {
+onHome();
+
+export function onHome() {
   body.innerHTML = '';
-  body.insertAdjacentHTML('beforeend', compiledTemplateLibrary());
+  body.insertAdjacentHTML('beforeend', compiledTemplateHome());
+
+  moviesApiService.getPopularFilms().then(({ results }) => {
+    console.log(results);
+  });
 }
 
 body.addEventListener('click', onClickBtn);
