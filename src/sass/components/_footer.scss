@@ -1,0 +1,48 @@
+.footer{
+    background-color: #F7F7F7;
+}
+
+.footer--copyright{
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+    
+    color: #545454;
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.copyright{
+    margin-bottom: 10px;
+
+    @media screen and (min-width: 768px) {
+        margin-bottom: 0;
+        margin-right: 3px;
+    }
+}
+
+.students {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--link{
+        margin-left: 3px;
+        text-decoration: underline;
+    }
+}
+
+
+.footer--icon{
+    margin-left: 7px;
+    margin-right: 7px;
+}
