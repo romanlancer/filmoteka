@@ -13,3 +13,4 @@ import './js/render_trailer';
 import './js/storage';
 import './js/home';
 import './js/library';
+import './js/modal_footer';
