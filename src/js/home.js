@@ -13,10 +13,6 @@ export function onHome() {
   renderPageHome();
 
   refs.header.addEventListener('click', onClickBtn);
-
-  moviesApiService.getPopularFilms().then(({ results }) => {
-    console.log(results);
-  });
 }
 
 function onClickBtn() {
@@ -48,3 +44,7 @@ function renderPageHome() {
   refs.search.style.display = 'flex';
   refs.btnLibraryHero.style.display = 'none';
 }
+
+moviesApiService.getPopularFilms().then(({ results }) => {
+  console.log(results);
+});
