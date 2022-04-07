@@ -1,7 +1,7 @@
 .movie-modal {
   width: 814px;
   height: 558px;
-  background-color: #ffffff;
+  background-color: var(--first-text-color);
   position: absolute;
   left: 50%;
   top: 50%;
@@ -15,6 +15,7 @@
     margin-right: 16px;
   }
 }
+
 .movie-card {
   &__title {
     font-family: 'Roboto';
@@ -28,6 +29,7 @@
   &__data {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 20px;
   }
 
   &__list {
@@ -36,7 +38,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
-    
+
     & > li:not(:last-child) {
       margin-bottom: 8px;
     }
@@ -46,10 +48,69 @@
   }
 
   &__attribute {
-    color: #8c8c8c;
+    color: var(--third-text-color);
   }
 
   &__value {
-    color: #000000;
+    color: var(--second-text-color);
+  }
+
+  &__vote {
+    display: inline-block;
+    text-align: center;
+    width: 36px;
+    height: 16px;
+    background-color: var(--accent-color);
+    color: var(--first-text-color);
+    border-radius: 5px;
+  }
+
+  &__about {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.67;
+    color: var(--second-text-color);
+    margin-bottom: 20px;
+    &_title {
+      @extend .movie-card__about;
+      line-height: 1.33;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__button-item {
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+
+  &__buttons-list {
+    display: flex;
+    margin-left: 8px;
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+  &__button {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 14px 18px;
+    border-radius: 5px;
+    &_active {
+      color: var(--first-text-color);
+      background-color: var(--accent-color);
+    }
+    &_inactive {
+      padding: 13px 26px;
+      border: 1px solid var(--second-text-color);
+    }
   }
 }
