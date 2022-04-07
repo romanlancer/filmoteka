@@ -1,0 +1,55 @@
+.movie-modal {
+  width: 814px;
+  height: 558px;
+  background-color: #ffffff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  padding: 40px 16px;
+
+  &__image {
+    width: 375px;
+    height: 100%;
+    margin-right: 16px;
+  }
+}
+.movie-card {
+  &__title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.16;
+    margin-bottom: 20px;
+  }
+
+  &__data {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__list {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    
+    & > li:not(:last-child) {
+      margin-bottom: 8px;
+    }
+    &_right {
+      margin-left: 83px;
+    }
+  }
+
+  &__attribute {
+    color: #8c8c8c;
+  }
+
+  &__value {
+    color: #000000;
+  }
+}

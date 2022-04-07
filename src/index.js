@@ -1,6 +1,6 @@
 import './sass/main.scss';
 
-import './js/fetch_api';
+// import './js/fetch_api';
 import './js/render_popular';
 import './js/pagination';
 import './js/render_search';
@@ -11,5 +11,5 @@ import './js/render_input';
 import './js/to_top_arrow';
 import './js/render_trailer';
 import './js/storage';
-import './js/home';
-import './js/library';
+// import './js/home';
+// import './js/library';
