@@ -83,4 +83,4 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{"../markup/header-home.hbs":"Fjhe","./library":"BfNj","./fetch_api":"YfQB"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/fetch_api"),require("./js/render_popular"),require("./js/pagination"),require("./js/render_search"),require("./js/modal_details"),require("./js/render_service"),require("./js/genres_info"),require("./js/render_input"),require("./js/to_top_arrow"),require("./js/render_trailer"),require("./js/storage"),require("./js/home"),require("./js/library");
 },{"./sass/main.scss":"clu1","./js/fetch_api":"YfQB","./js/render_popular":"lT0y","./js/pagination":"lT0y","./js/render_search":"lT0y","./js/modal_details":"lT0y","./js/render_service":"lT0y","./js/genres_info":"lT0y","./js/render_input":"lT0y","./js/to_top_arrow":"lT0y","./js/render_trailer":"lT0y","./js/storage":"lT0y","./js/home":"nqs3","./js/library":"BfNj"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka/src.e2664749.js.map
+//# sourceMappingURL=/filmoteka/src.3a24e813.js.map
