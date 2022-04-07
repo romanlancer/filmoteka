@@ -1,16 +1,16 @@
 import { onHome } from './home';
-import compiledTemplateLibrary from '../markup/header-library.hbs';
 import MoviesApiService from './fetch_api';
 
 const moviesApiService = new MoviesApiService();
 
-const header = document.querySelector('#header');
+const refs = {
+  header: document.querySelector('#header'),
+};
 
 export function onLibrary() {
-  header.innerHTML = '';
-  header.insertAdjacentHTML('beforeend', compiledTemplateLibrary());
+  renderPageLibarary();
 
-  header.addEventListener('click', onClickBtn);
+  refs.header.addEventListener('click', onClickBtn);
 }
 
 function onClickBtn() {
@@ -18,17 +18,35 @@ function onClickBtn() {
     logo: document.querySelector('.header__logo--text'),
     home: document.querySelector('#button__home'),
     library: document.querySelector('#button__library'),
-    btn__watched: document.querySelector('#btn__watched'),
-    btn__queue: document.querySelector('#btn__queue'),
+    btnWatched: document.querySelector('.btn__watched'),
+    btnQueue: document.querySelector('#btn__queue'),
   };
 
   if (event.target === refs.library) {
     onLibrary();
   } else if (event.target === refs.home || event.target === refs.logo) {
     onHome();
-  } else if (event.target === refs.btn__watched) {
-    console.log('btn__watched');
-  } else if (event.target === refs.btn__queue) {
-    console.log('btn__queue');
+  } else if (event.target === refs.btnWatched) {
+    event.target.classList.add('btn__library--active');
+    refs.btnQueue.classList.remove('btn__library--active');
+  } else if (event.target === refs.btnQueue) {
+    event.target.classList.add('btn__library--active');
+    refs.btnWatched.classList.remove('btn__library--active');
   }
+}
+
+function renderPageLibarary() {
+  const refs = {
+    home: document.querySelector('.header__home'),
+    btnHome: document.querySelector('.navigation__button--home'),
+    btnLibrary: document.querySelector('.navigation__button--library'),
+    search: document.querySelector('#search-form'),
+    btnLibraryHero: document.querySelector('.library__btn-list'),
+  };
+
+  refs.home.classList.add('header__library');
+  refs.btnHome.classList.remove('navigation__button--current');
+  refs.btnLibrary.classList.add('navigation__button--current');
+  refs.search.style.display = 'none';
+  refs.btnLibraryHero.style.display = 'flex';
 }
