@@ -1,9 +1,9 @@
 .modal-movie {
   background-color: var(--first-text-color);
   // position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  // left: 50%;
+  // top: 50%;
+  // transform: translate(-50%, -50%);
   // width: 814px;
   // height: 558px;
   // padding: 40px 16px;
@@ -12,6 +12,7 @@
     position: relative;
     max-width: 280px;
     padding: 48px 20px 40px 20px;
+    margin: 20px auto;
   }
 }
 
