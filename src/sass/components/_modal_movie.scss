@@ -1,31 +1,42 @@
-.modal-window {
-  width: 814px;
-  height: 558px;
-  padding: 40px 16px;
+.modal-movie {
   background-color: var(--first-text-color);
-  position: absolute;
+  // position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-}
+  // width: 814px;
+  // height: 558px;
+  // padding: 40px 16px;
 
-.movie-modal {
-  display: flex;
-
-  &__image {
-    width: 375px;
-    height: 100%;
-    margin-right: 16px;
+  @media screen and(max-width: 767px) {
+    position: relative;
+    max-width: 280px;
+    padding: 48px 20px 40px 20px;
   }
 }
 
 .movie-card {
+  @media screen and(min-width: 767px) {
+    display: flex;
+  }
+
+  &__image {
+    // width: 375px;
+    // height: 100%;
+    // margin-right: 16px;
+    width: 240px;
+    height: 357px;
+    margin-bottom: 20px;
+  }
+}
+
+.movie-data {
   &__title {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 30px;
-    line-height: 1.16;
+    font-size: 20px;
+    line-height: 1.15;
     margin-bottom: 20px;
   }
 
@@ -46,7 +57,7 @@
       margin-bottom: 8px;
     }
     &_right {
-      margin-left: 83px;
+      margin-left: 39px;
     }
   }
 
@@ -77,7 +88,7 @@
     color: var(--second-text-color);
     margin-bottom: 20px;
     &_title {
-      @extend .movie-card__about;
+      @extend .movie-data__about;
       line-height: 1.33;
       text-transform: uppercase;
       margin-bottom: 8px;
@@ -86,13 +97,13 @@
 
   &__button-item {
     &:not(:last-child) {
-      margin-right: 15px;
+      margin-right: 20px;
     }
   }
 
   &__buttons-list {
     display: flex;
-    margin-left: 8px;
+    // margin-left: 8px;
     flex-direction: row;
     margin-bottom: 0;
   }
@@ -102,17 +113,18 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
-    align-items: center;
     text-align: center;
     text-transform: uppercase;
-    padding: 14px 18px;
+    // padding: 14px 18px;
+    padding: 6px 27px;
     border-radius: 5px;
     &_active {
       color: var(--first-text-color);
       background-color: var(--accent-color);
     }
     &_inactive {
-      padding: 13px 26px;
+      // padding: 13px 26px;
+      padding: 13px;
       border: 1px solid var(--second-text-color);
     }
   }
@@ -124,6 +136,8 @@
   height: 30px;
   top: 0;
   right: 0;
+  margin-top: 8px;
+  margin-right: 8px;
   &__icon-close {
     width: 30px;
     height: 30px;
