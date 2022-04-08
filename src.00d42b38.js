@@ -83,4 +83,4 @@ const e={openModalLink:document.querySelector("[data-footer-open]"),closeModalBt
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/fetch_api"),require("./js/render_popular"),require("./js/pagination"),require("./js/render_search"),require("./js/modal_details"),require("./js/render_service"),require("./js/genres_info"),require("./js/render_input"),require("./js/to_top_arrow"),require("./js/render_trailer"),require("./js/storage"),require("./js/home"),require("./js/library"),require("./js/modal_footer"),require("./js/filmCard");
 },{"./sass/main.scss":"clu1","./js/fetch_api":"YfQB","./js/render_popular":"lT0y","./js/pagination":"lT0y","./js/render_search":"lT0y","./js/modal_details":"lT0y","./js/render_service":"lT0y","./js/genres_info":"gCAk","./js/render_input":"lT0y","./js/to_top_arrow":"lT0y","./js/render_trailer":"lT0y","./js/storage":"lT0y","./js/home":"nqs3","./js/library":"BfNj","./js/modal_footer":"W7O1","./js/filmCard":"EEE6"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka/src.6a44bbde.js.map
+//# sourceMappingURL=/filmoteka/src.00d42b38.js.map
