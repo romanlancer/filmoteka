@@ -26,6 +26,7 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.5.2",
     "axios": "^0.26.1",
     "debounce": "^1.2.1",
     "notiflix": "^3.2.5"
