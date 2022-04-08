@@ -1,6 +1,6 @@
 import { onLibrary } from './library';
 import MoviesApiService from './fetch_api';
-
+import { renderFilmList } from './filmCard';
 const moviesApiService = new MoviesApiService();
 
 const refs = {
@@ -46,5 +46,5 @@ function renderPageHome() {
 }
 
 moviesApiService.getPopularFilms().then(({ results }) => {
-  console.log(results);
+  renderFilmList(results);
 });
