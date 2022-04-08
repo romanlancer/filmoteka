@@ -12,7 +12,7 @@ export default class MoviesApiService {
     try {
       const url = `${BASE_URL}/3/movie/popular?api_key=${API_KEY}&page=${this.page}`;
       const response = await axios.get(url);
-      return response;
+      return response.data;
     } catch (error) {
       return error;
     }

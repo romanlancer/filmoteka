@@ -1,0 +1,109 @@
+.cards__container {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: $mobile) {
+    width: $mobile;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: $tablet;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: $desktop;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.cards__list {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  display: grid;
+  gap: var(--card-set-gap);
+  @media screen and (min-width: $tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (min-width: $desktop) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.cards__item {
+  @media screen and (max-width: 767px) {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.cards__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 5px;
+  padding-bottom: 2px;
+  color: var(--primary-text-color);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.02);
+    box-shadow: 0px 4px 8px rgba(255, 107, 1, 0.1), 1px 4px 8px rgba(255, 107, 1, 0.5),
+      1px 4px 8px rgba(255, 107, 1, 0.5);
+  }
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
+}
+
+.cards__item-poster-wrapper {
+  overflow: hidden;
+}
+
+.cards__item-poster-wrapper img {
+  border-radius: 5px;
+}
+
+.cards__item-title {
+  @include fonts(1.33, 500, 12px, null, null, null);
+  margin-top: 10px;
+  margin-bottom: 1px;
+  color: var(--second-text-color);
+}
+
+.cards__item-genres {
+  @include fonts(1.33, 500, 12px, null, null, null);
+  color: var(--accent-color);
+  padding-right: 5px;
+  border-right: 1.5px solid var(--accent-color);
+}
+
+.cards__item-release-date {
+  @include fonts(1.33, 500, 12px, null, null, null);
+  color: var(--accent-color);
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.cards__item-vote-average {
+  @include fonts(1.17, 500, 12px, null, null, null);
+  color: var(--first-text-color);
+  background-color: var(--accent-color);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.cards__item-info {
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+}

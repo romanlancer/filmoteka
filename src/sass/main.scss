@@ -1,3 +1,6 @@
+@import './utils/variables';
+@import './utils/base_reset';
+@import './utils/mixins';
 @import './components/cards_container';
 @import './components/footer';
 @import './components/header';
@@ -5,5 +8,4 @@
 @import './components/pagination';
 @import './components/to_top_button';
 @import './components/loader';
-@import './components/backdrop';
-@import './components/modal_movie';
+@import './components/modal_footer';

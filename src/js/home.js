@@ -1,34 +1,50 @@
-import compiledTemplateHome from '../markup/header-home.hbs';
 import { onLibrary } from './library';
 import MoviesApiService from './fetch_api';
-
+import { renderFilmList } from './filmCard';
 const moviesApiService = new MoviesApiService();
 
-const body = document.querySelector('body');
+const refs = {
+  header: document.querySelector('#header'),
+};
 
 onHome();
 
 export function onHome() {
-  body.innerHTML = '';
-  body.insertAdjacentHTML('beforeend', compiledTemplateHome());
+  renderPageHome();
 
-  moviesApiService.getPopularFilms().then(({ results }) => {
-    console.log(results);
-  });
+  refs.header.addEventListener('click', onClickBtn);
 }
-
-body.addEventListener('click', onClickBtn);
 
 function onClickBtn() {
   const refs = {
-    logo: document.querySelector('#button__logo'),
+    logo: document.querySelector('.header__logo--text'),
     home: document.querySelector('#button__home'),
     library: document.querySelector('#button__library'),
   };
+
   if (event.target === refs.library) {
     onLibrary();
-  }
-  if (event.target === refs.home) {
+  } else if (event.target === refs.home || event.target === refs.logo) {
     onHome();
   }
 }
+
+function renderPageHome() {
+  const refs = {
+    home: document.querySelector('.header__home'),
+    btnHome: document.querySelector('.navigation__button--home'),
+    btnLibrary: document.querySelector('.navigation__button--library'),
+    search: document.querySelector('#search-form'),
+    btnLibraryHero: document.querySelector('.library__btn-list'),
+  };
+
+  refs.home.classList.remove('header__library');
+  refs.btnLibrary.classList.remove('navigation__button--current');
+  refs.btnHome.classList.add('navigation__button--current');
+  refs.search.style.display = 'flex';
+  refs.btnLibraryHero.style.display = 'none';
+}
+
+moviesApiService.getPopularFilms().then(({ results }) => {
+  renderFilmList(results);
+});
