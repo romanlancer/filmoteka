@@ -52,6 +52,7 @@
 
 
 .cards__item {
+    
     @media screen and (max-width: 767px) {
         &:not(:last-child) {
             margin-bottom: 20px;
@@ -72,17 +73,23 @@
 }
 
 .cards__link {
-    // display: flex;
-    // flex-direction: column;
+    display: flex;
+    flex-direction: column;
     height: 100%;
+    border-radius: 5px;
+    padding-bottom: 2px;
     color: var(--primary-text-color);
     
     &:hover,
     &:focus {
-        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-            1px 4px 6px rgba(0, 0, 0, 0.16);
+        transform: scale(1.02);
+        box-shadow: 0px 4px 8px rgba(255, 107, 1, 0.1), 1px 4px 8px rgba(255, 107, 1, 0.5),
+            1px 4px 8px rgba(255, 107, 1, 0.5);
+
     }
     transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1)
 }
 
 .cards__item-poster-wrapper {

@@ -73,7 +73,7 @@ export const filmCard = filmData => {
     {
       class: 'cards__link',
     },
-      [filmPosterWrapperElem],
+      [filmPosterWrapperElem, filmTitleElem, filmDataElem],
     );
 
 
@@ -82,7 +82,7 @@ export const filmCard = filmData => {
     {
       class: 'cards__item',
     },
-    [filmLinkElem, filmTitleElem, filmDataElem]
+    filmLinkElem
     );
     
     
@@ -114,7 +114,8 @@ movieApiServies.getPopularFilms().then(response => {
 }).catch(error => console.log(error));
 
 
-function renderFilmList (filmList) {
+
+export function renderFilmList (filmList) {
   containerEl.innerHTML = '';
   const filmsNodeList = filmList.map(film => filmCard(film));
   containerEl.append(...filmsNodeList);
