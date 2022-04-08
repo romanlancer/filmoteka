@@ -9,3 +9,8 @@
 @import './components/to_top_button';
 @import './components/loader';
 @import './components/modal_footer';
+@import './components/slider_film';
+
+//slider
+@import 'node_modules/@glidejs/glide/src/assets/sass/glide.core';
+@import 'node_modules/@glidejs/glide/src/assets/sass/glide.theme';
