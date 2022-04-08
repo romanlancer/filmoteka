@@ -10,14 +10,23 @@
 
   @media screen and(max-width: 767px) {
     position: relative;
-    max-width: 280px;
+    width: 280px;
     padding: 48px 20px 40px 20px;
     margin: 20px auto;
+  }
+
+  @media screen and(min-width: $tablet) {
+    position: absolute;
+    width: 704px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    padding: 40px 72px 40px 36px;
   }
 }
 
 .movie-card {
-  @media screen and(min-width: 767px) {
+  @media screen and(min-width: $tablet) {
     display: flex;
   }
 
@@ -28,6 +37,12 @@
     width: 240px;
     height: 357px;
     margin-bottom: 20px;
+    @media screen and(min-width: $tablet) {
+      width: 264px;
+      height: 374px;
+      margin-bottom: 0px;
+      margin-right: 68px;
+    }
   }
 }
 
@@ -59,6 +74,9 @@
     }
     &_right {
       margin-left: 39px;
+      @media screen and(min-width: $tablet) {
+        margin-left: 41px;
+      }
     }
   }
 
@@ -97,8 +115,16 @@
   }
 
   &__button-item {
+    flex-basis: calc((100% / 2) - 10px);
+    @media screen and(min-width: $tablet) {
+      flex-basis: calc((100% / 2) - 7px);
+    }
+
     &:not(:last-child) {
       margin-right: 20px;
+      @media screen and(min-width: $tablet) {
+        margin-right: 15px;
+      }
     }
   }
 
@@ -117,16 +143,22 @@
     text-align: center;
     text-transform: uppercase;
     // padding: 14px 18px;
-    padding: 6px 27px;
     border-radius: 5px;
     &_active {
       color: var(--first-text-color);
       background-color: var(--accent-color);
+      padding: 6px 27px;
+      @media screen and(min-width: $tablet) {
+        padding: 13px 12px;
+      }
     }
     &_inactive {
       // padding: 13px 26px;
-      padding: 13px;
+      padding: 13px 12px;
       border: 1px solid var(--second-text-color);
+      @media screen and(min-width: $tablet) {
+        padding: 13px 20px;
+      }
     }
   }
 }
@@ -139,6 +171,7 @@
   right: 0;
   margin-top: 8px;
   margin-right: 8px;
+
   &__icon-close {
     width: 30px;
     height: 30px;
