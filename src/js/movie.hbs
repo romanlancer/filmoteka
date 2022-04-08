@@ -1,0 +1,38 @@
+  {{#with this}}
+  <img class="movie-card__image" src="{{this.poster}}" alt="movie" loading="lazy" /> 
+      <div class="movie-data">
+        <h2 class="movie-data__title">{{this.title}}</h2>
+        <div class="movie-data__data">
+          <ul class="movie-data__list">
+            <li class="movie-data__attribute"><p>Vote / Votes</p></li>
+            <li class="movie-data__attribute"><p>Popularity</p></li>
+            <li class="movie-data__attribute"><p>Original Title</p></li>
+            <li class="movie-data__attribute"><p>Genre</p></li>
+          </ul>
+          <ul class="movie-data__list movie-data__list_right">
+            <li class="movie-data__value">
+              <p><span class="movie-data__vote">{{this.vote}}</span> / {{this.votes}}</p>
+            </li>
+            <li class="movie-data__value">{{this.popularity}}</li>
+            <li class="movie-data__value">{{this.original_title}}</li>
+            <li class="movie-data__value">{{this.genres}}</li>
+          </ul>
+        </div>
+        <h3 class="movie-data__about_title">About</h3>
+        <p class="movie-data__about">
+          {{this.overview}}
+        </p>
+        <ul class="movie-data__buttons-list">
+          <li class="movie-data__button-item">
+            <button type="button" class="movie-data__button movie-data__button_active">
+              add to watched
+            </button>
+          </li>
+          <li class="movie-data__button-item">
+            <button type="button" class="movie-data__button movie-data__button_inactive">
+              add to queue
+            </button>
+          </li>
+        </ul>
+      </div>
+      {{/with}}
