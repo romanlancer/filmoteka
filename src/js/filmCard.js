@@ -1,8 +1,8 @@
 import { createElement } from './createElement'
-import MoviesApiService from './fetch_api';
+// import MoviesApiService from './fetch_api';
 import { genresInfo } from './genres_info'
 
-const movieApiServies = new MoviesApiService;
+// const movieApiServies = new MoviesApiService;
 const containerEl = document.querySelector('.cards__list');
 
 
@@ -72,6 +72,7 @@ export const filmCard = filmData => {
     'a',
     {
       class: 'cards__link',
+      
     },
       [filmPosterWrapperElem, filmTitleElem, filmDataElem],
     );
@@ -81,6 +82,7 @@ export const filmCard = filmData => {
     'li',
     {
       class: 'cards__item',
+      id: filmId,
     },
     filmLinkElem
     );
@@ -106,15 +108,16 @@ function getGenresNames(genreIds) {
     return genresNamesArray.toString();
 };
 
-
-movieApiServies.getPopularFilms().then(response => {
-    console.log(response.results);
-    renderFilmList(response.results);
+// Рендер популярных фильмов
+// movieApiServies.getPopularFilms().then(response => {
+//     console.log(response.results);
+//     renderFilmList(response.results);
     
-}).catch(error => console.log(error));
+// }).catch(error => console.log(error));
 
 
 
+// функция отрисовки карточек фильмов
 export function renderFilmList (filmList) {
   containerEl.innerHTML = '';
   const filmsNodeList = filmList.map(film => filmCard(film));
