@@ -1,13 +1,16 @@
-.movie-modal {
+.modal-window {
   width: 814px;
   height: 558px;
+  padding: 40px 16px;
   background-color: var(--first-text-color);
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.movie-modal {
   display: flex;
-  padding: 40px 16px;
 
   &__image {
     width: 375px;
@@ -112,5 +115,17 @@
       padding: 13px 26px;
       border: 1px solid var(--second-text-color);
     }
+  }
+}
+
+.button-close {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 0;
+  right: 0;
+  &__icon-close {
+    width: 30px;
+    height: 30px;
   }
 }

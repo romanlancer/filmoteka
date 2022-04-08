@@ -1,5 +1,11 @@
 <div class="backdrop">
-  <div class="movie-modal">
+  <div class="modal-window">
+    <button class="button-close" data-modal-close>
+      <svg class="button-close__icon-close">
+        <use href="./images/sprite.svg#icon-close"></use>
+      </svg>
+    </button>
+    <div class="movie-modal">
     <img class="movie-modal__image" src="/images/default.jpg" alt="movie" loading="lazy" />
     <div class="movie-card">
       <h2 class="movie-card__title">A FISTFUL OF LEAD</h2>
@@ -36,5 +42,6 @@
           <button type="button" class="movie-card__button movie-card__button_inactive">add to queue</button>
         </li>
       </div>
+  </div>
   </div>
 </div>
