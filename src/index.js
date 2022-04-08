@@ -14,3 +14,4 @@ import './js/storage';
 import './js/home';
 import './js/library';
 import './js/modal_footer';
+import './js/filmCard';
