@@ -1,0 +1,51 @@
+#toTop {
+  position: fixed;
+  display: inline-block;
+
+  width: 60px;
+  height: 60px;
+  z-index: 900;
+  cursor: pointer;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+// #toTop:hover {
+
+// }
+
+#toTop svg {
+  position: relative;
+  top: 12px;
+  right: -1px;
+  fill: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+#toTop:hover svg {
+  cursor: pointer;
+  fill: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+#toTop.show {
+  opacity: 1;
+  visibility: visible;
+  right: calc(8%);
+  bottom: calc(11%);
+}
+
+.to-top-arrow {
+  border-radius: 5px;
+  box-shadow: 0px 0px 8px 3px rgba(80, 78, 78, 0.616);
+  transform: scale(1);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    box-shadow: 0px 0px 8px 4px var(--accent-color);
+    transform: scale(1.06);
+  }
+}
