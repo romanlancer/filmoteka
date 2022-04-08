@@ -1,12 +1,5 @@
 .modal-movie {
   background-color: var(--first-text-color);
-  // position: absolute;
-  // left: 50%;
-  // top: 50%;
-  // transform: translate(-50%, -50%);
-  // width: 814px;
-  // height: 558px;
-  // padding: 40px 16px;
 
   @media screen and(max-width: 767px) {
     position: relative;
@@ -23,6 +16,11 @@
     transform: translate(-50%, -50%) scale(1);
     padding: 40px 72px 40px 36px;
   }
+  @media screen and(min-width: $desktop) {
+    width: 814px;
+    height: 558px;
+    padding: 40px 16px 40px 14px;
+  }
 }
 
 .movie-card {
@@ -31,17 +29,19 @@
   }
 
   &__image {
-    // width: 375px;
-    // height: 100%;
-    // margin-right: 16px;
     width: 240px;
     height: 357px;
     margin-bottom: 20px;
-    @media screen and(min-width: $tablet) {
+    @media screen and (min-width: $tablet) {
       width: 264px;
       height: 374px;
       margin-bottom: 0px;
       margin-right: 68px;
+    }
+    @media screen and (min-width: $desktop) {
+      width: 375px;
+      height: 478px;
+      margin-right: 18px;
     }
   }
 }
@@ -130,7 +130,6 @@
 
   &__buttons-list {
     display: flex;
-    // margin-left: 8px;
     flex-direction: row;
     margin-bottom: 0;
   }
