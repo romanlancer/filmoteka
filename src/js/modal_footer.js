@@ -1,8 +1,13 @@
 const refs = {
   openModalLink: document.querySelector('[data-footer-open]'),
-  closeModalBtn: document.querySelector('[data-modal-close]'),
+  closeModalBtn: document.querySelector('[data-footer-close]'),
   modal: document.querySelector('[data-modal-footer]'),
+  backdrop: document.querySelector('.js-backdrop'),
 };
+
+refs.openModalLink.addEventListener('click', openModal);
+refs.closeModalBtn.addEventListener('click', closeModal);
+refs.backdrop.addEventListener('click', onBackdropClick);
 
 function onClickEscape(event) {
   if (event.key === 'Escape') {
@@ -23,4 +28,8 @@ function openModal() {
   document.addEventListener('keydown', onClickEscape);
 }
 
-refs.openModalLink.addEventListener('click', openModal);
+function onBackdropClick(event) {
+  if (event.currentTarget === event.target) {
+    closeModal();
+  }
+}
