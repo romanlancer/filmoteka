@@ -3,16 +3,40 @@ import MoviesApiService from './fetch_api';
 import movieInfo from '../templates/movie.hbs';
 
 const cardsList = document.querySelector('.cards__list');
-const movieModal = document.querySelector('.backdrop');
+const backdrop = document.querySelector('.backdrop');
 const closeModalButton = document.querySelector('.button-close');
 const query = new MoviesApiService();
 
 cardsList.addEventListener('click', event => {
-  openModal(event);
+  renderModal(event);
 });
 
-function toggleModal() {
-  movieModal.classList.toggle('is-hidden');
+function closeModal(event) {
+  backdrop.classList.add('is-hidden');
+  closeModalButton.removeEventListener('click', closeModal);
+  backdrop.removeEventListener('click', closeModal);
+  document.removeEventListener('keydown', event => closeModalEscape(event));
+}
+
+function closeModalBackdrop(event) {
+  if (event.target.classList.value !== 'backdrop') {
+    return;
+  }
+  closeModal();
+}
+
+function closeModalEscape(event) {
+  if (event.key !== 'Escape') {
+    return;
+  }
+  closeModal();
+}
+
+function openModal(event) {
+  closeModalButton.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', event => closeModalBackdrop(event));
+  document.addEventListener('keydown', event => closeModalEscape(event));
+  backdrop.classList.remove('is-hidden');
 }
 
 const getApiData = async id => {
@@ -25,26 +49,16 @@ const getApiData = async id => {
   }
 };
 
-const openModal = async event => {
-  closeModalButton.addEventListener('click', toggleModal);
+const renderModal = async event => {
   const cardsId = event.target.closest('li');
   console.dir(cardsId.id);
   await getApiData(cardsId.id).then(results => {
     renderMovieCard(results);
   });
-  toggleModal();
+  openModal(event);
 };
 
 const renderMovieCard = async data => {
-  //     const poster = createElement(
-  //         'img',
-  //         {
-  //           class: 'movie-card__image',
-  //           src: `https://image.tmdb.org/t/p/w500${ data.poster_path }`,
-  //         alt: 'film poster',
-  //         },
-  //       );
-
   const movieCard = document.querySelector('.movie-card');
   const movie = handleMovieData(data);
   movieCard.innerHTML = movieInfo(movie);
