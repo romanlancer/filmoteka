@@ -64,6 +64,7 @@ function renderPageHome() {
     btnLibrary: document.querySelector('.navigation__button--library'),
     search: document.querySelector('#search-form'),
     btnLibraryHero: document.querySelector('.library__btn-list'),
+    header: document.querySelector('.header'),
   };
 
   refs.home.classList.remove('header__library');
@@ -71,4 +72,5 @@ function renderPageHome() {
   refs.btnHome.classList.add('navigation__button--current');
   refs.search.style.display = 'flex';
   refs.btnLibraryHero.style.display = 'none';
+  refs.header.style.backgroundColor = '#000001';
 }
