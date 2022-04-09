@@ -35,6 +35,7 @@
 }
 
 .cards__item {
+  position: relative;
   @media screen and (max-width: 767px) {
     &:not(:last-child) {
       margin-bottom: 20px;
@@ -43,44 +44,65 @@
 }
 
 .cards__item-poster {
-  height: 400px;
-  width: 280px;
-  @media screen and (min-width: $tablet) {
-    height: 455px;
-    width: 336px;
-  }
   
-  @media screen and (min-width: $desktop) {
-    height: 450px;
-    width: 309px;
-  }
+  
 }
 
-.cards__link {
+.cards__item-poster-link {
   display: flex;
-  flex-direction: column;
-  height: 100%;
   border-radius: 5px;
-  padding-bottom: 2px;
   color: var(--primary-text-color);
-
   &:hover,
   &:focus {
-    transform: scale(1.02);
-    box-shadow: 0px 4px 8px rgba(255, 107, 1, 0.1), 1px 4px 8px rgba(255, 107, 1, 0.5),
-      1px 4px 8px rgba(255, 107, 1, 0.5);
+    // transform: scale(1.02);
+    box-shadow: 0 0 20px 5px rgba(255, 107, 1, 0.251), 0 0 15px 3px rgb(255, 107, 1);;
   }
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transform: scale(1);
+  // transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  // transform: scale(1);
+  
+}
+
+.cards__item-poster-overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--second-text-color);
+  @include fonts(1.33, 500, 15px, null, null, null);
+  padding-top: 50px;
+  padding-right: 25px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+  text-align: justify;
+  overflow-y: auto;
+  opacity: 0;
+  border-radius: 5px;
+  &:hover {
+    opacity: 1;
+  }
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cards__item-poster-wrapper {
-  overflow: hidden;
+  position: relative;
 }
 
 .cards__item-poster-wrapper img {
   border-radius: 5px;
+  max-height: 400px;
+  max-width: 280px;
+  
+  @media screen and (min-width: $tablet) {
+    max-height: 455px;
+    max-width: 336px;
+  }
+  
+  @media screen and (min-width: $desktop) {
+    max-height: 450px;
+    max-width: 310px;
+  }
 }
 
 .cards__item-title {
@@ -105,15 +127,23 @@
 }
 
 .cards__item-vote-average {
-  @include fonts(1.17, 500, 12px, null, null, null);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  @include fonts(1.17, 500, 15px, null, null, null);
   color: var(--first-text-color);
   background-color: var(--accent-color);
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 1px;
-  padding-bottom: 1px;
+  // padding-left: 10px;
+  // padding-right: 10px;
+  // padding-top: 1px;
+  // padding-bottom: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border: 2px solid transparent;
   border-radius: 5px;
-  margin-left: 5px;
+  // margin-left: 5px;
 }
 
 .cards__item-info {
