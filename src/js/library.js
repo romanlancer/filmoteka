@@ -42,6 +42,7 @@ function renderPageLibarary() {
     btnLibrary: document.querySelector('.navigation__button--library'),
     search: document.querySelector('#search-form'),
     btnLibraryHero: document.querySelector('.library__btn-list'),
+    header: document.querySelector('.header'),
   };
 
   refs.home.classList.add('header__library');
@@ -49,4 +50,5 @@ function renderPageLibarary() {
   refs.btnLibrary.classList.add('navigation__button--current');
   refs.search.style.display = 'none';
   refs.btnLibraryHero.style.display = 'flex';
+  refs.header.style.backgroundColor = '#0E0004';
 }

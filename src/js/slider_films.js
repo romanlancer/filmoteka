@@ -1,3 +1,4 @@
+// import Glide from '@glidejs/glide';
 import Glide from '@glidejs/glide';
 import MoviesApiService from './fetch_api';
 import { createElement } from './createElement';
@@ -5,10 +6,6 @@ import { createElement } from './createElement';
 const refs = {
   slidesContainer: document.querySelector('#glide__slides'),
 };
-
-// glide.on('', function () {
-//   console.log('hahaha');
-// });
 
 const moviesApiService = new MoviesApiService();
 
@@ -36,15 +33,59 @@ function addElFilms(results) {
     arrFilmTrends.push(li);
   });
   refs.slidesContainer.append(...arrFilmTrends);
-  new Glide('.glide', {
+
+  const config = {
     type: 'carousel',
-    startAt: 0,
-    perView: 8,
-    autoplay: 3000,
+    perView: 10,
+    autoplay: 2500,
+    gap: 15,
+    touchRatio: 0.1,
     keyboard: true,
+    hoverpause: true,
     animationDuration: 1000,
-    keyboard: true,
     animationTimingFunc: 'ease-out',
-    peek: { before: 100, after: 100 },
-  }).mount();
+    peek: { before: 50, after: 50 },
+    breakpoints: {
+      2000: {
+        perView: 10,
+      },
+      1600: {
+        perView: 8,
+      },
+      1280: {
+        perView: 7,
+      },
+      1023: {
+        perView: 5,
+      },
+      500: {
+        perView: 2,
+      },
+    },
+  };
+  new Glide('.glide', config).mount();
+  changeStyleArrow();
+}
+
+function changeStyleArrow() {
+  const refs = {
+    left: document.querySelector('.glide__arrow--left'),
+    right: document.querySelector('.glide__arrow--right'),
+    current: document.querySelectorAll('.glide__arrow'),
+  };
+
+  refs.current.forEach(el => {
+    refs.current.forEach(el => {
+      el.style.cssText = `
+        outline: none;
+        box-shadow: none;
+        border-radius: 50%;
+        padding: 4px 7px;
+        background-color: rgba(0, 0, 0, 0.4);
+      `;
+    });
+  });
+
+  refs.left.style.left = `3px`;
+  refs.right.style.right = `4px`;
 }
