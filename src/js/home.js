@@ -1,6 +1,5 @@
 import { onLibrary } from './library';
-import Notiflix from 'notiflix';
-
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import MoviesApiService from './fetch_api';
 import Pagination from './pagination';
 import { renderFilmList } from './filmCard';
@@ -13,7 +12,7 @@ const moviePagination = new Pagination({
   total: 1,
   async onChange(value) {
     moviesApiService.page = value;
-    Notiflix.Loading.hourglass({
+    Loading.hourglass({
       cssAnimationDuration: 400,
       svgSize: '150px',
       svgColor: '#ff6b01',
@@ -25,7 +24,7 @@ const moviePagination = new Pagination({
     const { results, total_pages } = movies;
     setTimeout(() => {
       renderFilmList(results);
-      Notiflix.Loading.remove();
+      Loading.remove();
     }, 500);
 
     moviePagination.renderPagination(total_pages);
