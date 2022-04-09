@@ -1,8 +1,8 @@
 import { createElement } from './createElement';
-// import MoviesApiService from './fetch_api';
 import { genresInfo } from './genres_info';
+import ComingSoonImg from '../images/movie-poster-coming-soon.jpg';
 
-// const movieApiServies = new MoviesApiService;
+// `https://image.tmdb.org/t/p/w500${posterPath}`
 const containerEl = document.querySelector('.cards__list');
 
 export const filmCard = filmData => {
@@ -10,7 +10,6 @@ export const filmCard = filmData => {
     id: filmId,
     poster_path: posterPath,
     original_title: originalTitle,
-    overview,
     genre_ids: genreIds,
     release_date: releaseDate,
     vote_average: voteAverage,
@@ -18,12 +17,22 @@ export const filmCard = filmData => {
 
   const originalTitleToUpperCase = originalTitle.toUpperCase();
   const releaseYear = releaseDate.slice(0, 4);
-  // const genresNames = getGenresNames(genreIds)
+  const posterComingSoon = ComingSoonImg;
+  const posterExisting = `https://image.tmdb.org/t/p/w500${posterPath}`;
+  
+  const filmPoster = () => {
+    if (posterPath === null) {
+      return posterComingSoon;
+    }
+    return posterExisting;
+  } 
 
   const filmPosterElem = createElement('img', {
     class: 'cards__item-poster',
-    src: `https://image.tmdb.org/t/p/w500${posterPath}`,
+    src: filmPoster(),
+    // onerror: "this.src='../images/no-logo-120.jpg';",
     alt: 'film poster',
+    loading: "lazy",
   });
 
   const filmPosterWrapperElem = createElement(
@@ -111,12 +120,7 @@ function getGenresNames(genreIds) {
   return genresNamesArray.toString();
 }
 
-// Рендер популярных фильмов
-// movieApiServies.getPopularFilms().then(response => {
-//     console.log(response.results);
-//     renderFilmList(response.results);
 
-// }).catch(error => console.log(error));
 
 // функция отрисовки карточек фильмов
 export function renderFilmList(filmList) {

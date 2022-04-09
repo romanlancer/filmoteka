@@ -42,6 +42,20 @@
   }
 }
 
+.cards__item-poster {
+  height: 400px;
+  width: 280px;
+  @media screen and (min-width: $tablet) {
+    height: 455px;
+    width: 336px;
+  }
+  
+  @media screen and (min-width: $desktop) {
+    height: 450px;
+    width: 309px;
+  }
+}
+
 .cards__link {
   display: flex;
   flex-direction: column;
