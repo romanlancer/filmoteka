@@ -1,7 +1,23 @@
 import { onLibrary } from './library';
 import MoviesApiService from './fetch_api';
+import Pagination from './pagination';
 import { renderFilmList } from './filmCard';
+const paginationListRef = document.querySelector('.pagination-list');
 const moviesApiService = new MoviesApiService();
+
+const moviePagination = new Pagination({
+  parentElement: paginationListRef,
+  initialPage: 1,
+  total: 1,
+  onChange(value) {
+    console.log('page change');
+    moviesApiService.page = value;
+    moviesApiService.getPopularFilms().then(({ page, results, total_pages }) => {
+      renderFilmList(results);
+      moviePagination.renderPagination(total_pages);
+    });
+  },
+});
 
 const refs = {
   header: document.querySelector('#header'),
