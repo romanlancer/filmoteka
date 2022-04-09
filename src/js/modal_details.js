@@ -1,6 +1,6 @@
 import { createElement } from './createElement';
 import MoviesApiService from './fetch_api';
-import movieInfo from './movie.hbs';
+import movieInfo from '../templates/movie.hbs';
 
 const cardsList = document.querySelector('.cards__list');
 const movieModal = document.querySelector('.backdrop');
