@@ -37,3 +37,11 @@
 	right: 0;
 	border-radius: 2px;
 }
+
+@mixin flex($df, $ai, $jc, $fd, $fw) {
+	display: $df;
+	align-items: $ai;
+	justify-content: $jc;
+	flex-direction: $fd;
+	flex-wrap: $fw;
+}
