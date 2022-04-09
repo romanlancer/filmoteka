@@ -1,7 +1,5 @@
-import { createElement } from './createElement';
 import MoviesApiService from './fetch_api';
 import movieInfo from '../templates/movie.hbs';
-
 const cardsList = document.querySelector('.cards__list');
 const movieModal = document.querySelector('.backdrop');
 const closeModalButton = document.querySelector('.button-close');

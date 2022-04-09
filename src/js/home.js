@@ -1,4 +1,6 @@
 import { onLibrary } from './library';
+import Notiflix from 'notiflix';
+
 import MoviesApiService from './fetch_api';
 import Pagination from './pagination';
 import { renderFilmList } from './filmCard';
@@ -9,13 +11,24 @@ const moviePagination = new Pagination({
   parentElement: paginationListRef,
   initialPage: 1,
   total: 1,
-  onChange(value) {
-    console.log('page change');
+  async onChange(value) {
     moviesApiService.page = value;
-    moviesApiService.getPopularFilms().then(({ page, results, total_pages }) => {
-      renderFilmList(results);
-      moviePagination.renderPagination(total_pages);
+    Notiflix.Loading.hourglass({
+      cssAnimationDuration: 400,
+      svgSize: '150px',
+      svgColor: '#ff6b01',
+      backgroundColor: 'rgba(0, 0, 0, 0.6)',
     });
+
+    const movies = await moviesApiService.getPopularFilms();
+
+    const { results, total_pages } = movies;
+    setTimeout(() => {
+      renderFilmList(results);
+      Notiflix.Loading.remove();
+    }, 500);
+
+    moviePagination.renderPagination(total_pages);
   },
 });
 
@@ -23,14 +36,12 @@ const refs = {
   header: document.querySelector('#header'),
 };
 
-onHome();
-
 export function onHome() {
   renderPageHome();
-
   refs.header.addEventListener('click', onClickBtn);
 }
-
+onHome();
+moviePagination.currentPage = 1;
 function onClickBtn() {
   const refs = {
     logo: document.querySelector('.header__logo--text'),
@@ -42,6 +53,7 @@ function onClickBtn() {
     onLibrary();
   } else if (event.target === refs.home || event.target === refs.logo) {
     onHome();
+    moviePagination.currentPage = 1;
   }
 }
 
@@ -60,7 +72,3 @@ function renderPageHome() {
   refs.search.style.display = 'flex';
   refs.btnLibraryHero.style.display = 'none';
 }
-
-moviesApiService.getPopularFilms().then(({ results }) => {
-  renderFilmList(results);
-});

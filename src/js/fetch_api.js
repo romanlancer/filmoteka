@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const BASE_URL = 'https://api.themoviedb.org';
 const API_KEY = 'e236468c654efffdf9704cd975a74a96';
 
