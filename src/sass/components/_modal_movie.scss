@@ -28,7 +28,7 @@
     display: flex;
   }
 
-  &__image {
+  &__thumb {
     width: 240px;
     height: 357px;
     margin-bottom: 20px;
@@ -37,6 +37,7 @@
       height: 374px;
       margin-bottom: 0px;
       margin-right: 68px;
+      flex-basis: calc((100% / 2) - 34px);
     }
     @media screen and (min-width: $desktop) {
       width: 375px;
@@ -44,9 +45,19 @@
       margin-right: 18px;
     }
   }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .movie-data {
+  @media screen and (min-width: $tablet) {
+    flex-basis: calc((100% / 2) - 34px);
+  }
+
   &__title {
     font-family: 'Roboto';
     font-style: normal;
@@ -72,12 +83,6 @@
     font-size: 12px;
     line-height: 1.33;
     flex-basis: content;
-    @media screen and (min-width: $tablet) {
-      flex-basis: calc((100% / 2) - 15px);
-    }
-    @media screen and (min-width: $desktop) {
-      flex-basis: content;
-    }
 
     & > li:not(:last-child) {
       margin-bottom: 8px;
@@ -85,6 +90,10 @@
     &_right {
       margin-left: 39px;
       flex-basis: calc(100% - 108px);
+      @media screen and(min-width: $tablet) {
+        margin-left: 39px;
+        flex-basis: calc(100% - 108px);
+      }
       @media screen and(min-width: $desktop) {
         margin-left: 85px;
       }
@@ -159,7 +168,7 @@
       background-color: var(--accent-color);
       padding: 6px 27px;
       @media screen and(min-width: $tablet) {
-        padding: 13px 12px;
+        padding: 14px 12px;
       }
     }
     &_inactive {
