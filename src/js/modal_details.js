@@ -1,4 +1,4 @@
-import { createElement } from './createElement';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import MoviesApiService from './fetch_api';
 import movieInfo from '../templates/movie.hbs';
 
@@ -42,23 +42,27 @@ function openModal(event) {
 const getApiData = async id => {
   try {
     const response = await query.getFilmDetails(id);
-    console.log(response.data);
+    if (response.status !== 200) {
+      Notify.failure('Oops, an error occurred');
+      return;
+    }
     return response.data;
   } catch (error) {
-    console.log('error');
+    Notify.failure('Oops, an error occurred');
   }
 };
 
 const renderModal = async event => {
   const cardsId = event.target.closest('li');
-  console.dir(cardsId.id);
-  await getApiData(cardsId.id).then(results => {
-    renderMovieCard(results);
-  });
-  openModal(event);
+  // console.dir(cardsId.id);
+  const data = await getApiData(cardsId.id);
+  if (data) {
+    renderMovieCard(data);
+    openModal(event);
+  }
 };
 
-const renderMovieCard = async data => {
+const renderMovieCard = data => {
   const movieCard = document.querySelector('.movie-card');
   const movie = handleMovieData(data);
   movieCard.innerHTML = movieInfo(movie);
