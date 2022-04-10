@@ -1,12 +1,9 @@
-
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
-import MoviesApiService from './fetch_api';
+import { moviesApiService } from './render_popular';
 import movieInfo from '../templates/movie.hbs';
 const cardsList = document.querySelector('.cards__list');
 const backdrop = document.querySelector('.backdrop-movie');
 const closeModalButton = document.querySelector('.button-close');
-const query = new MoviesApiService();
 
 cardsList.addEventListener('click', event => {
   renderModal(event);
@@ -46,7 +43,7 @@ function openModal(event) {
 
 const getMovieData = async id => {
   try {
-    const response = await query.getFilmDetails(id);
+    const response = await moviesApiService.getFilmDetails(id);
     if (response.status !== 200) {
       Notify.failure('Oops, an error occurred');
       return;
@@ -59,7 +56,7 @@ const getMovieData = async id => {
 
 const getMovieTrailer = async id => {
   try {
-    const response = await query.getFilmVideo(id);
+    const response = await moviesApiService.getFilmVideo(id);
     if (response.status !== 200) {
       Notify.failure('Oops, an error occurred');
       return;

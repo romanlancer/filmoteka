@@ -1,18 +1,19 @@
-// import Glide from '@glidejs/glide';
 import Glide from '@glidejs/glide';
-import MoviesApiService from './fetch_api';
+import { moviesApiService } from './render_popular';
 import { createElement } from './createElement';
 
 const refs = {
   slidesContainer: document.querySelector('#glide__slides'),
 };
 
-const moviesApiService = new MoviesApiService();
+renderSlideFilms();
 
-moviesApiService.getTrendFilms().then(({ results }) => {
-  addElFilms(results);
-  console.log(results);
-});
+export function renderSlideFilms() {
+  moviesApiService.getTrendFilms().then(({ results }) => {
+    addElFilms(results);
+    console.log(results);
+  });
+}
 
 function addElFilms(results) {
   let arrFilmTrends = [];
@@ -32,6 +33,7 @@ function addElFilms(results) {
     );
     arrFilmTrends.push(li);
   });
+  refs.slidesContainer.innerHTML = '';
   refs.slidesContainer.append(...arrFilmTrends);
 
   const config = {
