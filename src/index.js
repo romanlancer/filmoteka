@@ -16,3 +16,5 @@ import './js/modal_footer';
 import './js/filmCard';
 import './js/slider_films';
 import './js/language';
+import './js/render_footer_modal';
+

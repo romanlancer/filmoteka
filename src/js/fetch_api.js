@@ -41,7 +41,7 @@ export default class MoviesApiService {
       });
       const url = `${BASE_URL}/3/search/movie?${searchParams}`;
       const response = await axios.get(url);
-      return response;
+      return response.data;
     } catch (error) {
       return error;
     }

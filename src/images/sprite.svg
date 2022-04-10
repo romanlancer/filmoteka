@@ -9,7 +9,7 @@
         d="M6.667 16h18.667M16 25.334l9.333-9.333L16 6.668" />
     </symbol>
     <symbol id="icon-close" viewBox="0 0 32 32">
-      <path stroke-width="2.133" stroke="#000" d="m8.533 8.533 14.933 14.933M8.533 23.467 23.466 8.534" />
+      <path stroke-width="2.133"  d="m8.533 8.533 14.933 14.933M8.533 23.467 23.466 8.534" />
     </symbol>
     <symbol id="icon-film" viewBox="0 0 32 32">
       <path fill="transparent" stroke="#818181" style="stroke:var(--color1, #818181)" stroke-linejoin="round"
