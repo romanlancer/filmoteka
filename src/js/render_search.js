@@ -29,11 +29,14 @@ function onSearch(e) {
   renderSearch();
 }
 
-export async function renderSearch(page = 1, query) {
-    if (query) {
+export async function renderSearch(page, query) {
+  if (page) {
+      moviesApiService.page = page;
+  }
+  if (query) {
       moviesApiService.query = query;
     }
-    moviesApiService.page = page;
+    
     Loading.hourglass({
     cssAnimationDuration: 400,
     svgSize: '150px',
