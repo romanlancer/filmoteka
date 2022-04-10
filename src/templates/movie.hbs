@@ -1,5 +1,10 @@
   {{#with this}}
-  <img class="movie-card__image" src="{{this.poster}}" alt="movie" loading="lazy" /> 
+  <div class="movie-card__thumb">
+   {{!-- <img class="movie-card__image" src="{{this.poster}}" alt="{{this.title}}" loading="lazy" />   --}}
+   <iframe class="movie-card__image"
+src="{{this.trailer}}" id='trailer-iframe'> 
+</iframe>
+  </div>
       <div class="movie-data">
         <h2 class="movie-data__title">{{this.title}}</h2>
         <div class="movie-data__data">
@@ -13,16 +18,16 @@
             <li class="movie-data__value">
               <p><span class="movie-data__vote">{{this.vote}}</span> / {{this.votes}}</p>
             </li>
-            <li class="movie-data__value">{{this.popularity}}</li>
-            <li class="movie-data__value">{{this.original_title}}</li>
-            <li class="movie-data__value">{{this.genres}}</li>
+            <li class="movie-data__value"><p>{{this.popularity}}</p></li>
+            <li class="movie-data__value"><p>{{this.original_title}}</p></li>
+            <li class="movie-data__value"><p>{{this.genres}}</p></li>
           </ul>
         </div>
         <h3 class="movie-data__about_title">About</h3>
         <p class="movie-data__about">
           {{this.overview}}
-        </p>
-        <ul class="movie-data__buttons-list">
+        </p> 
+         <ul class="movie-data__buttons-list">
           <li class="movie-data__button-item">
             <button type="button" class="movie-data__button movie-data__button_active">
               add to watched
@@ -33,6 +38,6 @@
               add to queue
             </button>
           </li>
-        </ul>
+        </ul> 
       </div>
       {{/with}}
