@@ -3,7 +3,7 @@ import MoviesApiService from './fetch_api';
 import movieInfo from '../templates/movie.hbs';
 
 const cardsList = document.querySelector('.cards__list');
-const backdrop = document.querySelector('.backdrop');
+const backdrop = document.querySelector('.backdrop-movie');
 const closeModalButton = document.querySelector('.button-close');
 const query = new MoviesApiService();
 
@@ -12,6 +12,8 @@ cardsList.addEventListener('click', event => {
 });
 
 function closeModal(event) {
+  const iframe = document.getElementById('trailer-iframe');
+  iframe.src = '';
   backdrop.classList.add('is-hidden');
   closeModalButton.removeEventListener('click', closeModal);
   backdrop.removeEventListener('click', closeModal);
@@ -20,7 +22,7 @@ function closeModal(event) {
 }
 
 function closeModalBackdrop(event) {
-  if (event.target.classList.value !== 'backdrop') {
+  if (event.target.classList.value !== 'backdrop-movie') {
     return;
   }
   closeModal();
@@ -41,7 +43,7 @@ function openModal(event) {
   document.body.classList.add('modal-open');
 }
 
-const getApiData = async id => {
+const getMovieData = async id => {
   try {
     const response = await query.getFilmDetails(id);
     if (response.status !== 200) {
@@ -54,23 +56,38 @@ const getApiData = async id => {
   }
 };
 
+const getMovieTrailer = async id => {
+  try {
+    const response = await query.getFilmVideo(id);
+    if (response.status !== 200) {
+      Notify.failure('Oops, an error occurred');
+      return;
+    }
+    return response.data;
+  } catch (error) {
+    Notify.failure('Oops, an error occurred');
+  }
+};
+
 const renderModal = async event => {
   const cardsId = event.target.closest('li');
-  // console.dir(cardsId.id);
-  const data = await getApiData(cardsId.id);
+  // console.dir(cardsId.id); Очередность отрисовки!
+  const data = await getMovieData(cardsId.id);
+  const trailer = await getMovieTrailer(cardsId.id);
   if (data) {
-    renderMovieCard(data);
+    console.log(data);
+    renderMovieCard(data, trailer);
     openModal(event);
   }
 };
 
-const renderMovieCard = data => {
+const renderMovieCard = (data, trailer) => {
   const movieCard = document.querySelector('.movie-card');
-  const movie = handleMovieData(data);
+  const movie = handleMovieData(data, trailer);
   movieCard.innerHTML = movieInfo(movie);
 };
 
-function handleMovieData(data) {
+function handleMovieData(data, trailer) {
   const {
     poster_path: poster,
     original_title,
@@ -85,5 +102,28 @@ function handleMovieData(data) {
   const movie = { title, original_title, vote, votes, popularity, overview };
   movie.poster = `https://image.tmdb.org/t/p/w500${poster}`;
   movie.genres = genresList.join(', ');
+  //проверка нулб вынести в функцию
+  const backdropImage = data.backdrop_path;
+  if (backdropImage !== null) {
+    const background = `https://image.tmdb.org/t/p/original/${data.backdrop_path}`;
+    console.log(background);
+    backdrop.style.backgroundImage = `url('${background}')`;
+    backdrop.style.backgroundSize = 'cover';
+    backdrop.style.backgroundPosition = '50% 50%';
+  }
+  //переименовать и вынести
+  const video = handleTrailer(trailer);
+  if (video) {
+    movie.trailer = `https://www.youtube.com/embed/${video}`;
+  }
+
   return movie;
+}
+
+function handleTrailer(trailer) {
+  if (trailer.results.length === 0) {
+    return null;
+  } else {
+    return trailer.results[0].key;
+  }
 }
