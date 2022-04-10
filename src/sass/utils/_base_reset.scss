@@ -43,10 +43,11 @@ button {
   }
   @media screen and (min-width: $tablet) {
     width: $tablet;
-    padding: 0 70px;
+    padding: 0 75px;
   }
   @media screen and (min-width: $desktop) {
     width: $desktop;
+    padding: 0 70px;
   }
 }
 

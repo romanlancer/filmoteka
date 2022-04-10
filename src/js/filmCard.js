@@ -1,7 +1,6 @@
 import { createElement } from './createElement';
 import { genresInfo } from './genres_info';
 import ComingSoonImg from '../images/movie-poster-coming-soon.jpg';
-
 const containerEl = document.querySelector('.cards__list');
 const filmRateRef = document.querySelector('.cards__item-vote-average');
 
@@ -18,6 +17,7 @@ export const filmCard = filmData => {
 
   const originalTitleToUpperCase = originalTitle.toUpperCase();
   const releaseYear = releaseDate.slice(0, 4);
+
   const posterComingSoon = ComingSoonImg;
   const posterExisting = `https://image.tmdb.org/t/p/w500${posterPath}`;
   const filmPoster = () => {
@@ -25,12 +25,12 @@ export const filmCard = filmData => {
       return posterComingSoon;
     }
     return posterExisting;
-  } 
-  const filmRaiting = (voteAverage) => {
-    return (voteAverage === 0 ? '0' : voteAverage);
-  }
+  };
+  const filmRaiting = voteAverage => {
+    return voteAverage === 0 ? '0' : voteAverage;
+  };
 
- //Разметка карточки
+  //Разметка карточки
   const filmPosterElem = createElement('img', {
     class: 'cards__item-poster',
     src: filmPoster(),
@@ -38,7 +38,7 @@ export const filmCard = filmData => {
     height: 750,
     // onerror: "this.src='../images/no-logo-120.jpg';",
     alt: 'film poster',
-    loading: "lazy",
+    loading: 'lazy',
   });
 
   const filmPosterOverlayElem = createElement(
@@ -114,7 +114,6 @@ export const filmCard = filmData => {
     filmRaiting(voteAverage),
   );
 
-  
   const filmDataElem = createElement(
     'div',
     {
@@ -122,14 +121,14 @@ export const filmCard = filmData => {
     },
     [filmGenresElem, filmReleaseElem, filmRateElem],
   );
-  
+
   const filmCardElem = createElement(
     'li',
     {
       class: 'cards__item',
       id: filmId,
     },
-    [filmPosterWrapperElem, filmTitleElem, filmDataElem],  
+    [filmPosterWrapperElem, filmTitleElem, filmDataElem],
   );
 
   return filmCardElem;
@@ -152,18 +151,14 @@ function getGenresNames(genreIds) {
   return genresNamesArray.toString();
 }
 
-
 function assigningСolorRating(voteAverage) {
   let color;
   if (voteAverage <= 5) {
     color = 'red';
-    
-  } else if(voteAverage > 5 && voteAverage < 7) {
+  } else if (voteAverage > 5 && voteAverage < 7) {
     color = 'yellow';
-        
-  } else if(voteAverage >= 7) {
+  } else if (voteAverage >= 7) {
     color = 'green';
-      
   } else {
     color = 'white';
   }
@@ -171,7 +166,6 @@ function assigningСolorRating(voteAverage) {
 }
 
 console.log(assigningСolorRating(8));
-
 
 // функция отрисовки карточек фильмов
 export function renderFilmList(filmList) {
@@ -181,4 +175,3 @@ export function renderFilmList(filmList) {
 
   containerEl.append(...filmsNodeList);
 }
-
