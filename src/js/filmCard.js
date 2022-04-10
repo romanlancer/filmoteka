@@ -109,7 +109,7 @@ export const filmCard = filmData => {
     'span',
     {
       class: 'cards__item-vote-average',
-      style: `border-color: ${assigningСolorRating(voteAverage)}`,
+      // style: `border-color: ${assigningСolorRating(voteAverage)}`,
     },
     filmRaiting(voteAverage),
   );
