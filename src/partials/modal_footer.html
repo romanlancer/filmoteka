@@ -1,20 +1,17 @@
 <!-- Модалка -->
 
-<div class="backdrop is-hidden footer__backdrop js-backdrop swiper" data-modal-footer>
+<div class="backdrop is-hidden footer__backdrop js-backdrop glide" data-modal-footer>
 
-    <div class="footer-modal">
-      <button type="button" class="footermodal__btn-close" data-footer-close>
-        <svg width="15" height="15">
-          <use href="./images/sprite.svg#icon-close"></use>
-        </svg>
-      </button>
-        <div class="swiper-wrapper">
-          <!-- Slides -->
-
-        </div>
-        <!-- If we need pagination -->
-        <div class="swiper-pagination"></div>
-
+    <div data-glide-el="track" class="glide__track footer-modal">
+        <button type="button" class="footermodal__btn-close" data-footer-close>
+          <svg width="15" height="15">
+            <use href="./images/sprite.svg#icon-close"></use>
+          </svg>
+        </button>
+           <ul class="glide__slides" data-footer-list>
+            <!-- Slides -->
+          
+           </ul>
     </div>
 
 </div>

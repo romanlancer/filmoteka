@@ -1,13 +1,20 @@
 import users from './users';
 import studentTpl from '../templates/student.hbs';
+import Glide from '@glidejs/glide';
 
-const slide = document.querySelector('.swiper-wrapper');
+const slide = document.querySelector('[data-footer-list]');
 const userMarkup = renderUserCard(users);
 
 function renderUserCard(users) {
   const marcup = studentTpl(users);
   // console.log('~ marcup', marcup);
   slide.insertAdjacentHTML('beforeend', marcup);
+  new Glide('.glide', {
+    type: 'carousel',
+    startAt: 0,
+    perView: 1,
+    swipeThreshold: true,
+  }).mount();
 }
 
 // function renderUserCard(data) {
