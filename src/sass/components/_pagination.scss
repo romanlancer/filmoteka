@@ -31,12 +31,19 @@
         background-image: url(../images/arrow-left.svg);
         background-position: center;
         background-repeat: no-repeat;
+        &.disabled{
+          cursor: default;
+          opacity: 0.5;
+        }
       }
       &.pagination-next {
         background-image: url(../images/arrow-right.svg);
         background-position: center;
         background-repeat: no-repeat;
-      
+        &.disabled {
+          cursor: default;
+          opacity: 0.5;
+        }
       }
   }
   &.pagination-number{
