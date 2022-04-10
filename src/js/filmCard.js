@@ -9,7 +9,7 @@ export const filmCard = filmData => {
     id: filmId,
     poster_path: posterPath,
     overview,
-    original_title: originalTitle,
+    title: originalTitle,
     genre_ids: genreIds,
     release_date: releaseDate,
     vote_average: voteAverage,

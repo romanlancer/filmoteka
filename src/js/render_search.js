@@ -1,18 +1,17 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import MoviesApiService from './fetch_api';
+import { moviesApiService } from './render_popular';
 import Pagination from './pagination';
 import { renderFilmList } from './filmCard';
 import { eventListenerChangeHandler } from './pagination';
 
 const searchFormRef = document.querySelector('#search-form');
-const moviesApiService = new MoviesApiService();
 
 const moviePaginationForSearch = new Pagination({
   initialPage: 1,
   total: 1,
   onChange(value) {
     // console.log('change page search');
-    
+
     renderSearch(value);
   },
 });
@@ -31,13 +30,13 @@ function onSearch(e) {
 
 export async function renderSearch(page, query) {
   if (page) {
-      moviesApiService.page = page;
+    moviesApiService.page = page;
   }
   if (query) {
-      moviesApiService.query = query;
-    }
-    
-    Loading.hourglass({
+    moviesApiService.query = query;
+  }
+
+  Loading.hourglass({
     cssAnimationDuration: 400,
     svgSize: '150px',
     svgColor: '#ff6b01',
@@ -47,10 +46,14 @@ export async function renderSearch(page, query) {
   const movies = await moviesApiService.getFilmsByName();
 
   const { results, total_pages } = movies;
+  console.log(movies);
   setTimeout(() => {
     renderFilmList(results);
     eventListenerChangeHandler(onPaginationSearchHandler);
-    moviePaginationForSearch.renderPagination(document.querySelector('.pagination-list'), total_pages);
+    moviePaginationForSearch.renderPagination(
+      document.querySelector('.pagination-list'),
+      total_pages,
+    );
     Loading.remove();
   }, 500);
 }
@@ -83,4 +86,3 @@ function onPaginationSearchHandler(event) {
     moviePaginationForSearch.currentPage = clickPage;
   }
 }
-

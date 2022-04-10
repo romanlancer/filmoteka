@@ -1,16 +1,20 @@
 import { refs } from './refs';
-import MoviesApiService from './fetch_api';
+import { renderPopular } from './render_popular';
+import { moviesApiService } from './render_popular';
+import { renderSlideFilms } from './slider_films';
 
-const moviesApiService = new MoviesApiService();
-
-function onLangSelected(event) {
+async function onLangSelected(event) {
   let langCheck = event.target.value;
-  console.log(langCheck);
   if (langCheck === 'ua') {
     onButtonUa();
-    moviesApiService.lang = 'uk';
+    moviesApiService.lang = langCheck;
+    renderPopular();
+    renderSlideFilms();
   } else {
+    moviesApiService.lang = langCheck;
     onButtonEng();
+    renderPopular();
+    // renderSlideFilms();
   }
 }
 
@@ -27,7 +31,6 @@ function onButtonUa() {
 }
 
 function onButtonEng() {
-  console.log(refs.language);
   refs.home.textContent = 'HOME';
   refs.library.textContent = 'MY LIBRARY';
   refs.input.placeholder = 'Search films';

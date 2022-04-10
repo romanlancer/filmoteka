@@ -7,7 +7,7 @@ export default class MoviesApiService {
   constructor() {
     this.page = 1;
     this.searchQuery = '';
-    this.lang = 'en';
+    this.lang = '';
   }
 
   async getPopularFilms() {
@@ -22,7 +22,7 @@ export default class MoviesApiService {
 
   async getTrendFilms() {
     try {
-      const url = `${BASE_URL}/3/trending/movie/week?api_key=${API_KEY}`;
+      const url = `${BASE_URL}/3/trending/movie/week?api_key=${API_KEY}&language=${this.lang}`;
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
@@ -49,7 +49,7 @@ export default class MoviesApiService {
 
   async getFilmDetails(id) {
     try {
-      const url = `${BASE_URL}/3/movie/${id}?api_key=${API_KEY}`;
+      const url = `${BASE_URL}/3/movie/${id}?api_key=${API_KEY}&language=${this.lang}`;
       const response = await axios.get(url);
       return response;
     } catch (error) {
@@ -59,7 +59,7 @@ export default class MoviesApiService {
 
   async getFilmVideo(id) {
     try {
-      const url = `${BASE_URL}/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`;
+      const url = `${BASE_URL}/3/movie/${id}/videos?api_key=${API_KEY}&language=${this.lang}`;
       const response = await axios.get(url);
       return response;
     } catch (error) {
@@ -75,13 +75,13 @@ export default class MoviesApiService {
     return this.searchQuery;
   }
 
-  // set lang(newLang) {
-  //   this.lang = newLang;
-  // }
+  setLang(newLang) {
+    this.lang = newLang;
+  }
 
-  // get lang() {
-  //   return this.lang;
-  // }
+  getLang() {
+    return this.lang;
+  }
 
   incrementPage() {
     this.page += 1;
