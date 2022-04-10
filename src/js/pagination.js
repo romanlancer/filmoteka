@@ -133,6 +133,7 @@ export default class Pagination {
     if (afterPage >= this.total) {
       afterPage = this.total - 1;
     }
+    console.log(beforePage);
     for (let pageNumber = beforePage; pageNumber <= afterPage; pageNumber++) {
       if (pageNumber === this.currentPage) {
         const item = createElement(
@@ -159,16 +160,15 @@ export default class Pagination {
       );
       this.paginationList.push(endDots);
     }
-
+if(this.total > 1){
     if (this.currentPage === this.total) {
       const lastElem = createElement(
         'li',
         {
-          class: `${
-            this.currentPage < this.total - 3
+          class: `${this.currentPage < this.total - 3
               ? 'pagination-item pagination-number active last-num'
               : 'pagination-item pagination-number active'
-          }`,
+            }`,
         },
         createElement('span', {}, `${this.total}`),
       );
@@ -177,16 +177,16 @@ export default class Pagination {
       const lastElem = createElement(
         'li',
         {
-          class: `${
-            this.currentPage < this.total - 3
+          class: `${this.currentPage < this.total - 3
               ? 'pagination-item pagination-number last-num'
               : 'pagination-item pagination-number'
-          }`,
+            }`,
         },
         createElement('span', {}, `${this.total}`),
       );
       this.paginationList.push(lastElem);
     }
+  }
     const nextArrow = createElement(
       'li',
       {
