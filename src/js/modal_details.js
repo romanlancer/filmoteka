@@ -16,6 +16,7 @@ function closeModal(event) {
   closeModalButton.removeEventListener('click', closeModal);
   backdrop.removeEventListener('click', closeModal);
   document.removeEventListener('keydown', event => closeModalEscape(event));
+  document.body.classList.remove('modal-open');
 }
 
 function closeModalBackdrop(event) {
@@ -37,6 +38,7 @@ function openModal(event) {
   backdrop.addEventListener('click', event => closeModalBackdrop(event));
   document.addEventListener('keydown', event => closeModalEscape(event));
   backdrop.classList.remove('is-hidden');
+  document.body.classList.add('modal-open');
 }
 
 const getApiData = async id => {
