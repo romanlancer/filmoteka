@@ -1,51 +1,56 @@
 body {
-	font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 *,
 ::before,
 ::after {
-	padding: 0;
-	margin: 0;
-	border: 0;
-	outline: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
 }
 img {
-	display: block;
-	max-width: 100%;
-	height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 li {
-	list-style-type: none;
+  list-style-type: none;
 }
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 a,
 button {
-	cursor: pointer;
+  cursor: pointer;
 }
 .visually-hidden {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	margin: -1px;
-	padding: 0;
-	overflow: hidden;
-	border: 0;
-	clip: rect(0 0 0 0);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
 }
 .container {
-	margin: 0 auto;
-	padding: 0 20px;
+  margin: 0 auto;
+  padding: 0 20px;
 
-	@media screen and (min-width: $mobile) {
-		width: $mobile;
-	}
-	@media screen and (min-width: $tablet) {
-		width: $tablet;
-		padding: 0 70px;
-	}
-	@media screen and (min-width: $desktop) {
-		width: $desktop;
-	}
+  @media screen and (min-width: $mobile) {
+    width: $mobile;
+  }
+  @media screen and (min-width: $tablet) {
+    width: $tablet;
+    padding: 0 70px;
+  }
+  @media screen and (min-width: $desktop) {
+    width: $desktop;
+  }
+}
+
+.is-hidden {
+  visibility: hidden;
+  display: none;
 }

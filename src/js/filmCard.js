@@ -176,7 +176,9 @@ console.log(assigningСolorRating(8));
 // функция отрисовки карточек фильмов
 export function renderFilmList(filmList) {
   containerEl.innerHTML = '';
+
   const filmsNodeList = filmList.map(film => filmCard(film));
+
   containerEl.append(...filmsNodeList);
 }
 
