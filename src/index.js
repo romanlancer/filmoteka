@@ -15,3 +15,4 @@ import './js/library';
 import './js/modal_footer';
 import './js/filmCard';
 import './js/slider_films';
+import './js/render_footer_modal';
