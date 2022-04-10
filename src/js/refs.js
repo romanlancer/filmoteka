@@ -1,0 +1,15 @@
+export const refs = {
+  language: document.querySelector('.language'),
+  btnUa: document.querySelector('.btn-ua'),
+  btnEng: document.querySelector('.btn-eng'),
+  home: document.querySelector('#button__home'),
+  library: document.querySelector('#button__library'),
+  input: document.querySelector('.search__form--input'),
+  placeholderText: document.getElementsByName('Search films'),
+  sliderTitle: document.querySelector('.slide__title'),
+  btnWatched: document.querySelector('#btn__watched'),
+  btnQueue: document.querySelector('#btn__queue'),
+  textApp: document.querySelector('.text-app'),
+  appSupp: document.querySelector('.text-supp'),
+  textJoin: document.querySelector('.text-join'),
+};

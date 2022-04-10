@@ -7,11 +7,12 @@ export default class MoviesApiService {
   constructor() {
     this.page = 1;
     this.searchQuery = '';
+    this.lang = 'en';
   }
 
   async getPopularFilms() {
     try {
-      const url = `${BASE_URL}/3/movie/popular?api_key=${API_KEY}&page=${this.page}`;
+      const url = `${BASE_URL}/3/movie/popular?api_key=${API_KEY}&language=${this.lang}&page=${this.page}`;
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
@@ -73,6 +74,14 @@ export default class MoviesApiService {
   get query() {
     return this.searchQuery;
   }
+
+  // set lang(newLang) {
+  //   this.lang = newLang;
+  // }
+
+  // get lang() {
+  //   return this.lang;
+  // }
 
   incrementPage() {
     this.page += 1;
