@@ -2,8 +2,8 @@ import { createElement } from './createElement';
 import { genresInfo } from './genres_info';
 import ComingSoonImg from '../images/movie-poster-coming-soon.jpg';
 
-// `https://image.tmdb.org/t/p/w500${posterPath}`
 const containerEl = document.querySelector('.cards__list');
+const filmRateRef = document.querySelector('.cards__item-vote-average');
 
 export const filmCard = filmData => {
   const {
@@ -109,10 +109,12 @@ export const filmCard = filmData => {
     'span',
     {
       class: 'cards__item-vote-average',
+      style: `border-color: ${assigningСolorRating(voteAverage)}`,
     },
     filmRaiting(voteAverage),
   );
 
+  
   const filmDataElem = createElement(
     'div',
     {
@@ -150,9 +152,25 @@ function getGenresNames(genreIds) {
   return genresNamesArray.toString();
 }
 
+
 function assigningСolorRating(voteAverage) {
-  
+  let color;
+  if (voteAverage <= 5) {
+    color = 'red';
+    
+  } else if(voteAverage > 5 && voteAverage < 7) {
+    color = 'yellow';
+        
+  } else if(voteAverage >= 7) {
+    color = 'green';
+      
+  } else {
+    color = 'white';
+  }
+  return color;
 }
+
+console.log(assigningСolorRating(8));
 
 
 // функция отрисовки карточек фильмов
@@ -161,3 +179,4 @@ export function renderFilmList(filmList) {
   const filmsNodeList = filmList.map(film => filmCard(film));
   containerEl.append(...filmsNodeList);
 }
+

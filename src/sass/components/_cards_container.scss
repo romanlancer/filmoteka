@@ -1,3 +1,14 @@
+.cards {
+  padding-top: 20px;
+  padding-bottom: 20px;
+    
+  @media screen and (min-width: $tablet) {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+    
+}
+
 .cards__container {
   padding-left: 20px;
   padding-right: 20px;
@@ -22,11 +33,10 @@
 }
 
 .cards__list {
-  padding-top: 20px;
-  padding-bottom: 40px;
-  display: grid;
-  gap: var(--card-set-gap);
+  
   @media screen and (min-width: $tablet) {
+    display: grid;
+    gap: var(--card-set-gap);
     grid-template-columns: 1fr 1fr;
   }
   @media screen and (min-width: $desktop) {
@@ -43,10 +53,9 @@
   }
 }
 
-.cards__item-poster {
-  
-  
-}
+// .cards__item-poster {
+
+// }
 
 .cards__item-poster-link {
   display: flex;
@@ -71,7 +80,7 @@
   background-color: rgba(255, 255, 255, 0.9);
   color: var(--second-text-color);
   @include fonts(1.33, 500, 15px, null, null, null);
-  padding-top: 50px;
+  padding-top: 70px;
   padding-right: 25px;
   padding-bottom: 15px;
   padding-left: 25px;
@@ -130,19 +139,25 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  @include fonts(1.17, 500, 15px, null, null, null);
+  @include fonts(1.17, 500, 17px, null, null, null);
   color: var(--first-text-color);
-  background-color: var(--accent-color);
+  // color: var(--second-text-color);
+  // background-color: var(--accent-color);
+  background-color: var(--second-text-color);
   // padding-left: 10px;
   // padding-right: 10px;
   // padding-top: 1px;
   // padding-bottom: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  border: 2px solid transparent;
-  border-radius: 5px;
+  // padding-left: 10px;
+  // padding-right: 10px;
+  padding-top: 10px;
+  // padding-bottom: 10px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border: 4px solid transparent;
+  border-radius: 50%;
+  // border-radius: 5px;
   // margin-left: 5px;
 }
 
