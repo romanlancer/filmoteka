@@ -16,8 +16,11 @@ const moviePaginationForPopular = new Pagination({
   },
 });
 
-export async function renderPopular(page = 1) {
+export async function renderPopular(page) {
+  if (page) {
     moviesApiService.page = page;
+  }
+    
     Loading.hourglass({
       cssAnimationDuration: 400,
       svgSize: '150px',

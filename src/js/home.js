@@ -16,7 +16,7 @@ export function onHome() {
   refs.header.addEventListener('click', onClickBtn);
 }
 onHome();
-renderPopular();
+renderPopular(1);
 
 function onClickBtn() {
   const refs = {
@@ -29,7 +29,7 @@ function onClickBtn() {
     onLibrary();
   } else if (event.target === refs.home || event.target === refs.logo) {
     onHome();
-    renderPopular();
+    renderPopular(1);
   }
 }
 
