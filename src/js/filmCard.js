@@ -1,16 +1,16 @@
 import { createElement } from './createElement';
-// import MoviesApiService from './fetch_api';
 import { genresInfo } from './genres_info';
+import ComingSoonImg from '../images/movie-poster-coming-soon.jpg';
 
-// const movieApiServies = new MoviesApiService;
 const containerEl = document.querySelector('.cards__list');
+const filmRateRef = document.querySelector('.cards__item-vote-average');
 
 export const filmCard = filmData => {
   const {
     id: filmId,
     poster_path: posterPath,
-    original_title: originalTitle,
     overview,
+    original_title: originalTitle,
     genre_ids: genreIds,
     release_date: releaseDate,
     vote_average: voteAverage,
@@ -18,20 +18,67 @@ export const filmCard = filmData => {
 
   const originalTitleToUpperCase = originalTitle.toUpperCase();
   const releaseYear = releaseDate.slice(0, 4);
-  // const genresNames = getGenresNames(genreIds)
+  const posterComingSoon = ComingSoonImg;
+  const posterExisting = `https://image.tmdb.org/t/p/w500${posterPath}`;
+  const filmPoster = () => {
+    if (posterPath === null) {
+      return posterComingSoon;
+    }
+    return posterExisting;
+  } 
+  const filmRaiting = (voteAverage) => {
+    return (voteAverage === 0 ? '0' : voteAverage);
+  }
 
+ //Разметка карточки
   const filmPosterElem = createElement('img', {
     class: 'cards__item-poster',
-    src: `https://image.tmdb.org/t/p/w500${posterPath}`,
+    src: filmPoster(),
+    width: 500,
+    height: 750,
+    // onerror: "this.src='../images/no-logo-120.jpg';",
     alt: 'film poster',
+    loading: "lazy",
   });
+
+  const filmPosterOverlayElem = createElement(
+    'p',
+    {
+      class: 'cards__item-poster-overlay',
+    },
+    overview,
+  );
+
+  const filmPosterLinkElem = createElement(
+    'a',
+    {
+      class: 'cards__item-poster-link',
+    },
+    [filmPosterElem, filmPosterOverlayElem],
+  );
 
   const filmPosterWrapperElem = createElement(
     'div',
     {
       class: 'cards__item-poster-wrapper',
     },
-    filmPosterElem,
+    [filmPosterLinkElem],
+  );
+
+  const filmTitleTextElem = createElement(
+    'span',
+    {
+      class: 'cards__item-title-text',
+    },
+    originalTitleToUpperCase,
+  );
+
+  const filmTitleLinkElem = createElement(
+    'a',
+    {
+      class: 'cards__item-title-link',
+    },
+    filmTitleTextElem,
   );
 
   const filmTitleElem = createElement(
@@ -39,7 +86,7 @@ export const filmCard = filmData => {
     {
       class: 'cards__item-title',
     },
-    originalTitleToUpperCase,
+    filmTitleLinkElem,
   );
 
   const filmGenresElem = createElement(
@@ -62,10 +109,12 @@ export const filmCard = filmData => {
     'span',
     {
       class: 'cards__item-vote-average',
+      // style: `border-color: ${assigningСolorRating(voteAverage)}`,
     },
-    voteAverage,
+    filmRaiting(voteAverage),
   );
 
+  
   const filmDataElem = createElement(
     'div',
     {
@@ -73,22 +122,14 @@ export const filmCard = filmData => {
     },
     [filmGenresElem, filmReleaseElem, filmRateElem],
   );
-
-  const filmLinkElem = createElement(
-    'a',
-    {
-      class: 'cards__link',
-    },
-    [filmPosterWrapperElem, filmTitleElem, filmDataElem],
-  );
-
+  
   const filmCardElem = createElement(
     'li',
     {
       class: 'cards__item',
       id: filmId,
     },
-    filmLinkElem,
+    [filmPosterWrapperElem, filmTitleElem, filmDataElem],  
   );
 
   return filmCardElem;
@@ -111,12 +152,26 @@ function getGenresNames(genreIds) {
   return genresNamesArray.toString();
 }
 
-// Рендер популярных фильмов
-// movieApiServies.getPopularFilms().then(response => {
-//     console.log(response.results);
-//     renderFilmList(response.results);
 
-// }).catch(error => console.log(error));
+function assigningСolorRating(voteAverage) {
+  let color;
+  if (voteAverage <= 5) {
+    color = 'red';
+    
+  } else if(voteAverage > 5 && voteAverage < 7) {
+    color = 'yellow';
+        
+  } else if(voteAverage >= 7) {
+    color = 'green';
+      
+  } else {
+    color = 'white';
+  }
+  return color;
+}
+
+console.log(assigningСolorRating(8));
+
 
 // функция отрисовки карточек фильмов
 export function renderFilmList(filmList) {
@@ -126,3 +181,4 @@ export function renderFilmList(filmList) {
 
   containerEl.append(...filmsNodeList);
 }
+
