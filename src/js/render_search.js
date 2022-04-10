@@ -2,32 +2,39 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import MoviesApiService from './fetch_api';
 import Pagination from './pagination';
 import { renderFilmList } from './filmCard';
-const containerEl = document.querySelector('.cards__list');
-const paginationListRef = document.querySelector('.pagination-list');
+import { eventListenerChangeHandler } from './pagination';
+
 const searchFormRef = document.querySelector('#search-form');
 const moviesApiService = new MoviesApiService();
 
 const moviePaginationForSearch = new Pagination({
-  parentElement: paginationListRef,
   initialPage: 1,
   total: 1,
   onChange(value) {
-    moviesApiService.page = value;
+    // console.log('change page search');
+    
+    renderSearch(value);
   },
 });
 
 searchFormRef.addEventListener('submit', onSearch);
 
-async function onSearch(e) {
+function onSearch(e) {
   e.preventDefault();
   moviesApiService.query = e.currentTarget.elements.search.value;
 
   if (moviesApiService.query === '') {
     return Notiflix.Notify.failure('Please type something');
   }
-  clearMoviesContainer();
+  renderSearch();
+}
 
-  Loading.hourglass({
+export async function renderSearch(page = 1, query) {
+    if (query) {
+      moviesApiService.query = query;
+    }
+    moviesApiService.page = page;
+    Loading.hourglass({
     cssAnimationDuration: 400,
     svgSize: '150px',
     svgColor: '#ff6b01',
@@ -37,16 +44,40 @@ async function onSearch(e) {
   const movies = await moviesApiService.getFilmsByName();
 
   const { results, total_pages } = movies;
-  console.log(results);
-  console.log(total_pages);
   setTimeout(() => {
     renderFilmList(results);
+    eventListenerChangeHandler(onPaginationSearchHandler);
+    moviePaginationForSearch.renderPagination(document.querySelector('.pagination-list'), total_pages);
     Loading.remove();
   }, 500);
-  moviePaginationForSearch.currentPage = 1;
-  moviePaginationForSearch.renderPagination(total_pages);
 }
 
-function clearMoviesContainer() {
-  containerEl.innerHTML = '';
+function onPaginationSearchHandler(event) {
+  if (
+    event.target.parentNode.classList.contains('pagination-prev') ||
+    event.target.classList.contains('pagination-prev')
+  ) {
+    moviePaginationForSearch.prevPage();
+  }
+  if (
+    event.target.parentNode.classList.contains('pagination-next') ||
+    event.target.classList.contains('pagination-next')
+  ) {
+    moviePaginationForSearch.nextPage();
+  }
+  if (
+    event.target.parentNode.classList.contains('pagination-number') &&
+    !event.target.parentNode.classList.contains('active')
+  ) {
+    const clickPage = parseInt(event.target.textContent);
+    moviePaginationForSearch.currentPage = clickPage;
+  }
+  if (
+    event.target.classList.contains('pagination-number') &&
+    !event.target.classList.contains('active')
+  ) {
+    const clickPage = parseInt(event.target.childNodes[0].textContent);
+    moviePaginationForSearch.currentPage = clickPage;
+  }
 }
+
