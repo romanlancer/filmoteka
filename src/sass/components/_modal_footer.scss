@@ -1,5 +1,5 @@
 /* // Модалка */
-.backdrop {
+.backdrop.footer__backdrop {
   position: fixed;
   top: 0;
   width: 100%;
@@ -10,6 +10,9 @@
   overflow-y: scroll;
   transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    @media screen and(max-width: 767px) {
+      align-items: center;
+    }
 
   &.is-hidden {
     opacity: 0;
@@ -32,7 +35,7 @@
   position: relative;
   width: 300px;
   height: 400px;
-  background-color: rgb(87, 153, 125);
+  background-color: rgb(177, 176, 176);
   padding: 40px 30px;
   border-radius: 10px;
   overflow: hidden;
@@ -78,189 +81,41 @@
   }
 }
 
-// .backdrop {
-//   position: fixed;
-//   top: 0;
-//   width: 100%;
-//   height: 100%;
-//   @include flex(flex, center, center, null, null);
-//   background-color: rgba(0, 0, 0, 0.2);
-//   opacity: 1;
-//   overflow-y: scroll;
-//   transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
-//     visibility 500ms cubic-bezier(0.4, 0, 0.2, 1);
+.student-foto{
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
 
-//   &.is-hidden {
-//     opacity: 0;
-//     visibility: hidden;
-//     pointer-events: none;
-//     .contacts-modal {
-//       transform: scale(2);
-//       background-color: $light-accent-color;
-//     }
-//   }
-// }
-// .backdrop-header__modal {
-//   z-index: 10;
-// }
+.student__name{
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: 0.04em;
+    color: var(--second-text-color);
+    margin-bottom: 10px;
+}
 
-// .backdrop-header__modal.active {
-//   .header-modal__text--first {
-//     animation: left-first 500ms;
-//     animation-fill-mode: forwards;
-//   }
+.student__role{
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  color: var(--second-text-color);
+  margin-bottom: 10px;
+}
 
-//   .header-modal__text--second {
-//     animation: left-first 500ms;
-//     animation-fill-mode: forwards;
-//     animation-delay: 500ms;
-//   }
-
-//   .header-modal__information {
-//     animation: left-first 500ms;
-//     animation-fill-mode: forwards;
-//     animation-delay: 1000ms;
-//   }
-
-//   .header-modal-tel {
-//     animation: left-first 500ms;
-//     animation-fill-mode: forwards;
-//     animation-delay: 1500ms;
-//   }
-
-//   .header-btn__modal {
-//     animation: up-btn 500ms;
-//     animation-fill-mode: forwards;
-//     animation-delay: 2000ms;
-//   }
-// }
-
-
-
-
-
-// .header-modal__text {
-//   font-family: Titan One;
-//   font-size: 26px;
-//   font-weight: 400;
-//   line-height: 1.15;
-//   letter-spacing: 0.04em;
-//   color: $primary-light-text-color;
-
-//   @media screen and(min-width:768px) {
-//     font-size: 39px;
-//     margin-bottom: 20px;
-//   }
-// }
-
-// .header-modal__text--first {
-//   display: inline-block;
-//   padding: 0;
-//   margin: 0;
-//   transform: translateX(-115%);
-// }
-
-// .header-modal__text--second {
-//   display: inline-block;
-//   padding: 0;
-//   margin: 0;
-//   transform: translateX(-115%);
-//   font-family: Titan One;
-//   font-size: 58px;
-//   font-weight: 400;
-//   line-height: 1.14;
-//   letter-spacing: 0.06em;
-//   color: $dark-accent-color;
-//   text-transform: uppercase;
-//   margin-bottom: 20px;
-// }
-
-// .header-modal__information {
-//   display: inline-block;
-//   padding: 0;
-//   margin: 0;
-//   transform: translateX(-115%);
-//   width: 216px;
-//   font-family: Titan One;
-//   font-size: 26px;
-//   font-weight: 400;
-//   line-height: 1.15;
-//   letter-spacing: 0.04em;
-//   color: #ffffff;
-//   margin-bottom: 10px;
-// }
-
-// .header-form {
-//   margin-bottom: 30px;
-// }
-
-// .header-modal-tel {
-//   width: 205px;
-//   height: 30px;
-//   transform: translateX(-115%);
-//   border: none;
-//   border-radius: 8px;
-//   padding: 20px;
-//   margin-bottom: 10px;
-
-//   @media screen and (min-width: $tablet) {
-//     margin-bottom: 20px;
-//   }
-
-//   &:hover,
-//   &:focus {
-//     border: $light-accent-color;
-//     outline-color: $light-accent-color;
-//   }
-
-//   &::placeholder {
-//     font-size: 15px;
-//     color: $dark-accent-color;
-//     vertical-align: middle;
-//   }
-// }
-
-// .header-btn__modal {
-//   position: relative;
-//   left: 21%;
-//   transform: translateY(188%);
-//   width: 160px;
-//   height: 44px;
-
-//   @include font(DM Sans, 16px, 700, 1.3, 0.04em, $dark-accent-color);
-//   background-color: $primary-light-text-color;
-//   border-radius: 22px;
-//   align-items: center;
-//   text-align: center;
-//   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-//   &:hover,
-//   &:focus {
-//     background-color: $light-hover-color;
-//   }
-
-//   @media screen and (max-width: 767px) {
-//     left: 15%;
-//     transform: translateY(220%);
-//   }
-// }
-
-// @keyframes left-first {
-//   from {
-//     transform: translateX(-115%);
-//   }
-
-//   to {
-//     transform: translateX(0);
-//   }
-// }
-
-// @keyframes up-btn {
-//   from {
-//     transform: translateY(188%);
-//   }
-
-//   to {
-//     transform: translateY(0);
-//   }
-// }
+.student__about{
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  color: var(--second-text-color);
+  margin-bottom: 10px;
+}

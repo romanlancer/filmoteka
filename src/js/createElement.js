@@ -4,7 +4,7 @@ export const createElement = (nodeName, options, children) => {
 
   if (nodeClass) {
     const classList = nodeClass.split(' '); // ['title', 'description']
-    nodeElement.classList.add(...classList); 
+    nodeElement.classList.add(...classList);
   }
 
   if (children) {

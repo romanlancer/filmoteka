@@ -1,9 +1,7 @@
 import './sass/main.scss';
-
 import './js/fetch_api';
 import './js/render_popular';
 import './js/pagination';
-import './js/renderPaginationExample';
 import './js/render_search';
 import './js/modal_details';
 import './js/render_service';
@@ -17,3 +15,4 @@ import './js/library';
 import './js/modal_footer';
 import './js/filmCard';
 import './js/slider_films';
+import './js/render_footer_modal';

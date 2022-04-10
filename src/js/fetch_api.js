@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const BASE_URL = 'https://api.themoviedb.org';
 const API_KEY = 'e236468c654efffdf9704cd975a74a96';
 
@@ -39,7 +40,7 @@ export default class MoviesApiService {
       });
       const url = `${BASE_URL}/3/search/movie?${searchParams}`;
       const response = await axios.get(url);
-      return response;
+      return response.data;
     } catch (error) {
       return error;
     }

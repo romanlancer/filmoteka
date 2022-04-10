@@ -1,4 +1,5 @@
 import { onLibrary } from './library';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import MoviesApiService from './fetch_api';
 import Pagination from './pagination';
 import { renderFilmList } from './filmCard';
@@ -9,28 +10,43 @@ const moviePagination = new Pagination({
   parentElement: paginationListRef,
   initialPage: 1,
   total: 1,
-  onChange(value) {
-    console.log('page change');
+  async onChange(value) {
     moviesApiService.page = value;
-    moviesApiService.getPopularFilms().then(({ page, results, total_pages }) => {
-      renderFilmList(results);
-      moviePagination.renderPagination(total_pages);
+    Loading.hourglass({
+      cssAnimationDuration: 400,
+      svgSize: '150px',
+      svgColor: '#ff6b01',
+      backgroundColor: 'rgba(0, 0, 0, 0.6)',
     });
+
+    const movies = await moviesApiService.getPopularFilms();
+
+    const { results, total_pages } = movies;
+    setTimeout(() => {
+      renderFilmList(results);
+      Loading.remove();
+    }, 500);
+
+    moviePagination.renderPagination(total_pages);
   },
 });
 
 const refs = {
   header: document.querySelector('#header'),
+  logoText: document.querySelector('.header__logo--text'),
+  logoIcon: document.querySelector('.header__icon'),
+  iconContainer: document.querySelector('.header__icon--container'),
 };
 
-onHome();
+refs.logoText.addEventListener('mouseover', logoMouseOver);
+refs.logoText.addEventListener('mouseout', logoMouseOverOff);
 
 export function onHome() {
   renderPageHome();
-
   refs.header.addEventListener('click', onClickBtn);
 }
-
+onHome();
+moviePagination.currentPage = 1;
 function onClickBtn() {
   const refs = {
     logo: document.querySelector('.header__logo--text'),
@@ -42,6 +58,7 @@ function onClickBtn() {
     onLibrary();
   } else if (event.target === refs.home || event.target === refs.logo) {
     onHome();
+    moviePagination.currentPage = 1;
   }
 }
 
@@ -52,6 +69,7 @@ function renderPageHome() {
     btnLibrary: document.querySelector('.navigation__button--library'),
     search: document.querySelector('#search-form'),
     btnLibraryHero: document.querySelector('.library__btn-list'),
+    header: document.querySelector('.header'),
   };
 
   refs.home.classList.remove('header__library');
@@ -59,8 +77,25 @@ function renderPageHome() {
   refs.btnHome.classList.add('navigation__button--current');
   refs.search.style.display = 'flex';
   refs.btnLibraryHero.style.display = 'none';
+  refs.header.style.backgroundColor = '#000001';
 }
 
-moviesApiService.getPopularFilms().then(({ results }) => {
-  renderFilmList(results);
-});
+function logoMouseOver() {
+  document.querySelector('.header__icon--top').style.cssText = `
+  opacity: 1;
+  transform: translateY(25px);`;
+
+  document.querySelector('.header__icon--bottom').style.cssText = `
+    opacity: 0;
+    transform: translateY(25px);`;
+}
+
+function logoMouseOverOff() {
+  document.querySelector('.header__icon--top').style.cssText = `
+  opacity: 0;
+  transform: translateY(0);`;
+
+  document.querySelector('.header__icon--bottom').style.cssText = `
+    opacity: 1;
+    transform: translateY(0);`;
+}

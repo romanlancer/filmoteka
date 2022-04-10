@@ -1,7 +1,8 @@
+
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 import MoviesApiService from './fetch_api';
 import movieInfo from '../templates/movie.hbs';
-
 const cardsList = document.querySelector('.cards__list');
 const backdrop = document.querySelector('.backdrop-movie');
 const closeModalButton = document.querySelector('.button-close');

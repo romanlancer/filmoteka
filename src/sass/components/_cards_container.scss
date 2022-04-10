@@ -1,32 +1,17 @@
-.cards__container {
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-left: auto;
-  margin-right: auto;
-
-  @media screen and (min-width: $mobile) {
-    width: $mobile;
-  }
+.cards {
+  padding-top: 20px;
+  padding-bottom: 20px;
 
   @media screen and (min-width: $tablet) {
-    width: $tablet;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
-  @media screen and (min-width: $desktop) {
-    width: $desktop;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 }
 
 .cards__list {
-  padding-top: 20px;
-  padding-bottom: 40px;
-  display: grid;
-  gap: var(--card-set-gap);
   @media screen and (min-width: $tablet) {
+    display: grid;
+    gap: var(--card-set-gap);
     grid-template-columns: 1fr 1fr;
   }
   @media screen and (min-width: $desktop) {
@@ -35,6 +20,7 @@
 }
 
 .cards__item {
+  position: relative;
   @media screen and (max-width: 767px) {
     &:not(:last-child) {
       margin-bottom: 20px;
@@ -42,31 +28,53 @@
   }
 }
 
-.cards__link {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  border-radius: 5px;
-  padding-bottom: 2px;
-  color: var(--primary-text-color);
+// .cards__item-poster {
 
+// }
+
+.cards__item-poster-link {
+  display: flex;
+  border-radius: 5px;
+  color: var(--primary-text-color);
   &:hover,
   &:focus {
-    transform: scale(1.02);
-    box-shadow: 0px 4px 8px rgba(255, 107, 1, 0.1), 1px 4px 8px rgba(255, 107, 1, 0.5),
-      1px 4px 8px rgba(255, 107, 1, 0.5);
+    // transform: scale(1.02);
+    box-shadow: 0 0 20px 5px rgba(255, 107, 1, 0.251), 0 0 15px 3px rgb(255, 107, 1);
   }
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transform: scale(1);
+  // transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  // transform: scale(1);
+}
+
+.cards__item-poster-overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--second-text-color);
+  @include fonts(1.33, 500, 15px, null, null, null);
+  padding-top: 70px;
+  padding-right: 25px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+  text-align: justify;
+  overflow-y: auto;
+  opacity: 0;
+  border-radius: 5px;
+  &:hover {
+    opacity: 1;
+  }
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cards__item-poster-wrapper {
-  overflow: hidden;
+  position: relative;
 }
 
 .cards__item-poster-wrapper img {
   border-radius: 5px;
+  height: 400px;
 }
 
 .cards__item-title {
@@ -91,15 +99,34 @@
 }
 
 .cards__item-vote-average {
-  @include fonts(1.17, 500, 12px, null, null, null);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include fonts(1.17, 500, 17px, null, null, null);
   color: var(--first-text-color);
+  // color: var(--second-text-color);
   background-color: var(--accent-color);
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 1px;
-  padding-bottom: 1px;
+  // background-color: var(--second-text-color);
+  // padding-left: 10px;
+  // padding-right: 10px;
+  // padding-top: 1px;
+  // padding-bottom: 1px;
+  width: 60px;
+  height: 35px;
+  // padding-left: 10px;
+  // padding-right: 10px;
+  // padding-top: 10px;
+  // padding-bottom: 10px;
+  // width: 50px;
+  // height: 50px;
+  text-align: center;
+  border: 4px solid transparent;
+  // border-radius: 50%;
   border-radius: 5px;
-  margin-left: 5px;
+  // margin-left: 5px;
 }
 
 .cards__item-info {
