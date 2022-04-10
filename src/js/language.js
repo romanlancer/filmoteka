@@ -5,7 +5,7 @@ import { renderSlideFilms } from './slider_films';
 
 async function onLangSelected(event) {
   let langCheck = event.target.value;
-  if (langCheck === 'ua') {
+  if (langCheck === 'uk') {
     onButtonUa();
     moviesApiService.lang = langCheck;
     renderPopular();
