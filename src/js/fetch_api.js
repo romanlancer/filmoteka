@@ -43,7 +43,7 @@ export default class MoviesApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      Notify.failure('Oops, an error occurred');
+      return error;
     }
   }
 
