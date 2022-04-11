@@ -8,6 +8,13 @@
 .modal-movie {
   background-color: var(--first-text-color);
 
+  // @media screen and(max-height: 552px) and (max-width: 552px) {
+  //   top: 0;
+  //   left: 50%;
+  //   transform: translate(-50%, 0) scale(1);
+  //   position: relative;
+  // }
+
   @media screen and(max-width: 767px) {
     position: relative;
     width: 280px;
@@ -170,18 +177,19 @@
     text-transform: uppercase;
     border-radius: 5px;
 
-    &_active {
-      color: var(--first-text-color);
-      background-color: var(--accent-color);
+    &_watched {
+      // color: var(--first-text-color);
+      // background-color: var(--accent-color);
+      border: 1px solid var(--second-text-color);
       padding: 6px 27px;
       @media screen and(min-width: $tablet) {
-        padding: 14px 12px;
+        padding: 14px 10px;
       }
       @media screen and(min-width: $desktop) {
         padding: 14px 18px;
       }
     }
-    &_inactive {
+    &_queue {
       padding: 13px 12px;
       border: 1px solid var(--second-text-color);
       @media screen and(min-width: $tablet) {
@@ -190,6 +198,10 @@
       @media screen and(min-width: $desktop) {
         padding: 14px 26px;
       }
+    }
+    &_active {
+      color: var(--first-text-color);
+      background-color: var(--accent-color);
     }
   }
 }
