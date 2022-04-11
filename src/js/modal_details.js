@@ -1,4 +1,3 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { moviesApiService } from './render_popular';
 import movieInfo from '../templates/movie.hbs';
 const cardsList = document.querySelector('.cards__list');
@@ -41,37 +40,11 @@ function openModal(event) {
   document.body.classList.add('modal-open');
 }
 
-const getMovieData = async id => {
-  try {
-    const response = await moviesApiService.getFilmDetails(id);
-    if (response.status !== 200) {
-      Notify.failure('Oops, an error occurred');
-      return;
-    }
-    return response.data;
-  } catch (error) {
-    Notify.failure('Oops, an error occurred');
-  }
-};
-
-const getMovieTrailer = async id => {
-  try {
-    const response = await moviesApiService.getFilmVideo(id);
-    if (response.status !== 200) {
-      Notify.failure('Oops, an error occurred');
-      return;
-    }
-    return response.data;
-  } catch (error) {
-    Notify.failure('Oops, an error occurred');
-  }
-};
-
-const renderModal = async event => {
+export const renderModal = async event => {
   const cardsId = event.target.closest('li');
   // console.dir(cardsId.id); Очередность отрисовки!
-  const data = await getMovieData(cardsId.id);
-  const trailer = await getMovieTrailer(cardsId.id);
+  const data = await moviesApiService.getFilmDetails(cardsId.id);
+  const trailer = await moviesApiService.getFilmVideo(cardsId.id);
   if (data) {
     console.log(data);
     renderMovieCard(data, trailer);

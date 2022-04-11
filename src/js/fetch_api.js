@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 const BASE_URL = 'https://api.themoviedb.org';
 const API_KEY = 'e236468c654efffdf9704cd975a74a96';
 
@@ -16,7 +16,7 @@ export default class MoviesApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      return error;
+      Notify.failure('Oops, an error occurred');
     }
   }
 
@@ -26,7 +26,7 @@ export default class MoviesApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      return error;
+      Notify.failure('Oops, an error occurred');
     }
   }
 
@@ -43,7 +43,7 @@ export default class MoviesApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      return error;
+      Notify.failure('Oops, an error occurred');
     }
   }
 
@@ -51,9 +51,9 @@ export default class MoviesApiService {
     try {
       const url = `${BASE_URL}/3/movie/${id}?api_key=${API_KEY}&language=${this.lang}`;
       const response = await axios.get(url);
-      return response;
+      return response.data;
     } catch (error) {
-      return error;
+      Notify.failure('Oops, an error occurred');
     }
   }
 
@@ -61,9 +61,9 @@ export default class MoviesApiService {
     try {
       const url = `${BASE_URL}/3/movie/${id}/videos?api_key=${API_KEY}&language=${this.lang}`;
       const response = await axios.get(url);
-      return response;
+      return response.data;
     } catch (error) {
-      return error;
+      Notify.failure('Oops, an error occurred');
     }
   }
 
