@@ -56,7 +56,8 @@ export async function renderSearch(page, query) {
       document.querySelector('.pagination-list'),
       total_pages, moviesApiService.page 
     );
-    moviePaginationForSearch.renderPaginationLoadMore(document.querySelector('.pagination'))
+    moviePaginationForSearch.renderPaginationLoadMore(document.querySelector('.pagination'),
+      document.querySelector('.language').value)
     paginationChangeHandler(onPaginationSearchHandler);
     loadMoreChangeHandler(onLoadMoreSearchHandler);
     Loading.remove();

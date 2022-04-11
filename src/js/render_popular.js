@@ -37,7 +37,8 @@ export async function renderPopular(page) {
       document.querySelector('.pagination-list'),
       total_pages, moviesApiService.page 
     );
-    moviePaginationForPopular.renderPaginationLoadMore(document.querySelector('.pagination'))
+    moviePaginationForPopular.renderPaginationLoadMore(document.querySelector('.pagination'),
+      document.querySelector('.language').value)
     paginationChangeHandler(onPaginationPopularHandler);
     loadMoreChangeHandler(onLoadMorePopularHandler);
     Loading.remove();
@@ -47,7 +48,6 @@ export async function renderPopular(page) {
 
 async function onLoadMorePopularHandler(event) { 
   moviesApiService.page += 1;
-
   Loading.hourglass({
     cssAnimationDuration: 400,
     svgSize: '150px',
