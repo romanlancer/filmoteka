@@ -6,23 +6,40 @@
 
 .search-form-list {
   position: absolute;
-  right: 30%;
+  left: 12%;
   top: 100%;
+  width: 215px;
   max-height: 500px;
   overflow-y: scroll;
   z-index: 10;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  &__thumbnail img {
+
+  @media screen and (min-width: $tablet) {
+    width: 348px;
+    left: 22%;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 345px;
+    left: 31%;
+  }
+
+  &__thumbnail {
     width: 40px;
+    margin-right: 15px;
+  }
+
+  &__thumbnail img {
+    border-radius: 5px;
   }
 
   &__item {
     display: flex;
     align-items: center;
+
     background-color: var(--second-text-color);
-    padding: 0.5rem;
-    width: 345px;
+    padding: 0.3rem;
+    width: 340px;
+
     color: var(--first-text-color);
     cursor: pointer;
     transition: background-color 200ms ease;
@@ -31,15 +48,19 @@
     }
   }
 
+  &__info {
+  }
+
   &__info h3 {
+    width: 280px;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.7rem;
   }
 
   &__info p {
     font-weight: bold;
-    font-size: 1rem;
-    font-size: 0.8rem;
+
+    font-size: 0.7rem;
     margin-top: 0.5rem;
     opacity: 0.6;
   }
