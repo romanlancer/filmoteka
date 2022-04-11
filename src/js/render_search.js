@@ -3,7 +3,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { moviesApiService } from './render_popular';
 import Pagination from './pagination';
 import { renderFilmList } from './filmCard';
-import { eventListenerChangeHandler } from './pagination';
+import { paginationChangeHandler } from './pagination';
 
 const searchFormRef = document.querySelector('#search-form');
 
@@ -51,7 +51,7 @@ export async function renderSearch(page, query) {
 
   setTimeout(() => {
     renderFilmList(results);
-    eventListenerChangeHandler(onPaginationSearchHandler);
+    paginationChangeHandler(onPaginationSearchHandler);
     moviePaginationForSearch.renderPagination(
       document.querySelector('.pagination-list'),
       total_pages,

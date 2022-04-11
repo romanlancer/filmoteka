@@ -9,6 +9,9 @@ export function renderMoviesOnInput(filmArray) {
       const imagePath =
         poster_path === null ? `${noPoster}` : `https://image.tmdb.org/t/p/w500/${poster_path}`;
       const upperTitle = title.toUpperCase();
+      if (!release_date) {
+        release_date = [];
+      }
       const date = release_date.slice(0, 4);
 
       return `

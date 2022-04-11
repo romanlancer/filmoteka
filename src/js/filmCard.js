@@ -12,7 +12,7 @@ export const filmCard = filmData => {
     overview,
     title: originalTitle,
     genre_ids: genreIds,
-    release_date: releaseDate,
+    release_date: releaseDate = [],
     vote_average: voteAverage,
   } = filmData;
 
@@ -166,7 +166,7 @@ function assigningСolorRating(voteAverage) {
   return color;
 }
 
-console.log(assigningСolorRating(8));
+// console.log(assigningСolorRating(8));
 
 // функция отрисовки карточек фильмов
 export function renderFilmList(filmList) {
@@ -174,5 +174,14 @@ export function renderFilmList(filmList) {
 
   const filmsNodeList = filmList.map(film => filmCard(film));
 
+  containerEl.append(...filmsNodeList);
+}
+
+export function clearContainer() {
+  containerEl.innerHTML = '';
+}
+
+export function addFilmListToContainer(filmList) {
+  const filmsNodeList = filmList.map(film => filmCard(film));
   containerEl.append(...filmsNodeList);
 }
