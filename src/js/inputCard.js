@@ -12,7 +12,7 @@ export function renderMoviesOnInput(filmArray) {
       const date = release_date.slice(0, 4);
 
       return `
-                    <li class="search-form-list__item" id=${id}/>
+                    <li class="search-form-list__item" id="${id}"/>
 						<div class="search-form-list__thumbnail">
 							<img src=${imagePath} alt="poster" loading='lazy'/>
 						</div>
