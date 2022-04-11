@@ -6,15 +6,15 @@ import { renderSlideFilms } from './slider_films';
 async function onLangSelected(event) {
   let langCheck = event.target.value;
   if (langCheck === 'uk') {
-    onButtonUa();
     moviesApiService.lang = langCheck;
     renderPopular();
     renderSlideFilms();
+    onButtonUa();
   } else {
     moviesApiService.lang = langCheck;
-    onButtonEng();
     renderPopular();
-    // renderSlideFilms();
+    renderSlideFilms();
+    onButtonEng();
   }
 }
 

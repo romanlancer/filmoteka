@@ -1,17 +1,29 @@
 <!-- Модалка -->
 
-<div class="backdrop is-hidden footer__backdrop js-backdrop glide" data-modal-footer>
-
-    <div data-glide-el="track" class="glide__track footer-modal">
-        <button type="button" class="footermodal__btn-close" data-footer-close>
-          <svg width="15" height="15">
-            <use href="./images/sprite.svg#icon-close"></use>
-          </svg>
-        </button>
-           <ul class="glide__slides" data-footer-list>
-            <!-- Slides -->
-          
-           </ul>
+<div class="backdrop is-hidden footer__backdrop js-backdrop" data-modal-footer>
+  <div class="glide">
+    <div class="glide__track" data-glide-el="track">
+      <!-- <button type="button" class="footermodal__btn-close" data-footer-close>
+        <svg width="15" height="15">
+          <use href="./images/sprite.svg#icon-close"></use>
+        </svg>
+      </button> -->
+      <ul class="glide__slides"></ul>
     </div>
+    <div class="glide__arrows" data-glide-el="controls">
+      <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+        < </button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+            > </button>
+    </div>
+  </div>
+  <!-- <div data-glide-el="track" class="glide__track footer-modal">
+    <button type="button" class="footermodal__btn-close" data-footer-close>
+      <svg width="15" height="15">
+        <use href="./images/sprite.svg#icon-close"></use>
+      </svg>
+    </button>
+    <ul class="glide__slides" data-footer-list></ul>
+  </div> -->
 
 </div>

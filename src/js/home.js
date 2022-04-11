@@ -15,6 +15,7 @@ export function onHome() {
   renderPageHome();
   refs.header.addEventListener('click', onClickBtn);
 }
+
 onHome();
 renderPopular(1);
 
