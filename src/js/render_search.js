@@ -22,7 +22,7 @@ searchFormRef.addEventListener('submit', onSearch);
 function onSearch(e) {
   e.preventDefault();
   moviesApiService.query = e.currentTarget.elements.search.value;
-
+  moviesApiService.page = 1;
   if (moviesApiService.query === '') {
     Notify.failure('Please type something');
     return;
@@ -49,7 +49,6 @@ export async function renderSearch(page, query) {
 
   const { results, total_pages } = movies;
 
-  console.log(movies);
   setTimeout(() => {
     renderFilmList(results);
     eventListenerChangeHandler(onPaginationSearchHandler);
