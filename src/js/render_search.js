@@ -25,6 +25,7 @@ function onSearch(e) {
 
   if (moviesApiService.query === '') {
     Notify.failure('Please type something');
+    return;
   }
   renderSearch();
 }
