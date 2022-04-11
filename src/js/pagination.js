@@ -189,7 +189,7 @@ if(this.total > 1){
     parentElement.append(...paginationElem);
   }
 
-    renderPaginationDisabled(parentElement, totalPages,currentPage) {
+    renderPaginationDisabled(parentElement, totalPages, currentPage) {
     totalPages > 500 ? (this.total = 500) : (this.total = totalPages);
 
     const paginationElem = this.createPaginationList(currentPage);
@@ -205,13 +205,12 @@ if(this.total > 1){
           'pagination-btn is-hidden' : 
           'pagination-btn'}` },
         'Show 20 more films',
-     );
-     if (this.total <= 1) {
-       loadMoreBtnRef.classList.add('is-hidden')
-     }
-     
-     if (document.querySelector('.pagination-btn')) {
-       document.querySelector('.pagination-btn').remove();
+    );
+    if (this.total <= 1) {
+      loadMoreBtnRef.classList.add('is-hidden')
+    }
+    if (document.querySelector('.pagination-btn')) {
+      document.querySelector('.pagination-btn').remove();
     }
     parentElement.prepend(loadMoreBtnRef);
   }

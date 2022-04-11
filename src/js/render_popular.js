@@ -2,7 +2,7 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import MoviesApiService from './fetch_api';
 import Pagination from './pagination';
 import { renderFilmList, addFilmListToContainer } from './filmCard';
-import { paginationChangeHandler,loadMoreChangeHandler } from './pagination';
+import { paginationChangeHandler,loadMoreChangeHandler, smoothScroll } from './pagination';
 
 
 export const moviesApiService = new MoviesApiService();
@@ -13,12 +13,13 @@ const moviePaginationForPopular = new Pagination({
   onChange(value) {
     // console.log('change page popular');
     renderPopular(value);
-    smoothScroll();
+    // smoothScroll();
   },
 });
 
 export async function renderPopular(page) {
   if (page) {
+    // moviePaginationForPopular.currentPage = page;
     moviesApiService.page = page;
   }
 
@@ -32,15 +33,16 @@ export async function renderPopular(page) {
   const { results, total_pages } = movies;
   setTimeout(() => {
     renderFilmList(results);
-    moviePaginationForPopular.renderPagination(
+    moviePaginationForPopular.renderPaginationDisabled(
       document.querySelector('.pagination-list'),
-      total_pages,
+      total_pages, moviesApiService.page 
     );
     moviePaginationForPopular.renderPaginationLoadMore(document.querySelector('.pagination'))
     paginationChangeHandler(onPaginationPopularHandler);
     loadMoreChangeHandler(onLoadMorePopularHandler);
     Loading.remove();
   }, 500);
+  
 }
 
 async function onLoadMorePopularHandler(event) { 
@@ -60,6 +62,7 @@ async function onLoadMorePopularHandler(event) {
       document.querySelector('.pagination-list'),
       total_pages, moviesApiService.page
     );
+
     for (let i = 0; i < document.querySelector('.pagination-list').childNodes.length; i += 1){
       const number = parseInt(document.querySelector('.pagination-list').childNodes[i].firstChild.textContent)
       if (number >= moviePaginationForPopular.currentPage && number <= moviesApiService.page) {
@@ -68,7 +71,7 @@ async function onLoadMorePopularHandler(event) {
       }
       document.querySelector('.pagination-list').childNodes[i].classList.add('loaded')
       }
-    }    
+    }   
     Loading.remove();
   }, 500);
 }
