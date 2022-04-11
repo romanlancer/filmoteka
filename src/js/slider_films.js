@@ -1,6 +1,7 @@
 import { moviesApiService } from './render_popular';
 import { createElement } from './createElement';
 import { glide, config } from './slider_glide';
+import { renderModal } from './modal_details';
 import Glide from '@glidejs/glide';
 
 const containerSlider = document.querySelector('.container__slider');
@@ -10,6 +11,7 @@ renderSlideFilms();
 export function renderSlideFilms() {
   moviesApiService.getTrendFilms().then(({ results }) => {
     addElFilms(results);
+    onClickSliderCard();
   });
 }
 
@@ -53,7 +55,7 @@ function addElFilms(results) {
   slidesContainer.append(...arrFilmTrends);
 
   changeStyleArrow();
-  const image = glide.destroy();
+  glide.destroy();
   let glid = new Glide('.glide', config);
   glid.mount();
 }
@@ -79,4 +81,11 @@ function changeStyleArrow() {
 
   refs.left.style.left = `3px`;
   refs.right.style.right = `4px`;
+}
+
+function onClickSliderCard() {
+  const slidesList = document.querySelector('#glide__slides');
+  slidesList.addEventListener('click', event => {
+    renderModal(event);
+  });
 }
