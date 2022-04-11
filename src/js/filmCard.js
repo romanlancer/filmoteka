@@ -1,16 +1,18 @@
 import { createElement } from './createElement';
-import { genresInfo } from './genres_info';
+import { genresInfo, genresInfoUk } from './genres_info';
 import ComingSoonImg from '../images/movie-poster-coming-soon.jpg';
+import { refs } from './refs';
 const containerEl = document.querySelector('.cards__list');
+// const filmRateRef = document.querySelector('.cards__item-vote-average');
 
-const filmRateRef = document.querySelector('.cards__item-vote-average');
+
 
 export const filmCard = filmData => {
   const {
     id: filmId,
     poster_path: posterPath,
     overview,
-    title: originalTitle,
+    original_title: originalTitle,
     genre_ids: genreIds,
     release_date: releaseDate,
     vote_average: voteAverage,
@@ -90,13 +92,13 @@ const BtnListElem = createElement(
     BtnListElem,
   );
 
-  // const filmPosterOverlayTextElem = createElement(
-  //   'p',
-  //   {
-  //     class: 'cards__item-poster-overlay',
-  //   },
-  //   overview,
-  // );
+  const filmPosterOverlayTextElem = createElement(
+    'p',
+    {
+      class: 'cards__item-poster-overlay',
+    },
+    overview,
+  );
 
   const filmPosterLinkElem = createElement(
     'a',
@@ -185,19 +187,32 @@ const BtnListElem = createElement(
 
 function getGenresNames(genreIds) {
   let genresNamesArray = [];
+  let languageSelected = refs.language.value;
   for (const genreId of genreIds) {
-    genresInfo.map(genreInfo => {
-      if (genreInfo.id === genreId) {
-        genresNamesArray.push(genreInfo.name);
-      }
-    });
-  }
-  if (genresNamesArray.length > 3) {
-    const genresNamesArrayShort = genresNamesArray.slice(0, 2).toString() + ', Other';
-    return genresNamesArrayShort;
+    if (languageSelected === 'uk') {
+      genresInfoUk.map(genreInfoUk => {
+        if (genreInfoUk.id === genreId) {
+          genresNamesArray.push(genreInfoUk.name);
+        }
+      })
+      if (genresNamesArray.length > 3) {
+        const genresNamesArrayShort = genresNamesArray.slice(0, 2).join(', ') + ', Інші';
+        return genresNamesArrayShort;
   }
 
-  return genresNamesArray.toString();
+    } else {
+       genresInfo.map(genreInfo => {
+        if (genreInfo.id === genreId) {
+          genresNamesArray.push(genreInfo.name);
+        }
+      })  
+    }
+  }
+  if (genresNamesArray.length > 3) {
+    const genresNamesArrayShort = genresNamesArray.slice(0, 2).join(', ') + ', Other';
+    return genresNamesArrayShort;
+  }
+  return genresNamesArray.join(', ');
 }
 
 // function assigningСolorRating(voteAverage) {
