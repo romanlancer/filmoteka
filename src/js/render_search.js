@@ -1,4 +1,5 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { moviesApiService } from './render_popular';
 import Pagination from './pagination';
 import { renderFilmList } from './filmCard';
@@ -21,9 +22,10 @@ searchFormRef.addEventListener('submit', onSearch);
 function onSearch(e) {
   e.preventDefault();
   moviesApiService.query = e.currentTarget.elements.search.value;
-
+  moviesApiService.page = 1;
   if (moviesApiService.query === '') {
-    return Notiflix.Notify.failure('Please type something');
+    Notify.failure('Please type something');
+    return;
   }
   renderSearch();
 }
@@ -46,7 +48,7 @@ export async function renderSearch(page, query) {
   const movies = await moviesApiService.getFilmsByName();
 
   const { results, total_pages } = movies;
-  console.log(movies);
+
   setTimeout(() => {
     renderFilmList(results);
     eventListenerChangeHandler(onPaginationSearchHandler);

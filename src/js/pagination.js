@@ -12,36 +12,6 @@ export default class Pagination {
     this.total = total;
     this.onChange = onChange;
     this.paginationList = [];
-
-    // this.parentElement.addEventListener('click', event => {
-    //   console.log(this);
-    //   if (
-    //     event.target.parentNode.classList.contains('pagination-prev') ||
-    //     event.target.classList.contains('pagination-prev')
-    //   ) {
-    //     this.prevPage();
-    //   }
-    //   if (
-    //     event.target.parentNode.classList.contains('pagination-next') ||
-    //     event.target.classList.contains('pagination-next')
-    //   ) {
-    //     this.nextPage();
-    //   }
-    //   if (
-    //     event.target.parentNode.classList.contains('pagination-number') &&
-    //     !event.target.parentNode.classList.contains('active')
-    //   ) {
-    //     const clickPage = parseInt(event.target.textContent);
-    //     this.currentPage = clickPage;
-    //   }
-    //   if (
-    //     event.target.classList.contains('pagination-number') &&
-    //     !event.target.classList.contains('active')
-    //   ) {
-    //     const clickPage = parseInt(event.target.childNodes[0].textContent);
-    //     this.currentPage = clickPage;
-    //   }
-    // });
   }
 
   get currentPage() {
@@ -57,7 +27,7 @@ export default class Pagination {
   }
 
   nextPage() {
-    if (this.currentPage === this.total) {
+    if (this.currentPage >= this.total) {
       return;
     }
 
@@ -133,7 +103,7 @@ export default class Pagination {
     if (afterPage >= this.total) {
       afterPage = this.total - 1;
     }
-    console.log(beforePage);
+
     for (let pageNumber = beforePage; pageNumber <= afterPage; pageNumber++) {
       if (pageNumber === this.currentPage) {
         const item = createElement(
@@ -190,7 +160,7 @@ if(this.total > 1){
     const nextArrow = createElement(
       'li',
       {
-        class: `${this.currentPage === this.total ? 
+        class: `${this.currentPage >= this.total ? 
           'pagination-item pagination-button pagination-next disabled' : 
           'pagination-item pagination-button pagination-next'}`
       },

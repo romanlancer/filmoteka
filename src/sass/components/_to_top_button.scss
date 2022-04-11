@@ -1,16 +1,28 @@
 #toTop {
   position: fixed;
   display: inline-block;
-  width: 200px;
-  height: 250px;
-  top: 500px;
-  left: 1300px;
+  width: 120px;
+
+  top: 80%;
+  left: 70%;
   z-index: 0;
   cursor: pointer;
   text-align: center;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease-in-out;
+  @media screen and(min-width: $tablet) {
+    left: 87%;
+  }
+  @media screen and(min-width: $desktop) {
+    left: 92%;
+  }
+  @media screen and(min-width: 2000px) {
+    width: 150px;
+  }
+  @media screen and(min-width: 4000px) {
+    width: 250px;
+  }
 }
 // #toTop:hover {
 

@@ -28,6 +28,12 @@ function onButtonUa() {
   refs.textApp.textContent = 'Наші додатки';
   refs.appSupp.textContent = 'Підтримка';
   refs.textJoin.textContent = 'Приєднуйся';
+  refs.iconGoogleUa.classList.remove('is-hidden');
+  refs.iconGoogleEn.classList.add('is-hidden');
+  refs.iconStoreUa.classList.remove('is-hidden');
+  refs.iconStoreEn.classList.add('is-hidden');
+  
+  
 }
 
 function onButtonEng() {
@@ -38,6 +44,10 @@ function onButtonEng() {
   refs.textApp.textContent = 'OUR APPLICATIONS';
   refs.appSupp.textContent = 'Support';
   refs.textJoin.textContent = 'JOIN OUR NETWORKS';
+  refs.iconGoogleUa.classList.add('is-hidden');
+  refs.iconGoogleEn.classList.remove('is-hidden');
+  refs.iconStoreUa.classList.add('is-hidden');
+  refs.iconStoreEn.classList.remove('is-hidden');
 }
 
 refs.language.addEventListener('change', onLangSelected);

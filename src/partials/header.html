@@ -1,51 +1,69 @@
-<header class="header" id='header'>
-    <div class="function__panel container">
-        <select class="language" name="select">
-            <option value="en" selected>English</option>
-            <option value="uk">Українська</option>
-        </select>
-    </div>
-    <div class='header__home'>
-        <div class='container'>
-            <div class='header__container'>
-                <a class='header__logo' id='button__logo'>
-                    <div class=" header__icon--container">
-                        <svg class='header__icon header__icon--top ' width='32' height='32'>
-                            <use class='' href='./images/sprite.svg#icon-film'></use>
-                        </svg>
-                        <svg class='header__icon header__icon--bottom' width='32' height='32'>
-                            <use class='' href='./images/sprite.svg#icon-film'></use>
-                        </svg>
-                    </div>
-                    <h1 class='header__logo--text'>Filmoteka</h1>
-                </a>
-                <nav class='navigation'>
-                    <ul class='navigation__list'>
-                        <li class='navigation__item'>
-                            <button class='navigation__button--home navigation__button--current'
-                                id='button__home'>HOME</button>
-                        </li>
-                        <li class='navigation__item'>
-                            <button class='navigation__button--library' id='button__library'>MY LIBRARY</button>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <form class='search__form' id='search-form'>
-                <input class='search__form--input' type='text' name='search' placeholder='Search films'
-                    autocomplete='off' />
-                <button type='submit' class='search__form--button'>
-                    <svg width='20' height='20'>
-                        <use href='./images/sprite.svg#icon-search-2'></use>
-                    </svg>
-                </button>
-            </form>
-            <ul class='library__btn-list'>
-                <li class='btn-list__item'><button type='button' class='btn__watched btn__library--active'
-                        id='btn__watched'>watched</button>
-                </li>
-                <li class='btn-list__item'><button type='button' class='btn__queue' id='btn__queue'>queue</button></li>
-            </ul>
+
+<header class="header" id="header">
+  <div class="function__panel container">
+    <select class="language" name="select">
+      <option value="en" selected>English</option>
+      <option value="uk">Українська</option>
+    </select>
+  </div>
+  <div class="header__home">
+    <div class="container">
+      <div class="header__container">
+        <a class="header__logo" id="button__logo">
+          <div class="header__icon--container">
+            <svg class="header__icon header__icon--top" width="32" height="32">
+              <use class="" href="./images/sprite.svg#icon-film"></use>
+            </svg>
+            <svg class="header__icon header__icon--bottom" width="32" height="32">
+              <use class="" href="./images/sprite.svg#icon-film"></use>
+            </svg>
+          </div>
+          <h1 class="header__logo--text">Filmoteka</h1>
+        </a>
+        <nav class="navigation">
+          <ul class="navigation__list">
+            <li class="navigation__item">
+              <button
+                class="navigation__button--home navigation__button--current"
+                id="button__home"
+              >
+                HOME
+              </button>
+            </li>
+            <li class="navigation__item">
+              <button class="navigation__button--library" id="button__library">MY LIBRARY</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <form class="search__form" id="search-form">
+        <div class="search-form_wrapper">
+          <input
+            class="search__form--input"
+            type="text"
+            name="search"
+            id="searchQuery"
+            placeholder="Search films"
+            autocomplete="off"
+          />
         </div>
+        <ul class="search-form-list" id="search-list" data-action="current"></ul>
+        <button type="submit" class="search__form--button">
+          <svg width="20" height="20">
+            <use href="./images/sprite.svg#icon-search-2"></use>
+          </svg>
+        </button>
+      </form>
+      <ul class="library__btn-list">
+        <li class="btn-list__item">
+          <button type="button" class="btn__watched btn__library--active" id="btn__watched">
+            watched
+          </button>
+        </li>
+        <li class="btn-list__item">
+          <button type="button" class="btn__queue" id="btn__queue">queue</button>
+        </li>
+      </ul>
     </div>
+  </div>
 </header>

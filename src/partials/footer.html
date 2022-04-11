@@ -14,15 +14,21 @@
         <ul class="app-list">
           <li class="app-item">
             <a href="https://play.google.com/store?hl=uk&gl=US">
-              <svg width="120" height="70" class="app-svg">
-                <use href="./images/sprite.svg#icon-gogle-play"></use>
+              <svg width="120" height="70" id="google-play__en" class="app-svg">
+                <use href="./images/sprite.svg#icon-google-play"></use>
+              </svg>
+              <svg width="120" height="70" id="google-play__ua" class="app-svg is-hidden">
+                <use href="./images/sprite.svg#icon-google-play-ua"></use>
               </svg>
             </a>
           </li>
           <li class="app-item">
             <a href="https://www.apple.com/ua/app-store/">
-              <svg width="120" height="50" class="app-svg">
+              <svg width="120" height="50" id="app-store__en" class="app-svg">
                 <use href="./images/sprite.svg#icon-app-store"></use>
+              </svg>
+              <svg width="120" height="50" id="app-store__ua" class="app-svg is-hidden">
+                <use href="./images/sprite.svg#icon-app-store-ua"></use>
               </svg>
             </a>
           </li>
@@ -53,7 +59,10 @@
           </li>
 
           <li>
-            <a href="https://www.youtube.com/channel/UCN7NQEBOUuIoXrJZzqVb58Q/videos" class="social-link">
+            <a
+              href="https://www.youtube.com/channel/UCN7NQEBOUuIoXrJZzqVb58Q/videos"
+              class="social-link"
+            >
               <svg class="social-svg" width="20" height="20">
                 <use href="./images/sprite.svg#icon-youtube"></use>
               </svg>

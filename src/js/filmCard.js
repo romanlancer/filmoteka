@@ -2,6 +2,7 @@ import { createElement } from './createElement';
 import { genresInfo } from './genres_info';
 import ComingSoonImg from '../images/movie-poster-coming-soon.jpg';
 const containerEl = document.querySelector('.cards__list');
+
 const filmRateRef = document.querySelector('.cards__item-vote-average');
 
 export const filmCard = filmData => {

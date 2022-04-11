@@ -12,4 +12,9 @@ export const refs = {
   textApp: document.querySelector('.text-app'),
   appSupp: document.querySelector('.text-supp'),
   textJoin: document.querySelector('.text-join'),
+  iconGoogleEn: document.querySelector('#google-play__en'),
+  iconGoogleUa: document.querySelector('#google-play__ua'),
+  iconStoreEn: document.querySelector('#app-store__en'),
+  iconStoreUa: document.querySelector('#app-store__ua'),
+
 };
