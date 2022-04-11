@@ -17,15 +17,16 @@ export const filmCard = filmData => {
 
   const originalTitleToUpperCase = originalTitle.toUpperCase();
   const releaseYear = releaseDate.slice(0, 4);
-
   const posterComingSoon = ComingSoonImg;
   const posterExisting = `https://image.tmdb.org/t/p/w500${posterPath}`;
+  
   const filmPoster = () => {
     if (posterPath === null) {
       return posterComingSoon;
     }
     return posterExisting;
   };
+ 
   const filmRaiting = voteAverage => {
     return voteAverage === 0 ? '0' : voteAverage;
   };
@@ -36,18 +37,65 @@ export const filmCard = filmData => {
     src: filmPoster(),
     width: 500,
     height: 750,
-    // onerror: "this.src='../images/no-logo-120.jpg';",
     alt: 'film poster',
     loading: 'lazy',
   });
 
+  const btnAddToWatchedItemElem = createElement(
+    'button',
+    {
+      class: 'movie-data__button movie-data__button_inactive cards__item-btn',
+    },
+    'add to watched',
+  );
+
+  const btnAddToQueueItemElem = createElement(
+    'button',
+    {
+      class: 'movie-data__button movie-data__button_inactive cards__item-btn',
+    },
+    'add to queue',
+  );
+  
+  const btnItemAddToWatchedItemElem = createElement(
+    'li',
+    {
+      class: 'movie-data__button-item',
+    },
+    btnAddToWatchedItemElem,
+  );
+
+  const btnItemAddToQueueItemElem = createElement(
+    'li',
+    {
+      class: 'movie-data__button-item',
+    },
+    btnAddToQueueItemElem,
+  );
+
+const BtnListElem = createElement(
+    'ul',
+    {
+      class: 'movie-data__buttons-list cards__item-btn-list',
+    },
+    [btnItemAddToWatchedItemElem, btnItemAddToQueueItemElem],
+  );
+
   const filmPosterOverlayElem = createElement(
-    'p',
+    'div',
     {
       class: 'cards__item-poster-overlay',
     },
-    overview,
+    BtnListElem,
   );
+
+  // const filmPosterOverlayTextElem = createElement(
+  //   'p',
+  //   {
+  //     class: 'cards__item-poster-overlay',
+  //   },
+  //   overview,
+  // );
 
   const filmPosterLinkElem = createElement(
     'a',
@@ -151,21 +199,20 @@ function getGenresNames(genreIds) {
   return genresNamesArray.toString();
 }
 
-function assigningСolorRating(voteAverage) {
-  let color;
-  if (voteAverage <= 5) {
-    color = 'red';
-  } else if (voteAverage > 5 && voteAverage < 7) {
-    color = 'yellow';
-  } else if (voteAverage >= 7) {
-    color = 'green';
-  } else {
-    color = 'white';
-  }
-  return color;
-}
+// function assigningСolorRating(voteAverage) {
+//   let color;
+//   if (voteAverage <= 5) {
+//     color = 'red';
+//   } else if (voteAverage > 5 && voteAverage < 7) {
+//     color = 'yellow';
+//   } else if (voteAverage >= 7) {
+//     color = 'green';
+//   } else {
+//     color = 'white';
+//   }
+//   return color;
+// }
 
-console.log(assigningСolorRating(8));
 
 // функция отрисовки карточек фильмов
 export function renderFilmList(filmList) {

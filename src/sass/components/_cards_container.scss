@@ -38,12 +38,12 @@
   color: var(--primary-text-color);
   &:hover,
   &:focus {
-    // transform: scale(1.02);
+    transform: scale(1.06);
     box-shadow: 0 0 20px 5px rgba(255, 107, 1, 0.251), 0 0 15px 3px rgb(255, 107, 1);
   }
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  // transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  // transform: scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
 }
 
 .cards__item-poster-overlay {
@@ -51,21 +51,22 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(0, 0, 0, 0.6);
   color: var(--second-text-color);
   @include fonts(1.33, 500, 15px, null, null, null);
-  padding-top: 70px;
+  padding-top: 150px;
   padding-right: 25px;
   padding-bottom: 15px;
   padding-left: 25px;
-  text-align: justify;
-  overflow-y: auto;
+  // text-align: justify;
+  // overflow-y: auto;
   opacity: 0;
   border-radius: 5px;
   &:hover {
     opacity: 1;
   }
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
 }
 
 .cards__item-poster-wrapper {
@@ -114,8 +115,8 @@
   // padding-right: 10px;
   // padding-top: 1px;
   // padding-bottom: 1px;
-  width: 60px;
-  height: 35px;
+  width: 55px;
+  height: 30px;
   // padding-left: 10px;
   // padding-right: 10px;
   // padding-top: 10px;
@@ -127,6 +128,7 @@
   // border-radius: 50%;
   border-radius: 5px;
   // margin-left: 5px;
+  
 }
 
 .cards__item-info {
