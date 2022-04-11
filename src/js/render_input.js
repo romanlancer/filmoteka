@@ -2,19 +2,13 @@ import { moviesApiService } from './render_popular';
 import { renderMoviesOnInput } from './inputCard';
 import { renderModal } from './modal_details';
 import debounce from 'lodash.debounce';
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const bodyEl = document.querySelector('body');
 const searchFormInputEl = document.querySelector('#searchQuery');
 const inputContainer = document.querySelector('#search-list');
-console.log(searchFormInputEl);
-const DEBOUNCE_DELAY = 300;
 
-Notiflix.Notify.init({
-  position: 'center-top',
-  width: '400px',
-  fontSize: '18px',
-});
+const DEBOUNCE_DELAY = 300;
 
 searchFormInputEl.addEventListener('input', debounce(onInputSearch, DEBOUNCE_DELAY));
 
@@ -29,7 +23,7 @@ function onInputSearch(e) {
   inputContainer.innerHTML = '';
 
   if (moviesApiService.query === '') {
-    Notiflix.Notify.failure('Please type something');
+    Notify.failure('Please type something');
     return;
   }
   moviesApiService
@@ -38,7 +32,7 @@ function onInputSearch(e) {
       renderMoviesOnInput(results);
 
       if (total_results === 0 && moviesApiService.query !== 0) {
-        Notiflix.Notify.failure('Sorry, film is not found');
+        Notify.failure('Sorry, film is not found');
       }
       if (results.length > 0) {
         renderMoviesOnInput(results);
