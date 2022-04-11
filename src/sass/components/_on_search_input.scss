@@ -6,11 +6,13 @@
 
 .search-form-list {
   position: absolute;
-  right: 0;
+  right: 30%;
   top: 100%;
   max-height: 500px;
   overflow-y: scroll;
   z-index: 10;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   &__thumbnail img {
     width: 40px;
   }
