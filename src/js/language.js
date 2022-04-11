@@ -28,12 +28,13 @@ function onButtonUa() {
   refs.textApp.textContent = 'Наші додатки';
   refs.appSupp.textContent = 'Підтримка';
   refs.textJoin.textContent = 'Приєднуйся';
+  refs.footerCopywrite.textContent = '2022 | Усі права захищені |';
+  refs.footerStudents.textContent = 'Розроблено з';
+  refs.footerLink.textContent = 'студенти GoIT';
   refs.iconGoogleUa.classList.remove('is-hidden');
   refs.iconGoogleEn.classList.add('is-hidden');
   refs.iconStoreUa.classList.remove('is-hidden');
   refs.iconStoreEn.classList.add('is-hidden');
-  
-  
 }
 
 function onButtonEng() {
