@@ -1,7 +1,4 @@
 import { onHome } from './home';
-import MoviesApiService from './fetch_api';
-
-const moviesApiService = new MoviesApiService();
 
 const refs = {
   header: document.querySelector('#header'),

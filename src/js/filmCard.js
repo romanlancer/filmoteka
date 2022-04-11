@@ -2,6 +2,7 @@ import { createElement } from './createElement';
 import { genresInfo } from './genres_info';
 import ComingSoonImg from '../images/movie-poster-coming-soon.jpg';
 const containerEl = document.querySelector('.cards__list');
+
 const filmRateRef = document.querySelector('.cards__item-vote-average');
 
 export const filmCard = filmData => {
@@ -9,7 +10,7 @@ export const filmCard = filmData => {
     id: filmId,
     poster_path: posterPath,
     overview,
-    original_title: originalTitle,
+    title: originalTitle,
     genre_ids: genreIds,
     release_date: releaseDate,
     vote_average: voteAverage,

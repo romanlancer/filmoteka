@@ -1,20 +1,36 @@
-// import Glide from '@glidejs/glide';
-import Glide from '@glidejs/glide';
-import MoviesApiService from './fetch_api';
+import { moviesApiService } from './render_popular';
 import { createElement } from './createElement';
+import { glide, config } from './slider_glide';
+import Glide from '@glidejs/glide';
 
-const refs = {
-  slidesContainer: document.querySelector('#glide__slides'),
-};
+const containerSlider = document.querySelector('.container__slider');
 
-const moviesApiService = new MoviesApiService();
+renderSlideFilms();
 
-moviesApiService.getTrendFilms().then(({ results }) => {
-  addElFilms(results);
-  console.log(results);
-});
+export function renderSlideFilms() {
+  moviesApiService.getTrendFilms().then(({ results }) => {
+    addElFilms(results);
+  });
+}
 
 function addElFilms(results) {
+  containerSlider.innerHTML = '';
+
+  const markup = `
+  <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides" id="glide__slides"></ul>
+        </div>
+        <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">&#5130;</button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">&#5125;</button>
+        </div>
+    </div>`;
+
+  containerSlider.insertAdjacentHTML('beforeend', markup);
+
+  const slidesContainer = document.querySelector('.glide__slides');
+
   let arrFilmTrends = [];
   results.forEach(el => {
     let image = createElement('img', {
@@ -26,45 +42,20 @@ function addElFilms(results) {
     let li = createElement(
       'li',
       {
-        class: 'glide__slide',
+        class: 'glide__slide glide__slide--main',
+        id: `${el.id}`,
       },
       image,
     );
     arrFilmTrends.push(li);
   });
-  refs.slidesContainer.append(...arrFilmTrends);
 
-  const config = {
-    type: 'carousel',
-    perView: 10,
-    autoplay: 2500,
-    gap: 15,
-    touchRatio: 0.1,
-    keyboard: true,
-    hoverpause: true,
-    animationDuration: 1000,
-    animationTimingFunc: 'ease-out',
-    peek: { before: 50, after: 50 },
-    breakpoints: {
-      2000: {
-        perView: 10,
-      },
-      1600: {
-        perView: 8,
-      },
-      1280: {
-        perView: 7,
-      },
-      1023: {
-        perView: 5,
-      },
-      500: {
-        perView: 2,
-      },
-    },
-  };
-  new Glide('.glide', config).mount();
+  slidesContainer.append(...arrFilmTrends);
+
   changeStyleArrow();
+  const image = glide.destroy();
+  let glid = new Glide('.glide', config);
+  glid.mount();
 }
 
 function changeStyleArrow() {

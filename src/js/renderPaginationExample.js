@@ -1,9 +1,8 @@
-import MoviesApiService from './fetch_api';
+import { MoviesApiService } from './render_popular';
 import Pagination from './pagination';
 
 const paginationListRef = document.querySelector('.pagination-list');
 
-const moviesApiService = new MoviesApiService();
 const moviePagination = new Pagination({
   parentElement: paginationListRef,
   initialPage: 1,
