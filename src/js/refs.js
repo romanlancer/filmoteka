@@ -16,5 +16,7 @@ export const refs = {
   iconGoogleUa: document.querySelector('#google-play__ua'),
   iconStoreEn: document.querySelector('#app-store__en'),
   iconStoreUa: document.querySelector('#app-store__ua'),
-
+  footerCopywrite: document.querySelector('.copyright'),
+  footerStudents: document.querySelector('.students'),
+  footerLink: document.querySelector('.students--link'),
 };
