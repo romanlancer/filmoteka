@@ -1,5 +1,13 @@
 export const refs = {
   language: document.querySelector('.language'),
+  changeOfTheme: document.querySelector('.theme'),
+  slideTitle: document.querySelector('.slide__title'),
+  footer: document.querySelector('.footer'),
+  footerSupp: document.querySelector('.text-supp'),
+  footerApp: document.querySelector('.text-app'),
+  footerJoin: document.querySelector('.text-join'),
+  footerEmail: document.querySelector('.email'),
+  footerCopy: document.querySelector('.footer--copyright'),
   btnUa: document.querySelector('.btn-ua'),
   btnEng: document.querySelector('.btn-eng'),
   home: document.querySelector('#button__home'),
