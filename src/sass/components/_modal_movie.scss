@@ -7,7 +7,7 @@
 
 .modal-movie {
   background-color: var(--first-text-color);
-
+  z-index: 1000;
   // @media screen and(max-height: 552px) and (max-width: 552px) {
   //   top: 0;
   //   left: 50%;
