@@ -6,6 +6,7 @@
 }
 
 .modal-movie {
+  animation: Opacity 2s ease alternate;
   background-color: var(--first-text-color);
   z-index: 1000;
   border-radius: 20px;
@@ -207,6 +208,7 @@
 
 .button-close {
   position: absolute;
+  @include centralFlex();
   width: 30px;
   height: 30px;
   border: 1px solid;

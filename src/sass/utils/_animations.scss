@@ -1,0 +1,54 @@
+@keyframes Opacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes Opacity2 {
+  0% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes Glow {
+  from {
+    text-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color),
+      0 0 30px var(--accent-color), 0 0 40px var(--accent-color), 0 0 70px var(--accent-color),
+      0 0 80px var(--accent-color), 0 0 100px var(--accent-color), 0 0 150px var(--accent-color);
+  }
+  to {
+    text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--accent-color),
+      0 0 15px var(--accent-color), 0 0 20px var(--accent-color), 0 0 35px var(--accent-color),
+      0 0 40px var(--accent-color), 0 0 50px var(--accent-color), 0 0 75px var(--accent-color);
+  }
+}
+
+@keyframes Scale {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+@keyframes Move {
+  0% {
+    transform: scale(0);
+    transform-origin: center;
+  }
+
+  100% {
+    transform: scale(1);
+    transform-origin: center;
+  }
+}
