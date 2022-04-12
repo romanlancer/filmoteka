@@ -12,6 +12,12 @@
   background-color: var(--accent-color);
   color: var(--first-text-color);;
   border-radius: 5px;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    box-shadow: 0 0 2px var(--accent-color), 0 0 10px var(--accent-color);
+  }
 }
 
 .pagination-list {
@@ -39,40 +45,42 @@
       background-color: #F7F7F7;
       transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
       &.pagination-prev{
-        background-image: url(../images/arrow-left.svg);
+        background-image: url(../images/arrow-left-black.svg);
         background-position: center;
         background-repeat: no-repeat;
         &:hover,
         &:focus{
-        background-color: var(--accent-color);
-        transform: scale(1.1);
-        opacity: 0.8;
+          background-color: var(--accent-color);
+          background-image: url(../images/arrow-left-white.svg);
+          transform: scale(1.1);
         }
         &.disabled{
           cursor: default;
           opacity: 0.5;
           &:hover,
           &:focus {
+            background-image: url(../images/arrow-left-black.svg);
             background-color: #F7F7F7;
             transform: scale(1);
           }
         }
       }
       &.pagination-next {
-        background-image: url(../images/arrow-right.svg);
+        background-image: url(../images/arrow-right-black.svg);
         background-position: center;
         background-repeat: no-repeat;
         &:hover,
         &:focus {
           background-color: var(--accent-color);
+          background-image: url(../images/arrow-right-white.svg);
           transform: scale(1.1);
-          opacity: 0.8;
         }
         &.disabled {
           cursor: default;
           opacity: 0.5;
           &:hover,
           &:focus {
+            background-image: url(../images/arrow-right-black.svg);
             background-color: #F7F7F7;
             transform: scale(1);
           }
@@ -81,18 +89,26 @@
   }
   &.pagination-number{
     cursor: pointer;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &:hover,
     &:focus {
-      color: var(--accent-color);
+      outline: 2px solid var(--accent-color);
+      outline-offset: -3px;
+      transform: scale(1.1);
     }
     &.active{
       cursor: default;
       background-color: var(--accent-color);
-      color: var(--first-text-color); 
+      color: var(--first-text-color);
+      &:hover,
+      &:focus {
+        outline: none;
+        transform: scale(1);
+      }
     }
     &.loaded{
-      background-color: var(--accent-color);
-      color: var(--first-text-color);
+      outline: 2px solid var(--accent-color);
+      outline-offset: -3px;
     }
   }
 }
@@ -102,6 +118,6 @@
 .pagination-item.pagination-dots{
   display: none;
     @media screen and (min-width: 768px) {
-     display: flex;
+      display: flex;
     }
 }

@@ -11,7 +11,6 @@ const moviePaginationForSearch = new Pagination({
   initialPage: 1,
   total: 1,
   onChange(value) {
-    // console.log('change page search');
     renderSearch(value);
     smoothScroll();
   },
@@ -61,6 +60,10 @@ export async function renderSearch(page, query) {
       document.querySelector('.pagination'),
       document.querySelector('.language').value,
     );
+
+    moviePaginationForSearch.renderPaginationLoadMore(document.querySelector('.pagination'), moviesApiService.page,
+      document.querySelector('.language').value)
+
     paginationChangeHandler(onPaginationSearchHandler);
     loadMoreChangeHandler(onLoadMoreSearchHandler);
     Loading.remove();
@@ -88,6 +91,9 @@ async function onLoadMoreSearchHandler(event) {
       total_pages,
       moviesApiService.page,
     );
+    moviePaginationForSearch.renderPaginationLoadMore(document.querySelector('.pagination'), moviesApiService.page,
+      document.querySelector('.language').value);
+    loadMoreChangeHandler(onLoadMoreSearchHandler);
 
     for (let i = 0; i < document.querySelector('.pagination-list').childNodes.length; i += 1) {
       const number = parseInt(

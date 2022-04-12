@@ -197,11 +197,11 @@ if(this.total > 1){
     parentElement.append(...paginationElem);
   }
 
-  renderPaginationLoadMore(parentElement, lang) {
+  renderPaginationLoadMore(parentElement, currentPage, lang) {
     const loadMoreBtnRef = createElement(
         'button',
       { type: "button",
-        class: `${this.currentPage >= this.total ? 
+        class: `${currentPage >= this.total ? 
           'pagination-btn is-hidden' : 
           'pagination-btn'}` },
         

@@ -11,7 +11,6 @@ const moviePaginationForPopular = new Pagination({
   initialPage: 1,
   total: 1,
   onChange(value) {
-    // console.log('change page popular');
     renderPopular(value);
     smoothScroll();
   },
@@ -19,7 +18,6 @@ const moviePaginationForPopular = new Pagination({
 
 export async function renderPopular(page) {
   if (page) {
-    // moviePaginationForPopular.currentPage = page;
     moviesApiService.page = page;
   }
 
@@ -37,8 +35,8 @@ export async function renderPopular(page) {
       document.querySelector('.pagination-list'),
       total_pages, moviesApiService.page 
     );
-    moviePaginationForPopular.renderPaginationLoadMore(document.querySelector('.pagination'),
-      document.querySelector('.language').value)
+    moviePaginationForPopular.renderPaginationLoadMore(document.querySelector('.pagination'), moviesApiService.page,
+      document.querySelector('.language').value);
     paginationChangeHandler(onPaginationPopularHandler);
     loadMoreChangeHandler(onLoadMorePopularHandler);
     Loading.remove();
@@ -62,6 +60,9 @@ async function onLoadMorePopularHandler(event) {
       document.querySelector('.pagination-list'),
       total_pages, moviesApiService.page
     );
+    moviePaginationForPopular.renderPaginationLoadMore(document.querySelector('.pagination'), moviesApiService.page,
+    document.querySelector('.language').value);
+    loadMoreChangeHandler(onLoadMorePopularHandler);
 
     for (let i = 0; i < document.querySelector('.pagination-list').childNodes.length; i += 1){
       const number = parseInt(document.querySelector('.pagination-list').childNodes[i].firstChild.textContent)
