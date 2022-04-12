@@ -34,6 +34,17 @@
   background-color: transparent;
 }
 
+.language,
+.theme {
+  background-color: transparent;
+  color: #818181;
+  font-size: 12px;
+}
+
+.language__list {
+  margin-left: 20px;
+}
+
 .header__home {
   background-size: cover;
   background-repeat: no-repeat;
@@ -313,11 +324,4 @@
   background-color: var(--accent-color);
   border-color: var(--accent-color);
   filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
-}
-
-.language,
-.theme {
-  background-color: transparent;
-  color: #fff;
-  font-size: 12px;
 }
