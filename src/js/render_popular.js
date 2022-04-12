@@ -13,7 +13,7 @@ const moviePaginationForPopular = new Pagination({
   onChange(value) {
     // console.log('change page popular');
     renderPopular(value);
-    // smoothScroll();
+    smoothScroll();
   },
 });
 
