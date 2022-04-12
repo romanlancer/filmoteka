@@ -30,7 +30,8 @@ function onButtonUa() {
   refs.textJoin.textContent = 'Приєднуйся';
   refs.footerCopywrite.textContent = '2022 | Усі права захищені |';
   refs.footerStudents.textContent = 'Розроблено з';
-  refs.footerLink.textContent = 'студенти GoIT';
+  refs.footerBy.textContent = '';
+  refs.footerLink.textContent = 'студентами GoIT';
   refs.iconGoogleUa.classList.remove('is-hidden');
   refs.iconGoogleEn.classList.add('is-hidden');
   refs.iconStoreUa.classList.remove('is-hidden');
@@ -45,6 +46,10 @@ function onButtonEng() {
   refs.textApp.textContent = 'OUR APPLICATIONS';
   refs.appSupp.textContent = 'Support';
   refs.textJoin.textContent = 'JOIN OUR NETWORKS';
+  refs.footerCopywrite.textContent = '2022 | All Rights Reserved |';
+  refs.footerStudents.textContent = 'Developed with';
+  refs.footerBy.textContent = 'by';
+  refs.footerLink.textContent = 'GoIT Students';
   refs.iconGoogleUa.classList.add('is-hidden');
   refs.iconGoogleEn.classList.remove('is-hidden');
   refs.iconStoreUa.classList.add('is-hidden');

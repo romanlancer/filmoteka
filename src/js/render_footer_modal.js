@@ -13,7 +13,7 @@ const options = {
 
 function renderUserCard(users) {
   const markup = studentTpl(users);
-  console.log('~ markup', markup);
+  // console.log('~ markup', markup);
   slide.insertAdjacentHTML('beforeend', markup);
 }
 
