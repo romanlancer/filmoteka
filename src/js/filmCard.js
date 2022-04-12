@@ -14,7 +14,7 @@ export const filmCard = filmData => {
     overview,
     original_title: originalTitle,
     genre_ids: genreIds,
-    release_date: releaseDate,
+    release_date: releaseDate = [],
     vote_average: voteAverage,
   } = filmData;
 
@@ -229,12 +229,20 @@ function getGenresNames(genreIds) {
 //   return color;
 // }
 
-
 // функция отрисовки карточек фильмов
 export function renderFilmList(filmList) {
   containerEl.innerHTML = '';
 
   const filmsNodeList = filmList.map(film => filmCard(film));
 
+  containerEl.append(...filmsNodeList);
+}
+
+export function clearContainer() {
+  containerEl.innerHTML = '';
+}
+
+export function addFilmListToContainer(filmList) {
+  const filmsNodeList = filmList.map(film => filmCard(film));
   containerEl.append(...filmsNodeList);
 }
