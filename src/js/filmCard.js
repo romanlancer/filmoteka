@@ -2,6 +2,7 @@ import { createElement } from './createElement';
 import { genresInfo, genresInfoUk } from './genres_info';
 import ComingSoonImg from '../images/movie-poster-coming-soon.jpg';
 import { refs } from './refs';
+import { renderPopular } from './render_popular';
 const containerEl = document.querySelector('.cards__list');
 // const filmRateRef = document.querySelector('.cards__item-vote-average');
 
@@ -12,13 +13,13 @@ export const filmCard = filmData => {
     id: filmId,
     poster_path: posterPath,
     overview,
-    original_title: originalTitle,
+    title,
     genre_ids: genreIds,
     release_date: releaseDate = [],
     vote_average: voteAverage,
   } = filmData;
 
-  const originalTitleToUpperCase = originalTitle.toUpperCase();
+  const titleToUpperCase = title.toUpperCase();
   const releaseYear = releaseDate.slice(0, 4);
   const posterComingSoon = ComingSoonImg;
   const posterExisting = `https://image.tmdb.org/t/p/w500${posterPath}`;
@@ -84,22 +85,25 @@ const BtnListElem = createElement(
     [btnItemAddToWatchedItemElem, btnItemAddToQueueItemElem],
   );
 
-  const filmPosterOverlayElem = createElement(
-    'div',
-    {
-      class: 'cards__item-poster-overlay',
-    },
-    BtnListElem,
-  );
-
   const filmPosterOverlayTextElem = createElement(
     'p',
     {
-      class: 'cards__item-poster-overlay',
+      class: 'cards__item-poster-overlay-text',
+      style: `color: ${defineOverlayTextColorByTheme()}`
     },
     overview,
   );
 
+  const filmPosterOverlayElem = createElement(
+    'div',
+    {
+      class: 'cards__item-poster-overlay',
+      style: `background-color: ${defineOverlayBGColorByTheme()}`,
+    },
+    [filmPosterOverlayTextElem, BtnListElem],
+  );
+
+  
   const filmPosterLinkElem = createElement(
     'a',
     {
@@ -121,7 +125,7 @@ const BtnListElem = createElement(
     {
       class: 'cards__item-title-text',
     },
-    originalTitleToUpperCase,
+    titleToUpperCase,
   );
 
   const filmTitleLinkElem = createElement(
@@ -185,6 +189,25 @@ const BtnListElem = createElement(
   return filmCardElem;
 };
 
+// функция отрисовки карточек фильмов
+export function renderFilmList(filmList) {
+  containerEl.innerHTML = '';
+
+  const filmsNodeList = filmList.map(film => filmCard(film));
+
+  containerEl.append(...filmsNodeList);
+}
+
+export function clearContainer() {
+  containerEl.innerHTML = '';
+}
+
+export function addFilmListToContainer(filmList) {
+  const filmsNodeList = filmList.map(film => filmCard(film));
+  containerEl.append(...filmsNodeList);
+}
+
+//функция для получения названий жанров фильма с учетом выбранного языка страницы
 function getGenresNames(genreIds) {
   let genresNamesArray = [];
   let languageSelected = refs.language.value;
@@ -229,20 +252,53 @@ function getGenresNames(genreIds) {
 //   return color;
 // }
 
-// функция отрисовки карточек фильмов
-export function renderFilmList(filmList) {
-  containerEl.innerHTML = '';
+// refs.changeOfTheme.addEventListener('change', onThemeChange);
 
-  const filmsNodeList = filmList.map(film => filmCard(film));
+// async function onThemeChange() {
+//   renderPopular();
+// }
 
-  containerEl.append(...filmsNodeList);
-}
+function defineOverlayBGColorByTheme() {
+  let overlayColor;
+  const lightOverlayColor = 'rgba(225, 225, 225, 0.7)';
+  const darkOverlayColor = 'rgba(0, 0, 0, 0.6)';
+  const themeCheck = refs.changeOfTheme.value;
 
-export function clearContainer() {
-  containerEl.innerHTML = '';
-}
+  if (themeCheck === 'dark') {
+    overlayColor = darkOverlayColor;
+  } else if (themeCheck === 'light') {
+    overlayColor = lightOverlayColor;
+  } else {
+    const date = new Date();
+    const dateNow = date.getHours();
+    if (dateNow > 6 && dateNow < 21) {
+      overlayColor = lightOverlayColor;
+    } else {
+      overlayColor = darkOverlayColor;
+    }
+  }
+  return overlayColor;
+};
 
-export function addFilmListToContainer(filmList) {
-  const filmsNodeList = filmList.map(film => filmCard(film));
-  containerEl.append(...filmsNodeList);
+function defineOverlayTextColorByTheme() {
+  let textColor;
+  const lightTextColor = 'rgb(225, 225, 225)';
+  const darkTextColor = 'rgb(0, 0, 0)';
+  const themeCheck = refs.changeOfTheme.value;
+
+  if (themeCheck === 'dark') {
+    textColor = lightTextColor;
+  } else if (themeCheck === 'light') {
+    textColor = darkTextColor;
+  } else {
+    const date = new Date();
+    const dateNow = date.getHours();
+    if (dateNow > 6 && dateNow < 21) {
+      textColor = darkTextColor;
+    } else {
+      textColor = lightTextColor;
+    }
+  }
+  return textColor;
+
 }
