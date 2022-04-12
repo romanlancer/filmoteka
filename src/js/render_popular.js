@@ -11,12 +11,15 @@ const moviePaginationForPopular = new Pagination({
   initialPage: 1,
   total: 1,
   onChange(value) {
-    renderPopular(value);
-    smoothScroll();
+    handlePageChangePopular(value);
   },
 });
 
-export async function renderPopular(page) {
+export function renderPopular(page) {
+  moviePaginationForPopular.currentPage = page;
+}
+
+async function handlePageChangePopular(page) {
   if (page) {
     moviesApiService.page = page;
   }
@@ -41,6 +44,7 @@ export async function renderPopular(page) {
     loadMoreChangeHandler(onLoadMorePopularHandler);
     Loading.remove();
   }, 500);
+  
   
 }
 
@@ -78,6 +82,7 @@ async function onLoadMorePopularHandler(event) {
 }
 
 function onPaginationPopularHandler(event) {
+  smoothScroll();
   if (
     event.target.parentNode.classList.contains('pagination-prev') ||
     event.target.classList.contains('pagination-prev')

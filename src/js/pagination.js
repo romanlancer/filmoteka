@@ -2,8 +2,7 @@ import { createElement } from './createElement';
 
 export function smoothScroll() {
   document
-  .querySelector('.cards__list')
-  .firstElementChild.scrollIntoView({block: "center", behavior: "smooth"});
+  .querySelector('.cards').scrollIntoView({block: "start", behavior: "smooth"});
 }
 
 export function loadMoreChangeHandler (handlerFunction) {
