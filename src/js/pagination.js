@@ -1,6 +1,17 @@
 import { createElement } from './createElement';
 
-export function eventListenerChangeHandler (handlerFunction) {
+export function smoothScroll() {
+  document
+  .querySelector('.cards__list')
+  .firstElementChild.scrollIntoView({block: "center", behavior: "smooth"});
+}
+
+export function loadMoreChangeHandler (handlerFunction) {
+  document.querySelector('.pagination-btn').replaceWith(document.querySelector('.pagination-btn').cloneNode(true));
+  document.querySelector('.pagination-btn').addEventListener('click', handlerFunction);
+}
+
+export function paginationChangeHandler (handlerFunction) {
   document.querySelector('.pagination-list').replaceWith(document.querySelector('.pagination-list').cloneNode(true));
   document.querySelector('.pagination-list').addEventListener('click', handlerFunction);
 }
@@ -12,36 +23,6 @@ export default class Pagination {
     this.total = total;
     this.onChange = onChange;
     this.paginationList = [];
-
-    // this.parentElement.addEventListener('click', event => {
-    //   console.log(this);
-    //   if (
-    //     event.target.parentNode.classList.contains('pagination-prev') ||
-    //     event.target.classList.contains('pagination-prev')
-    //   ) {
-    //     this.prevPage();
-    //   }
-    //   if (
-    //     event.target.parentNode.classList.contains('pagination-next') ||
-    //     event.target.classList.contains('pagination-next')
-    //   ) {
-    //     this.nextPage();
-    //   }
-    //   if (
-    //     event.target.parentNode.classList.contains('pagination-number') &&
-    //     !event.target.parentNode.classList.contains('active')
-    //   ) {
-    //     const clickPage = parseInt(event.target.textContent);
-    //     this.currentPage = clickPage;
-    //   }
-    //   if (
-    //     event.target.classList.contains('pagination-number') &&
-    //     !event.target.classList.contains('active')
-    //   ) {
-    //     const clickPage = parseInt(event.target.childNodes[0].textContent);
-    //     this.currentPage = clickPage;
-    //   }
-    // });
   }
 
   get currentPage() {
@@ -57,7 +38,7 @@ export default class Pagination {
   }
 
   nextPage() {
-    if (this.currentPage === this.total) {
+    if (this.currentPage >= this.total) {
       return;
     }
 
@@ -72,15 +53,15 @@ export default class Pagination {
     this.currentPage -= 1;
   }
 
-  createPaginationList() {
-    let beforePage = this.currentPage - 2;
-    let afterPage = this.currentPage + 2;
+  createPaginationList(currentPage) {
+    let beforePage = currentPage - 2;
+    let afterPage = currentPage + 2;
 
     this.paginationList = [];
     const prevArrow = createElement(
       'li',
       {
-        class: `${this.currentPage === 1 ?
+        class: `${currentPage === 1 ?
           'pagination-item pagination-button pagination-prev disabled' :
           'pagination-item pagination-button pagination-prev'}`
           
@@ -89,7 +70,7 @@ export default class Pagination {
     );
     this.paginationList.push(prevArrow);
 
-    if (this.currentPage === 1) {
+    if (currentPage === 1) {
       const firstElem = createElement(
         'li',
         { class: 'pagination-item pagination-number active' },
@@ -105,7 +86,7 @@ export default class Pagination {
       this.paginationList.push(firstElem);
     }
 
-    if (this.currentPage > 4) {
+    if (currentPage > 4) {
       const startDots = createElement(
         'li',
         { class: 'pagination-item pagination-dots' },
@@ -114,17 +95,17 @@ export default class Pagination {
       this.paginationList[1].classList.add('first-num');
       this.paginationList.push(startDots);
     }
-    if (this.currentPage === 1) {
-      afterPage = this.currentPage + 4;
+    if (currentPage === 1) {
+      afterPage = currentPage + 4;
     }
-    if (this.currentPage === 2) {
-      afterPage = this.currentPage + 3;
+    if (currentPage === 2) {
+      afterPage = currentPage + 3;
     }
-    if (this.currentPage === this.total) {
-      beforePage = this.currentPage - 4;
+    if (currentPage === this.total) {
+      beforePage = currentPage - 4;
     }
-    if (this.currentPage === this.total - 1) {
-      beforePage = this.currentPage - 3;
+    if (currentPage === this.total - 1) {
+      beforePage = currentPage - 3;
     }
 
     if (beforePage < 2) {
@@ -133,9 +114,9 @@ export default class Pagination {
     if (afterPage >= this.total) {
       afterPage = this.total - 1;
     }
-    console.log(beforePage);
+
     for (let pageNumber = beforePage; pageNumber <= afterPage; pageNumber++) {
-      if (pageNumber === this.currentPage) {
+      if (pageNumber === currentPage) {
         const item = createElement(
           'li',
           { class: 'pagination-item pagination-number active' },
@@ -152,7 +133,7 @@ export default class Pagination {
       }
     }
 
-    if (this.currentPage < this.total - 3) {
+    if (currentPage < this.total - 3) {
       const endDots = createElement(
         'li',
         { class: 'pagination-item pagination-dots' },
@@ -161,11 +142,11 @@ export default class Pagination {
       this.paginationList.push(endDots);
     }
 if(this.total > 1){
-    if (this.currentPage === this.total) {
+    if (currentPage === this.total) {
       const lastElem = createElement(
         'li',
         {
-          class: `${this.currentPage < this.total - 3
+          class: `${currentPage < this.total - 3
               ? 'pagination-item pagination-number active last-num'
               : 'pagination-item pagination-number active'
             }`,
@@ -177,7 +158,7 @@ if(this.total > 1){
       const lastElem = createElement(
         'li',
         {
-          class: `${this.currentPage < this.total - 3
+          class: `${currentPage < this.total - 3
               ? 'pagination-item pagination-number last-num'
               : 'pagination-item pagination-number'
             }`,
@@ -190,7 +171,7 @@ if(this.total > 1){
     const nextArrow = createElement(
       'li',
       {
-        class: `${this.currentPage === this.total ? 
+        class: `${currentPage >= this.total ? 
           'pagination-item pagination-button pagination-next disabled' : 
           'pagination-item pagination-button pagination-next'}`
       },
@@ -199,11 +180,43 @@ if(this.total > 1){
     this.paginationList.push(nextArrow);
     return this.paginationList;
   }
+
   renderPagination(parentElement, totalPages) {
     totalPages > 500 ? (this.total = 500) : (this.total = totalPages);
 
-    const paginationElem = this.createPaginationList();
+    const paginationElem = this.createPaginationList(this.currentPage);
     parentElement.innerHTML = '';
     parentElement.append(...paginationElem);
   }
+
+    renderPaginationDisabled(parentElement, totalPages, currentPage) {
+    totalPages > 500 ? (this.total = 500) : (this.total = totalPages);
+
+    const paginationElem = this.createPaginationList(currentPage);
+    parentElement.innerHTML = '';
+    parentElement.append(...paginationElem);
+  }
+
+  renderPaginationLoadMore(parentElement, lang) {
+    const loadMoreBtnRef = createElement(
+        'button',
+      { type: "button",
+        class: `${this.currentPage >= this.total ? 
+          'pagination-btn is-hidden' : 
+          'pagination-btn'}` },
+        
+      `${lang === 'uk' ? 
+        'Показати ще 20 фільмів' :
+        'Show 20 more films'
+        }`,
+    );
+    if (this.total <= 1) {
+      loadMoreBtnRef.classList.add('is-hidden')
+    }
+    if (document.querySelector('.pagination-btn')) {
+      document.querySelector('.pagination-btn').remove();
+    }
+    parentElement.prepend(loadMoreBtnRef);
+  }
+
 }

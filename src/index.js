@@ -6,6 +6,7 @@ import './js/render_search';
 import './js/modal_details';
 import './js/render_service';
 import './js/genres_info';
+import './js/inputCard';
 import './js/render_input';
 import './js/to_top_arrow';
 import './js/render_trailer';
@@ -18,3 +19,5 @@ import './js/slider_films';
 import './js/language';
 import './js/render_footer_modal';
 import './js/changeOfTheme';
+import './js/slider_glide';
+

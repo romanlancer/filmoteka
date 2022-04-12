@@ -1,6 +1,9 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { moviesApiService } from './render_popular';
+import debounce from 'debounce';
 import movieInfo from '../templates/movie.hbs';
+import movieInfoTrailer from '../templates/movie_trailer.hbs';
+import defaultPoster from '../images/movie-poster-coming-soon.jpg';
+import axios from 'axios';
 const cardsList = document.querySelector('.cards__list');
 const backdrop = document.querySelector('.backdrop-movie');
 const closeModalButton = document.querySelector('.button-close');
@@ -9,14 +12,26 @@ cardsList.addEventListener('click', event => {
   renderModal(event);
 });
 
+// cardsList.addEventListener(
+//   'click',
+//   debounce(event => {
+//     renderModal(event);
+//     console.log('sdsss');
+//   }, 1050),
+// );
+
 function closeModal(event) {
   const iframe = document.getElementById('trailer-iframe');
-  iframe.src = '';
+  if (iframe) {
+    iframe.src = '';
+  }
+
   backdrop.classList.add('is-hidden');
   closeModalButton.removeEventListener('click', closeModal);
   backdrop.removeEventListener('click', closeModal);
   document.removeEventListener('keydown', event => closeModalEscape(event));
   document.body.classList.remove('modal-open');
+  backdrop.style.background = '';
 }
 
 function closeModalBackdrop(event) {
@@ -41,48 +56,28 @@ function openModal(event) {
   document.body.classList.add('modal-open');
 }
 
-const getMovieData = async id => {
-  try {
-    const response = await moviesApiService.getFilmDetails(id);
-    if (response.status !== 200) {
-      Notify.failure('Oops, an error occurred');
-      return;
-    }
-    return response.data;
-  } catch (error) {
-    Notify.failure('Oops, an error occurred');
-  }
-};
+const debouncedopenModal = debounce(openModal, 650);
 
-const getMovieTrailer = async id => {
-  try {
-    const response = await moviesApiService.getFilmVideo(id);
-    if (response.status !== 200) {
-      Notify.failure('Oops, an error occurred');
-      return;
-    }
-    return response.data;
-  } catch (error) {
-    Notify.failure('Oops, an error occurred');
-  }
-};
-
-const renderModal = async event => {
+export const renderModal = async event => {
   const cardsId = event.target.closest('li');
   // console.dir(cardsId.id); Очередность отрисовки!
-  const data = await getMovieData(cardsId.id);
-  const trailer = await getMovieTrailer(cardsId.id);
+  const data = await moviesApiService.getFilmDetails(cardsId.id);
+  const trailer = await moviesApiService.getFilmVideo(cardsId.id);
   if (data) {
     console.log(data);
     renderMovieCard(data, trailer);
-    openModal(event);
+    debouncedopenModal(event);
   }
 };
 
 const renderMovieCard = (data, trailer) => {
   const movieCard = document.querySelector('.movie-card');
   const movie = handleMovieData(data, trailer);
-  movieCard.innerHTML = movieInfo(movie);
+  if (movie.trailer) {
+    movieCard.innerHTML = movieInfoTrailer(movie);
+  } else {
+    movieCard.innerHTML = movieInfo(movie);
+  }
 };
 
 function handleMovieData(data, trailer) {
@@ -98,7 +93,11 @@ function handleMovieData(data, trailer) {
   } = data;
   const genresList = Object.values(genres).flatMap(genre => genre.name);
   const movie = { title, original_title, vote, votes, popularity, overview };
-  movie.poster = `https://image.tmdb.org/t/p/w500${poster}`;
+  if (poster) {
+    movie.poster = `https://image.tmdb.org/t/p/w500${poster}`;
+  } else {
+    movie.poster = defaultPoster;
+  }
   movie.genres = genresList.join(', ');
   //проверка нулб вынести в функцию
   const backdropImage = data.backdrop_path;
@@ -113,6 +112,8 @@ function handleMovieData(data, trailer) {
   const video = handleTrailer(trailer);
   if (video) {
     movie.trailer = `https://www.youtube.com/embed/${video}`;
+    const response = axios.get(movie.trailer);
+    console.log('response ', response);
   }
 
   return movie;

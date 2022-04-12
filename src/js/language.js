@@ -6,15 +6,15 @@ import { renderSlideFilms } from './slider_films';
 async function onLangSelected(event) {
   let langCheck = event.target.value;
   if (langCheck === 'uk') {
-    onButtonUa();
     moviesApiService.lang = langCheck;
     renderPopular();
     renderSlideFilms();
+    onButtonUa();
   } else {
     moviesApiService.lang = langCheck;
-    onButtonEng();
     renderPopular();
-    // renderSlideFilms();
+    renderSlideFilms();
+    onButtonEng();
   }
 }
 
@@ -28,6 +28,13 @@ function onButtonUa() {
   refs.textApp.textContent = 'Наші додатки';
   refs.appSupp.textContent = 'Підтримка';
   refs.textJoin.textContent = 'Приєднуйся';
+  refs.footerCopywrite.textContent = '2022 | Усі права захищені |';
+  refs.footerStudents.textContent = 'Розроблено з';
+  refs.footerLink.textContent = 'студенти GoIT';
+  refs.iconGoogleUa.classList.remove('is-hidden');
+  refs.iconGoogleEn.classList.add('is-hidden');
+  refs.iconStoreUa.classList.remove('is-hidden');
+  refs.iconStoreEn.classList.add('is-hidden');
 }
 
 function onButtonEng() {
@@ -38,6 +45,10 @@ function onButtonEng() {
   refs.textApp.textContent = 'OUR APPLICATIONS';
   refs.appSupp.textContent = 'Support';
   refs.textJoin.textContent = 'JOIN OUR NETWORKS';
+  refs.iconGoogleUa.classList.add('is-hidden');
+  refs.iconGoogleEn.classList.remove('is-hidden');
+  refs.iconStoreUa.classList.add('is-hidden');
+  refs.iconStoreEn.classList.remove('is-hidden');
 }
 
 refs.language.addEventListener('change', onLangSelected);
