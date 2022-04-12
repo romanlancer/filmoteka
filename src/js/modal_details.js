@@ -27,6 +27,7 @@ function closeModal(event) {
   }
 
   backdrop.classList.add('is-hidden');
+  backdrop.firstElementChild.classList.add('is-hidden')
   closeModalButton.removeEventListener('click', closeModal);
   backdrop.removeEventListener('click', closeModal);
   document.removeEventListener('keydown', event => closeModalEscape(event));
@@ -53,10 +54,13 @@ function openModal(event) {
   backdrop.addEventListener('click', event => closeModalBackdrop(event));
   document.addEventListener('keydown', event => closeModalEscape(event));
   backdrop.classList.remove('is-hidden');
+  setTimeout(() => {
+    backdrop.firstElementChild.classList.remove('is-hidden')
+  }, 1000);
   document.body.classList.add('modal-open');
 }
 
-const debouncedopenModal = debounce(openModal, 650);
+const debouncedopenModal = debounce(openModal, 0);
 
 export const renderModal = async event => {
   const cardsId = event.target.closest('li');
