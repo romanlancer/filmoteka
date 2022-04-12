@@ -3,7 +3,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { moviesApiService } from './render_popular';
 import Pagination from './pagination';
 import { renderFilmList, addFilmListToContainer } from './filmCard';
-import { paginationChangeHandler,loadMoreChangeHandler, smoothScroll } from './pagination';
+import { paginationChangeHandler, loadMoreChangeHandler, smoothScroll } from './pagination';
 
 const searchFormRef = document.querySelector('#search-form');
 
@@ -13,7 +13,6 @@ const moviePaginationForSearch = new Pagination({
   onChange(value) {
     renderSearch(value);
     smoothScroll();
-
   },
 });
 
@@ -54,10 +53,17 @@ export async function renderSearch(page, query) {
     renderFilmList(results);
     moviePaginationForSearch.renderPaginationDisabled(
       document.querySelector('.pagination-list'),
-      total_pages, moviesApiService.page 
+      total_pages,
+      moviesApiService.page,
     );
+    moviePaginationForSearch.renderPaginationLoadMore(
+      document.querySelector('.pagination'),
+      document.querySelector('.language').value,
+    );
+
     moviePaginationForSearch.renderPaginationLoadMore(document.querySelector('.pagination'), moviesApiService.page,
       document.querySelector('.language').value)
+
     paginationChangeHandler(onPaginationSearchHandler);
     loadMoreChangeHandler(onLoadMoreSearchHandler);
     Loading.remove();
@@ -66,7 +72,7 @@ export async function renderSearch(page, query) {
 
 async function onLoadMoreSearchHandler(event) {
   moviesApiService.page += 1;
-  
+
   Loading.hourglass({
     cssAnimationDuration: 400,
     svgSize: '150px',
@@ -82,24 +88,26 @@ async function onLoadMoreSearchHandler(event) {
     addFilmListToContainer(results);
     moviePaginationForSearch.renderPaginationDisabled(
       document.querySelector('.pagination-list'),
-      total_pages, moviesApiService.page 
+      total_pages,
+      moviesApiService.page,
     );
     moviePaginationForSearch.renderPaginationLoadMore(document.querySelector('.pagination'), moviesApiService.page,
       document.querySelector('.language').value);
     loadMoreChangeHandler(onLoadMoreSearchHandler);
 
-    for (let i = 0; i < document.querySelector('.pagination-list').childNodes.length; i += 1){
-      const number = parseInt(document.querySelector('.pagination-list').childNodes[i].firstChild.textContent)
+    for (let i = 0; i < document.querySelector('.pagination-list').childNodes.length; i += 1) {
+      const number = parseInt(
+        document.querySelector('.pagination-list').childNodes[i].firstChild.textContent,
+      );
       if (number >= moviePaginationForSearch.currentPage && number <= moviesApiService.page) {
-      if (document.querySelector('.pagination-list').childNodes[i].classList.contains('active')) {
-        document.querySelector('.pagination-list').childNodes[i].classList.remove('active')
-      }
-      document.querySelector('.pagination-list').childNodes[i].classList.add('loaded')
+        if (document.querySelector('.pagination-list').childNodes[i].classList.contains('active')) {
+          document.querySelector('.pagination-list').childNodes[i].classList.remove('active');
+        }
+        document.querySelector('.pagination-list').childNodes[i].classList.add('loaded');
       }
     }
     Loading.remove();
   }, 500);
-
 }
 
 function onPaginationSearchHandler(event) {
