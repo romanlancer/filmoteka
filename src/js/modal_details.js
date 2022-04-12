@@ -56,11 +56,11 @@ function openModal(event) {
   backdrop.classList.remove('is-hidden');
   setTimeout(() => {
     backdrop.firstElementChild.classList.remove('is-hidden')
-  }, 1000);
+  }, 800);
   document.body.classList.add('modal-open');
 }
 
-const debouncedopenModal = debounce(openModal, 0);
+// const debouncedopenModal = debounce(openModal, 0);
 
 export const renderModal = async event => {
   const cardsId = event.target.closest('li');
@@ -70,7 +70,8 @@ export const renderModal = async event => {
   if (data) {
     console.log(data);
     renderMovieCard(data, trailer);
-    debouncedopenModal(event);
+    openModal(event);
+    // debouncedopenModal(event);
   }
 };
 
