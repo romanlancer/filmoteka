@@ -5,12 +5,12 @@
       <option value="dark">Dark</option>
       <option value="light">Light</option>
     </select>
-    <select class="language" name="select">
+    <select class="language language__list" name="select">
       <option value="en" selected>English</option>
       <option value="uk">Українська</option>
     </select>
   </div>
-  <ul class="panel__list">
+  <!-- <ul class="panel__list">
     <li class="panel__list--item">
       <button class="panel__list--button btn-ua">
         <svg class="class=&quot;panel__button--icon" width="31" height="21">
@@ -18,7 +18,7 @@
         </svg>
       </button>
     </li>
-  </ul>
+  </ul> -->
   <div class="header__home">
     <div class="container">
       <div class="header__container">
@@ -36,10 +36,7 @@
         <nav class="navigation">
           <ul class="navigation__list">
             <li class="navigation__item">
-              <button
-                class="navigation__button--home navigation__button--current"
-                id="button__home"
-              >
+              <button class="navigation__button--home navigation__button--current" id="button__home">
                 HOME
               </button>
             </li>
@@ -51,14 +48,8 @@
       </div>
       <form class="search__form" id="search-form">
         <div class="search-form_wrapper">
-          <input
-            class="search__form--input"
-            type="text"
-            name="search"
-            id="searchQuery"
-            placeholder="Search films"
-            autocomplete="off"
-          />
+          <input class="search__form--input" type="text" name="search" id="searchQuery" placeholder="Search films"
+            autocomplete="off" />
         </div>
         <ul class="search-form-list" id="search-list" data-action="current"></ul>
         <button type="submit" class="search__form--button">
