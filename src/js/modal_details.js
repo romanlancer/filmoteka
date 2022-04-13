@@ -7,6 +7,7 @@ import axios from 'axios';
 import { clickToWatched, clickToQueue, movieIsInWatched, movieIsInQueue, checkStorage } from './library_watched_queue'
 
 export let currentId = null;
+export let currentDataMovie = null;
 const cardsList = document.querySelector('.cards__list');
 const backdrop = document.querySelector('.backdrop-movie');
 const closeModalButton = document.querySelector('.button-close');
@@ -72,7 +73,7 @@ export const renderModal = async event => {
   const trailer = await moviesApiService.getFilmVideo(cardsId.id);
   if (data) {
     currentId = data.id;
-    
+    currentDataMovie = data;
     console.log(data);
     renderMovieCard(data, trailer);
     openModal(event);
