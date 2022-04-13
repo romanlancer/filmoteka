@@ -45,6 +45,8 @@ export function onButtonEng() {
   refs.library.textContent = 'MY LIBRARY';
   refs.input.placeholder = 'Search films';
   refs.sliderTitle.textContent = 'WATCH TREND MOVIES';
+  refs.btnWatched.textContent = 'WATCHED';
+  refs.btnQueue.textContent = 'QUEUE';
   refs.textApp.textContent = 'OUR APPLICATIONS';
   refs.appSupp.textContent = 'Support';
   refs.textJoin.textContent = 'JOIN OUR NETWORKS';

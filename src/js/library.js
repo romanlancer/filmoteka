@@ -5,7 +5,7 @@ const refs = {
 };
 
 export function onLibrary() {
-  renderPageLibarary();
+  renderPageLibrary();
 
   refs.header.addEventListener('click', onClickBtn);
 }
@@ -32,7 +32,7 @@ function onClickBtn() {
   }
 }
 
-function renderPageLibarary() {
+function renderPageLibrary() {
   const refs = {
     home: document.querySelector('.header__home'),
     btnHome: document.querySelector('.navigation__button--home'),

@@ -11,12 +11,13 @@ export const addToStorage = (key, value) => {
 };
 
 export const getFromStorage = key => {
-  if (typeof key === 'string') {
-    return localStorage.getItem(key);
-  } else {
-    return JSON.parse(localStorage.getItem(key));
+  try {
+    return JSON.parse(localStorage.getItem(key));    
+  }catch(error){
+    console.error(error);
   }
-};
+}
+
 
 export const removeFromStorage = key => {
   try {
