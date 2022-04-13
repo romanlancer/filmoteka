@@ -22,8 +22,13 @@ function darkTheme() {
     refs.footerJoin.style.color = '#FFFFFF';
     refs.footerEmail.style.color = '#FFFFFF';
     refs.footerCopy.style.color = '#FFFFFF';
+
+    // зміни для модалки фільму
     refs.modalMovie.style.backgroundColor = '#2C2B2B';
-    refs.movieData.style.color = '#FFF';
+    refs.movieDataTitle.style.color = '#FFF';
+    refs.movieDataValue.style.color = '#FFF';
+    refs.movieDataAbout.style.color = '#FFF';
+    refs.movieDataAboutTitle.style.color = '#FFF';
 }
 
 function lightTheme() {
@@ -35,6 +40,13 @@ function lightTheme() {
     refs.footerEmail.style.color = '#545454';
     refs.footerCopy.style.color = '#545454';
     refs.modalMovie.style.backgroundColor = '#ffffff';
+
+    // зміни для модалки фільму
+    refs.modalMovie.style.backgroundColor = '#fff';
+    refs.movieDataTitle.style.color = '#000';
+    refs.movieDataValue.style.color = '#000';
+    refs.movieDataAbout.style.color = '#000';
+    refs.movieDataAboutTitle.style.color = '#000';
 }
 
 window.onload = function autoTheme() {
@@ -49,12 +61,3 @@ window.onload = function autoTheme() {
         lightTheme();
     }
 }
-
-
-
-// window.onload = function() {
-//   init();
-//   doSomethingElse();
-// };
-
-
