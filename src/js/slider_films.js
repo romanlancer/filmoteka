@@ -3,10 +3,14 @@ import { createElement } from './createElement';
 import { glide, config } from './slider_glide';
 import { renderModal } from './modal_details';
 import Glide from '@glidejs/glide';
+import { refs } from './refs';
 
-const containerSlider = document.querySelector('.container__slider');
+//after refresh and close browser start function
 
 renderSlideFilms();
+
+//GlideJS
+//render structure, turn on and refresh glide.js function
 
 export function renderSlideFilms() {
   moviesApiService.getTrendFilms().then(({ results }) => {
@@ -16,7 +20,7 @@ export function renderSlideFilms() {
 }
 
 function addElFilms(results) {
-  containerSlider.innerHTML = '';
+  refs.containerSlider.innerHTML = '';
 
   const markup = `
   <div class="glide">
@@ -29,7 +33,7 @@ function addElFilms(results) {
         </div>
     </div>`;
 
-  containerSlider.insertAdjacentHTML('beforeend', markup);
+  refs.containerSlider.insertAdjacentHTML('beforeend', markup);
 
   const slidesContainer = document.querySelector('.glide__slides');
 
@@ -60,6 +64,8 @@ function addElFilms(results) {
   glid.mount();
 }
 
+//after render slider, change arrow style function
+
 function changeStyleArrow() {
   const refs = {
     left: document.querySelector('.glide__arrow--left'),
@@ -68,23 +74,24 @@ function changeStyleArrow() {
   };
 
   refs.current.forEach(el => {
-    refs.current.forEach(el => {
-      el.style.cssText = `
+    el.style.cssText = `
         outline: none;
         box-shadow: none;
         border-radius: 50%;
         padding: 4px 7px;
         background-color: rgba(0, 0, 0, 0.4);
       `;
-    });
   });
 
   refs.left.style.left = `3px`;
   refs.right.style.right = `4px`;
 }
 
+// click slider el open modal
+
 function onClickSliderCard() {
   const slidesList = document.querySelector('#glide__slides');
+
   slidesList.addEventListener('click', event => {
     renderModal(event);
   });

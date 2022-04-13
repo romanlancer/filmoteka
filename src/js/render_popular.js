@@ -2,8 +2,8 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import MoviesApiService from './fetch_api';
 import Pagination from './pagination';
 import { renderFilmList, addFilmListToContainer } from './filmCard';
-import { paginationChangeHandler,loadMoreChangeHandler, smoothScroll } from './pagination';
-
+import { paginationChangeHandler, loadMoreChangeHandler, smoothScroll } from './pagination';
+import { getFromStorage } from './storage';
 
 export const moviesApiService = new MoviesApiService();
 
@@ -36,19 +36,21 @@ async function handlePageChangePopular(page) {
     renderFilmList(results);
     moviePaginationForPopular.renderPaginationDisabled(
       document.querySelector('.pagination-list'),
-      total_pages, moviesApiService.page 
+      total_pages,
+      moviesApiService.page,
     );
-    moviePaginationForPopular.renderPaginationLoadMore(document.querySelector('.pagination'), moviesApiService.page,
-      document.querySelector('.language').value);
+    moviePaginationForPopular.renderPaginationLoadMore(
+      document.querySelector('.pagination'),
+      moviesApiService.page,
+      getFromStorage('language'),
+    );
     paginationChangeHandler(onPaginationPopularHandler);
     loadMoreChangeHandler(onLoadMorePopularHandler);
     Loading.remove();
   }, 500);
-  
-  
 }
 
-async function onLoadMorePopularHandler(event) { 
+async function onLoadMorePopularHandler(event) {
   moviesApiService.page += 1;
   Loading.hourglass({
     cssAnimationDuration: 400,
@@ -62,21 +64,27 @@ async function onLoadMorePopularHandler(event) {
     addFilmListToContainer(results);
     moviePaginationForPopular.renderPaginationDisabled(
       document.querySelector('.pagination-list'),
-      total_pages, moviesApiService.page
+      total_pages,
+      moviesApiService.page,
     );
-    moviePaginationForPopular.renderPaginationLoadMore(document.querySelector('.pagination'), moviesApiService.page,
-    document.querySelector('.language').value);
+    moviePaginationForPopular.renderPaginationLoadMore(
+      document.querySelector('.pagination'),
+      moviesApiService.page,
+      getFromStorage('language'),
+    );
     loadMoreChangeHandler(onLoadMorePopularHandler);
 
-    for (let i = 0; i < document.querySelector('.pagination-list').childNodes.length; i += 1){
-      const number = parseInt(document.querySelector('.pagination-list').childNodes[i].firstChild.textContent)
+    for (let i = 0; i < document.querySelector('.pagination-list').childNodes.length; i += 1) {
+      const number = parseInt(
+        document.querySelector('.pagination-list').childNodes[i].firstChild.textContent,
+      );
       if (number >= moviePaginationForPopular.currentPage && number <= moviesApiService.page) {
-      if (document.querySelector('.pagination-list').childNodes[i].classList.contains('active')) {
-        document.querySelector('.pagination-list').childNodes[i].classList.remove('active')
+        if (document.querySelector('.pagination-list').childNodes[i].classList.contains('active')) {
+          document.querySelector('.pagination-list').childNodes[i].classList.remove('active');
+        }
+        document.querySelector('.pagination-list').childNodes[i].classList.add('loaded');
       }
-      document.querySelector('.pagination-list').childNodes[i].classList.add('loaded')
-      }
-    }   
+    }
     Loading.remove();
   }, 500);
 }
@@ -110,4 +118,3 @@ function onPaginationPopularHandler(event) {
     moviePaginationForPopular.currentPage = clickPage;
   }
 }
-

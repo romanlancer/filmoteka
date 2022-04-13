@@ -19,7 +19,7 @@
 .panel__list {
   display: flex;
   justify-content: flex-end;
-  margin-right: auto;
+  margin-left: 20px;
   &--item {
     &:not(:last-child) {
       margin-right: 10px;
@@ -30,8 +30,17 @@
 .panel__list--button {
   display: inline-block;
   padding-top: 10px;
+  height: 27px;
   width: 40px;
+  background-size: cover;
   background-color: transparent;
+}
+
+.btn-ua {
+  background-image: url(../images/ua.svg);
+}
+.btn-en {
+  background-image: url(../images/eng.svg);
 }
 
 .language,

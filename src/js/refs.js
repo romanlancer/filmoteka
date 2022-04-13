@@ -1,5 +1,11 @@
 export const refs = {
+  header: document.querySelector('#header'),
+  logoText: document.querySelector('.header__logo--text'),
+  logoIcon: document.querySelector('.header__icon'),
+  iconContainer: document.querySelector('.header__icon--container'),
   language: document.querySelector('.language'),
+  languageList: document.querySelector('.panel__list'),
+  containerSlider: document.querySelector('.container__slider'),
   changeOfTheme: document.querySelector('.theme'),
   modalMovie: document.querySelector('.modal-movie'),
   movieDataTitle: document.querySelector('.movie-data__title'),
