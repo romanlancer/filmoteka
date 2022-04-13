@@ -1,7 +1,11 @@
 export const refs = {
   language: document.querySelector('.language'),
   changeOfTheme: document.querySelector('.theme'),
-  slideTitle: document.querySelector('.slide__title'),
+  modalMovie: document.querySelector('.modal-movie'),
+  movieDataTitle: document.querySelector('.movie-data__title'),
+  movieDataValue: document.querySelector('.movie-data__value'),
+  movieDataAbout: document.querySelector('.movie-data__about'),
+  movieDataAboutTitle: document.querySelector('.movie-data__about_title'),
   footer: document.querySelector('.footer'),
   footerSupp: document.querySelector('.text-supp'),
   footerApp: document.querySelector('.text-app'),
