@@ -4,6 +4,9 @@ import movieInfo from '../templates/movie.hbs';
 import movieInfoTrailer from '../templates/movie_trailer.hbs';
 import defaultPoster from '../images/movie-poster-coming-soon.jpg';
 import axios from 'axios';
+import { clickToWatched, clickToQueue, movieIsInWatched, movieIsInQueue, checkStorage } from './library_watched_queue'
+
+export let currentId = null;
 const cardsList = document.querySelector('.cards__list');
 const backdrop = document.querySelector('.backdrop-movie');
 const closeModalButton = document.querySelector('.button-close');
@@ -68,9 +71,19 @@ export const renderModal = async event => {
   const data = await moviesApiService.getFilmDetails(cardsId.id);
   const trailer = await moviesApiService.getFilmVideo(cardsId.id);
   if (data) {
+    currentId = data.id;
+    
     console.log(data);
     renderMovieCard(data, trailer);
     openModal(event);
+    const refWatchedBtn = document.querySelector('.movie-data__button.movie-data__button_watched');
+    const refQueueBtn = document.querySelector('.movie-data__button.movie-data__button_queue');
+    
+    refWatchedBtn.addEventListener('click', clickToWatched);
+    refQueueBtn.addEventListener('click', clickToQueue);
+    checkStorage();    
+    movieIsInWatched(refWatchedBtn);
+    movieIsInQueue(refQueueBtn);  
     // debouncedopenModal(event);
   }
 };
