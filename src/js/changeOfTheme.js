@@ -11,40 +11,50 @@ async function onThemeSelected(event) {
         lightTheme();
     } else {
         autoTheme();
-    }
+    }  
+}
 
-    function darkTheme() {
-        document.body.style.backgroundColor = '#595959';
-        refs.footer.style.backgroundColor = '#2C2B2B';
-        // refs.slideTitle.style.color = '#FFFFFF';
-        refs.footerSupp.style.color = '#FFFFFF';
-        refs.footerApp.style.color = '#FFFFFF';
-        refs.footerJoin.style.color = '#FFFFFF';
-        refs.footerEmail.style.color = '#FFFFFF';
-        refs.footerCopy.style.color = '#FFFFFF';
-    }
+function darkTheme() {
+    document.body.style.backgroundColor = '#595959';
+    refs.footer.style.backgroundColor = '#2C2B2B';
+    refs.footerSupp.style.color = '#FFFFFF';
+    refs.footerApp.style.color = '#FFFFFF';
+    refs.footerJoin.style.color = '#FFFFFF';
+    refs.footerEmail.style.color = '#FFFFFF';
+    refs.footerCopy.style.color = '#FFFFFF';
+    refs.modalMovie.style.backgroundColor = '#2C2B2B';
+    refs.movieData.style.color = '#FFF';
+}
 
-    function lightTheme() {
-        document.body.style.backgroundColor = '#FFFFFF';
-        refs.footer.style.backgroundColor = '#F7F7F7';
-        // refs.slideTitle.style.color = '#000000';
-        refs.footerSupp.style.color = '#000000';
-        refs.footerApp.style.color = '#000000';
-        refs.footerJoin.style.color = '#000000';
-        refs.footerEmail.style.color = '#545454';
-        refs.footerCopy.style.color = '#545454';
-    }
+function lightTheme() {
+    document.body.style.backgroundColor = '#FFFFFF';
+    refs.footer.style.backgroundColor = '#F7F7F7';
+    refs.footerSupp.style.color = '#545454';
+    refs.footerApp.style.color = '#545454';
+    refs.footerJoin.style.color = '#545454';
+    refs.footerEmail.style.color = '#545454';
+    refs.footerCopy.style.color = '#545454';
+    refs.modalMovie.style.backgroundColor = '#ffffff';
+}
 
-    function autoTheme() {
-        const date = new Date();
-        const dateNow = date.getHours();
-        
-        if (dateNow > 6 && dateNow < 21) {
-            lightTheme();
-        } else {
-            darkTheme();
-        }
+window.onload = function autoTheme() {
+    const date = new Date();
+    const dateNow = date.getHours();
+    
+    if (dateNow >= 6 && dateNow <= 22) {
+        // lightTheme();
+        darkTheme();
+    } else {
+        // darkTheme();
+        lightTheme();
     }
 }
+
+
+
+// window.onload = function() {
+//   init();
+//   doSomethingElse();
+// };
 
 

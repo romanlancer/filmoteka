@@ -1,7 +1,8 @@
 export const refs = {
   language: document.querySelector('.language'),
   changeOfTheme: document.querySelector('.theme'),
-  slideTitle: document.querySelector('.slide__title'),
+  modalMovie: document.querySelector('.modal-movie'),
+  movieData: document.querySelector('.movie-data'),
   footer: document.querySelector('.footer'),
   footerSupp: document.querySelector('.text-supp'),
   footerApp: document.querySelector('.text-app'),
