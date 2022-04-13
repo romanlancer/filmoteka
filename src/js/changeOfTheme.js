@@ -43,10 +43,10 @@ function lightTheme() {
 
   // зміни для модалки фільму
   refs.modalMovie.style.backgroundColor = '#fff';
-  refs.movieDataTitle.style.color = '#000';
-  refs.movieDataValue.style.color = '#000';
-  refs.movieDataAbout.style.color = '#000';
-  refs.movieDataAboutTitle.style.color = '#000';
+  // refs.movieDataTitle.style.color = '#000';
+  // refs.movieDataValue.style.color = '#000';
+  // refs.movieDataAbout.style.color = '#000';
+  // refs.movieDataAboutTitle.style.color = '#000';
 }
 
 window.onload = function autoTheme() {
