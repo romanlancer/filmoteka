@@ -3,10 +3,9 @@ import { genresInfo, genresInfoUk } from './genres_info';
 import ComingSoonImg from '../images/movie-poster-coming-soon.jpg';
 import { refs } from './refs';
 import { renderPopular } from './render_popular';
+import { getFromStorage } from './storage';
 const containerEl = document.querySelector('.cards__list');
 // const filmRateRef = document.querySelector('.cards__item-vote-average');
-
-
 
 export const filmCard = filmData => {
   const {
@@ -23,14 +22,14 @@ export const filmCard = filmData => {
   const releaseYear = releaseDate.slice(0, 4);
   const posterComingSoon = ComingSoonImg;
   const posterExisting = `https://image.tmdb.org/t/p/w500${posterPath}`;
-  
+
   const filmPoster = () => {
     if (posterPath === null) {
       return posterComingSoon;
     }
     return posterExisting;
   };
- 
+
   const filmRaiting = voteAverage => {
     return voteAverage === 0 ? '0' : voteAverage;
   };
@@ -60,7 +59,7 @@ export const filmCard = filmData => {
     },
     'add to queue',
   );
-  
+
   const btnItemAddToWatchedItemElem = createElement(
     'li',
     {
@@ -77,7 +76,7 @@ export const filmCard = filmData => {
     btnAddToQueueItemElem,
   );
 
-const BtnListElem = createElement(
+  const BtnListElem = createElement(
     'ul',
     {
       class: 'movie-data__buttons-list cards__item-btn-list',
@@ -89,7 +88,7 @@ const BtnListElem = createElement(
     'p',
     {
       class: 'cards__item-poster-overlay-text',
-      style: `color: ${defineOverlayTextColorByTheme()}`
+      style: `color: ${defineOverlayTextColorByTheme()}`,
     },
     overview,
   );
@@ -103,7 +102,6 @@ const BtnListElem = createElement(
     [filmPosterOverlayTextElem, BtnListElem],
   );
 
-  
   const filmPosterLinkElem = createElement(
     'a',
     {
@@ -210,25 +208,25 @@ export function addFilmListToContainer(filmList) {
 //функция для получения названий жанров фильма с учетом выбранного языка страницы
 function getGenresNames(genreIds) {
   let genresNamesArray = [];
-  let languageSelected = refs.language.value;
+  // let languageSelected = refs.language.value;
+  let languageSelected = getFromStorage('language');
   for (const genreId of genreIds) {
     if (languageSelected === 'uk') {
       genresInfoUk.map(genreInfoUk => {
         if (genreInfoUk.id === genreId) {
           genresNamesArray.push(genreInfoUk.name);
         }
-      })
+      });
       if (genresNamesArray.length > 3) {
         const genresNamesArrayShort = genresNamesArray.slice(0, 2).join(', ') + ', Інші';
         return genresNamesArrayShort;
-  }
-
+      }
     } else {
-       genresInfo.map(genreInfo => {
+      genresInfo.map(genreInfo => {
         if (genreInfo.id === genreId) {
           genresNamesArray.push(genreInfo.name);
         }
-      })  
+      });
     }
   }
   if (genresNamesArray.length > 3) {
@@ -278,7 +276,7 @@ function defineOverlayBGColorByTheme() {
     }
   }
   return overlayColor;
-};
+}
 
 function defineOverlayTextColorByTheme() {
   let textColor;
@@ -300,5 +298,4 @@ function defineOverlayTextColorByTheme() {
     }
   }
   return textColor;
-
 }

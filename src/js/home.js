@@ -1,23 +1,28 @@
 import { onLibrary } from './library';
 import { renderPopular } from './render_popular';
+import { getFromStorage } from './storage';
+import { onButtonUa, onButtonEng } from './language';
+import { refs } from './refs';
 
-const refs = {
-  header: document.querySelector('#header'),
-  logoText: document.querySelector('.header__logo--text'),
-  logoIcon: document.querySelector('.header__icon'),
-  iconContainer: document.querySelector('.header__icon--container'),
-};
+//after refresh and close browser start function
 
-refs.logoText.addEventListener('mouseover', logoMouseOver);
-refs.logoText.addEventListener('mouseout', logoMouseOverOff);
+onHome();
+renderPopular(1);
+
+//view localStorage by language and render page
 
 export function onHome() {
   renderPageHome();
   refs.header.addEventListener('click', onClickBtn);
+
+  if (getFromStorage('language') === 'uk') {
+    onButtonUa();
+  } else {
+    onButtonEng();
+  }
 }
 
-onHome();
-renderPopular(1);
+/// function for header button
 
 function onClickBtn() {
   const refs = {
@@ -33,6 +38,8 @@ function onClickBtn() {
     renderPopular(1);
   }
 }
+
+//render page home and remove class page library
 
 function renderPageHome() {
   const refs = {
@@ -51,6 +58,8 @@ function renderPageHome() {
   refs.btnLibraryHero.style.display = 'none';
   refs.header.style.backgroundColor = '#000001';
 }
+
+//hover logo
 
 function logoMouseOver() {
   document.querySelector('.header__icon--top').style.cssText = `
@@ -71,3 +80,6 @@ function logoMouseOverOff() {
     opacity: 1;
     transform: translateY(0);`;
 }
+
+refs.logoText.addEventListener('mouseover', logoMouseOver);
+refs.logoText.addEventListener('mouseout', logoMouseOverOff);

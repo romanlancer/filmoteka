@@ -2,23 +2,21 @@ import { refs } from './refs';
 import { renderPopular } from './render_popular';
 import { moviesApiService } from './render_popular';
 import { renderSlideFilms } from './slider_films';
+import { addToStorage, getFromStorage } from './storage';
 
-async function onLangSelected(event) {
+function onLangSelected(event) {
   let langCheck = event.target.value;
   if (langCheck === 'uk') {
-    moviesApiService.lang = langCheck;
-    renderPopular();
-    renderSlideFilms();
+    addToStorage('language', langCheck);
     onButtonUa();
-  } else {
-    moviesApiService.lang = langCheck;
-    renderPopular();
-    renderSlideFilms();
+  }
+  if (langCheck === 'en') {
+    addToStorage('language', langCheck);
     onButtonEng();
   }
 }
 
-function onButtonUa() {
+export function onButtonUa() {
   refs.home.textContent = 'ГОЛОВНА';
   refs.library.textContent = 'МОЯ БІБЛІОТЕКА';
   refs.input.placeholder = 'Пошук фільмів';
@@ -36,9 +34,13 @@ function onButtonUa() {
   refs.iconGoogleEn.classList.add('is-hidden');
   refs.iconStoreUa.classList.remove('is-hidden');
   refs.iconStoreEn.classList.add('is-hidden');
+
+  moviesApiService.lang = getFromStorage('language');
+  renderPopular();
+  renderSlideFilms();
 }
 
-function onButtonEng() {
+export function onButtonEng() {
   refs.home.textContent = 'HOME';
   refs.library.textContent = 'MY LIBRARY';
   refs.input.placeholder = 'Search films';
@@ -54,6 +56,10 @@ function onButtonEng() {
   refs.iconGoogleEn.classList.remove('is-hidden');
   refs.iconStoreUa.classList.add('is-hidden');
   refs.iconStoreEn.classList.remove('is-hidden');
+
+  moviesApiService.lang = getFromStorage('language');
+  renderPopular();
+  renderSlideFilms();
 }
 
-refs.language.addEventListener('change', onLangSelected);
+refs.languageList.addEventListener('click', onLangSelected);
