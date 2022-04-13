@@ -9,6 +9,8 @@ const options = {
   type: 'carousel',
   startAt: 0,
   perView: 1,
+  // autoplay: 1500,
+  keyboard: true,
 };
 
 function renderUserCard(users) {
