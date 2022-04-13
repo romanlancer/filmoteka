@@ -6,7 +6,7 @@ const refs = {
 };
 
 refs.openModalLink.addEventListener('click', openModal);
-// refs.closeModalBtn.addEventListener('click', closeModal);
+refs.closeModalBtn.addEventListener('click', closeModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 
 function onClickEscape(event) {
