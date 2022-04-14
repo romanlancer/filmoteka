@@ -14,7 +14,7 @@ export const filmCard = filmData => {
     overview,
     title,
     genre_ids: genreIds,
-    release_date: releaseDate = [],
+    release_date: releaseDate = "",
     vote_average: voteAverage,
   } = filmData;
 

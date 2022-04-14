@@ -1,5 +1,6 @@
 import { onLibrary } from './library';
 import { renderPopular } from './render_popular';
+import { renderWatched } from './render_library';
 import { getFromStorage } from './storage';
 import { onButtonUa, onButtonEng } from './language';
 import { refs } from './refs';
@@ -7,7 +8,7 @@ import { refs } from './refs';
 //after refresh and close browser start function
 
 onHome();
-renderPopular(1);
+renderPopular();
 
 //view localStorage by language and render page
 
@@ -35,7 +36,7 @@ function onClickBtn() {
     onLibrary();
   } else if (event.target === refs.home || event.target === refs.logo) {
     onHome();
-    renderPopular(1);
+    renderPopular();
   }
 }
 
