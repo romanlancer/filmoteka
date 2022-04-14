@@ -1,19 +1,4 @@
 import { createElement } from './createElement';
-
-export function smoothScroll() {
-  document
-  .querySelector('.cards').scrollIntoView({block: "start", behavior: "smooth"});
-}
-
-export function loadMoreChangeHandler (handlerFunction) {
-  document.querySelector('.pagination-btn').replaceWith(document.querySelector('.pagination-btn').cloneNode(true));
-  document.querySelector('.pagination-btn').addEventListener('click', handlerFunction);
-}
-
-export function paginationChangeHandler (handlerFunction) {
-  document.querySelector('.pagination-list').replaceWith(document.querySelector('.pagination-list').cloneNode(true));
-  document.querySelector('.pagination-list').addEventListener('click', handlerFunction);
-}
 export default class Pagination {
   #currentPage = 1;
 

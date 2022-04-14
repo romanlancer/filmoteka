@@ -1,8 +1,9 @@
 import { refs } from './refs';
-import { renderPopular } from './render_popular';
+// import { renderPopular } from './render_popular';
 import { moviesApiService } from './render_popular';
 import { renderSlideFilms } from './slider_films';
 import { addToStorage, getFromStorage } from './storage';
+import { choiceMainRender } from './render_utils';
 
 function onLangSelected(event) {
   let langCheck = event.target.value;
@@ -36,8 +37,9 @@ export function onButtonUa() {
   refs.iconStoreEn.classList.add('is-hidden');
 
   moviesApiService.lang = getFromStorage('language');
-  renderPopular();
+  // renderPopular();
   renderSlideFilms();
+  choiceMainRender();
 }
 
 export function onButtonEng() {
@@ -60,8 +62,9 @@ export function onButtonEng() {
   refs.iconStoreEn.classList.remove('is-hidden');
 
   moviesApiService.lang = getFromStorage('language');
-  renderPopular();
+  // renderPopular();
   renderSlideFilms();
+  choiceMainRender();
 }
 
 refs.languageList.addEventListener('click', onLangSelected);

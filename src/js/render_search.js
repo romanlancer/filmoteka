@@ -3,8 +3,8 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { moviesApiService } from './render_popular';
 import Pagination from './pagination';
 import { renderFilmList, addFilmListToContainer } from './filmCard';
-import { paginationChangeHandler, loadMoreChangeHandler, smoothScroll } from './pagination';
-import { getFromStorage } from './storage';
+import { paginationChangeHandler, loadMoreChangeHandler, smoothScroll } from './render_utils';
+import { addToStorage, getFromStorage } from './storage';
 
 const searchFormRef = document.querySelector('#search-form');
 
@@ -13,6 +13,7 @@ const moviePaginationForSearch = new Pagination({
   total: 1,
   onChange(value) {
     handlePageChangeSearch(value);
+    addToStorage('mainState', `"Search"`);
   },
 });
 
@@ -34,6 +35,9 @@ export function renderSearch(page, query) {
   if (page) {
     moviesApiService.page = page;
     moviePaginationForSearch.currentPage = page;
+  }
+  else {
+    moviePaginationForSearch.currentPage = moviePaginationForSearch.currentPage;
   }
   if (query) {
     moviesApiService.query = query;

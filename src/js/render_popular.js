@@ -2,8 +2,8 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import MoviesApiService from './fetch_api';
 import Pagination from './pagination';
 import { renderFilmList, addFilmListToContainer } from './filmCard';
-import { paginationChangeHandler, loadMoreChangeHandler, smoothScroll } from './pagination';
-import { getFromStorage } from './storage';
+import { paginationChangeHandler, loadMoreChangeHandler, smoothScroll } from './render_utils';
+import { addToStorage, getFromStorage } from './storage';
 
 export const moviesApiService = new MoviesApiService();
 
@@ -12,11 +12,17 @@ const moviePaginationForPopular = new Pagination({
   total: 1,
   onChange(value) {
     handlePageChangePopular(value);
+    addToStorage('mainState', `"Popular"`);
   },
 });
 
-export function renderPopular(page = 1) {
-  moviePaginationForPopular.currentPage = page;
+export function renderPopular(page=1) {
+  if (page) {
+    moviePaginationForPopular.currentPage = page;
+  }
+  else {
+    moviePaginationForPopular.currentPage = moviesApiService.page;
+  }
 }
 
 async function handlePageChangePopular(page) {

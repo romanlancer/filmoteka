@@ -1,6 +1,5 @@
 import { onLibrary } from './library';
 import { renderPopular } from './render_popular';
-import { renderWatched } from './render_library';
 import { getFromStorage } from './storage';
 import { onButtonUa, onButtonEng } from './language';
 import { refs } from './refs';
