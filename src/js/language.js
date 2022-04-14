@@ -7,11 +7,11 @@ import { addToStorage, getFromStorage } from './storage';
 function onLangSelected(event) {
   let langCheck = event.target.value;
   if (langCheck === 'uk') {
-    addToStorage('language', langCheck);
+    addToStorage('language', `"${langCheck}"`);
     onButtonUa();
   }
   if (langCheck === 'en') {
-    addToStorage('language', langCheck);
+    addToStorage('language', `"${langCheck}"`);
     onButtonEng();
   }
 }

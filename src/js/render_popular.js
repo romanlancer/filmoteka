@@ -15,7 +15,7 @@ const moviePaginationForPopular = new Pagination({
   },
 });
 
-export function renderPopular(page) {
+export function renderPopular(page = 1) {
   moviePaginationForPopular.currentPage = page;
 }
 

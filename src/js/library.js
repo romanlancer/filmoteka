@@ -1,4 +1,5 @@
 import { onHome } from './home';
+import { renderWatched, renderQueue } from './render_library';
 
 const refs = {
   header: document.querySelector('#header'),
@@ -20,15 +21,17 @@ function onClickBtn() {
   };
 
   if (event.target === refs.library) {
-    onLibrary();
+    onLibrary(); 
   } else if (event.target === refs.home || event.target === refs.logo) {
     onHome();
   } else if (event.target === refs.btnWatched) {
     event.target.classList.add('btn__library--active');
     refs.btnQueue.classList.remove('btn__library--active');
+    renderWatched();
   } else if (event.target === refs.btnQueue) {
     event.target.classList.add('btn__library--active');
     refs.btnWatched.classList.remove('btn__library--active');
+    renderQueue();
   }
 }
 
