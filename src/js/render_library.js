@@ -1,9 +1,8 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import MoviesApiService from './fetch_api';
 import Pagination from './pagination';
 import { renderFilmList, addFilmListToContainer } from './filmCard';
-import { paginationChangeHandler, loadMoreChangeHandler, smoothScroll } from './pagination';
-import { getFromStorage } from './storage';
+import { paginationChangeHandler, loadMoreChangeHandler, smoothScroll } from './render_utils';
+import { addToStorage, getFromStorage } from './storage';
 import debounce from 'debounce';
 
 let currentPageWatched = 1;
@@ -14,7 +13,7 @@ if (window.matchMedia("(min-width: 320px)").matches) {
   cardsPerPage = 4;
 }
 if (window.matchMedia("(min-width: 768px)").matches) {
-  cardsPerPage = 6;
+  cardsPerPage = 8;
 }
 if (window.matchMedia("(min-width: 1024px)").matches) {
   cardsPerPage = 9;
@@ -24,54 +23,28 @@ window.addEventListener("resize", debounce(resizeWindowHandler, 100));
 
 function resizeWindowHandler(event) {
   const windowWidth = window.innerWidth;
-  if (windowWidth <= 768) {
+  if (windowWidth < 768) {
     cardsPerPage = 4;
   }
-    if (windowWidth > 768 && windowWidth <= 1024) {
-    cardsPerPage = 6;
+    if (windowWidth >= 768 && windowWidth < 1024) {
+    cardsPerPage = 8;
   }
   if (windowWidth >= 1024) {
     cardsPerPage = 9;
   }
-  
+  if (getFromStorage('libraryState') === "Watched")
+    renderWatched();
+  if (getFromStorage('libraryState') === "Queue")
+    renderQueue();
 }
-
-// const mediaMobileRef = window.matchMedia("(min-width: 320px)");
-// const mediaTabletRef = window.matchMedia("(min-width: 768px)");
-// const mediaDesktopRef = window.matchMedia("(min-width: 1024px)");
-
-// mediaMobileRef.addEventListener('change', screenMobileHandler);
-// mediaTabletRef.addEventListener('change', screenTabletHandler);
-// mediaDesktopRef.addEventListener('change', screenDesktopHandler);
-
-// function screenMobileHandler(event) {
-//   if(event.matches)console.log('mobile');
-// }
-// function screenTabletHandler(event) {
-//   if(event.matches)console.log('tablet');
-// }
-// function screenDesktopHandler(event) {
-//   if(event.matches)console.log('desktop');
-// }
-// if (window.matchMedia("(min-width: 320px)").matches) {
-//   cardsPerPage = 4;
-//   console.log('screen 320');
-// }
-// if (window.matchMedia("(min-width: 768px)").matches) {
-//   cardsPerPage = 6;
-//    console.log('screen 768');
-// }
-// if (window.matchMedia("(min-width: 1024px)").matches) {
-//   cardsPerPage = 9;
-//    console.log('screen 1024');
-// }
-
 
 const moviePaginationForWatched = new Pagination({
   initialPage: 1,
   total: 1,
   onChange(value) {
     handlePageChangeWatched(value, cardsPerPage);
+    addToStorage('mainState', `"Library"`);
+    addToStorage('libraryState', `"Watched"`);
   },
 });
 
@@ -79,11 +52,11 @@ const moviePaginationForQueue = new Pagination({
   initialPage: 1,
   total: 1,
   onChange(value) {
-    handlePageChangeQueue(value, cardsPerPage, []);
+    handlePageChangeQueue(value, cardsPerPage);
+    addToStorage('mainState', `"Library"`);
+    addToStorage('libraryState', `"Queue"`);
   },
 });
-
-
 
 export function renderWatched(page) {
   if(page) moviePaginationForWatched.currentPage = page;
@@ -95,8 +68,6 @@ export function renderQueue(page) {
   if(page) moviePaginationForQueue.currentPage = page;
   else moviePaginationForQueue.currentPage = currentPageQueue;
 } 
-
-
 
 function handlePageChangeWatched(page, elPerPage) {
   currentPageWatched = page;
@@ -110,29 +81,47 @@ function handlePageChangeWatched(page, elPerPage) {
   const totalPages = Math.ceil(watchedFilms.length / elPerPage);
   moviePaginationForWatched.total = totalPages;
   const FilmsForRender = watchedFilms.slice((page - 1) * elPerPage, page * elPerPage);
-  Loading.hourglass({
-    cssAnimationDuration: 400,
-    svgSize: '150px',
-    svgColor: '#ff6b01',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-  });
-  setTimeout(() => {
-    renderFilmList(FilmsForRender);
-    moviePaginationForWatched.renderPaginationDisabled(
-      document.querySelector('.pagination-list'),
-      totalPages,
-      page,
+
+//------------------------------------------------------------------------------//
+
+  // Loading.hourglass({
+  //   cssAnimationDuration: 400,
+  //   svgSize: '150px',
+  //   svgColor: '#ff6b01',
+  //   backgroundColor: 'rgba(0, 0, 0, 0.6)',
+  // });
+  // setTimeout(() => {
+  //   renderFilmList(FilmsForRender);
+  //   moviePaginationForWatched.renderPaginationDisabled(
+  //     document.querySelector('.pagination-list'),
+  //     totalPages,
+  //     page,
+  // );
+  // moviePaginationForWatched.renderPaginationLoadMore(
+  //     document.querySelector('.pagination'),
+  //     page,
+  //     getFromStorage('language'),
+  //   );
+  // paginationChangeHandler(onPaginationWatchedHandler);
+  //   loadMoreChangeHandler(onLoadMoreWatchedHandler);
+  //   Loading.remove();
+  // }, 100);
+
+//------------------------------------------------------------------//
+  
+  renderFilmList(FilmsForRender);
+  moviePaginationForWatched.renderPaginationDisabled(
+    document.querySelector('.pagination-list'),
+    totalPages,
+    page,
   );
   moviePaginationForWatched.renderPaginationLoadMore(
-      document.querySelector('.pagination'),
-      page,
-      getFromStorage('language'),
-    );
+    document.querySelector('.pagination'),
+    page,
+    getFromStorage('language'),
+  );
   paginationChangeHandler(onPaginationWatchedHandler);
-    loadMoreChangeHandler(onLoadMoreWatchedHandler);
-    Loading.remove();
-  }, 300);
-
+  loadMoreChangeHandler(onLoadMoreWatchedHandler);
 }
 
 function onLoadMoreWatchedHandler(event) {
@@ -146,13 +135,7 @@ function onLoadMoreWatchedHandler(event) {
   });
   const totalPages = Math.ceil(watchedFilms.length / cardsPerPage);
   const FilmsForRender = watchedFilms.slice((currentPageWatched - 1) * cardsPerPage, currentPageWatched * cardsPerPage);
-  Loading.hourglass({
-    cssAnimationDuration: 400,
-    svgSize: '150px',
-    svgColor: '#ff6b01',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-  });
-  setTimeout(() => {
+
     addFilmListToContainer(FilmsForRender);
     moviePaginationForWatched.renderPaginationDisabled(
         document.querySelector('.pagination-list'),
@@ -176,10 +159,7 @@ function onLoadMoreWatchedHandler(event) {
           }
           document.querySelector('.pagination-list').childNodes[i].classList.add('loaded');
         }
-    }
-    Loading.remove();
-  }, 300);
-  
+    }  
 }
 
 function onPaginationWatchedHandler(event) {
@@ -212,25 +192,98 @@ function onPaginationWatchedHandler(event) {
   }
 }
 
-
-function handlePageChangeQueue(page, elPerPage, arrFilms) {
-   currentPageQueue = page;
-  const totalPages = Math.ceil(arrFilms.length / elPerPage);
+function handlePageChangeQueue(page, elPerPage) {
+  currentPageQueue = page;
+  
+  const watchedFilms = getFromStorage('dataFilmsByQueue') ?? [];
+  watchedFilms.forEach((data) => {
+    data.genre_ids = data.genres.map((data) => {
+      return data.id;
+    })
+  });
+  const totalPages = Math.ceil(watchedFilms.length / elPerPage);
   moviePaginationForQueue.total = totalPages;
-
-  const FilmsForRender = arrFilms.slice((page - 1) * elPerPage, page * elPerPage);
+  const FilmsForRender = watchedFilms.slice((currentPageQueue - 1) * elPerPage, currentPageQueue * elPerPage);
 
   renderFilmList(FilmsForRender);
-  moviePaginationForWatched.renderPaginationDisabled(
+  moviePaginationForQueue.renderPaginationDisabled(
       document.querySelector('.pagination-list'),
       totalPages,
       page,
   );
-  moviePaginationForWatched.renderPaginationLoadMore(
+  moviePaginationForQueue.renderPaginationLoadMore(
       document.querySelector('.pagination'),
       page,
       getFromStorage('language'),
     );
-  // paginationChangeHandler(onPaginationWatchedHandler);
-  // loadMoreChangeHandler(onLoadMoreWatchedHandler);
+  paginationChangeHandler(onPaginationQueueHandler);
+  loadMoreChangeHandler(onLoadMoreQueueHandler);
+}
+
+function onLoadMoreQueueHandler(event) {
+  currentPageQueue += 1;
+
+  const watchedFilms = getFromStorage('dataFilmsByQueue') ?? [];
+  watchedFilms.forEach((data) => {
+    data.genre_ids = data.genres.map((data) => {
+      return data.id;
+    })
+  });
+  const totalPages = Math.ceil(watchedFilms.length / cardsPerPage);
+  const FilmsForRender = watchedFilms.slice((currentPageQueue - 1) * cardsPerPage, currentPageQueue * cardsPerPage);
+
+    addFilmListToContainer(FilmsForRender);
+    moviePaginationForQueue.renderPaginationDisabled(
+        document.querySelector('.pagination-list'),
+        totalPages,
+        currentPageQueue,
+    );
+    moviePaginationForQueue.renderPaginationLoadMore(
+        document.querySelector('.pagination'),
+        currentPageQueue,
+        getFromStorage('language'),
+    );
+    loadMoreChangeHandler(onLoadMoreQueueHandler);  
+
+    for (let i = 0; i < document.querySelector('.pagination-list').childNodes.length; i += 1) {
+        const number = parseInt(
+          document.querySelector('.pagination-list').childNodes[i].firstChild.textContent,
+        );
+        if (number >= moviePaginationForQueue.currentPage && number <= currentPageQueue) {
+          if (document.querySelector('.pagination-list').childNodes[i].classList.contains('active')) {
+            document.querySelector('.pagination-list').childNodes[i].classList.remove('active');
+          }
+          document.querySelector('.pagination-list').childNodes[i].classList.add('loaded');
+        }
+    }  
+}
+
+function onPaginationQueueHandler(event) {
+ smoothScroll();
+  if (
+    event.target.parentNode.classList.contains('pagination-prev') ||
+    event.target.classList.contains('pagination-prev')
+  ) {
+    moviePaginationForQueue.prevPage();
+  }
+  if (
+    event.target.parentNode.classList.contains('pagination-next') ||
+    event.target.classList.contains('pagination-next')
+  ) {
+    moviePaginationForQueue.nextPage();
+  }
+  if (
+    event.target.parentNode.classList.contains('pagination-number') &&
+    !event.target.parentNode.classList.contains('active')
+  ) {
+    const clickPage = parseInt(event.target.textContent);
+    moviePaginationForQueue.currentPage = clickPage;
+  }
+  if (
+    event.target.classList.contains('pagination-number') &&
+    !event.target.classList.contains('active')
+  ) {
+    const clickPage = parseInt(event.target.childNodes[0].textContent);
+    moviePaginationForQueue.currentPage = clickPage;
+  }
 }

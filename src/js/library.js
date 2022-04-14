@@ -12,7 +12,7 @@ export function onLibrary() {
     btnList: document.querySelector('.library__btn-list'),
   };
 
-  console.log(refs.btnList);
+  // console.log(refs.btnList);
   refs.btnList.addEventListener('click', onClickBtn);
 
   renderPageLibrary();
@@ -24,12 +24,12 @@ function onClickBtn(event) {
     event.target.classList.add('btn__library--active');
     refs.btnQueue.classList.remove('btn__library--active');
     renderWatched(1);
-    console.log('watched');
+    // console.log('watched');
   } else if (event.target === refs.btnQueue) {
     event.target.classList.add('btn__library--active');
     refs.btnWatched.classList.remove('btn__library--active');
-    renderQueue();
-    console.log('queue');
+    renderQueue(1);
+    // console.log('queue');
   }
 }
 

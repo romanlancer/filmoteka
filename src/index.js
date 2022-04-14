@@ -20,3 +20,4 @@ import './js/render_footer_modal';
 import './js/changeOfTheme';
 import './js/slider_glide';
 import './js/filter';
+import './js/render_utils';
