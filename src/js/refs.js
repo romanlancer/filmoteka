@@ -38,6 +38,7 @@ export const refs = {
   footerStudents: document.querySelector('.develop'),
   footerBy: document.querySelector('.develop-by'),
   footerLink: document.querySelector('.students--link'),
+  cardOverlay: document.querySelector('.cards__item-poster-overlay'),
   themeAuto: document.querySelector('.theme--auto'),
   themeDark: document.querySelector('.theme--dark'),
   themeLight: document.querySelector('.theme--light'),
