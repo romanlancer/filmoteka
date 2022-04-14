@@ -197,16 +197,16 @@ if(this.total > 1){
   }
 
   renderPaginationLoadMore(parentElement, currentPage, lang) {
+   
     const loadMoreBtnRef = createElement(
         'button',
       { type: "button",
         class: `${currentPage >= this.total ? 
           'pagination-btn is-hidden' : 
           'pagination-btn'}` },
-        
       `${lang === 'uk' ? 
-        'Показати ще 20 фільмів' :
-        'Show 20 more films'
+        `Показати ще фільми` :
+        `Show more films`
         }`,
     );
     if (this.total <= 1) {
