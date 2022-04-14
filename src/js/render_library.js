@@ -71,7 +71,7 @@ export function renderQueue(page) {
 
 function handlePageChangeWatched(page, elPerPage) {
   currentPageWatched = page;
-  const watchedFilms = getFromStorage('dataFilmsByWatched') ?? [];
+  const watchedFilms = getFromStorage('dataFilmsByWatched') === null ? [] : getFromStorage('dataFilmsByWatched');
 
   watchedFilms.forEach((data) => {
     data.genre_ids = data.genres.map((data) => {
@@ -127,7 +127,7 @@ function handlePageChangeWatched(page, elPerPage) {
 function onLoadMoreWatchedHandler(event) {
   currentPageWatched += 1;
 
-  const watchedFilms = getFromStorage('dataFilmsByWatched') ?? [];
+   const watchedFilms = getFromStorage('dataFilmsByWatched') === null ? [] : getFromStorage('dataFilmsByWatched');
   watchedFilms.forEach((data) => {
     data.genre_ids = data.genres.map((data) => {
       return data.id;
@@ -195,7 +195,7 @@ function onPaginationWatchedHandler(event) {
 function handlePageChangeQueue(page, elPerPage) {
   currentPageQueue = page;
   
-  const watchedFilms = getFromStorage('dataFilmsByQueue') ?? [];
+  const watchedFilms = getFromStorage('dataFilmsByQueue') === null ? [] : getFromStorage('dataFilmsByQueue')
   watchedFilms.forEach((data) => {
     data.genre_ids = data.genres.map((data) => {
       return data.id;
@@ -223,7 +223,7 @@ function handlePageChangeQueue(page, elPerPage) {
 function onLoadMoreQueueHandler(event) {
   currentPageQueue += 1;
 
-  const watchedFilms = getFromStorage('dataFilmsByQueue') ?? [];
+  const watchedFilms = getFromStorage('dataFilmsByQueue') === null ? [] : getFromStorage('dataFilmsByQueue');
   watchedFilms.forEach((data) => {
     data.genre_ids = data.genres.map((data) => {
       return data.id;
