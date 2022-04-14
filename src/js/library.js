@@ -3,35 +3,33 @@ import { renderWatched, renderQueue } from './render_library';
 
 const refs = {
   header: document.querySelector('#header'),
+  btnWatched: document.querySelector('#btn__watched'),
+  btnQueue: document.querySelector('#btn__queue'),
 };
 
 export function onLibrary() {
-  renderPageLibrary();
-  onCheckButtonLibrary();
-  refs.header.addEventListener('click', onClickBtn);
-}
-
-function onClickBtn() {
   const refs = {
-    logo: document.querySelector('.header__logo--text'),
-    home: document.querySelector('#button__home'),
-    library: document.querySelector('#button__library'),
-    btnWatched: document.querySelector('.btn__watched'),
-    btnQueue: document.querySelector('#btn__queue'),
+    btnList: document.querySelector('.library__btn-list'),
   };
 
-  if (event.target === refs.library) {
-    onLibrary();
-  } else if (event.target === refs.home || event.target === refs.logo) {
-    onHome();
-  } else if (event.target === refs.btnWatched) {
+  console.log(refs.btnList);
+  refs.btnList.addEventListener('click', onClickBtn);
+
+  renderPageLibrary();
+  onCheckButtonLibrary();
+}
+
+function onClickBtn(event) {
+  if (event.target === refs.btnWatched) {
     event.target.classList.add('btn__library--active');
     refs.btnQueue.classList.remove('btn__library--active');
-    renderWatched();
+    renderWatched(1);
+    console.log('watched');
   } else if (event.target === refs.btnQueue) {
     event.target.classList.add('btn__library--active');
     refs.btnWatched.classList.remove('btn__library--active');
     renderQueue();
+    console.log('queue');
   }
 }
 
