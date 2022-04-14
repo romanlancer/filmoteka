@@ -48,6 +48,7 @@ export const filmCard = filmData => {
     'button',
     {
       class: 'movie-data__button movie-data__button_inactive cards__item-btn',
+      dataset: {'btn': 'watched'},
     },
     'add to watched',
   );
@@ -56,6 +57,7 @@ export const filmCard = filmData => {
     'button',
     {
       class: 'movie-data__button movie-data__button_inactive cards__item-btn',
+      dataset: {'btn': 'queue'},
     },
     'add to queue',
   );
