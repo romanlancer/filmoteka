@@ -1,8 +1,7 @@
 import { genresInfo } from './genres_info';
 import { renderFilmList } from './filmCard';
 const tagsEl = document.getElementById('tags');
-
-const API_KEY = 'api_key=1cf50e6248dc270629e802686245c2c8';
+const API_KEY = 'api_key=e236468c654efffdf9704cd975a74a96';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY;
 
