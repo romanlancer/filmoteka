@@ -1,8 +1,19 @@
   {{#with this}}
-  <div class="movie-card__thumb">
-   <iframe class="movie-card__image"
-src="{{this.trailer}}" id='trailer-iframe'  allowfullscreen="allowfullscreen"> 
-</iframe>
+  <div id='player-trailer' class="movie-card__thumb">
+   <iframe class="movie-card__iframe is-hidden"
+src="{{this.trailer}}" id='trailer-iframe'  allowfullscreen="allowfullscreen" > </iframe>
+
+   <img class="movie-card__image" src="{{this.poster}}" alt="{{this.title}}" loading="lazy" />  
+<div class="movie-card__image_overlay">
+  
+          <button
+            type="button"
+            class="button open-trailer"
+            
+          >
+            <span class="open-trailer__icon"> </span>
+            </button>
+</div>
   </div>
       <div class="movie-data">
         <h2 class="movie-data__title">{{this.title}}</h2>
