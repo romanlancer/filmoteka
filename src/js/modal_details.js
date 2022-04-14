@@ -1,4 +1,5 @@
 import { moviesApiService } from './render_popular';
+import YouTubePlayer from 'youtube-player';
 import movieInfo from '../templates/movie.hbs';
 import movieInfoTrailer from '../templates/movie_trailer.hbs';
 import defaultPoster from '../images/movie-poster-coming-soon.jpg';
@@ -28,7 +29,7 @@ function closeModal(event) {
   }
   const playButton = document.querySelector('.open-trailer');
   if (playButton) {
-  playButton.removeEventListener('click', openTrailer);
+    playButton.removeEventListener('click', openTrailer);
   }
   backdrop.classList.add('is-hidden');
   backdrop.firstElementChild.classList.add('is-hidden');
@@ -109,7 +110,7 @@ function handleMovieData(data, trailer) {
   } = data;
   const genresList = Object.values(genres).flatMap(genre => genre.name);
   const movie = { title, original_title, vote, votes, popularity, overview };
-  movie.poster  = poster ? `https://image.tmdb.org/t/p/w500${poster}` :  defaultPoster;
+  movie.poster = poster ? `https://image.tmdb.org/t/p/w500${poster}` : defaultPoster;
   movie.genres = genresList.join(', ');
   const backdropImage = data.backdrop_path;
   if (backdropImage !== null) {
@@ -138,4 +139,10 @@ function handleTrailer(trailer) {
 function openTrailer(event) {
   const iframe = document.getElementById('trailer-iframe');
   iframe.classList.remove('is-hidden');
+
+  // const player = YouTubePlayer('player-trailer', {
+  //   videoId: 'M7lc1UVf-VE',
+  // });
+
+  // player.playVideo();
 }
