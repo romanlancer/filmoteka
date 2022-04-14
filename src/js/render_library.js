@@ -5,6 +5,7 @@ import { renderFilmList, addFilmListToContainer } from './filmCard';
 import { paginationChangeHandler, loadMoreChangeHandler, smoothScroll } from './pagination';
 import { getFromStorage } from './storage';
 
+let watchedFilms = [];
 let currentPageWatched = 1;
 let currentPageQueue = 1;
 const cardsPerPage = 3;
@@ -25,7 +26,9 @@ const moviePaginationForQueue = new Pagination({
   },
 });
 
-const watchedFilms = getFromStorage('dataFilmsByWatched');
+watchedFilms = getFromStorage('dataFilmsByWatched');
+
+if (!watchedFilms) watchedFilms = [];
 
 watchedFilms.forEach((data) => {
   data.genre_ids = data.genres.map((data) => {
