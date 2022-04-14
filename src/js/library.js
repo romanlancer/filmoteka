@@ -7,7 +7,7 @@ const refs = {
 
 export function onLibrary() {
   renderPageLibrary();
-
+  onCheckButtonLibrary();
   refs.header.addEventListener('click', onClickBtn);
 }
 
@@ -21,7 +21,7 @@ function onClickBtn() {
   };
 
   if (event.target === refs.library) {
-    onLibrary(); 
+    onLibrary();
   } else if (event.target === refs.home || event.target === refs.logo) {
     onHome();
   } else if (event.target === refs.btnWatched) {
@@ -51,4 +51,17 @@ function renderPageLibrary() {
   refs.search.style.display = 'none';
   refs.btnLibraryHero.style.display = 'flex';
   refs.header.style.backgroundColor = '#0E0004';
+}
+
+export function onCheckButtonLibrary() {
+  const refs = {
+    btnWatched: document.querySelector('.btn__watched'),
+    btnQueue: document.querySelector('#btn__queue'),
+  };
+
+  if (refs.btnWatched.classList.contains('btn__library--active')) {
+    renderWatched();
+  } else {
+    renderQueue();
+  }
 }

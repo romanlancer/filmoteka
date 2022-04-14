@@ -14,7 +14,7 @@ renderPopular();
 
 export function onHome() {
   renderPageHome();
-  refs.header.addEventListener('click', onClickBtn);
+  refs.header.addEventListener('click', onClickBtnHome);
 
   if (getFromStorage('language') === 'uk') {
     onButtonUa();
@@ -25,7 +25,7 @@ export function onHome() {
 
 /// function for header button
 
-function onClickBtn() {
+function onClickBtnHome() {
   const refs = {
     logo: document.querySelector('.header__logo--text'),
     home: document.querySelector('#button__home'),
@@ -62,25 +62,25 @@ function renderPageHome() {
 
 //hover logo
 
-function logoMouseOver() {
-  document.querySelector('.header__icon--top').style.cssText = `
-  opacity: 1;
-  transform: translateY(25px);`;
+// function logoMouseOver() {
+//   document.querySelector('.header__icon--top').style.cssText = `
+//   opacity: 1;
+//   transform: translateY(25px);`;
 
-  document.querySelector('.header__icon--bottom').style.cssText = `
-    opacity: 0;
-    transform: translateY(25px);`;
-}
+//   document.querySelector('.header__icon--bottom').style.cssText = `
+//     opacity: 0;
+//     transform: translateY(25px);`;
+// }
 
-function logoMouseOverOff() {
-  document.querySelector('.header__icon--top').style.cssText = `
-  opacity: 0;
-  transform: translateY(0);`;
+// function logoMouseOverOff() {
+//   document.querySelector('.header__icon--top').style.cssText = `
+//   opacity: 0;
+//   transform: translateY(0);`;
 
-  document.querySelector('.header__icon--bottom').style.cssText = `
-    opacity: 1;
-    transform: translateY(0);`;
-}
+//   document.querySelector('.header__icon--bottom').style.cssText = `
+//     opacity: 1;
+//     transform: translateY(0);`;
+// }
 
-refs.logoText.addEventListener('mouseover', logoMouseOver);
-refs.logoText.addEventListener('mouseout', logoMouseOverOff);
+// refs.logoText.addEventListener('mouseover', logoMouseOver);
+// refs.logoText.addEventListener('mouseout', logoMouseOverOff);
