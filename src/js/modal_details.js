@@ -1,37 +1,38 @@
 import { moviesApiService } from './render_popular';
-import debounce from 'debounce';
 import movieInfo from '../templates/movie.hbs';
 import movieInfoTrailer from '../templates/movie_trailer.hbs';
 import defaultPoster from '../images/movie-poster-coming-soon.jpg';
-import axios from 'axios';
-import { clickToWatched, clickToQueue, movieIsInWatched, movieIsInQueue, checkStorage } from './library_watched_queue'
+import {
+  clickToWatched,
+  clickToQueue,
+  movieIsInWatched,
+  movieIsInQueue,
+  checkStorage,
+} from './library_watched_queue';
 
 export let currentId = null;
 export let currentDataMovie = null;
 const cardsList = document.querySelector('.cards__list');
 const backdrop = document.querySelector('.backdrop-movie');
 const closeModalButton = document.querySelector('.button-close');
+const modal = document.querySelector('.modal-movie');
+const movieCard = document.querySelector('.movie-card');
 
 cardsList.addEventListener('click', event => {
   renderModal(event);
 });
-
-// cardsList.addEventListener(
-//   'click',
-//   debounce(event => {
-//     renderModal(event);
-//     console.log('sdsss');
-//   }, 1050),
-// );
 
 function closeModal(event) {
   const iframe = document.getElementById('trailer-iframe');
   if (iframe) {
     iframe.src = '';
   }
+  const playButton = document.querySelector('.open-trailer');
+
+  playButton.removeEventListener('click', openTrailer);
 
   backdrop.classList.add('is-hidden');
-  backdrop.firstElementChild.classList.add('is-hidden')
+  backdrop.firstElementChild.classList.add('is-hidden');
   closeModalButton.removeEventListener('click', closeModal);
   backdrop.removeEventListener('click', closeModal);
   document.removeEventListener('keydown', event => closeModalEscape(event));
@@ -58,17 +59,15 @@ function openModal(event) {
   backdrop.addEventListener('click', event => closeModalBackdrop(event));
   document.addEventListener('keydown', event => closeModalEscape(event));
   backdrop.classList.remove('is-hidden');
+
   setTimeout(() => {
-    backdrop.firstElementChild.classList.remove('is-hidden')
-  }, 800);
+    backdrop.firstElementChild.classList.remove('is-hidden');
+  }, 300);
   document.body.classList.add('modal-open');
 }
 
-// const debouncedopenModal = debounce(openModal, 0);
-
 export const renderModal = async event => {
   const cardsId = event.target.closest('li');
-  // console.dir(cardsId.id); Очередность отрисовки!
   const data = await moviesApiService.getFilmDetails(cardsId.id);
   const trailer = await moviesApiService.getFilmVideo(cardsId.id);
   if (data) {
@@ -79,21 +78,21 @@ export const renderModal = async event => {
     openModal(event);
     const refWatchedBtn = document.querySelector('.movie-data__button.movie-data__button_watched');
     const refQueueBtn = document.querySelector('.movie-data__button.movie-data__button_queue');
-    
+
     refWatchedBtn.addEventListener('click', clickToWatched);
     refQueueBtn.addEventListener('click', clickToQueue);
-    checkStorage();    
+    checkStorage();
     movieIsInWatched(refWatchedBtn);
-    movieIsInQueue(refQueueBtn);  
-    // debouncedopenModal(event);
+    movieIsInQueue(refQueueBtn);
   }
 };
 
 const renderMovieCard = (data, trailer) => {
-  const movieCard = document.querySelector('.movie-card');
   const movie = handleMovieData(data, trailer);
   if (movie.trailer) {
     movieCard.innerHTML = movieInfoTrailer(movie);
+    const playButton = document.querySelector('.open-trailer');
+    playButton.addEventListener('click', openTrailer);
   } else {
     movieCard.innerHTML = movieInfo(movie);
   }
@@ -118,7 +117,6 @@ function handleMovieData(data, trailer) {
     movie.poster = defaultPoster;
   }
   movie.genres = genresList.join(', ');
-  //проверка нулб вынести в функцию
   const backdropImage = data.backdrop_path;
   if (backdropImage !== null) {
     const background = `https://image.tmdb.org/t/p/original/${data.backdrop_path}`;
@@ -127,12 +125,9 @@ function handleMovieData(data, trailer) {
     backdrop.style.backgroundSize = 'cover';
     backdrop.style.backgroundPosition = '50% 50%';
   }
-  //переименовать и вынести
   const video = handleTrailer(trailer);
   if (video) {
     movie.trailer = `https://www.youtube.com/embed/${video}`;
-    const response = axios.get(movie.trailer);
-    console.log('response ', response);
   }
 
   return movie;
@@ -144,4 +139,9 @@ function handleTrailer(trailer) {
   } else {
     return trailer.results[0].key;
   }
+}
+
+function openTrailer(event) {
+  const iframe = document.getElementById('trailer-iframe');
+  iframe.classList.remove('is-hidden');
 }
