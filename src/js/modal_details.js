@@ -78,8 +78,7 @@ export const renderModal = async event => {
     renderMovieCard(data, trailer);
     openModal(event);
     const refWatchedBtn = document.querySelector('.movie-data__button.movie-data__button_watched');
-    const refQueueBtn = document.querySelector('.movie-data__button.movie-data__button_queue');
-    
+    const refQueueBtn = document.querySelector('.movie-data__button.movie-data__button_queue');   
     refWatchedBtn.addEventListener('click', clickToWatched);
     refQueueBtn.addEventListener('click', clickToQueue);
     checkStorage();    
