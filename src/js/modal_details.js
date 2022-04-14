@@ -15,7 +15,6 @@ export let currentDataMovie = null;
 const cardsList = document.querySelector('.cards__list');
 const backdrop = document.querySelector('.backdrop-movie');
 const closeModalButton = document.querySelector('.button-close');
-const modal = document.querySelector('.modal-movie');
 const movieCard = document.querySelector('.movie-card');
 
 cardsList.addEventListener('click', event => {
@@ -28,9 +27,9 @@ function closeModal(event) {
     iframe.src = '';
   }
   const playButton = document.querySelector('.open-trailer');
-
+  if (playButton) {
   playButton.removeEventListener('click', openTrailer);
-
+  }
   backdrop.classList.add('is-hidden');
   backdrop.firstElementChild.classList.add('is-hidden');
   closeModalButton.removeEventListener('click', closeModal);
@@ -73,7 +72,6 @@ export const renderModal = async event => {
   if (data) {
     currentId = data.id;
     currentDataMovie = data;
-    console.log(data);
     renderMovieCard(data, trailer);
     openModal(event);
     const refWatchedBtn = document.querySelector('.movie-data__button.movie-data__button_watched');
@@ -111,11 +109,7 @@ function handleMovieData(data, trailer) {
   } = data;
   const genresList = Object.values(genres).flatMap(genre => genre.name);
   const movie = { title, original_title, vote, votes, popularity, overview };
-  if (poster) {
-    movie.poster = `https://image.tmdb.org/t/p/w500${poster}`;
-  } else {
-    movie.poster = defaultPoster;
-  }
+  movie.poster  = poster ? `https://image.tmdb.org/t/p/w500${poster}` :  defaultPoster;
   movie.genres = genresList.join(', ');
   const backdropImage = data.backdrop_path;
   if (backdropImage !== null) {

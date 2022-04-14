@@ -30,6 +30,5 @@
     "axios": "^0.26.1",
     "debounce": "^1.2.1",
     "notiflix": "^3.2.5",
-    "youtube-player": "^5.5.2"
   }
 }
