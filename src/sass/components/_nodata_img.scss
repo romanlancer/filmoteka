@@ -1,0 +1,12 @@
+.nodata-image {
+  height: 480px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  &.light{
+    background-image: url(../images/no-list-light.svg);
+  }
+  &.dark {
+    background-image: url(../images/no-list-dark.svg);
+  }
+}

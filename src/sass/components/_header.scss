@@ -126,7 +126,7 @@
 
 .header__logo {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   padding: 5px;
   // transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   background-color: transparent;
@@ -146,13 +146,6 @@
       display: block;
     }
   }
-}
-.header__icon {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  object-fit: fill;
-  fill: currentColor;
 }
 
 .navigation {

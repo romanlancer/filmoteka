@@ -170,6 +170,7 @@ function checkTheme() {
 function checkTrailer(trailer) {
   if (trailer) {
     const playButton = movieCard.querySelector('.open-trailer');
+    console.log(playButton);
     playButton.addEventListener('click', openTrailer);
   } else {
     const overlay = movieCard.querySelector('.movie-card__image_overlay');
