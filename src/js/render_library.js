@@ -1,6 +1,7 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import Pagination from './pagination';
-import { renderFilmList, addFilmListToContainer } from './filmCard';
+import { createElement } from './createElement';
+import { renderFilmList, addFilmListToContainer, clearContainer } from './filmCard';
 import { paginationChangeHandler, loadMoreChangeHandler, smoothScroll } from './render_utils';
 import { addToStorage, getFromStorage } from './storage';
 import debounce from 'debounce';
@@ -80,36 +81,26 @@ function handlePageChangeWatched(page, elPerPage) {
       return data.id;
     })
   });
+
+  if (watchedFilms.length === 0) {
+    const img = createElement(
+      'div',
+      {
+        class:`${getFromStorage('theme') === "dark" ? 'nodata-image dark' : 'nodata-image light'}`
+      },
+      ''
+    );
+    clearContainer();
+    moviePaginationForWatched.paginationClear(document.querySelector('.pagination-list'));
+    if(document.querySelector('.cards__list').previousElementSibling)
+    document.querySelector('.cards__list').previousElementSibling.remove();
+    document.querySelector('.cards__list').before(img);
+    return
+  }
+
   const totalPages = Math.ceil(watchedFilms.length / elPerPage);
   moviePaginationForWatched.total = totalPages;
   const FilmsForRender = watchedFilms.slice((page - 1) * elPerPage, page * elPerPage);
-
-//------------------------------------------------------------------------------//
-
-  // Loading.hourglass({
-  //   cssAnimationDuration: 400,
-  //   svgSize: '150px',
-  //   svgColor: '#ff6b01',
-  //   backgroundColor: 'rgba(0, 0, 0, 0.6)',
-  // });
-  // setTimeout(() => {
-  //   renderFilmList(FilmsForRender);
-  //   moviePaginationForWatched.renderPaginationDisabled(
-  //     document.querySelector('.pagination-list'),
-  //     totalPages,
-  //     page,
-  // );
-  // moviePaginationForWatched.renderPaginationLoadMore(
-  //     document.querySelector('.pagination'),
-  //     page,
-  //     getFromStorage('language'),
-  //   );
-  // paginationChangeHandler(onPaginationWatchedHandler);
-  //   loadMoreChangeHandler(onLoadMoreWatchedHandler);
-  //   Loading.remove();
-  // }, 100);
-
-//------------------------------------------------------------------//
   
   renderFilmList(FilmsForRender);
   moviePaginationForWatched.renderPaginationDisabled(
@@ -203,6 +194,23 @@ function handlePageChangeQueue(page, elPerPage) {
       return data.id;
     })
   });
+
+  if (watchedFilms.length === 0) {
+    const img = createElement(
+      'div',
+      {
+        class:`${getFromStorage('theme') === "dark" ? 'nodata-image dark' : 'nodata-image light'}`
+      },
+      ''
+    );
+    clearContainer();
+    moviePaginationForWatched.paginationClear(document.querySelector('.pagination-list'));
+    if(document.querySelector('.cards__list').previousElementSibling)
+    document.querySelector('.cards__list').previousElementSibling.remove();
+    document.querySelector('.cards__list').before(img);
+    return
+  }
+
   const totalPages = Math.ceil(watchedFilms.length / elPerPage);
   moviePaginationForQueue.total = totalPages;
   const FilmsForRender = watchedFilms.slice((currentPageQueue - 1) * elPerPage, currentPageQueue * elPerPage);
