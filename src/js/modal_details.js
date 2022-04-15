@@ -5,11 +5,11 @@ import movieInfoTrailer from '../templates/movie_trailer.hbs';
 import movieInfoTrailerUk from '../templates/movie_trailer_uk.hbs';
 
 import {
-  clickToWatched,
-  clickToQueue,
-  movieIsInWatched,
-  movieIsInQueue,
-  checkStorage,
+  clickToWatchedInModal,
+  clickToQueueInModal,
+  movieIsInWatchedInModal,
+  movieIsInQueueInModal,
+  checkStorageLibrary,
 } from './library_watched_queue';
 
 export let currentId = null;
@@ -21,6 +21,7 @@ const movieCard = document.querySelector('.movie-card');
 
 cardsList.addEventListener('click', event => {
   renderModal(event);
+  console.log('CLICK')
 });
 
 function closeModal(event) {
@@ -77,8 +78,8 @@ export const renderModal = async event => {
   const data = await moviesApiService.getFilmDetails(cardsId.id);
   const trailer = await moviesApiService.getFilmVideo(cardsId.id);
   if (data) {
+    console.log(data)
     currentId = data.id;
-    currentDataMovie = data;
     renderMovieCard(data, trailer);
     checkTheme();
     openModal(event);
@@ -86,11 +87,11 @@ export const renderModal = async event => {
 
     const refQueueBtn = document.querySelector('.movie-data__button.movie-data__button_queue');
 
-    refWatchedBtn.addEventListener('click', clickToWatched);
-    refQueueBtn.addEventListener('click', clickToQueue);
-    checkStorage();
-    movieIsInWatched(refWatchedBtn);
-    movieIsInQueue(refQueueBtn);
+    refWatchedBtn.addEventListener('click', clickToWatchedInModal);
+    refQueueBtn.addEventListener('click', clickToQueueInModal);
+    checkStorageLibrary();
+    movieIsInWatchedInModal(refWatchedBtn);
+    movieIsInQueueInModal(refQueueBtn);
   }
 };
 
