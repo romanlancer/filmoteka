@@ -193,6 +193,8 @@ export const filmCard = filmData => {
 // функция отрисовки карточек фильмов
 export function renderFilmList(filmList) {
   containerEl.innerHTML = '';
+  if(containerEl.previousElementSibling)
+    containerEl.previousElementSibling.remove();
 
   const filmsNodeList = filmList.map(film => filmCard(film));
 

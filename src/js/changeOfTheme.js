@@ -12,13 +12,13 @@ function onThemeSelected(event) {
   let themeCheck = event.target.value;
 
   if (themeCheck === 'dark') {
-    addToStorage('theme', `"${themeCheck}"`);
+    addToStorage('theme', `"dark"`);
     darkTheme();
   } else if (themeCheck === 'light') {
-    addToStorage('theme', `"${themeCheck}"`);
+    addToStorage('theme', `"light"`);
     lightTheme();
   } else {
-    addToStorage('theme', `"${themeCheck}"`);
+    addToStorage('theme', `"auto"`);
     autoTheme();
   }
 }
