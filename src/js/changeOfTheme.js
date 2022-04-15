@@ -1,8 +1,10 @@
 import { refs } from './refs';
 import { addToStorage, getFromStorage } from './storage';
 
-window.onload = autoTheme();
-checkStorageOfTheme();
+// window.onload = autoTheme();
+window.onload = checkStorageOfTheme();
+
+// checkStorageOfTheme();
 
 refs.changeOfTheme.addEventListener('change', onThemeSelected);
 
@@ -69,12 +71,15 @@ function autoTheme() {
 }
 
 function checkStorageOfTheme() {
-  if (localStorage.getItem('theme') === 'dark') {
+  if (getFromStorage('theme') === 'dark') {
     darkTheme();
-  } else if (localStorage.getItem('theme') === 'light') {
+    refs.changeOfTheme.value = 'dark';
+  } else if (getFromStorage('theme') === 'light') {
     lightTheme();
+    refs.changeOfTheme.value = 'light';
   } else {
     autoTheme();
+    refs.changeOfTheme.value = 'auto';
   }
 }
 

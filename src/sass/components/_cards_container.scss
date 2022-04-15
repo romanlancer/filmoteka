@@ -64,16 +64,38 @@
   // scale: 1;
 }
 
+// .cards__item-poster-overlay_dark-theme {
+//   background-color: rgba(0, 0, 0, 0.6);
+// }
+
+// .cards__item-poster-overlay_light-theme {
+//   background-color: rgba(225, 225, 225, 0.7);
+// }
+
 .cards__item-poster-overlay-text {
   margin-bottom: 10px;
   @include fonts(1.33, 500, 15px, null, null, null);
 
 }
 
+// .cards__item-poster-overlay-text_dark-them {
+//   color: rgb(225, 225, 225);
+// }
+
+// .cards__item-poster-overlay-text_light-them {
+//   color:rgb(0, 0, 0);
+
+// }
+
 .cards__item-btn {
   width: 100px;
   height: 60px;
   padding: 10px 10px 10px 10px;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+    color: var(--accent-color);
+  }
 }
 
 .cards__item-poster-wrapper {

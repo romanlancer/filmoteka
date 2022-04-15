@@ -140,6 +140,7 @@ export const filmCard = filmData => {
     'h2',
     {
       class: 'cards__item-title',
+      style: `color: ${defineOverlayTextColorByTheme()}`
     },
     filmTitleLinkElem,
   );
@@ -212,8 +213,8 @@ export function addFilmListToContainer(filmList) {
 //функция для получения названий жанров фильма с учетом выбранного языка страницы
 function getGenresNames(genreIds) {
   let genresNamesArray = [];
-  // let languageSelected = refs.language.value;
   let languageSelected = getFromStorage('language');
+  
   for (const genreId of genreIds) {
     if (languageSelected === 'uk') {
       genresInfoUk.map(genreInfoUk => {
@@ -254,18 +255,19 @@ function getGenresNames(genreIds) {
 //   return color;
 // }
 
-// refs.changeOfTheme.addEventListener('change', onThemeChange);
+// При смене темы - рендер карточек
+refs.changeOfTheme.addEventListener('change', onThemeChange);
+async function onThemeChange() {
+  renderPopular();
+}
 
-// async function onThemeChange() {
-//   renderPopular();
-// }
 
 function defineOverlayBGColorByTheme() {
+  let themeCheck = getFromStorage('theme');
   let overlayColor;
   const lightOverlayColor = 'rgba(225, 225, 225, 0.7)';
   const darkOverlayColor = 'rgba(0, 0, 0, 0.6)';
-  const themeCheck = refs.changeOfTheme.value;
-
+  
   if (themeCheck === 'dark') {
     overlayColor = darkOverlayColor;
   } else if (themeCheck === 'light') {
@@ -273,7 +275,7 @@ function defineOverlayBGColorByTheme() {
   } else {
     const date = new Date();
     const dateNow = date.getHours();
-    if (dateNow > 6 && dateNow < 21) {
+    if (dateNow >= 6 && dateNow <= 22) {
       overlayColor = lightOverlayColor;
     } else {
       overlayColor = darkOverlayColor;
@@ -283,11 +285,11 @@ function defineOverlayBGColorByTheme() {
 }
 
 function defineOverlayTextColorByTheme() {
+  let themeCheck = getFromStorage('theme');
   let textColor;
-  const lightTextColor = 'rgb(225, 225, 225)';
+  const lightTextColor = 'rgba(225, 225, 225, 0.8)';
   const darkTextColor = 'rgb(0, 0, 0)';
-  const themeCheck = refs.changeOfTheme.value;
-
+  
   if (themeCheck === 'dark') {
     textColor = lightTextColor;
   } else if (themeCheck === 'light') {
@@ -295,7 +297,7 @@ function defineOverlayTextColorByTheme() {
   } else {
     const date = new Date();
     const dateNow = date.getHours();
-    if (dateNow > 6 && dateNow < 21) {
+    if (dateNow >= 6 && dateNow <= 22) {
       textColor = darkTextColor;
     } else {
       textColor = lightTextColor;
@@ -303,3 +305,5 @@ function defineOverlayTextColorByTheme() {
   }
   return textColor;
 }
+
+
