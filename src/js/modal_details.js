@@ -159,6 +159,7 @@ function checkTheme() {
   const theme = localStorage.getItem('theme');
   if (theme === '"dark"') {
     movieCard.classList.add('movie-card_dark');
+    console.log(1);
     const raitingList = movieCard.querySelector('.movie-data__list_right');
     raitingList.classList.add('movie-data__list_dark');
     const closeModalIcon = closeModalButton.querySelector('.button-close__icon-close');
