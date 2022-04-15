@@ -42,4 +42,8 @@ export const refs = {
   themeAuto: document.querySelector('.theme--auto'),
   themeDark: document.querySelector('.theme--dark'),
   themeLight: document.querySelector('.theme--light'),
+  filterListGenres: document.querySelector('.js-filter-genres'),
+  filterListYears: document.querySelector('.js-filter-years'),
+  filterListLanguages: document.querySelector('.js-filter-language'),
+  filterListVoteAverage: document.querySelector('.js-filter-vote_average'),
 };

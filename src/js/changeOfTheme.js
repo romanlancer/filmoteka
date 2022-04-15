@@ -7,21 +7,17 @@ checkStorageOfTheme();
 refs.changeOfTheme.addEventListener('change', onThemeSelected);
 
 function onThemeSelected(event) {
-  
   let themeCheck = event.target.value;
 
   if (themeCheck === 'dark') {
     addToStorage('theme', 'dark');
     darkTheme();
-    
   } else if (themeCheck === 'light') {
     addToStorage('theme', 'light');
     lightTheme();
-    
   } else {
     addToStorage('theme', 'auto');
     autoTheme();
-    
   }
 }
 
@@ -74,13 +70,10 @@ function autoTheme() {
 function checkStorageOfTheme() {
   if (localStorage.getItem('theme') === 'dark') {
     darkTheme();
-    
   } else if (localStorage.getItem('theme') === 'light') {
     lightTheme();
-    
   } else {
     autoTheme();
-    
   }
 }
 

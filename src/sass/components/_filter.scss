@@ -1,0 +1,15 @@
+.filters {
+  display: flex;
+}
+
+.filters__item {
+  background-color: #000;
+  color: var(--accent-color);
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.filters__list:not(:last-child) {
+  margin-right: 20px;
+}

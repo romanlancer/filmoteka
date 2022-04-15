@@ -1,5 +1,6 @@
 import './sass/main.scss';
 import './js/fetch_api';
+import './js/home';
 import './js/render_popular';
 import './js/pagination';
 import './js/render_search';
@@ -10,7 +11,6 @@ import './js/inputCard';
 import './js/render_input';
 import './js/to_top_arrow';
 import './js/storage';
-import './js/home';
 import './js/library';
 import './js/modal_footer';
 import './js/filmCard';
