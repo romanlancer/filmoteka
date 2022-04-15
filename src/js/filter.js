@@ -5,10 +5,24 @@ import { renderFilmList, addFilmListToContainer } from './filmCard';
 import Pagination from './pagination';
 import { paginationChangeHandler, loadMoreChangeHandler, smoothScroll } from './render_utils';
 import { addToStorage, getFromStorage } from './storage';
+import { onHome } from './home';
 refs.filterListGenres.addEventListener('change', onGenresFilter);
 refs.filterListYears.addEventListener('change', onYearsFilter);
 refs.filterListLanguages.addEventListener('change', onLanguagesFilter);
 refs.filterListVoteAverage.addEventListener('change', onVotesFilter);
+refs.filterButtonOpen.addEventListener('click', onFilterOpen);
+refs.filterButtonClose.addEventListener('click', onFilterClose);
+
+function onFilterOpen(e) {
+  refs.filterContainer.classList.remove('is-hidden');
+  refs.filterButtonClose.classList.remove('is-hidden');
+  refs.filterButtonOpen.classList.add('is-hidden');
+}
+function onFilterClose(e) {
+  refs.filterContainer.classList.toggle('is-hidden');
+  refs.filterButtonClose.classList.toggle('is-hidden');
+  refs.filterButtonOpen.classList.toggle('is-hidden');
+}
 
 const moviePaginationForFilter = new Pagination({
   initialPage: 1,
@@ -32,8 +46,8 @@ async function handlePageChangeFilter(page) {
   });
   const movies = await moviesApiService.getFilteredMovies();
 
-  const { results, total_pages } = movies;
-  console.log(results);
+  const { results, total_pages, pages } = movies;
+
   setTimeout(() => {
     renderFilmList(results);
     moviePaginationForFilter.renderPaginationDisabled(
@@ -150,23 +164,17 @@ function onGenresFilter(e) {
 function onYearsFilter(e) {
   let year = e.target.value;
   moviesApiService.year = Number(year);
-  moviesApiService.getFilteredMovies().then(({ results }) => {
-    renderFilmList(results);
-  });
+  renderFilter();
 }
 
 function onLanguagesFilter(e) {
   let language = e.target.value;
   moviesApiService.originalLanguage = language;
-  moviesApiService.getFilteredMovies().then(({ results }) => {
-    renderFilmList(results);
-  });
+  renderFilter();
 }
 
 function onVotesFilter(e) {
   let vote = e.target.value;
   moviesApiService.vote = Number(vote);
-  moviesApiService.getFilteredMovies().then(({ results }) => {
-    renderFilmList(results);
-  });
+  renderFilter();
 }
