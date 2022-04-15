@@ -53,6 +53,10 @@
   }
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 .glide__slide{
   border: none;
   width: 300px;
