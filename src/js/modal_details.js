@@ -1,8 +1,9 @@
 import { moviesApiService } from './render_popular';
 import YouTubePlayer from 'youtube-player';
-import movieInfo from '../templates/movie.hbs';
-import movieInfoTrailer from '../templates/movie_trailer.hbs';
 import defaultPoster from '../images/movie-poster-coming-soon.jpg';
+import movieInfoTrailer from '../templates/movie_trailer.hbs';
+import movieInfoTrailerUk from '../templates/movie_trailer_uk.hbs';
+
 import {
   clickToWatched,
   clickToQueue,
@@ -93,13 +94,14 @@ export const renderModal = async event => {
 
 const renderMovieCard = (data, trailer) => {
   const movie = handleMovieData(data, trailer);
-  if (movie.trailer) {
-    movieCard.innerHTML = movieInfoTrailer(movie);
-    const playButton = document.querySelector('.open-trailer');
-    playButton.addEventListener('click', openTrailer);
-  } else {
-    movieCard.innerHTML = movieInfo(movie);
+  const pageLanguage = localStorage.getItem('language');
+  if (pageLanguage === '"uk"') {
+    movieCard.innerHTML = movieInfoTrailerUk(movie);
   }
+  if (pageLanguage === '"en"') {
+    movieCard.innerHTML = movieInfoTrailer(movie);
+  }
+  checkTrailer(movie.trailer);
 };
 
 function handleMovieData(data, trailer) {
@@ -120,7 +122,6 @@ function handleMovieData(data, trailer) {
   const backdropImage = data.backdrop_path;
   if (backdropImage !== null) {
     const background = `https://image.tmdb.org/t/p/original/${data.backdrop_path}`;
-    console.log(background);
     backdrop.style.backgroundImage = `url('${background}')`;
     backdrop.style.backgroundSize = 'cover';
     backdrop.style.backgroundPosition = '50% 50%';
@@ -154,7 +155,6 @@ function openTrailer(event) {
 
 function checkTheme() {
   const theme = localStorage.getItem('theme');
-  console.log(theme);
   if (theme === 'dark') {
     movieCard.classList.add('movie-card_dark');
     const raitingList = movieCard.querySelector('.movie-data__list_right');
@@ -162,6 +162,12 @@ function checkTheme() {
   }
 }
 
-// function checkLanguage(ids) {
-//   ddd;
-// }
+function checkTrailer(trailer) {
+  if (trailer) {
+    const playButton = movieCard.querySelector('.open-trailer');
+    playButton.addEventListener('click', openTrailer);
+  } else {
+    const overlay = movieCard.querySelector('.movie-card__image_overlay');
+    overlay.classList.add('is-hidden');
+  }
+}

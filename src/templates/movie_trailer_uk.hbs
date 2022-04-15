@@ -1,19 +1,30 @@
   {{#with this}}
-  <div class="movie-card__thumb">
+  <div id='player-trailer' class="movie-card__thumb">
+   <iframe class="movie-card__iframe is-hidden"
+src="{{this.trailer}}" id='trailer-iframe'  allowfullscreen="allowfullscreen" > </iframe>
+
    <img class="movie-card__image" src="{{this.poster}}" alt="{{this.title}}" loading="lazy" />  
-   
-</iframe>
+<div class="movie-card__image_overlay">
+  
+          <button
+            type="button"
+            class="button open-trailer"
+            
+          >
+            <span class="open-trailer__icon"> </span>
+            </button>
+</div>
   </div>
       <div class="movie-data">
         <h2 class="movie-data__title">{{this.title}}</h2>
         <div class="movie-data__data">
           <ul class="movie-data__list">
-            <li class="movie-data__attribute"><p>Vote / Votes</p></li>
-            <li class="movie-data__attribute"><p>Popularity</p></li>
-            <li class="movie-data__attribute"><p>Original Title</p></li>
-            <li class="movie-data__attribute"><p>Genre</p></li>
+            <li class="movie-data__attribute"><p>Оцінки</p></li>
+            <li class="movie-data__attribute"><p>Популярність</p></li>
+            <li class="movie-data__attribute"><p>Оригінальна назва</p></li>
+            <li class="movie-data__attribute"><p>Жанр</p></li>
           </ul>
-          <ul class="movie-data__list movie-data__list_right">
+          <ul class="movie-data__list movie-data__list_right  movie-data__list_right_uk">
             <li class="movie-data__value">
               <p><span class="movie-data__vote">{{this.vote}}</span> / {{this.votes}}</p>
             </li>
@@ -22,19 +33,19 @@
             <li class="movie-data__value"><p>{{this.genres}}</p></li>
           </ul>
         </div>
-        <h3 class="movie-data__about_title">About</h3>
+        <h3 class="movie-data__about_title">Описання</h3>
         <p class="movie-data__about">
           {{this.overview}}
         </p> 
          <ul class="movie-data__buttons-list">
           <li class="movie-data__button-item">
-            <button type="button" data-btn="watched" class="movie-data__button movie-data__button_watched">
-              add to watched
+            <button type="button" data-btn="watched" class="movie-data__button movie-data__button_watched movie-data__button_watched_uk">
+             Переглянуті
             </button>
           </li>
           <li class="movie-data__button-item">
             <button type="button" data-btn="queue" class="movie-data__button movie-data__button_queue">
-              add to queue
+              Подивитися
             </button>
           </li>
         </ul> 
