@@ -1,13 +1,12 @@
 import { onLibrary } from './library';
 import { renderPopular } from './render_popular';
-import { getFromStorage } from './storage';
+import { addToStorage, getFromStorage } from './storage';
 import { onButtonUa, onButtonEng } from './language';
 import { refs } from './refs';
 
 //after refresh and close browser start function
-
+addToStorage('mainState', `"Popular"`);
 onHome();
-renderPopular();
 
 //view localStorage by language and render page
 
