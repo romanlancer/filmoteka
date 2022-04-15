@@ -40,6 +40,9 @@
 }
 
 .movie-card {
+  &_dark {
+    color: var(--first-text-color);
+  }
   @media screen and(min-width: $tablet) {
     display: flex;
   }
@@ -130,11 +133,16 @@
     @extend %modal-font;
     line-height: 1.33;
     flex-basis: content;
+    color: var(--third-text-color);
+    &.movie-data__list_dark {
+      color: var(--first-text-color);
+    }
 
     & > li:not(:last-child) {
       margin-bottom: 8px;
     }
     &_right {
+      color: var(--second-text-color);
       margin-left: 39px;
       flex-basis: calc(100% - 108px);
       @media screen and(min-width: $tablet) {
@@ -146,14 +154,6 @@
         flex-basis: calc(100% - 152px);
       }
     }
-  }
-
-  &__attribute {
-    color: var(--third-text-color);
-  }
-
-  &__value {
-    color: var(--second-text-color);
   }
 
   &__vote {
@@ -169,7 +169,7 @@
   &__about {
     @extend %modal-font;
     line-height: 1.67;
-    color: var(--second-text-color);
+    // color: var(--second-text-color);
     margin-bottom: 20px;
     &_title {
       @extend .movie-data__about;
