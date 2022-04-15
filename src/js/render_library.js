@@ -32,10 +32,12 @@ function resizeWindowHandler(event) {
   if (windowWidth >= 1024) {
     cardsPerPage = 9;
   }
-  if (getFromStorage('libraryState') === "Watched")
-    renderWatched();
-  if (getFromStorage('libraryState') === "Queue")
-    renderQueue();
+  if (getFromStorage('mainState') === "Library") {
+    if (getFromStorage('libraryState') === "Watched")
+      renderWatched();
+    if (getFromStorage('libraryState') === "Queue")
+      renderQueue();
+  }
 }
 
 const moviePaginationForWatched = new Pagination({
