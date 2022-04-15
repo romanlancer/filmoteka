@@ -202,5 +202,9 @@ if(this.total > 1){
     }
     parentElement.prepend(loadMoreBtnRef);
   }
-
+  paginationClear(parentElement) {
+    parentElement.innerHTML = '';
+    if(parentElement.previousElementSibling)
+    parentElement.previousElementSibling.remove();
+  }
 }
