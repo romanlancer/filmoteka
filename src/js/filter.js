@@ -1,4 +1,5 @@
 import { refs } from './refs';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { moviesApiService } from './render_popular';
 import { renderFilmList, addFilmListToContainer } from './filmCard';
 import Pagination from './pagination';
@@ -51,7 +52,7 @@ async function handlePageChangeFilter(page) {
   }, 500);
 }
 
-export function renderFilter(page = 1) {
+export function renderFilter(page) {
   if (page) {
     moviePaginationForFilter.currentPage = page;
   } else {
