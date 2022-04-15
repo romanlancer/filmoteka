@@ -18,11 +18,9 @@ const moviePaginationForSearch = new Pagination({
 });
 
 searchFormRef.addEventListener('submit', onSearch);
-searchFormRef.addEventListener('blur', onFocusChange);
 
-function onFocusChange() {
-  e.target.reset();
-}
+
+
 
 function onSearch(e) {
   e.preventDefault();
