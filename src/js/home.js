@@ -11,12 +11,14 @@ onHome();
 //view localStorage by language and render page
 
 export function onHome() {
+  const lang = 'en';
   renderPageHome();
   refs.header.addEventListener('click', onClickBtnHome);
 
   if (getFromStorage('language') === 'uk') {
     onButtonUa();
   } else {
+    addToStorage('language', `"${lang}"`);
     onButtonEng();
   }
 }
