@@ -22,14 +22,14 @@ function onThemeSelected(event) {
 }
 
 function darkTheme() {
-  document.body.style.backgroundColor = '#595959';
-  refs.footer.style.backgroundColor = '#2C2B2B';
+  document.body.style.backgroundColor = '#2C2B2B';
+  refs.footer.style.backgroundColor = '#000000';
+  refs.sliderTitle.style.color = '#FFFFFF';
   refs.footerSupp.style.color = '#FFFFFF';
   refs.footerApp.style.color = '#FFFFFF';
   refs.footerJoin.style.color = '#FFFFFF';
   refs.footerEmail.style.color = '#FFFFFF';
   refs.footerCopy.style.color = '#FFFFFF';
-
   // зміни для модалки фільму
   refs.modalMovie.style.backgroundColor = '#2C2B2B';
   // refs.movieDataTitle.style.color = '#FFF';
@@ -40,6 +40,7 @@ function darkTheme() {
 
 function lightTheme() {
   document.body.style.backgroundColor = '#FFFFFF';
+  refs.sliderTitle.style.color = '#000000';
   refs.footer.style.backgroundColor = '#F7F7F7';
   refs.footerSupp.style.color = '#545454';
   refs.footerApp.style.color = '#545454';

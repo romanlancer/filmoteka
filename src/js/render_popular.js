@@ -16,11 +16,10 @@ const moviePaginationForPopular = new Pagination({
   },
 });
 
-export function renderPopular(page=1) {
+export function renderPopular(page) {
   if (page) {
     moviePaginationForPopular.currentPage = page;
-  }
-  else {
+  } else {
     moviePaginationForPopular.currentPage = moviesApiService.page;
   }
 }

@@ -9,7 +9,6 @@ const searchFormInputEl = document.querySelector('#searchQuery');
 const inputContainer = document.querySelector('#search-list');
 
 const DEBOUNCE_DELAY = 300;
-
 searchFormInputEl.addEventListener('input', debounce(onInputSearch, DEBOUNCE_DELAY));
 
 inputContainer.addEventListener('click', event => {
