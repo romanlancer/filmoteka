@@ -211,8 +211,8 @@ export function addFilmListToContainer(filmList) {
 //функция для получения названий жанров фильма с учетом выбранного языка страницы
 function getGenresNames(genreIds) {
   let genresNamesArray = [];
-  // let languageSelected = refs.language.value;
   let languageSelected = getFromStorage('language');
+  
   for (const genreId of genreIds) {
     if (languageSelected === 'uk') {
       genresInfoUk.map(genreInfoUk => {
@@ -304,26 +304,4 @@ function defineOverlayTextColorByTheme() {
   return textColor;
 }
 
-// function defineTitleTextColorByTheme() {
-//   let themeCheck = getFromStorage('theme');
-//   let textColor;
-//   const lightTextColor = 'rgb(225, 225, 225)';
-//   const darkTextColor = 'rgb(0, 0, 0)';
-  
-//   if (themeCheck === 'dark') {
-//     textColor = lightTextColor;
-//   } else if (themeCheck === 'light') {
-//     textColor = darkTextColor;
-//   } else {
-//     const date = new Date();
-//     const dateNow = date.getHours();
-//     if (dateNow > 6 && dateNow < 21) {
-//       textColor = darkTextColor;
-//     } else {
-//       textColor = lightTextColor;
-//     }
-//   }
-//   return textColor;
-  
-// }
 

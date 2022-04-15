@@ -73,6 +73,9 @@ function openModal(event) {
 }
 
 export const renderModal = async event => {
+  if (event.target.nodeName === "BUTTON") {
+    return;
+  }
   const cardsId = event.target.closest('li');
   const data = await moviesApiService.getFilmDetails(cardsId.id);
   const trailer = await moviesApiService.getFilmVideo(cardsId.id);
