@@ -3,7 +3,7 @@ import YouTubePlayer from 'youtube-player';
 import defaultPoster from '../images/movie-poster-coming-soon.jpg';
 import movieInfoTrailer from '../templates/movie_trailer.hbs';
 import movieInfoTrailerUk from '../templates/movie_trailer_uk.hbs';
-
+import { choiceMainRender } from './render_utils';
 import {
   clickToWatchedInModal,
   clickToQueueInModal,
@@ -20,11 +20,13 @@ const closeModalButton = document.querySelector('.button-close');
 const movieCard = document.querySelector('.movie-card');
 
 cardsList.addEventListener('click', event => {
-  renderModal(event);
-  console.log('CLICK')
+  if (event.target.nodeName !== 'BUTTON') {
+    renderModal(event);
+    } 
 });
 
 function closeModal(event) {
+  choiceMainRender();
   const iframe = document.getElementById('trailer-iframe');
   if (iframe) {
     iframe.src = '';

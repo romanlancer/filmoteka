@@ -56,10 +56,12 @@ const checkMovieInQueue = currentId => {
 }
 
 const clickToWatchedInModal = event => {
-  if(event.target.dataset.btn === 'watched'){
+  if (event.target.dataset.btn === 'watched') {
+    console.log(currentId)
     const refBtnQueue = event.target.closest('li').nextElementSibling.firstElementChild;
     event.target.classList.toggle('movie-data__button_active');
     if (event.target.classList.contains('movie-data__button_active')) {
+      // event.target.textContent = 'remove from watched';
       if (dataFilmsByWatched.includes(currentId)) {
         return;
       }     
@@ -70,12 +72,14 @@ const clickToWatchedInModal = event => {
         dataFilmsByQueue.splice(currentIndex, 1);
         addToStorage('dataFilmsByQueue', dataFilmsByQueue);
         refBtnQueue.classList.toggle('movie-data__button_active');
+        // refBtnQueue.textContent = 'add to queue';
       }
     }
     else {
       const currentIndex = dataFilmsByWatched.indexOf(currentId);
       dataFilmsByWatched.splice(currentIndex, 1);
       addToStorage('dataFilmsByWatched', dataFilmsByWatched);
+      // event.target.textContent = 'add to queue';
       
     }
   } 
@@ -86,6 +90,7 @@ const clickToQueueInModal = event => {
     const refBtnWatched = event.target.closest('li').previousElementSibling.firstElementChild;
     event.target.classList.toggle('movie-data__button_active');
     if (event.target.classList.contains('movie-data__button_active')) {
+      // event.target.textContent = 'remove from watched';
       if (dataFilmsByQueue.includes(currentId)) {
         return;
       }    
@@ -96,12 +101,14 @@ const clickToQueueInModal = event => {
         dataFilmsByWatched.splice(currentIndex, 1);
         addToStorage('dataFilmsByWatched', dataFilmsByWatched);
         refBtnWatched.classList.toggle('movie-data__button_active');
+        // refBtnWatched.textContent = 'add to queue';
       }
     }
     else {
       const currentIndex = dataFilmsByQueue.indexOf(currentId);
       dataFilmsByQueue.splice(currentIndex, 1);
-      addToStorage('dataFilmsByQueue', dataFilmsByQueue);    
+      addToStorage('dataFilmsByQueue', dataFilmsByQueue);
+      // event.target.textContent = 'add to queue';
     }
   }
 };
@@ -110,7 +117,7 @@ const clickToWatchedOnCard = async event => {
   if (event.target.dataset.btn === 'watched') {  
     const refBtnQueue = event.target.closest('li').nextElementSibling.firstElementChild;    
     event.target.classList.toggle('movie-data__button_active');
-    const cardsId = event.target.closest('ul').closest('li').id;    
+    const cardsId = +event.target.closest('ul').closest('li').id;    
     if (event.target.classList.contains('movie-data__button_active')) {
       event.target.textContent = 'remove from watched';
       if (dataFilmsByWatched.includes(currentId)) {
@@ -123,7 +130,7 @@ const clickToWatchedOnCard = async event => {
         dataFilmsByQueue.splice(currentIndex, 1);
         addToStorage('dataFilmsByQueue', dataFilmsByQueue);
         refBtnQueue.classList.toggle('movie-data__button_active');
-        refBtnQueue.textContent = 'add to queue'
+        refBtnQueue.textContent = 'add to queue';
       }       
     } else {
       const currentIndex = dataFilmsByWatched.indexOf(cardsId);
@@ -138,13 +145,14 @@ const clickToQueueOnCard = async event => {
   if (event.target.dataset.btn === 'queue') {       
     const refBtnWatched = event.target.closest('li').previousElementSibling.firstElementChild;    
     event.target.classList.toggle('movie-data__button_active');
-    const cardsId = event.target.closest('ul').closest('li').id;    
+    const cardsId = +event.target.closest('ul').closest('li').id;  
+    console.log(cardsId)
     if (event.target.classList.contains('movie-data__button_active')) {
       event.target.textContent = 'remove from queue';
-      if (dataFilmsByQueue.includes(currentId)) {
+      if (dataFilmsByQueue.includes(cardsId)) {
         return;
       } 
-      dataFilmsByQueue.push(data);
+      dataFilmsByQueue.push(+cardsId);
       addToStorage('dataFilmsByQueue', dataFilmsByQueue);        
       if (dataFilmsByWatched.includes(cardsId)) {          
         const currentIndex = dataFilmsByWatched.indexOf(cardsId);
