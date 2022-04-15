@@ -42,6 +42,8 @@ function closeModal(event) {
   movieCard.classList.remove('movie-card_dark');
   const raitingList = movieCard.querySelector('.movie-data__list_right');
   raitingList.classList.remove('movie-data__list_dark');
+  const closeModalIcon = closeModalButton.querySelector('.button-close__icon-close');
+  closeModalIcon.classList.remove('button-close__icon-close_dark');
 }
 
 function closeModalBackdrop(event) {
@@ -159,6 +161,8 @@ function checkTheme() {
     movieCard.classList.add('movie-card_dark');
     const raitingList = movieCard.querySelector('.movie-data__list_right');
     raitingList.classList.add('movie-data__list_dark');
+    const closeModalIcon = closeModalButton.querySelector('.button-close__icon-close');
+    closeModalIcon.classList.add('button-close__icon-close_dark');
   }
 }
 

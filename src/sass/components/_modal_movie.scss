@@ -285,8 +285,11 @@
   }
 
   &__icon-close {
-    stroke: #000;
+    stroke: var(--second-text-color);
     transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    &_dark {
+      stroke: var(--accent-color);
+    }
   }
 
   &:hover &__icon-close,
