@@ -41,7 +41,10 @@ async function handlePageChangeFilter(page) {
   Loading.hourglass();
   const movies = await moviesApiService.getFilteredMovies();
 
-  const { results, total_pages, pages } = movies;
+  const { results, total_pages } = movies;
+
+  if (total_pages === 0) {
+  }
 
     renderFilmList(results);
     moviePaginationForFilter.renderPaginationDisabled(
