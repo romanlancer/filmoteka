@@ -1,4 +1,5 @@
 import { createElement } from './createElement';
+import { getFromStorage } from './storage';
 export default class Pagination {
   #currentPage = 1;
 
@@ -40,8 +41,25 @@ export default class Pagination {
   createPaginationList(currentPage) {
     let beforePage = currentPage - 2;
     let afterPage = currentPage + 2;
+    let numberClass = '';
+
+    const themeCheck = getFromStorage('theme');
+    if (themeCheck === 'dark') {
+    numberClass = 'pagination-number-text dark';
+  } else if (themeCheck === 'light') {
+    numberClass = 'pagination-number-text light';
+  } else {
+    const date = new Date();
+    const dateNow = date.getHours();
+    if (dateNow >= 6 && dateNow <= 22) {
+      numberClass = 'pagination-number-text light';
+    } else {
+      numberClass = 'pagination-number-text dark';
+    }
+  } 
 
     this.paginationList = [];
+
     const prevArrow = createElement(
       'li',
       {
@@ -58,14 +76,14 @@ export default class Pagination {
       const firstElem = createElement(
         'li',
         { class: 'pagination-item pagination-number active' },
-        createElement('span', {}, '1'),
+        createElement('span', {class: `${numberClass}`}, '1'),
       );
       this.paginationList.push(firstElem);
     } else {
       const firstElem = createElement(
         'li',
         { class: 'pagination-item pagination-number' },
-        createElement('span', {}, '1'),
+        createElement('span', {class: `${numberClass}`}, '1'),
       );
       this.paginationList.push(firstElem);
     }
@@ -74,7 +92,7 @@ export default class Pagination {
       const startDots = createElement(
         'li',
         { class: 'pagination-item pagination-dots' },
-        createElement('span', {}, '...'),
+        createElement('span', {class: `${numberClass}`}, '...'),
       );
       this.paginationList[1].classList.add('first-num');
       this.paginationList.push(startDots);
@@ -104,14 +122,14 @@ export default class Pagination {
         const item = createElement(
           'li',
           { class: 'pagination-item pagination-number active' },
-          createElement('span', {}, `${pageNumber}`),
+          createElement('span', {class: `${numberClass}`}, `${pageNumber}`),
         );
         this.paginationList.push(item);
       } else {
         const item = createElement(
           'li',
           { class: 'pagination-item pagination-number' },
-          createElement('span', {}, `${pageNumber}`),
+          createElement('span', {class: `${numberClass}`}, `${pageNumber}`),
         );
         this.paginationList.push(item);
       }
@@ -121,7 +139,7 @@ export default class Pagination {
       const endDots = createElement(
         'li',
         { class: 'pagination-item pagination-dots' },
-        createElement('span', {}, '...'),
+        createElement('span', {class: `${numberClass}`}, '...'),
       );
       this.paginationList.push(endDots);
     }
@@ -135,7 +153,7 @@ if(this.total > 1){
               : 'pagination-item pagination-number active'
             }`,
         },
-        createElement('span', {}, `${this.total}`),
+        createElement('span', {class: `${numberClass}`}, `${this.total}`),
       );
       this.paginationList.push(lastElem);
     } else {
@@ -147,7 +165,7 @@ if(this.total > 1){
               : 'pagination-item pagination-number'
             }`,
         },
-        createElement('span', {}, `${this.total}`),
+        createElement('span', {class: `${numberClass}`}, `${this.total}`),
       );
       this.paginationList.push(lastElem);
     }

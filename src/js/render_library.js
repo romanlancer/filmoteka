@@ -1,8 +1,18 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { moviesApiService } from './render_popular';
 import Pagination from './pagination';
-import { createElement } from './createElement';
-import { renderFilmList, addFilmListToContainer, clearContainer } from './filmCard';
-import { paginationChangeHandler, loadMoreChangeHandler, smoothScroll } from './render_utils';
+import {
+  renderFilmList,
+  addFilmListToContainer,
+  clearContainer
+} from './filmCard';
+import {
+  paginationChangeHandler,
+  loadMoreChangeHandler,
+  smoothScroll,
+  addImgNodata,
+  removeImgNodata
+} from './render_utils';
 import { addToStorage, getFromStorage } from './storage';
 import debounce from 'debounce';
 
@@ -69,36 +79,29 @@ export function renderQueue(page) {
   else moviePaginationForQueue.currentPage = currentPageQueue;
 }
 
-function handlePageChangeWatched(page, elPerPage) {
+async function handlePageChangeWatched(page, elPerPage) {
   currentPageWatched = page;
-  const watchedFilms =
-    getFromStorage('dataFilmsByWatched') === null ? [] : getFromStorage('dataFilmsByWatched');
-  console.log(watchedFilms);
-  watchedFilms.forEach(data => {
-    data.genre_ids = data.genres.map(data => {
-      return data.id;
-    });
-  });
+  const watchedFilms = getFromStorage('dataFilmsByWatched') === null ?
+    [] :
+    getFromStorage('dataFilmsByWatched');
 
   if (watchedFilms.length === 0) {
-    const img = createElement(
-      'div',
-      {
-        class: `${getFromStorage('theme') === 'dark' ? 'nodata-image dark' : 'nodata-image light'}`,
-      },
-      '',
-    );
     clearContainer();
     moviePaginationForWatched.paginationClear(document.querySelector('.pagination-list'));
-    if (document.querySelector('.cards__list').previousElementSibling)
-      document.querySelector('.cards__list').previousElementSibling.remove();
-    document.querySelector('.cards__list').before(img);
-    return;
+    removeImgNodata();
+    addImgNodata();
+    return
   }
-
+  Loading.hourglass();
   const totalPages = Math.ceil(watchedFilms.length / elPerPage);
   moviePaginationForWatched.total = totalPages;
-  const FilmsForRender = watchedFilms.slice((page - 1) * elPerPage, page * elPerPage);
+  const FilmsIdForRender = watchedFilms.slice((page - 1) * elPerPage, page * elPerPage);
+
+  const arrayOfPromises = FilmsIdForRender.map(async id => {
+    const response = await moviesApiService.getFilmDetails(id);
+    return response;
+  });
+  const FilmsForRender = await Promise.all(arrayOfPromises);
 
   renderFilmList(FilmsForRender);
   moviePaginationForWatched.renderPaginationDisabled(
@@ -113,23 +116,29 @@ function handlePageChangeWatched(page, elPerPage) {
   );
   paginationChangeHandler(onPaginationWatchedHandler);
   loadMoreChangeHandler(onLoadMoreWatchedHandler);
+  Loading.remove();
 }
 
-function onLoadMoreWatchedHandler(event) {
+async function onLoadMoreWatchedHandler(event) {
   currentPageWatched += 1;
 
   const watchedFilms =
-    getFromStorage('dataFilmsByWatched') === null ? [] : getFromStorage('dataFilmsByWatched');
-  watchedFilms.forEach(data => {
-    data.genre_ids = data.genres.map(data => {
-      return data.id;
-    });
-  });
+    getFromStorage('dataFilmsByWatched') === null ?
+      [] :
+      getFromStorage('dataFilmsByWatched');
+  
+
   const totalPages = Math.ceil(watchedFilms.length / cardsPerPage);
-  const FilmsForRender = watchedFilms.slice(
+  const FilmsIdForRender = watchedFilms.slice(
     (currentPageWatched - 1) * cardsPerPage,
     currentPageWatched * cardsPerPage,
   );
+  Loading.hourglass();
+  const arrayOfPromises = FilmsIdForRender.map(async id => {
+    const response = await moviesApiService.getFilmDetails(id);
+    return response;
+  });
+  const FilmsForRender = await Promise.all(arrayOfPromises);
 
   addFilmListToContainer(FilmsForRender);
   moviePaginationForWatched.renderPaginationDisabled(
@@ -155,6 +164,7 @@ function onLoadMoreWatchedHandler(event) {
       document.querySelector('.pagination-list').childNodes[i].classList.add('loaded');
     }
   }
+  Loading.remove();
 }
 
 function onPaginationWatchedHandler(event) {
@@ -187,39 +197,32 @@ function onPaginationWatchedHandler(event) {
   }
 }
 
-function handlePageChangeQueue(page, elPerPage) {
+async function handlePageChangeQueue(page, elPerPage) {
   currentPageQueue = page;
 
-  const watchedFilms =
-    getFromStorage('dataFilmsByQueue') === null ? [] : getFromStorage('dataFilmsByQueue');
-  watchedFilms.forEach(data => {
-    data.genre_ids = data.genres.map(data => {
-      return data.id;
-    });
-  });
+  const watchedFilms = getFromStorage('dataFilmsByQueue') === null ?
+    [] :
+    getFromStorage('dataFilmsByQueue');
 
   if (watchedFilms.length === 0) {
-    const img = createElement(
-      'div',
-      {
-        class: `${getFromStorage('theme') === 'dark' ? 'nodata-image dark' : 'nodata-image light'}`,
-      },
-      '',
-    );
     clearContainer();
     moviePaginationForWatched.paginationClear(document.querySelector('.pagination-list'));
-    if (document.querySelector('.cards__list').previousElementSibling)
-      document.querySelector('.cards__list').previousElementSibling.remove();
-    document.querySelector('.cards__list').before(img);
-    return;
+    removeImgNodata();
+    addImgNodata();
+    return
   }
-
+  Loading.hourglass();
   const totalPages = Math.ceil(watchedFilms.length / elPerPage);
   moviePaginationForQueue.total = totalPages;
-  const FilmsForRender = watchedFilms.slice(
+  const FilmsIdForRender = watchedFilms.slice(
     (currentPageQueue - 1) * elPerPage,
     currentPageQueue * elPerPage,
   );
+  const arrayOfPromises = FilmsIdForRender.map(async id => {
+    const response = await moviesApiService.getFilmDetails(id);
+    return response;
+  });
+  const FilmsForRender = await Promise.all(arrayOfPromises);
 
   renderFilmList(FilmsForRender);
   moviePaginationForQueue.renderPaginationDisabled(
@@ -234,23 +237,26 @@ function handlePageChangeQueue(page, elPerPage) {
   );
   paginationChangeHandler(onPaginationQueueHandler);
   loadMoreChangeHandler(onLoadMoreQueueHandler);
+  Loading.remove();
 }
 
-function onLoadMoreQueueHandler(event) {
+async function onLoadMoreQueueHandler(event) {
   currentPageQueue += 1;
 
   const watchedFilms =
     getFromStorage('dataFilmsByQueue') === null ? [] : getFromStorage('dataFilmsByQueue');
-  watchedFilms.forEach(data => {
-    data.genre_ids = data.genres.map(data => {
-      return data.id;
-    });
-  });
+  
   const totalPages = Math.ceil(watchedFilms.length / cardsPerPage);
-  const FilmsForRender = watchedFilms.slice(
+  const FilmsIdForRender = watchedFilms.slice(
     (currentPageQueue - 1) * cardsPerPage,
     currentPageQueue * cardsPerPage,
   );
+  Loading.hourglass();
+  const arrayOfPromises = FilmsIdForRender.map(async id => {
+    const response = await moviesApiService.getFilmDetails(id);
+    return response;
+  });
+  const FilmsForRender = await Promise.all(arrayOfPromises);
 
   addFilmListToContainer(FilmsForRender);
   moviePaginationForQueue.renderPaginationDisabled(
@@ -276,6 +282,7 @@ function onLoadMoreQueueHandler(event) {
       document.querySelector('.pagination-list').childNodes[i].classList.add('loaded');
     }
   }
+  Loading.remove();
 }
 
 function onPaginationQueueHandler(event) {

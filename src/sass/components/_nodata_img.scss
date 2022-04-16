@@ -1,12 +1,18 @@
-.nodata-image {
-  height: 480px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  &.light{
-    background-image: url(../images/no-list-light.svg);
+  .nodata-image{
+    margin: 0 auto;
   }
-  &.dark {
-    background-image: url(../images/no-list-dark.svg);
+  .nodata-text{
+    margin-top: 10px;
+    @include fonts(1.33, 700, 44px, center, null, uppercase);
+    &.light{
+      color: var(--second-text-color);
+    }
+    &.dark{
+      color: var(--first-text-color);
+    }
   }
-}
+  .nodata-text-description{
+    margin-top: 10px;
+    @include fonts(1.33, 700, 28px, center, null, null);
+    color: var(--accent-color);
+  }

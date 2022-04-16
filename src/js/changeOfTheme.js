@@ -1,4 +1,5 @@
 import { refs } from './refs';
+import { choiceMainRender } from './render_utils';
 import { addToStorage, getFromStorage } from './storage';
 
 // window.onload = autoTheme();
@@ -27,6 +28,7 @@ function onThemeSelected(event) {
     refs.themeDarkIcon.style.color = '#ffffff';
     refs.themeLightIcon.style.color = '#ffffff';
   }
+  choiceMainRender();
 }
 
 function darkTheme() {
