@@ -1,5 +1,12 @@
 <header class="header" id="header">
   <div class="function__panel container">
+    <div class="icon-sun">
+      <i class="fa-solid fa-sun"></i>
+    </div>
+    <div class="icon-moon">
+      <i class="fa-solid fa-moon"></i>
+    </div>
+
     <select class="theme" name="select">
       <option class="theme--auto" value="auto" selected>Auto</option>
       <option class="theme--dark" value="dark">Dark</option>
@@ -26,7 +33,10 @@
         <nav class="navigation">
           <ul class="navigation__list">
             <li class="navigation__item">
-              <button class="navigation__button--home navigation__button--current" id="button__home">
+              <button
+                class="navigation__button--home navigation__button--current"
+                id="button__home"
+              >
                 HOME
               </button>
             </li>
@@ -38,8 +48,14 @@
       </div>
       <form class="search__form" id="search-form">
         <div class="search-form_wrapper">
-          <input class="search__form--input" type="text" name="search" id="searchQuery" placeholder="Search films"
-            autocomplete="off" />
+          <input
+            class="search__form--input"
+            type="text"
+            name="search"
+            id="searchQuery"
+            placeholder="Search films"
+            autocomplete="off"
+          />
         </div>
         <ul class="search-form-list" id="search-list" data-action="current"></ul>
         <button type="submit" class="search__form--button">
@@ -62,8 +78,15 @@
         <i class="fa-solid fa-filter"></i>
       </button>
 
-      <button type="button" style="font-size: 30px; color: var(--accent-color)" class="filter-icon-close is-hidden">
-        <i class="fa-solid fa-filter-circle-xmark" style="font-size: 30px; color: var(--accent-color)"></i>
+      <button
+        type="button"
+        style="font-size: 30px; color: var(--accent-color)"
+        class="filter-icon-close is-hidden"
+      >
+        <i
+          class="fa-solid fa-filter-circle-xmark"
+          style="font-size: 30px; color: var(--accent-color)"
+        ></i>
       </button>
     </div>
   </div>

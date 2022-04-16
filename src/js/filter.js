@@ -46,7 +46,10 @@ async function handlePageChangeFilter(page) {
   });
   const movies = await moviesApiService.getFilteredMovies();
 
-  const { results, total_pages, pages } = movies;
+  const { results, total_pages } = movies;
+
+  if (total_pages === 0) {
+  }
 
   setTimeout(() => {
     renderFilmList(results);

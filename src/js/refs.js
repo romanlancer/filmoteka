@@ -1,5 +1,6 @@
 export const refs = {
   header: document.querySelector('#header'),
+  cardsContainer: document.querySelector('.cards'),
   logoText: document.querySelector('.header__logo--text'),
   btnLangUa: document.querySelector('.btn-ua'),
   btnLangEn: document.querySelector('.btn-en'),
@@ -44,6 +45,8 @@ export const refs = {
   themeAuto: document.querySelector('.theme--auto'),
   themeDark: document.querySelector('.theme--dark'),
   themeLight: document.querySelector('.theme--light'),
+  themeLightIcon: document.querySelector('.icon-sun'),
+  themeDarkIcon: document.querySelector('.icon-moon'),
   filterListGenres: document.querySelector('.js-filter-genres'),
   filterListYears: document.querySelector('.js-filter-years'),
   filterListLanguages: document.querySelector('.js-filter-language'),
@@ -51,4 +54,5 @@ export const refs = {
   filterButtonOpen: document.querySelector('.filter-icon'),
   filterButtonClose: document.querySelector('.filter-icon-close'),
   filterContainer: document.querySelector('.filter-container'),
+  mainContent: document.querySelector('main'),
 };
