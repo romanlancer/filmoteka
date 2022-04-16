@@ -323,19 +323,24 @@
 }
 
 .movie-data-table {
-  // display: flex;
-  // flex-wrap: wrap;
   margin-bottom: 20px;
-  // @media screen and (min-width: $desktop) {
-  //   justify-content: flex-start;
-  // }
   @extend %modal-font;
   &__row > td:first-child {
     white-space: nowrap;
     border-right: 39px solid transparent;
+    color: var(--third-text-color);
   }
   &__row:not(:last-child) > td {
     border-bottom: 8px solid transparent;
     background-clip: padding-box;
+  }
+
+  &__row_uk > td:first-child {
+    white-space: normal;
+    border-right: 17px solid transparent;
+    color: var(--third-text-color);
+  }
+  &_dark {
+    color: var(--first-text-color);
   }
 }

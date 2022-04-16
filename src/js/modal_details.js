@@ -22,7 +22,7 @@ const movieCard = document.querySelector('.movie-card');
 cardsList.addEventListener('click', event => {
   if (event.target.nodeName !== 'BUTTON') {
     renderModal(event);
-    } 
+  }
 });
 
 function closeModal(event) {
@@ -43,8 +43,8 @@ function closeModal(event) {
   document.body.classList.remove('modal-open');
   backdrop.style.background = '';
   movieCard.classList.remove('movie-card_dark');
-  const raitingList = movieCard.querySelector('.movie-data__list_right');
-  raitingList.classList.remove('movie-data__list_dark');
+  const raitingList = movieCard.querySelector('.movie-data-table');
+  raitingList.classList.remove('movie-data-table_dark');
   const closeModalIcon = closeModalButton.querySelector('.button-close__icon-close');
   closeModalIcon.classList.remove('button-close__icon-close_dark');
 }
@@ -76,14 +76,14 @@ function openModal(event) {
 }
 
 export const renderModal = async event => {
-  if (event.target.nodeName === "BUTTON") {
+  if (event.target.nodeName === 'BUTTON') {
     return;
   }
   const cardsId = event.target.closest('li');
   const data = await moviesApiService.getFilmDetails(cardsId.id);
   const trailer = await moviesApiService.getFilmVideo(cardsId.id);
   if (data) {
-    console.log(data)
+    console.log(data);
     currentId = data.id;
     renderMovieCard(data, trailer);
     checkTheme();
@@ -166,8 +166,8 @@ function checkTheme() {
   if (theme === '"dark"') {
     movieCard.classList.add('movie-card_dark');
     console.log(1);
-    const raitingList = movieCard.querySelector('.movie-data__list_right');
-    raitingList.classList.add('movie-data__list_dark');
+    const raitingList = movieCard.querySelector('.movie-data-table');
+    raitingList.classList.add('movie-data-table_dark');
     const closeModalIcon = closeModalButton.querySelector('.button-close__icon-close');
     closeModalIcon.classList.add('button-close__icon-close_dark');
   }
