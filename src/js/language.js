@@ -8,10 +8,14 @@ import { choiceMainRender } from './render_utils';
 function onLangSelected(event) {
   let langCheck = event.target.value;
   if (langCheck === 'uk') {
+    refs.btnLangUa.classList.toggle('active-select');
+    refs.btnLangEn.classList.remove('active-select');
     addToStorage('language', `"${langCheck}"`);
     onButtonUa();
   }
   if (langCheck === 'en') {
+    refs.btnLangEn.classList.toggle('active-select');
+    refs.btnLangUa.classList.remove('active-select');
     addToStorage('language', `"${langCheck}"`);
     onButtonEng();
   }

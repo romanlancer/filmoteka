@@ -1,6 +1,8 @@
 export const refs = {
   header: document.querySelector('#header'),
   logoText: document.querySelector('.header__logo--text'),
+  btnLangUa: document.querySelector('.btn-ua'),
+  btnLangEn: document.querySelector('.btn-en'),
   logoIcon: document.querySelector('.header__icon'),
   iconContainer: document.querySelector('.header__icon--container'),
   language: document.querySelector('.language'),
