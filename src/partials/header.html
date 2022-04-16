@@ -7,7 +7,7 @@
     </select>
     <ul class="panel__list">
       <li class="panel__list--item">
-        <button class="panel__list--button btn-en" value="en"></button>
+        <button class="panel__list--button active-select btn-en" value="en"></button>
       </li>
       <li class="panel__list--item">
         <button class="panel__list--button btn-ua" value="uk"></button>
@@ -26,10 +26,7 @@
         <nav class="navigation">
           <ul class="navigation__list">
             <li class="navigation__item">
-              <button
-                class="navigation__button--home navigation__button--current"
-                id="button__home"
-              >
+              <button class="navigation__button--home navigation__button--current" id="button__home">
                 HOME
               </button>
             </li>
@@ -41,14 +38,8 @@
       </div>
       <form class="search__form" id="search-form">
         <div class="search-form_wrapper">
-          <input
-            class="search__form--input"
-            type="text"
-            name="search"
-            id="searchQuery"
-            placeholder="Search films"
-            autocomplete="off"
-          />
+          <input class="search__form--input" type="text" name="search" id="searchQuery" placeholder="Search films"
+            autocomplete="off" />
         </div>
         <ul class="search-form-list" id="search-list" data-action="current"></ul>
         <button type="submit" class="search__form--button">
@@ -71,15 +62,8 @@
         <i class="fa-solid fa-filter"></i>
       </button>
 
-      <button
-        type="button"
-        style="font-size: 30px; color: var(--accent-color)"
-        class="filter-icon-close is-hidden"
-      >
-        <i
-          class="fa-solid fa-filter-circle-xmark"
-          style="font-size: 30px; color: var(--accent-color)"
-        ></i>
+      <button type="button" style="font-size: 30px; color: var(--accent-color)" class="filter-icon-close is-hidden">
+        <i class="fa-solid fa-filter-circle-xmark" style="font-size: 30px; color: var(--accent-color)"></i>
       </button>
     </div>
   </div>
