@@ -6,12 +6,14 @@
 
 .function__panel {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
-  position: absolute;
   background-color: #fff;
-  top: 20px;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 80px;
+
+  // top: 20px;
+  // left: 50%;
+  // transform: translate(0, -50%);
   z-index: 1;
   background-color: transparent;
 }
@@ -329,15 +331,15 @@
 }
 
 .filter-icon {
-  margin-top: 80px;
   margin-left: 20px;
+
   cursor: pointer;
   background-color: transparent;
 }
 
 .filter-icon-close {
-  margin-top: 80px;
   margin-left: 20px;
+
   cursor: pointer;
   background-color: transparent;
 }
@@ -346,18 +348,44 @@
   background-color: #000;
   color: var(--accent-color);
   border-radius: 5px;
-  padding: 5px;
+  margin-right: 10px;
   cursor: pointer;
 }
 
 .icon-sun {
   font-size: 25px;
-  margin-right: 15px;
+  margin-right: 27px;
   color: var(--first-text-color);
 }
 
 .icon-moon {
   font-size: 25px;
-  margin-right: 15px;
+
+  color: var(--first-text-color);
+}
+
+.lang-theme__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.lang-theme__wrapper2 {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.lang-theme-icon__wrapper {
+  display: flex;
+}
+
+.filter__wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+}
+
+.filter__text {
+  margin-left: 10px;
   color: var(--first-text-color);
 }

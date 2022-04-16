@@ -1,6 +1,6 @@
 export const refs = {
   header: document.querySelector('#header'),
-  cardsContainer: document.querySelector('.cards'),
+  cardsContainer: document.querySelector('.cards__list'),
   logoText: document.querySelector('.header__logo--text'),
   btnLangUa: document.querySelector('.btn-ua'),
   btnLangEn: document.querySelector('.btn-en'),
@@ -47,6 +47,7 @@ export const refs = {
   themeLight: document.querySelector('.theme--light'),
   themeLightIcon: document.querySelector('.icon-sun'),
   themeDarkIcon: document.querySelector('.icon-moon'),
+  filterWrapper: document.querySelector('.filter__wrapper'),
   filterListGenres: document.querySelector('.js-filter-genres'),
   filterListYears: document.querySelector('.js-filter-years'),
   filterListLanguages: document.querySelector('.js-filter-language'),
