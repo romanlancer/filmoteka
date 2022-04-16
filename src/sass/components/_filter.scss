@@ -1,5 +1,17 @@
 .filters {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #000;
+  margin-left: 15px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  @media screen and(min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 .filters__item {
@@ -12,4 +24,13 @@
 
 .filters__list:not(:last-child) {
   margin-right: 20px;
+}
+
+.filter-container {
+  animation-name: Opacity;
+  animation-duration: 1000ms;
+}
+
+.filters__reset {
+  background-color: transparent;
 }

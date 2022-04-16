@@ -4,8 +4,21 @@ import ComingSoonImg from '../images/movie-poster-coming-soon.jpg';
 import { refs } from './refs';
 import { renderPopular } from './render_popular';
 import { getFromStorage } from './storage';
+
 import { renderWatched, renderQueue } from './render_library';
+
+import {
+  checkMovieInWatched,
+  checkMovieInQueue,
+  clickToWatchedOnCard,
+  clickToQueueOnCard,
+  checkStorageLibrary,
+} from './library_watched_queue';
+
+
 const containerEl = document.querySelector('.cards__list');
+containerEl.addEventListener('click', clickToWatchedOnCard);
+containerEl.addEventListener('click', clickToQueueOnCard);
 // const filmRateRef = document.querySelector('.cards__item-vote-average');
 
 export const filmCard = filmData => {
@@ -49,7 +62,7 @@ export const filmCard = filmData => {
   const btnAddToWatchedItemElem = createElement(
     'button',
     {
-      class: 'movie-data__button movie-data__button_inactive cards__item-btn',
+      class: `${checkMovieInWatched(filmId)}`,
       dataset: {'btn': 'watched'},
     },
     'add to watched',
@@ -58,7 +71,7 @@ export const filmCard = filmData => {
   const btnAddToQueueItemElem = createElement(
     'button',
     {
-      class: 'movie-data__button movie-data__button_inactive cards__item-btn',
+      class: `${checkMovieInQueue(filmId)}`,
       dataset: {'btn': 'queue'},
     },
     'add to queue',
@@ -195,6 +208,7 @@ export const filmCard = filmData => {
 // функция отрисовки карточек фильмов
 export function renderFilmList(filmList) {
   containerEl.innerHTML = '';
+  checkStorageLibrary();
   if(containerEl.previousElementSibling)
     containerEl.previousElementSibling.remove();
 
@@ -208,6 +222,7 @@ export function clearContainer() {
 }
 
 export function addFilmListToContainer(filmList) {
+  checkStorageLibrary();
   const filmsNodeList = filmList.map(film => filmCard(film));
   containerEl.append(...filmsNodeList);
 }
