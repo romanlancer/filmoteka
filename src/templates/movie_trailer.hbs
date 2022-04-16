@@ -1,53 +1,64 @@
-  {{#with this}}
-  <div id='player-trailer' class="movie-card__thumb">
-   <iframe class="movie-card__iframe is-hidden"
-src="{{this.trailer}}" id='trailer-iframe'  allowfullscreen="allowfullscreen" > </iframe>
+{{#with this}}
+  <div id='player-trailer' class='movie-card__thumb'>
+    <iframe
+      class='movie-card__iframe is-hidden'
+      src='{{this.trailer}}'
+      id='trailer-iframe'
+      allowfullscreen='allowfullscreen'
+    > </iframe>
 
-   <img class="movie-card__image" src="{{this.poster}}" alt="{{this.title}}" loading="lazy" />  
-<div class="movie-card__image_overlay">
-  
-          <button
-            type="button"
-            class="button open-trailer"
-            
-          >
-            <span class="open-trailer__icon"> </span>
-            </button>
-</div>
+    <img class='movie-card__image' src='{{this.poster}}' alt='{{this.title}}' loading='lazy' />
+    <div class='movie-card__image_overlay'>
+
+      <button type='button' class='button open-trailer'>
+        <span class='open-trailer__icon'> </span>
+      </button>
+    </div>
   </div>
-      <div class="movie-data">
-        <h2 class="movie-data__title">{{this.title}}</h2>
-        <div class="movie-data__data">
-          <ul class="movie-data__list">
-            <li class="movie-data__attribute"><p>Vote / Votes</p></li>
-            <li class="movie-data__attribute"><p>Popularity</p></li>
-            <li class="movie-data__attribute"><p>Original Title</p></li>
-            <li class="movie-data__attribute"><p>Genre</p></li>
-          </ul>
-          <ul class="movie-data__list movie-data__list_right">
-            <li class="movie-data__value">
-              <p><span class="movie-data__vote">{{this.vote}}</span> / {{this.votes}}</p>
-            </li>
-            <li class="movie-data__value"><p>{{this.popularity}}</p></li>
-            <li class="movie-data__value"><p>{{this.original_title}}</p></li>
-            <li class="movie-data__value"><p>{{this.genres}}</p></li>
-          </ul>
-        </div>
-        <h3 class="movie-data__about_title">About</h3>
-        <p class="movie-data__about">
-          {{this.overview}}
-        </p> 
-         <ul class="movie-data__buttons-list">
-          <li class="movie-data__button-item">
-            <button type="button" data-btn="watched" class="movie-data__button movie-data__button_watched">
-              add to watched
-            </button>
-          </li>
-          <li class="movie-data__button-item">
-            <button type="button" data-btn="queue" class="movie-data__button movie-data__button_queue">
-              add to queue
-            </button>
-          </li>
-        </ul> 
-      </div>
-      {{/with}}
+  <div class='movie-data'>
+    <h2 class='movie-data__title'>{{this.title}}</h2>
+
+    <table class='movie-data-table'>
+      <tr class='movie-data-table__row'>
+        <td><p class='movie-data__attribute'>Vote / Votes</p></td>
+        <td> <p><span class='movie-data__vote'>{{this.vote}}</span> / {{this.votes}}</p></td>
+
+      </tr>
+      <tr class='movie-data-table__row'>
+        <td><p>Popularity</p></td>
+        <td><p>{{this.popularity}}</p></td>
+
+      </tr>
+      <tr class='movie-data-table__row'>
+        <td><p>Original Title</p></td>
+        <td><p>{{this.original_title}}</p></td>
+
+      </tr>
+      <tr class='movie-data-table__row'>
+        <td><p>Genre</p></td>
+        <td><p>{{this.genres}}</p></td>
+
+      </tr>
+    </table>
+    <h3 class='movie-data__about_title'>About</h3>
+    <p class='movie-data__about'>
+      {{this.overview}}
+    </p>
+    <ul class='movie-data__buttons-list'>
+      <li class='movie-data__button-item'>
+        <button
+          type='button'
+          data-btn='watched'
+          class='movie-data__button movie-data__button_watched'
+        >
+          add to watched
+        </button>
+      </li>
+      <li class='movie-data__button-item'>
+        <button type='button' data-btn='queue' class='movie-data__button movie-data__button_queue'>
+          add to queue
+        </button>
+      </li>
+    </ul>
+  </div>
+{{/with}}
