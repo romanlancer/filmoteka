@@ -6,6 +6,7 @@ export {
 };
 import { currentDataMovie, currentId } from './modal_details';
 import { addToStorage, getFromStorage, removeFromStorage } from './storage';
+import { choiceMainRender } from './render_utils';
 
 let dataFilmsByWatched = [];
 let dataFilmsByQueue = [];
@@ -138,12 +139,18 @@ const clickToWatchedOnCard = async event => {
         addToStorage('dataFilmsByQueue', dataFilmsByQueue);
         refBtnQueue.classList.toggle('movie-data__button_active');
         refBtnQueue.textContent = checkLanguageBtnQ(cardsId);
+              if (getFromStorage('mainState') === "Library") {
+        choiceMainRender();
+      }   
       }       
     } else {
       const currentIndex = dataFilmsByWatched.indexOf(cardsId);
       dataFilmsByWatched.splice(currentIndex, 1);
       addToStorage('dataFilmsByWatched', dataFilmsByWatched);
-      event.target.textContent = checkLanguageBtnW(cardsId);      
+      event.target.textContent = checkLanguageBtnW(cardsId);
+      if (getFromStorage('mainState') === "Library") {
+        choiceMainRender();
+      }   
     }
   }
 }
@@ -166,13 +173,18 @@ const clickToQueueOnCard = async event => {
         addToStorage('dataFilmsByWatched', dataFilmsByWatched);
         refBtnWatched.classList.toggle('movie-data__button_active');
         refBtnWatched.textContent = checkLanguageBtnW(cardsId);
+              if (getFromStorage('mainState') === "Library") {
+        choiceMainRender();
+      }   
       }          
     } else {
       const currentIndex = dataFilmsByQueue.indexOf(cardsId);
       dataFilmsByQueue.splice(currentIndex, 1);
       addToStorage('dataFilmsByQueue', dataFilmsByQueue);
       event.target.textContent = checkLanguageBtnQ(cardsId);
-      
+      if (getFromStorage('mainState') === "Library") {
+        choiceMainRender();
+      }      
     }
   }
 }
