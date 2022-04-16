@@ -325,10 +325,14 @@
 .movie-data-table {
   margin-bottom: 20px;
   @extend %modal-font;
+  line-height: 1.33;
   &__row > td:first-child {
     white-space: nowrap;
     border-right: 39px solid transparent;
     color: var(--third-text-color);
+    @media screen and(min-width: $tablet) {
+      border-right: 83px solid transparent;
+    }
   }
   &__row:not(:last-child) > td {
     border-bottom: 8px solid transparent;
@@ -339,7 +343,15 @@
     white-space: normal;
     border-right: 17px solid transparent;
     color: var(--third-text-color);
+    @media screen and(min-width: $tablet) {
+      border-right: 10px solid transparent;
+    }
   }
+
+  &__row > td {
+    vertical-align: top;
+  }
+
   &_dark {
     color: var(--first-text-color);
   }
