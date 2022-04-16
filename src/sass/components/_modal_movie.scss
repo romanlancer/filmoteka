@@ -330,7 +330,8 @@
     white-space: nowrap;
     border-right: 39px solid transparent;
     color: var(--third-text-color);
-    @media screen and(min-width: $tablet) {
+
+    @media screen and(min-width: $desktop) {
       border-right: 83px solid transparent;
     }
   }
@@ -345,6 +346,10 @@
     color: var(--third-text-color);
     @media screen and(min-width: $tablet) {
       border-right: 10px solid transparent;
+    }
+    @media screen and(min-width: $tablet) {
+      white-space: nowrap;
+      border-right: 33px solid transparent;
     }
   }
 
