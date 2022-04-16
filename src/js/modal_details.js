@@ -82,11 +82,12 @@ export const renderModal = async event => {
   const cardsId = event.target.closest('li');
   const data = await moviesApiService.getFilmDetails(cardsId.id);
   const trailer = await moviesApiService.getFilmVideo(cardsId.id);
+
   if (data) {
-    console.log(data);
     currentId = data.id;
     renderMovieCard(data, trailer);
     checkTheme();
+    checkOverview(data.overview);
     openModal(event);
     const refWatchedBtn = document.querySelector('.movie-data__button.movie-data__button_watched');
 
@@ -161,11 +162,17 @@ function openTrailer(event) {
   // player.playVideo();
 }
 
+function checkOverview(overview) {
+  if (overview === '') {
+    const aboutTitle = movieCard.querySelector('.movie-data__about_title');
+    aboutTitle.style.display = 'none';
+  }
+}
+
 function checkTheme() {
   const theme = localStorage.getItem('theme');
   if (theme === '"dark"') {
     movieCard.classList.add('movie-card_dark');
-    console.log(1);
     const raitingList = movieCard.querySelector('.movie-data-table');
     raitingList.classList.add('movie-data-table_dark');
     const closeModalIcon = closeModalButton.querySelector('.button-close__icon-close');
@@ -176,7 +183,6 @@ function checkTheme() {
 function checkTrailer(trailer) {
   if (trailer) {
     const playButton = movieCard.querySelector('.open-trailer');
-    console.log(playButton);
     playButton.addEventListener('click', openTrailer);
   } else {
     const overlay = movieCard.querySelector('.movie-card__image_overlay');
