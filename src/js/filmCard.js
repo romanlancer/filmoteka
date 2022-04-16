@@ -4,6 +4,9 @@ import ComingSoonImg from '../images/movie-poster-coming-soon.jpg';
 import { refs } from './refs';
 import { renderPopular } from './render_popular';
 import { getFromStorage } from './storage';
+import { removeImgNodata } from './render_utils'
+import { renderWatched, renderQueue } from './render_library';
+
 import {
   checkMovieInWatched,
   checkMovieInQueue,
@@ -13,6 +16,7 @@ import {
   checkLanguageBtnW,
   checkLanguageBtnQ
 } from './library_watched_queue';
+
 
 const containerEl = document.querySelector('.cards__list');
 containerEl.addEventListener('click', clickToWatchedOnCard);
@@ -26,6 +30,7 @@ export const filmCard = filmData => {
     overview,
     title,
     genre_ids: genreIds,
+    genres,
     release_date: releaseDate = "",
     vote_average: voteAverage,
   } = filmData;
@@ -162,7 +167,7 @@ export const filmCard = filmData => {
     {
       class: 'cards__item-genres',
     },
-    getGenresNames(genreIds),
+    getGenresNames(genreIds, genres),
   );
 
   const filmReleaseElem = createElement(
@@ -204,13 +209,11 @@ export const filmCard = filmData => {
 
 // функция отрисовки карточек фильмов
 export function renderFilmList(filmList) {
-  containerEl.innerHTML = '';
+  clearContainer();
+  removeImgNodata();
   checkStorageLibrary();
-  if(containerEl.previousElementSibling)
-    containerEl.previousElementSibling.remove();
-
+  
   const filmsNodeList = filmList.map(film => filmCard(film));
-
   containerEl.append(...filmsNodeList);
 }
 
@@ -225,9 +228,23 @@ export function addFilmListToContainer(filmList) {
 }
 
 //функция для получения названий жанров фильма с учетом выбранного языка страницы
-function getGenresNames(genreIds) {
+function getGenresNames(genreIds, genres) {
   let genresNamesArray = [];
   let languageSelected = getFromStorage('language');
+  if (genreIds === undefined) {
+    genresNamesArray = Object.values(genres).flatMap(genre => genre.name);
+    if (genresNamesArray.length > 3) {
+      if (languageSelected === 'uk') {
+        const genresNamesArrayShort = genresNamesArray.slice(0, 2).join(', ') + ', Інші';
+        return genresNamesArrayShort;
+      } else {
+        const genresNamesArrayShort = genresNamesArray.slice(0, 2).join(', ') + ', Other';
+        return genresNamesArrayShort;
+      }      
+      
+    }
+    return genresNamesArray.join(', ');
+  }
   
   for (const genreId of genreIds) {
     if (languageSelected === 'uk') {
@@ -269,11 +286,6 @@ function getGenresNames(genreIds) {
 //   return color;
 // }
 
-// При смене темы - рендер карточек
-refs.changeOfTheme.addEventListener('change', onThemeChange);
-async function onThemeChange() {
-  renderPopular();
-}
 
 
 function defineOverlayBGColorByTheme() {
@@ -320,4 +332,23 @@ function defineOverlayTextColorByTheme() {
   return textColor;
 }
 
+// При смене темы - рендер карточек
+refs.changeOfTheme.addEventListener('change', onThemeChange);
+async function onThemeChange() {
+  const homeBtnEl = document.querySelector('#button__home');
+  const libruaryBtnEl = document.querySelector('#button__library');
+  const whatchedBtnEl = document.querySelector('#btn__watched');
+  const queueBtnEl = document.querySelector('#btn__queue');
+  
+  if (homeBtnEl.classList.contains('navigation__button--current')) {
+    renderPopular();
+  } else if (libruaryBtnEl.classList.contains('navigation__button--current')) {
+    if (whatchedBtnEl.classList.contains('btn__library--active')) {
+      renderWatched(1);
+    } else if (queueBtnEl.classList.contains('btn__library--active')) {
+      renderQueue(1);
+    }
+  }     
+    
+}
 

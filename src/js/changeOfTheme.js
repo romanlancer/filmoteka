@@ -1,4 +1,5 @@
 import { refs } from './refs';
+import { choiceMainRender } from './render_utils';
 import { addToStorage, getFromStorage } from './storage';
 
 // window.onload = autoTheme();
@@ -14,13 +15,20 @@ function onThemeSelected(event) {
   if (themeCheck === 'dark') {
     addToStorage('theme', `"dark"`);
     darkTheme();
+    refs.themeDarkIcon.style.color = '#ff6b01';
+    refs.themeLightIcon.style.color = '#ffffff';
   } else if (themeCheck === 'light') {
     addToStorage('theme', `"light"`);
     lightTheme();
+    refs.themeDarkIcon.style.color = '#ffffff';
+    refs.themeLightIcon.style.color = '#ff6b01';
   } else {
     addToStorage('theme', `"auto"`);
     autoTheme();
+    refs.themeDarkIcon.style.color = '#ffffff';
+    refs.themeLightIcon.style.color = '#ffffff';
   }
+  choiceMainRender();
 }
 
 function darkTheme() {
@@ -34,10 +42,6 @@ function darkTheme() {
   refs.footerCopy.style.color = '#FFFFFF';
   // зміни для модалки фільму
   refs.modalMovie.style.backgroundColor = '#2C2B2B';
-  // refs.movieDataTitle.style.color = '#FFF';
-  //   refs.movieDataValue.style.color = '#FFF';
-  //   refs.movieDataAbout.style.color = '#FFF';
-  //   refs.movieDataAboutTitle.style.color = '#FFF';
 }
 
 function lightTheme() {
@@ -53,10 +57,6 @@ function lightTheme() {
 
   // зміни для модалки фільму
   refs.modalMovie.style.backgroundColor = '#fff';
-  // refs.movieDataTitle.style.color = '#000';
-  // refs.movieDataValue.style.color = '#000';
-  // refs.movieDataAbout.style.color = '#000';
-  // refs.movieDataAboutTitle.style.color = '#000';
 }
 
 function autoTheme() {

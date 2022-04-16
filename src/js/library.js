@@ -1,19 +1,19 @@
-import { onHome } from './home';
 import { renderWatched, renderQueue } from './render_library';
 
 const refs = {
   header: document.querySelector('#header'),
   btnWatched: document.querySelector('#btn__watched'),
   btnQueue: document.querySelector('#btn__queue'),
+  filterWrapper: document.querySelector('.filter__wrapper'),
 };
 
 export function onLibrary() {
-  const refs = {
+  const reference = {
     btnList: document.querySelector('.library__btn-list'),
   };
-
+  refs.filterWrapper.classList.add('visually-hidden');
   // console.log(refs.btnList);
-  refs.btnList.addEventListener('click', onClickBtn);
+  reference.btnList.addEventListener('click', onClickBtn);
 
   renderPageLibrary();
   onCheckButtonLibrary();

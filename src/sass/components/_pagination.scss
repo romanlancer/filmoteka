@@ -39,7 +39,15 @@
   width: 40px;
   height: 40px;
   border-radius: 5px;
-  @include fonts(1.33, 500, 12px, null, null, null);
+  & .pagination-number-text{
+    @include fonts(1.33, 500, 12px, null, null, null);
+    &.light{
+      color: var(--second-text-color);
+    }
+    &.dark{
+      color: var(--first-text-color);
+    }
+  }
   &.pagination-button{
       cursor: pointer;
       background-color: #F7F7F7;
@@ -99,7 +107,12 @@
     &.active{
       cursor: default;
       background-color: var(--accent-color);
-      color: var(--first-text-color);
+      & .pagination-number-text.light{
+        color: var(--first-text-color);
+      }
+      & .pagination-number-text.dark {
+        color: var(--second-text-color);
+      }
       &:hover,
       &:focus {
         outline: none;

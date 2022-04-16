@@ -39,11 +39,11 @@
   padding-top: 40px;
   border-radius: 10px;
   overflow: hidden;
-  // background-image: url('../images/hero-ice-cream-480@2x.png');
+  background-image: linear-gradient(to right, rgba(124, 172, 102, 0.4), rgba(197, 199, 59, 0.4));
   background-repeat: no-repeat;
   background-size: contain;
   background-position: 144% 62%;
-  box-shadow: 0px 2px 1px 0px #00000033, 0px 1px 1px 0px #00000024, 0px 1px 3px 0px #0000001f;
+  box-shadow: 0px 8px 5px 0px #00000033, 0px 4px 4px 0px #00000024, 0px 3px px 0px #0000001f;
   transform: scale(1);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -72,6 +72,22 @@ body.modal-open {
   padding-right: 30px;
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.fa-xl{
+margin-bottom: 15px;
+padding-left: 10px;
+color: #000;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.2);
+      color: var(--accent-color);
+    }
+}
+
+.footer__social{
+  display: block;
 }
 
 .footermodalbtn-close{

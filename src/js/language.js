@@ -8,16 +8,24 @@ import { choiceMainRender } from './render_utils';
 function onLangSelected(event) {
   let langCheck = event.target.value;
   if (langCheck === 'uk') {
+    refs.btnLangUa.classList.toggle('active-select');
+    refs.btnLangEn.classList.remove('active-select');
+
+    // refs.btnQueue.style.padding;
     addToStorage('language', `"${langCheck}"`);
     onButtonUa();
   }
   if (langCheck === 'en') {
+    refs.btnLangEn.classList.toggle('active-select');
+    refs.btnLangUa.classList.remove('active-select');
     addToStorage('language', `"${langCheck}"`);
     onButtonEng();
   }
 }
 
 export function onButtonUa() {
+  refs.btnWatched.style.padding = '14px 28px 12px';
+  refs.btnQueue.style.padding = '14px 28px 12px';
   refs.home.textContent = 'ГОЛОВНА';
   refs.library.textContent = 'МОЯ БІБЛІОТЕКА';
   refs.input.placeholder = 'Пошук фільмів';

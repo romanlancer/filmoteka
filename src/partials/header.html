@@ -1,19 +1,4 @@
 <header class="header" id="header">
-  <div class="function__panel container">
-    <select class="theme" name="select">
-      <option class="theme--auto" value="auto" selected>Auto</option>
-      <option class="theme--dark" value="dark">Dark</option>
-      <option class="theme--light" value="light">Light</option>
-    </select>
-    <ul class="panel__list">
-      <li class="panel__list--item">
-        <button class="panel__list--button btn-en" value="en"></button>
-      </li>
-      <li class="panel__list--item">
-        <button class="panel__list--button btn-ua" value="uk"></button>
-      </li>
-    </ul>
-  </div>
   <div class="header__home">
     <div class="container">
       <div class="header__container">
@@ -57,6 +42,7 @@
           </svg>
         </button>
       </form>
+
       <ul class="library__btn-list">
         <li class="btn-list__item">
           <button type="button" class="btn__watched btn__library--active" id="btn__watched">
@@ -67,20 +53,57 @@
           <button type="button" class="btn__queue" id="btn__queue">queue</button>
         </li>
       </ul>
-      <button type="button" style="font-size: 30px; color: var(--accent-color)" class="filter-icon">
-        <i class="fa-solid fa-filter"></i>
-      </button>
 
-      <button
-        type="button"
-        style="font-size: 30px; color: var(--accent-color)"
-        class="filter-icon-close is-hidden"
-      >
-        <i
-          class="fa-solid fa-filter-circle-xmark"
-          style="font-size: 30px; color: var(--accent-color)"
-        ></i>
-      </button>
+      <div class="function__panel">
+        <div class="filter__wrapper">
+          <button
+            type="button"
+            style="font-size: 30px; color: var(--accent-color)"
+            class="filter-icon"
+          >
+            <i class="fa-solid fa-filter"></i>
+          </button>
+
+          <button
+            type="button"
+            style="font-size: 30px; color: var(--accent-color)"
+            class="filter-icon-close is-hidden"
+          >
+            <i
+              class="fa-solid fa-filter-circle-xmark"
+              style="font-size: 30px; color: var(--accent-color)"
+            ></i>
+          </button>
+          <p class="filter__text">Filter</p>
+        </div>
+
+        <div class="lang-theme__wrapper">
+          <div class="lang-theme__wrapper2">
+            <select class="theme" name="select">
+              <option class="theme--auto" value="auto" selected>Auto</option>
+              <option class="theme--dark" value="dark">Dark</option>
+              <option class="theme--light" value="light">Light</option>
+            </select>
+            <ul class="lang-theme-icon__wrapper">
+              <li class="icon-sun">
+                <i class="fa-solid fa-sun"></i>
+              </li>
+              <li class="icon-moon">
+                <i class="fa-solid fa-moon"></i>
+              </li>
+            </ul>
+          </div>
+
+          <ul class="panel__list">
+            <li class="panel__list--item">
+              <button class="panel__list--button active-select btn-en" value="en"></button>
+            </li>
+            <li class="panel__list--item">
+              <button class="panel__list--button btn-ua" value="uk"></button>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </header>
