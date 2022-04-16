@@ -51,18 +51,11 @@ async function handlePageChangeSearch(page) {
   if (page) {
     moviesApiService.page = page;
   }
-  Loading.hourglass({
-    cssAnimationDuration: 400,
-    svgSize: '150px',
-    svgColor: '#ff6b01',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-  });
+  Loading.hourglass();
 
   const movies = await moviesApiService.getFilmsByName();
 
   const { results, total_pages } = movies;
-
-  setTimeout(() => {
     renderFilmList(results);
     moviePaginationForSearch.renderPaginationDisabled(
       document.querySelector('.pagination-list'),
@@ -77,24 +70,17 @@ async function handlePageChangeSearch(page) {
     paginationChangeHandler(onPaginationSearchHandler);
     loadMoreChangeHandler(onLoadMoreSearchHandler);
     Loading.remove();
-  }, 500);
 }
 
 async function onLoadMoreSearchHandler(event) {
   moviesApiService.page += 1;
 
-  Loading.hourglass({
-    cssAnimationDuration: 400,
-    svgSize: '150px',
-    svgColor: '#ff6b01',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-  });
+  Loading.hourglass();
 
   const movies = await moviesApiService.getFilmsByName();
 
   const { results, total_pages } = movies;
 
-  setTimeout(() => {
     addFilmListToContainer(results);
     moviePaginationForSearch.renderPaginationDisabled(
       document.querySelector('.pagination-list'),
@@ -120,7 +106,6 @@ async function onLoadMoreSearchHandler(event) {
       }
     }
     Loading.remove();
-  }, 500);
 }
 
 function onPaginationSearchHandler(event) {

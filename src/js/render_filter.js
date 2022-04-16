@@ -38,17 +38,11 @@ async function handlePageChangeFilter(page) {
     moviesApiService.page = page;
   }
 
-  Loading.hourglass({
-    cssAnimationDuration: 400,
-    svgSize: '150px',
-    svgColor: '#ff6b01',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-  });
+  Loading.hourglass();
   const movies = await moviesApiService.getFilteredMovies();
 
   const { results, total_pages, pages } = movies;
 
-  setTimeout(() => {
     renderFilmList(results);
     moviePaginationForFilter.renderPaginationDisabled(
       document.querySelector('.pagination-list'),
@@ -63,7 +57,6 @@ async function handlePageChangeFilter(page) {
     paginationChangeHandler(onPaginationFilterHandler);
     loadMoreChangeHandler(onLoadMoreFilterHandler);
     Loading.remove();
-  }, 500);
 }
 
 export function renderFilter(page) {
@@ -76,15 +69,9 @@ export function renderFilter(page) {
 
 async function onLoadMoreFilterHandler(event) {
   moviesApiService.page += 1;
-  Loading.hourglass({
-    cssAnimationDuration: 400,
-    svgSize: '150px',
-    svgColor: '#ff6b01',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-  });
+  Loading.hourglass();
   const movies = await moviesApiService.getFilteredMovies();
   const { results, total_pages } = movies;
-  setTimeout(() => {
     addFilmListToContainer(results);
     moviePaginationForFilter.renderPaginationDisabled(
       document.querySelector('.pagination-list'),
@@ -110,7 +97,6 @@ async function onLoadMoreFilterHandler(event) {
       }
     }
     Loading.remove();
-  }, 500);
 }
 
 function onPaginationFilterHandler(event) {

@@ -4,7 +4,7 @@ import ComingSoonImg from '../images/movie-poster-coming-soon.jpg';
 import { refs } from './refs';
 import { renderPopular } from './render_popular';
 import { getFromStorage } from './storage';
-
+import { removeImgNodata } from './render_utils'
 import { renderWatched, renderQueue } from './render_library';
 
 import {
@@ -207,13 +207,11 @@ export const filmCard = filmData => {
 
 // функция отрисовки карточек фильмов
 export function renderFilmList(filmList) {
-  containerEl.innerHTML = '';
+  clearContainer();
+  removeImgNodata();
   checkStorageLibrary();
-  if(containerEl.previousElementSibling)
-    containerEl.previousElementSibling.remove();
-
+  
   const filmsNodeList = filmList.map(film => filmCard(film));
-
   containerEl.append(...filmsNodeList);
 }
 
