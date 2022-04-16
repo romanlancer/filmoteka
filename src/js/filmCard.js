@@ -10,6 +10,8 @@ import {
   clickToWatchedOnCard,
   clickToQueueOnCard,
   checkStorageLibrary,
+  checkLanguageBtnW,
+  checkLanguageBtnQ
 } from './library_watched_queue';
 
 const containerEl = document.querySelector('.cards__list');
@@ -60,7 +62,7 @@ export const filmCard = filmData => {
       class: `${checkMovieInWatched(filmId)}`,
       dataset: {'btn': 'watched'},
     },
-    'add to watched',
+    checkLanguageBtnW(filmId),
   );
 
   const btnAddToQueueItemElem = createElement(
@@ -69,7 +71,7 @@ export const filmCard = filmData => {
       class: `${checkMovieInQueue(filmId)}`,
       dataset: {'btn': 'queue'},
     },
-    'add to queue',
+    checkLanguageBtnQ(filmId),
   );
 
   const btnItemAddToWatchedItemElem = createElement(

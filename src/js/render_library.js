@@ -191,7 +191,7 @@ function handlePageChangeQueue(page, elPerPage) {
   const watchedFilms = getFromStorage('dataFilmsByQueue') === null ? [] : getFromStorage('dataFilmsByQueue')
   watchedFilms.forEach((data) => {
     data.genre_ids = data.genres.map((data) => {
-      return data.id;
+      return Number(data.id);
     })
   });
 
