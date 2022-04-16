@@ -1,8 +1,17 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import Pagination from './pagination';
-import { createElement } from './createElement';
-import { renderFilmList, addFilmListToContainer, clearContainer } from './filmCard';
-import { paginationChangeHandler, loadMoreChangeHandler, smoothScroll } from './render_utils';
+import {
+  renderFilmList,
+  addFilmListToContainer,
+  clearContainer
+} from './filmCard';
+import {
+  paginationChangeHandler,
+  loadMoreChangeHandler,
+  smoothScroll,
+  addImgNodata,
+  removeImgNodata
+} from './render_utils';
 import { addToStorage, getFromStorage } from './storage';
 import debounce from 'debounce';
 
@@ -76,25 +85,17 @@ function handlePageChangeWatched(page, elPerPage) {
   currentPageWatched = page;
   const watchedFilms = getFromStorage('dataFilmsByWatched') === null ? [] : getFromStorage('dataFilmsByWatched');
 
-  watchedFilms.forEach((data) => {
-    data.genre_ids = data.genres.map((data) => {
-      return data.id;
-    })
-  });
+  // watchedFilms.forEach((data) => {
+  //   data.genre_ids = data.genres.map((data) => {
+  //     return data.id;
+  //   })
+  // });
 
   if (watchedFilms.length === 0) {
-    const img = createElement(
-      'div',
-      {
-        class:`${getFromStorage('theme') === "dark" ? 'nodata-image dark' : 'nodata-image light'}`
-      },
-      ''
-    );
     clearContainer();
     moviePaginationForWatched.paginationClear(document.querySelector('.pagination-list'));
-    if(document.querySelector('.cards__list').previousElementSibling)
-    document.querySelector('.cards__list').previousElementSibling.remove();
-    document.querySelector('.cards__list').before(img);
+    removeImgNodata();
+    addImgNodata();
     return
   }
 
