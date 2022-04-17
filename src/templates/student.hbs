@@ -4,17 +4,23 @@
     <div class='student__card'>
       <h3 class='student__name'>{{name}}</h3>
       <p class='student__role'>{{role}}</p>
-       <div class="footer__social">
-         <a class='student__link' href={{ginHabLink}} target="_blank">
+       <ul class="footer__social">
+         <li class="footer__sociallink">
+           <a class='student__link' href={{ginHabLink}} target="_blank">
         <i class='fa-brands fa-github fa-xl'></i>
       </a>
-      <a class='student__linc' href={{FB_Link}} target="_blank">
+      </li>
+      <li class="footer__sociallink">
+        <a class='student__linc' href={{FB_Link}} target="_blank">
         <i class="fa-brands fa-facebook fa-xl"></i>
       </a>
-      <a class='student__link' href={{LN_Link}} target="_blank">
+      </li>
+      <li class="footer__sociallink">
+        <a class='student__link' href={{LN_Link}} target="_blank">
         <i class="fa-brands fa-linkedin fa-xl"></i>
       </a>
-       </div>
+      </li>
+       </ul>
       
       <p class='student__about'>
         {{discription}}
