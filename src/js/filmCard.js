@@ -2,10 +2,9 @@ import { createElement } from './createElement';
 import { genresInfo, genresInfoUk } from './genres_info';
 import ComingSoonImg from '../images/movie-poster-coming-soon.jpg';
 import { refs } from './refs';
-import { renderPopular } from './render_popular';
 import { getFromStorage } from './storage';
-import { removeImgNodata } from './render_utils'
-import { renderWatched, renderQueue } from './render_library';
+import { removeImgNodata, choiceMainRender } from './render_utils'
+
 
 import {
   checkMovieInWatched,
@@ -82,7 +81,7 @@ export const filmCard = filmData => {
   const btnItemAddToWatchedItemElem = createElement(
     'li',
     {
-      class: 'movie-data__button-item',
+      class: 'movie-data__button-item cards__item-btn-item',
     },
     btnAddToWatchedItemElem,
   );
@@ -90,7 +89,7 @@ export const filmCard = filmData => {
   const btnItemAddToQueueItemElem = createElement(
     'li',
     {
-      class: 'movie-data__button-item',
+      class: 'movie-data__button-item cards__item-btn-item',
     },
     btnAddToQueueItemElem,
   );
@@ -182,7 +181,6 @@ export const filmCard = filmData => {
     'span',
     {
       class: 'cards__item-vote-average',
-      // style: `border-color: ${assigningСolorRating(voteAverage)}`,
     },
     filmRaiting(voteAverage),
   );
@@ -272,22 +270,7 @@ function getGenresNames(genreIds, genres) {
   return genresNamesArray.join(', ');
 }
 
-// function assigningСolorRating(voteAverage) {
-//   let color;
-//   if (voteAverage <= 5) {
-//     color = 'red';
-//   } else if (voteAverage > 5 && voteAverage < 7) {
-//     color = 'yellow';
-//   } else if (voteAverage >= 7) {
-//     color = 'green';
-//   } else {
-//     color = 'white';
-//   }
-//   return color;
-// }
-
-
-
+// функции изменения цвета оверлея и текста в зависимости от темы
 function defineOverlayBGColorByTheme() {
   let themeCheck = getFromStorage('theme');
   let overlayColor;
@@ -335,20 +318,7 @@ function defineOverlayTextColorByTheme() {
 // При смене темы - рендер карточек
 refs.changeOfTheme.addEventListener('change', onThemeChange);
 async function onThemeChange() {
-  const homeBtnEl = document.querySelector('#button__home');
-  const libruaryBtnEl = document.querySelector('#button__library');
-  const whatchedBtnEl = document.querySelector('#btn__watched');
-  const queueBtnEl = document.querySelector('#btn__queue');
-  
-  if (homeBtnEl.classList.contains('navigation__button--current')) {
-    renderPopular();
-  } else if (libruaryBtnEl.classList.contains('navigation__button--current')) {
-    if (whatchedBtnEl.classList.contains('btn__library--active')) {
-      renderWatched(1);
-    } else if (queueBtnEl.classList.contains('btn__library--active')) {
-      renderQueue(1);
-    }
-  }     
-    
+  choiceMainRender();
 }
+
 
