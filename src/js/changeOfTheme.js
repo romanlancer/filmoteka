@@ -1,6 +1,7 @@
 import { refs } from './refs';
 import { choiceMainRender } from './render_utils';
 import { addToStorage, getFromStorage } from './storage';
+import darkThemeImg from '../images/bg-dark-theme.jpg';
 
 // window.onload = autoTheme();
 window.onload = checkStorageOfTheme();
@@ -32,7 +33,11 @@ function onThemeSelected(event) {
 }
 
 function darkTheme() {
-  document.body.style.backgroundImage = 'url(https://assets.pinterest.com/ext/embed.html?id=833940055999890010)';
+  // document.body.style.backgroundColor = '#2C2B2B';
+  document.body.style.backgroundImage = `url("${darkThemeImg}")`;
+  // document.body.style.backgroundRepeat = 'repeat';
+  // document.body.style.backgroundSize = 'cover';
+  // document.body.style.backgroundAttachment = 'fixed';
   refs.footer.style.backgroundColor = '#000000';
   refs.sliderTitle.style.color = '#FFFFFF';
   refs.footerSupp.style.color = '#FFFFFF';
@@ -82,4 +87,3 @@ function checkStorageOfTheme() {
     refs.changeOfTheme.value = 'auto';
   }
 }
-
