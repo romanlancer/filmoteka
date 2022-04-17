@@ -27,6 +27,7 @@ const movieIsInWatchedInModal = refBtnWatched => {
     dataFilmsByWatched = getFromStorage('dataFilmsByWatched');
     if (dataFilmsByWatched.includes(currentId )) {
       refBtnWatched.classList.add('movie-data__button_active');
+      refBtnWatched.textContent = checkLanguageBtnW(currentId);
     }
   }
 };
@@ -36,6 +37,7 @@ const movieIsInQueueInModal = refBtnQueue => {
     dataFilmsByQueue = getFromStorage('dataFilmsByQueue');
     if (dataFilmsByQueue.includes(currentId )) {
       refBtnQueue.classList.add('movie-data__button_active');
+      refBtnQueue.textContent = checkLanguageBtnQ(currentId);
     }
   }
 };
@@ -188,10 +190,10 @@ const clickToQueueOnCard = async event => {
     }
   }
 }
-
-const checkLanguageBtnW = (id) => {
+  
+  const checkLanguageBtnW = (id) => {
   if (dataFilmsByWatched.includes(id)) {
-    return getFromStorage('language') === 'uk' ? 'Переглянуті' : 'remove from watched';
+    return getFromStorage('language') === 'uk' ? 'видалити з переглянутих' : 'remove from watched';
   } else {
     return getFromStorage('language') === 'uk' ? 'Переглянуті' : 'add to watched';
   }
@@ -199,7 +201,7 @@ const checkLanguageBtnW = (id) => {
 
 const checkLanguageBtnQ = (id) => {
   if (dataFilmsByQueue.includes(id)) {
-    return getFromStorage('language') === 'uk' ? 'Подивитися' : 'remove from queue';
+    return getFromStorage('language') === 'uk' ? 'видалити з черги' : 'remove from queue';
   } else {
     return getFromStorage('language') === 'uk' ? 'Подивитися' : 'add to queue';
   }
