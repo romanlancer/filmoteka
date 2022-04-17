@@ -1,27 +1,31 @@
 {{#each this}}
-  <li class='glide__slide footer-modal__card'>
-    <img class='student-foto' src={{img}} alt={{name}} />
+  <li class='glide__slide--elem footer-modal__card'>
+    <div class='border__outside'>
+      <div class='border__inside'>
+        <img class='student-foto' src={{img}} alt={{name}} />
+      </div>
+    </div>
     <div class='student__card'>
       <h3 class='student__name'>{{name}}</h3>
       <p class='student__role'>{{role}}</p>
-       <ul class="footer__social">
-         <li class="footer__sociallink">
-           <a class='student__link' href={{ginHabLink}} target="_blank">
-        <i class='fa-brands fa-github fa-xl'></i>
-      </a>
-      </li>
-      <li class="footer__sociallink">
-        <a class='student__linc' href={{FB_Link}} target="_blank">
-        <i class="fa-brands fa-facebook fa-xl"></i>
-      </a>
-      </li>
-      <li class="footer__sociallink">
-        <a class='student__link' href={{LN_Link}} target="_blank">
-        <i class="fa-brands fa-linkedin fa-xl"></i>
-      </a>
-      </li>
-       </ul>
-      
+      <ul class='footer__social'>
+        <li class='footer__sociallink'>
+          <a class='student__link' href={{ginHabLink}} target='_blank'>
+            <i class='fa-brands fa-github fa-xl'></i>
+          </a>
+        </li>
+        <li class='footer__sociallink'>
+          <a class='student__linc' href={{FB_Link}} target='_blank'>
+            <i class='fa-brands fa-facebook fa-xl'></i>
+          </a>
+        </li>
+        <li class='footer__sociallink'>
+          <a class='student__link' href={{LN_Link}} target='_blank'>
+            <i class='fa-brands fa-linkedin fa-xl'></i>
+          </a>
+        </li>
+      </ul>
+
       <p class='student__about'>
         {{discription}}
       </p>

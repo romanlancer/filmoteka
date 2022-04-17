@@ -30,4 +30,13 @@ export const config = {
   },
 };
 
-export let glide = new Glide('.glide', config);
+export const options = {
+  type: 'carousel',
+  startAt: 0,
+  perView: 1,
+  autoplay: 2000,
+  keyboard: true,
+};
+
+export const glide = new Glide('.glide', config);
+export const glideFooter = new Glide('.glide_footer', options);
