@@ -11,8 +11,9 @@ export function onLibrary() {
   const reference = {
     btnList: document.querySelector('.library__btn-list'),
   };
+
+  reference.btnList.classList.remove('visually-hidden');
   refs.filterWrapper.classList.add('visually-hidden');
-  // console.log(refs.btnList);
   reference.btnList.addEventListener('click', onClickBtn);
 
   renderPageLibrary();

@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   @include flex(flex, center, center, null, null);
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.7);
   opacity: 1;
   overflow-y: scroll;
   transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -32,14 +32,14 @@
 }
 
 .footer-modal {
-  position: relative;
   width: 300px;
   height: 400px;
   background-color: rgb(177, 176, 176);
   padding-top: 40px;
   border-radius: 10px;
   overflow: hidden;
-  background-image: linear-gradient(to right, rgba(124, 172, 102, 0.4), rgba(197, 199, 59, 0.4));
+  // background-image: linear-gradient(to right, rgba(124, 172, 102, 0.4), rgba(197, 199, 59, 0.4));
+  background: linear-gradient(135deg, rgba(104, 104, 112, 1) 0%, rgba(38, 39, 48, 1) 66%, rgba(24, 24, 38, 1) 100%);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: 144% 62%;
@@ -47,9 +47,11 @@
   transform: scale(1);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  @media screen and(min-width:768px) {
-    width: 350px;
-    background-position: 134% 62%;
+  @media screen and(min-width:768px) {  
+    width: 1000px;
+    height: 500px;
+    box-shadow: 0px 0px 100px 15px rgba(253, 254, 255, 0.2);
+    // background-position: 134% 62%;
   }
 }
 
@@ -83,7 +85,7 @@ padding-left: 10px;
 
 .fa-xl{
 
-color: #000;
+color: #E8EAEE;
 
     &:hover,
     &:focus {
@@ -94,6 +96,9 @@ color: #000;
 
 .footer__social{
   display: flex;
+  @media screen and(min-width:768px) {
+    margin-bottom: 20px;
+  }
 }
 
 .footermodalbtn-close{
@@ -102,7 +107,8 @@ color: #000;
   width: 30px;
   height: 30px;
   border: 1px solid;
-  border-color: rgba(0, 0, 0, 0.1);
+  border-color: #99a1ca;
+  color: #99a1ca;
   top: 0;
   right: 0;
   background-color: transparent;
@@ -111,12 +117,14 @@ color: #000;
   margin-right: 8px;
   transform: scale(1);
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
     transform: scale(1.2);
     border-color: var(--accent-color);
+    color: var(--accent-color);
   }
 
   &__icon-close {
@@ -141,19 +149,42 @@ color: #000;
   width: 150px;
   height: auto;
   border-radius: 50%;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+.border__outside {
+  padding: 7px;
+  margin: 0 auto;
+  width: 170px;
+  border-radius: 50%;
+  border-bottom: 2px solid #434362;
+  border-right: 2px solid #434362;
   margin-bottom: 10px;
+  @media screen and(min-width:768px) { 
+    margin-bottom: 20px;
+  }
+}
+
+.border__inside {
+  padding: 7px;
+  border-radius: 50%;
+  border: 1.5px solid #595f6b;
 }
 
 .student__name{
     font-family: 'Roboto';
+    padding-bottom: 8px;
     font-size: 20px;
     font-weight: 600;
     line-height: 1.15;
     letter-spacing: 0.04em;
-    color: var(--second-text-color);
+    // color: var(--second-text-color);
+    color: #99a1ca;
     margin-bottom: 10px;
+    border-bottom: 2px solid #99a1ca;
+    @media screen and(min-width:768px) {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
 }
 
 .student__role{
@@ -162,8 +193,13 @@ color: #000;
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: 0.04em;
-  color: var(--second-text-color);
+  // color: var(--second-text-color);
+  color: #E8EAEE;
   margin-bottom: 10px;
+  @media screen and(min-width:768px) {
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
 }
 
 .student__about{
@@ -172,6 +208,15 @@ color: #000;
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: 0.04em;
-  color: var(--second-text-color);
+  // color: var(--second-text-color);
+  color: #76787E;
   margin-bottom: 10px;
+  text-align: center;
+  @media screen and(min-width:768px) {
+    font-size: 20px;
+  }
+}
+
+.glide__slides--footer {
+  display: flex;
 }

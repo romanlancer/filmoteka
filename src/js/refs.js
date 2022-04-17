@@ -28,6 +28,7 @@ export const refs = {
   input: document.querySelector('.search__form--input'),
   placeholderText: document.getElementsByName('Search films'),
   sliderTitle: document.querySelector('.slide__title'),
+  btnListLibrary: document.querySelector('.library__btn-list'),
   btnWatched: document.querySelector('#btn__watched'),
   btnQueue: document.querySelector('#btn__queue'),
   textApp: document.querySelector('.text-app'),

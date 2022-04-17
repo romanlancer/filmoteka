@@ -1,4 +1,4 @@
-const users = [
+export const users = [
   {
     id: '1',
     name: 'Roman Hyrych',
@@ -91,7 +91,7 @@ const users = [
   },
 ];
 
-const usersUA = [
+export const usersUA = [
   {
     id: '1',
     name: 'Гирич Роман',
@@ -115,7 +115,7 @@ const usersUA = [
   {
     id: '3',
     name: 'Lubov Danchenko',
-    role: 'Developer',
+    role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/22094005?v=4',
     ginHabLink: 'https://github.com/LDanchenko',
     FB_Link: 'https://www.facebook.com/',
@@ -124,8 +124,8 @@ const usersUA = [
   },
   {
     id: '4',
-    name: 'Evgeniy Ignatenko',
-    role: 'Developer',
+    name: 'Євген Ігнатенко',
+    role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/75755667?v=4',
     ginHabLink: 'https://github.com/eijjeka',
     FB_Link: 'https://www.facebook.com/',
@@ -135,7 +135,7 @@ const usersUA = [
   {
     id: '5',
     name: 'Viktoria Mihalyova',
-    role: 'Developer',
+    role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/88782163?v=4',
     ginHabLink: 'https://github.com/MViktoriia',
     FB_Link: 'https://www.facebook.com/',
@@ -145,7 +145,7 @@ const usersUA = [
   {
     id: '6',
     name: 'Aleksandr Serebro',
-    role: 'Developer',
+    role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/88261876?v=4',
     ginHabLink: 'https://github.com/AlexSerebro',
     FB_Link: 'https://www.facebook.com/',
@@ -155,7 +155,7 @@ const usersUA = [
   {
     id: '7',
     name: 'Oleksandr Nikolaienko',
-    role: 'Developer',
+    role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/41318656?v=4',
     ginHabLink: 'https://github.com/aleksander-nikolaenko',
     FB_Link: 'https://www.facebook.com/',
@@ -165,7 +165,7 @@ const usersUA = [
   {
     id: '8',
     name: 'Serhii Sakhno',
-    role: 'Developer',
+    role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/89796587?v=4',
     ginHabLink: 'https://github.com/SerhiiSakhno1994',
     FB_Link: 'https://www.facebook.com/',
@@ -175,7 +175,7 @@ const usersUA = [
   {
     id: '9',
     name: 'Aleksandr Kashirin',
-    role: 'Developer',
+    role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/88508533?v=4',
     ginHabLink: 'https://github.com/Saniokkk',
     FB_Link: 'https://www.facebook.com/',
@@ -183,5 +183,3 @@ const usersUA = [
     discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
   },
 ];
-
-export { users, usersUA };
