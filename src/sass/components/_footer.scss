@@ -100,6 +100,7 @@
 
 .email {
   color: #545454;
+  padding: 5px;
 }
 
 .email:hover,
@@ -109,10 +110,13 @@
 
 .applications {
   text-align: center;
-  padding: 10px;
+  padding: 15px;
 
   @media screen and (max-width: 767px) {
     margin-bottom: 25px;
+  }
+  @media screen and (min-width: 767px) {
+    padding: 25px;
   }
 }
 
@@ -124,8 +128,13 @@
 
 .app-item {
   color: #545454;
+  margin-right: 3px;
+  margin-left: 3px;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  margin-right: 25px;
+  @media screen and (min-width: 767px) {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
   &:hover,
   &:focus {
     fill: var(--accent-color);
@@ -134,8 +143,9 @@
 }
 
 .app-item:not(:last-child) {
-  @media screen and (min-width: 1200px) {
-    margin-right: 25px;
+  margin-left: 3px;
+  @media screen and (min-width: 767px) {
+    margin-left: 10px;
   }
 }
 
@@ -151,7 +161,6 @@
 
 .section-desc {
   margin-bottom: 25px;
-  margin-bottom: 15px;
   margin-top: 15px;
   text-transform: uppercase;
   text-align: center;
@@ -178,6 +187,18 @@
 .socials-list {
   display: flex;
   justify-content: space-evenly;
+}
+
+.sociale-item {
+@media screen and (min-width: 767px) {
+  margin-right: 4px;
+  margin-left: 4px;
+}
+}
+.sociale-item:not(:last-child) {
+  @media screen and (min-width: 767px) {
+    margin-left: 4px;
+  }
 }
 
 .social-link {
