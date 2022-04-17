@@ -70,11 +70,13 @@ const moviePaginationForQueue = new Pagination({
 });
 
 export function renderWatched(page) {
+  smoothScroll();
   if (page) moviePaginationForWatched.currentPage = page;
   else moviePaginationForWatched.currentPage = currentPageWatched;
 }
 
 export function renderQueue(page) {
+  smoothScroll();
   if (page) moviePaginationForQueue.currentPage = page;
   else moviePaginationForQueue.currentPage = currentPageQueue;
 }
@@ -103,6 +105,11 @@ async function handlePageChangeWatched(page, elPerPage) {
   });
   const FilmsForRender = await Promise.all(arrayOfPromises);
 
+  if (FilmsForRender.length === 0) {
+    moviePaginationForWatched.currentPage -= 1;
+    return
+  }
+    
   renderFilmList(FilmsForRender);
   moviePaginationForWatched.renderPaginationDisabled(
     document.querySelector('.pagination-list'),
@@ -206,7 +213,7 @@ async function handlePageChangeQueue(page, elPerPage) {
 
   if (watchedFilms.length === 0) {
     clearContainer();
-    moviePaginationForWatched.paginationClear(document.querySelector('.pagination-list'));
+    moviePaginationForQueue.paginationClear(document.querySelector('.pagination-list'));
     removeImgNodata();
     addImgNodata();
     return
@@ -218,6 +225,12 @@ async function handlePageChangeQueue(page, elPerPage) {
     (currentPageQueue - 1) * elPerPage,
     currentPageQueue * elPerPage,
   );
+
+  if (FilmsForRender.length === 0) {
+    moviePaginationForQueue.currentPage -= 1;
+    return
+  }
+
   const arrayOfPromises = FilmsIdForRender.map(async id => {
     const response = await moviesApiService.getFilmDetails(id);
     return response;
