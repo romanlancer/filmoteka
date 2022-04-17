@@ -66,8 +66,8 @@ export const users = [
     img: 'https://avatars.githubusercontent.com/u/41318656?v=4',
     ginHabLink: 'https://github.com/aleksander-nikolaenko',
     FB_Link: 'https://www.facebook.com/',
-    LN_Link: 'https://www.linkedin.com/',
-    discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    LN_Link: 'https://www.linkedin.com/in/aleksander-nikolaienko-426b20229/',
+    discription: 'I am a beginner Full Stack developer. I have completed courses in markup and javascript. I continue to study frameworks, such as react.js and node.js.',
   },
   {
     id: '8',
@@ -154,13 +154,13 @@ export const usersUA = [
   },
   {
     id: '7',
-    name: 'Oleksandr Nikolaienko',
+    name: 'Ніколаєнко Олександр',
     role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/41318656?v=4',
     ginHabLink: 'https://github.com/aleksander-nikolaenko',
     FB_Link: 'https://www.facebook.com/',
-    LN_Link: 'https://www.linkedin.com/',
-    discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    LN_Link: 'https://www.linkedin.com/in/aleksander-nikolaienko-426b20229/',
+    discription: 'Я починаючий Full Stack розробник. Я закінчив курси з html та javascript. Продовжую вивчати фреймворки, такі як react.js та node.js.',
   },
   {
     id: '8',
