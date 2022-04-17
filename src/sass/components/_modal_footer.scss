@@ -65,13 +65,6 @@ body.modal-open {
       background-position: 134% 62%;
     }
 }
-.footer__sociallink{
-  margin-bottom: 15px;
-padding-left: 10px;
-  &:first-child{
-    padding-left: 0px;
-  }
-}
 
 .footer-modal__card{
 
@@ -82,7 +75,8 @@ padding-left: 10px;
 }
 
 .fa-xl{
-
+margin-bottom: 15px;
+padding-left: 10px;
 color: #000;
 
     &:hover,
@@ -93,7 +87,7 @@ color: #000;
 }
 
 .footer__social{
-  display: flex;
+  display: block;
 }
 
 .footermodalbtn-close{

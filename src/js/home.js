@@ -14,7 +14,7 @@ export function onHome() {
   const lang = 'en';
   renderPageHome();
   refs.header.addEventListener('click', onClickBtnHome);
-  refs.filterWrapper.classList.remove('visually-hidden');
+
   if (getFromStorage('language') === 'uk') {
     refs.btnLangUa.classList.toggle('active-select');
     refs.btnLangEn.classList.remove('active-select');

@@ -10,8 +10,6 @@ function onLangSelected(event) {
   if (langCheck === 'uk') {
     refs.btnLangUa.classList.toggle('active-select');
     refs.btnLangEn.classList.remove('active-select');
-
-    // refs.btnQueue.style.padding;
     addToStorage('language', `"${langCheck}"`);
     onButtonUa();
   }
@@ -24,8 +22,6 @@ function onLangSelected(event) {
 }
 
 export function onButtonUa() {
-  refs.btnWatched.style.padding = '14px 28px 12px';
-  refs.btnQueue.style.padding = '14px 28px 12px';
   refs.home.textContent = 'ГОЛОВНА';
   refs.library.textContent = 'МОЯ БІБЛІОТЕКА';
   refs.input.placeholder = 'Пошук фільмів';

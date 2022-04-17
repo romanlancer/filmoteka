@@ -32,7 +32,7 @@ function onThemeSelected(event) {
 }
 
 function darkTheme() {
-  document.body.style.backgroundColor = '#2C2B2B';
+  document.body.style.backgroundImage = 'url(https://assets.pinterest.com/ext/embed.html?id=833940055999890010)';
   refs.footer.style.backgroundColor = '#000000';
   refs.sliderTitle.style.color = '#FFFFFF';
   refs.footerSupp.style.color = '#FFFFFF';
@@ -83,26 +83,3 @@ function checkStorageOfTheme() {
   }
 }
 
-function checkThemeAutoAttribute() {
-  if (refs.themeAuto.hasAttribute(selected)) {
-    refs.themeAuto.removeAttribute(selected);
-  } else {
-    refs.themeAuto.setAttribute(selected, true);
-  }
-}
-
-function checkThemeDarkAttribute() {
-  if (refs.themeDark.hasAttribute(selected)) {
-    refs.themeDark.removeAttribute(selected);
-  } else {
-    refs.themeDark.setAttribute(selected, true);
-  }
-}
-
-function checkThemeLightAttribute() {
-  if (refs.themeLight.hasAttribute(selected)) {
-    refs.themeLight.removeAttribute(selected);
-  } else {
-    refs.themeLight.setAttribute(selected, true);
-  }
-}
