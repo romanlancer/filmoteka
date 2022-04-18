@@ -52,18 +52,18 @@
 
 .settings {
   background-color: rgba(87, 61, 61, 0.315);
-  width: 120px;
+  width: 150px;
   height: 40px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: auto;
-  margin-right: 15px;
 
   &__text {
     color: var(--first-text-color);
     margin-left: 10px;
+    font-size: 14px;
   }
 }
 

@@ -153,7 +153,7 @@ function onPaginationFilterHandler(event) {
 let startYear = 1907;
 let endYear = new Date().getFullYear();
 const yearsList = () => {
-  let str = `<option value="" selected>All Year</option>`;
+  let str = `<option value="" selected>All Years</option>`;
   for (let i = endYear; i >= startYear; i -= 1) {
     str += `<option value="${i}">${i}</option>`;
   }
