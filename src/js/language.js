@@ -1,4 +1,8 @@
 import { refs } from './refs';
+import genresUA from '../templates/filter_genres_ua.hbs';
+import genresUK from '../templates/filter_genres_uk.hbs';
+import languagesUA from '../templates/filter_languages_ua.hbs';
+import languagesUK from '../templates/filter_languages_uk.hbs';
 // import { renderPopular } from './render_popular';
 import { moviesApiService } from './render_popular';
 import { renderSlideFilms } from './slider_films';
@@ -23,9 +27,33 @@ function onLangSelected(event) {
   }
 }
 
+function changeGenresTextUa() {
+  refs.filterListGenres.innerHTML = '';
+  refs.filterListGenres.insertAdjacentHTML('beforeend', genresUA());
+}
+
+function changeGenresTextUk() {
+  refs.filterListGenres.innerHTML = '';
+  refs.filterListGenres.insertAdjacentHTML('beforeend', genresUK());
+}
+
+function changeLanguagesTextUa() {
+  refs.filterListLanguages.innerHTML = '';
+  refs.filterListLanguages.insertAdjacentHTML('beforeend', languagesUA());
+}
+
+function changeLanguagesTextUk() {
+  refs.filterListLanguages.innerHTML = '';
+  refs.filterListLanguages.insertAdjacentHTML('beforeend', languagesUK());
+}
+
 export function onButtonUa() {
-  refs.btnWatched.style.padding = '14px 28px 12px';
-  refs.btnQueue.style.padding = '14px 28px 12px';
+  changeLanguagesTextUa();
+  changeGenresTextUa();
+  refs.filterListVoteAverage[0].textContent = 'Середній рейтинг';
+  refs.filterListYears[0].textContent = 'Усі роки';
+  refs.settingsText.textContent = 'Налаштування';
+  refs.filterText.textContent = 'Фільтр';
   refs.home.textContent = 'ГОЛОВНА';
   refs.library.textContent = 'МОЯ БІБЛІОТЕКА';
   refs.input.placeholder = 'Пошук фільмів';
@@ -47,14 +75,18 @@ export function onButtonUa() {
   refs.themeDark.textContent = 'Темна';
   refs.themeLight.textContent = 'Світла';
 
-
   moviesApiService.lang = getFromStorage('language');
-  // renderPopular();
   renderSlideFilms();
   choiceMainRender();
 }
 
 export function onButtonEng() {
+  changeGenresTextUk();
+  changeLanguagesTextUk();
+  refs.filterListVoteAverage[0].textContent = 'All votes average';
+  refs.filterListYears[0].textContent = 'All years';
+  refs.filterText.textContent = 'Filter';
+  refs.settingsText.textContent = 'Settings';
   refs.home.textContent = 'HOME';
   refs.library.textContent = 'MY LIBRARY';
   refs.input.placeholder = 'Search films';
@@ -77,7 +109,6 @@ export function onButtonEng() {
   refs.themeLight.textContent = 'Light';
 
   moviesApiService.lang = getFromStorage('language');
-  // renderPopular();
   renderSlideFilms();
   choiceMainRender();
 }

@@ -31,6 +31,7 @@
 .cards__item-poster-link {
   display: flex;
   border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: var(--primary-text-color);
   &:hover,
   &:focus {
@@ -62,7 +63,6 @@
 .cards__item-poster-overlay-text {
   margin-bottom: 10px;
   @include fonts(1.33, 500, 15px, null, null, null);
-
 }
 
 .movie-data__buttons-list.cards__item-btn-list {
@@ -124,7 +124,7 @@
   height: 30px;
   text-align: center;
   border: 4px solid transparent;
-  border-radius: 5px;  
+  border-radius: 5px;
 }
 
 .cards__item-info {

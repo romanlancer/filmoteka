@@ -1,4 +1,5 @@
 import { renderWatched, renderQueue } from './render_library';
+import { smoothScroll } from './render_utils';
 
 const refs = {
   header: document.querySelector('#header'),
@@ -25,13 +26,13 @@ function onClickBtn(event) {
   if (event.target === refs.btnWatched) {
     event.target.classList.add('btn__library--active');
     refs.btnQueue.classList.remove('btn__library--active');
-    renderWatched(1);
-    // console.log('watched');
+    smoothScroll();
+    renderWatched();
   } else if (event.target === refs.btnQueue) {
     event.target.classList.add('btn__library--active');
     refs.btnWatched.classList.remove('btn__library--active');
-    renderQueue(1);
-    // console.log('queue');
+    smoothScroll();
+    renderQueue();
   }
 }
 
@@ -47,7 +48,7 @@ function renderPageLibrary() {
 
   refs.home.classList.add('header__library');
   refs.btnHome.classList.remove('navigation__button--current');
-  refs.btnLibrary.classList.add('navigation__button--current2');
+  refs.btnLibrary.classList.add('navigation__button--current');
   refs.search.style.display = 'none';
   refs.btnLibraryHero.style.display = 'flex';
   refs.header.style.backgroundColor = '#0E0004';
