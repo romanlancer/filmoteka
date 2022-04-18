@@ -38,8 +38,9 @@ export const users = [
     img: 'https://avatars.githubusercontent.com/u/75755667?v=4',
     ginHabLink: 'https://github.com/eijjeka',
     FB_Link: 'https://www.facebook.com/',
-    LN_Link: 'https://www.linkedin.com/',
-    discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    LN_Link: 'https://www.linkedin.com/in/jekaignat/',
+    discription:
+      'A very good project for interesting people who want to see everything you want about the film quickly enough',
   },
   {
     id: '5',
@@ -134,8 +135,9 @@ export const usersUA = [
     img: 'https://avatars.githubusercontent.com/u/75755667?v=4',
     ginHabLink: 'https://github.com/eijjeka',
     FB_Link: 'https://www.facebook.com/',
-    LN_Link: 'https://www.linkedin.com/',
-    discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    LN_Link: 'https://www.linkedin.com/in/jekaignat/',
+    discription:
+      'Дуже приємний проект для цікавих людей, які хочуть переглянути доволі швидко про фільм все, що заманеться',
   },
   {
     id: '5',
