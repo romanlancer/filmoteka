@@ -5,9 +5,11 @@ export const users = [
     role: 'Team lead',
     img: 'https://avatars.githubusercontent.com/u/88936471?v=4',
     ginHabLink: 'https://github.com/romanlancer/',
-    FB_Link: 'https://www.facebook.com/',
-    LN_Link: 'https://www.linkedin.com/',
-    discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    FB_Link: 'https://www.facebook.com/roman.girich',
+    LN_Link:
+      'https://www.linkedin.com/in/%D1%80%D0%BE%D0%BC%D0%B0%D0%BD-%D0%B3%D0%B8%D1%80%D0%B8%D1%87-1511bb226/',
+    discription:
+      'Hell, my friends. I am a beginning FrontEnd developer.I am very excited at learning new things and technologies attached with FrontEnd. Already have some projects in my Portfolio on github.',
   },
   {
     id: '2',
@@ -62,12 +64,13 @@ export const users = [
   {
     id: '7',
     name: 'Oleksandr Nikolaienko',
-    role: 'Developer',
+    role: 'Tech lead',
     img: 'https://avatars.githubusercontent.com/u/41318656?v=4',
     ginHabLink: 'https://github.com/aleksander-nikolaenko',
     FB_Link: 'https://www.facebook.com/',
     LN_Link: 'https://www.linkedin.com/in/aleksander-nikolaienko-426b20229/',
-    discription: 'I am a beginner Full Stack developer. I have completed courses in markup and javascript. I continue to study frameworks, such as react.js and node.js.',
+    discription:
+      'I am a beginner Full Stack developer. I have completed courses in markup and javascript. I continue to study frameworks, such as react.js and node.js.',
   },
   {
     id: '8',
@@ -98,9 +101,11 @@ export const usersUA = [
     role: 'Лідер команди',
     img: 'https://avatars.githubusercontent.com/u/88936471?v=4',
     ginHabLink: 'https://github.com/romanlancer/',
-    FB_Link: 'https://www.facebook.com/',
-    LN_Link: 'https://www.linkedin.com/',
-    discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    FB_Link: 'https://www.facebook.com/roman.girich',
+    LN_Link:
+      'https://www.linkedin.com/in/%D1%80%D0%BE%D0%BC%D0%B0%D0%BD-%D0%B3%D0%B8%D1%80%D0%B8%D1%87-1511bb226/',
+    discription:
+      'Шановні відвідувачі, вітаю Вас на нашому сайті кінофільмів, бажаю приємного перегляду та гарного настрою.',
   },
   {
     id: '2',
@@ -160,7 +165,8 @@ export const usersUA = [
     ginHabLink: 'https://github.com/aleksander-nikolaenko',
     FB_Link: 'https://www.facebook.com/',
     LN_Link: 'https://www.linkedin.com/in/aleksander-nikolaienko-426b20229/',
-    discription: 'Я починаючий Full Stack розробник. Я закінчив курси з html та javascript. Продовжую вивчати фреймворки, такі як react.js та node.js.',
+    discription:
+      'Я починаючий Full Stack розробник. Я закінчив курси з html та javascript. Продовжую вивчати фреймворки, такі як react.js та node.js.',
   },
   {
     id: '8',

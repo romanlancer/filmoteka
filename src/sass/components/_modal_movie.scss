@@ -10,6 +10,7 @@
   background-color: var(--first-text-color);
   z-index: 1000;
   border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 
   @media screen and(min-height: 390px) and (min-width: 844px) {
     top: 0;

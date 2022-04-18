@@ -13,7 +13,7 @@ refs.filterListYears.addEventListener('change', onYearsFilter);
 refs.filterListLanguages.addEventListener('change', onLanguagesFilter);
 refs.filterListVoteAverage.addEventListener('change', onVotesFilter);
 refs.filterButtonOpen.addEventListener('click', onFilterOpen);
-
+// refs.filterContainer.addEventListener('click', onBackdropclick);
 refs.settingsButton.addEventListener('click', onSettingsClick);
 refs.filterResetButton.addEventListener('click', onFilterResetButton);
 
@@ -121,19 +121,19 @@ async function onLoadMoreFilterHandler(event) {
 
 function onPaginationFilterHandler(event) {
   if (
-    event.target.parentNode.classList.contains('pagination-prev') &&
-    !event.target.parentNode.classList.contains('disabled') ||
-    event.target.classList.contains('pagination-prev') &&
-    !event.target.classList.contains('disabled')
+    (event.target.parentNode.classList.contains('pagination-prev') &&
+      !event.target.parentNode.classList.contains('disabled')) ||
+    (event.target.classList.contains('pagination-prev') &&
+      !event.target.classList.contains('disabled'))
   ) {
     smoothScroll();
     moviePaginationForFilter.prevPage();
   }
   if (
-    event.target.parentNode.classList.contains('pagination-next') &&
-    !event.target.parentNode.classList.contains('disabled') ||
-    event.target.classList.contains('pagination-next') &&
-    !event.target.classList.contains('disabled')
+    (event.target.parentNode.classList.contains('pagination-next') &&
+      !event.target.parentNode.classList.contains('disabled')) ||
+    (event.target.classList.contains('pagination-next') &&
+      !event.target.classList.contains('disabled'))
   ) {
     smoothScroll();
     moviePaginationForFilter.nextPage();
