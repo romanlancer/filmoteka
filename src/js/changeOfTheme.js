@@ -1,6 +1,7 @@
 import { refs } from './refs';
 import { choiceMainRender } from './render_utils';
 import { addToStorage, getFromStorage } from './storage';
+import darkThemeImage from '../images/bg-dark-theme.jpg'
 
 // window.onload = autoTheme();
 window.onload = checkStorageOfTheme();
@@ -32,7 +33,8 @@ function onThemeSelected(event) {
 }
 
 function darkTheme() {
-  document.body.style.backgroundColor = '#2C2B2B';
+  // document.body.style.backgroundColor = '#2C2B2B';
+  document.body.style.backgroundImage = `url("${darkThemeImage}")`;
   refs.footer.style.backgroundColor = '#000000';
   refs.sliderTitle.style.color = '#FFFFFF';
   refs.footerSupp.style.color = '#FFFFFF';
@@ -46,6 +48,7 @@ function darkTheme() {
 
 function lightTheme() {
   document.body.style.backgroundColor = '#FFFFFF';
+  document.body.style.backgroundImage = 'none';
   refs.sliderTitle.style.color = '#000000';
   refs.footer.style.backgroundColor = '#F7F7F7';
   refs.footerSupp.style.color = '#545454';
