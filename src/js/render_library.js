@@ -99,16 +99,16 @@ async function handlePageChangeWatched(page, elPerPage) {
   moviePaginationForWatched.total = totalPages;
   const FilmsIdForRender = watchedFilms.slice((page - 1) * elPerPage, page * elPerPage);
 
+  if (FilmsIdForRender.length === 0) {
+      moviePaginationForWatched.currentPage -= 1;
+      return
+    }
+
   const arrayOfPromises = FilmsIdForRender.map(async id => {
     const response = await moviesApiService.getFilmDetails(id);
     return response;
   });
   const FilmsForRender = await Promise.all(arrayOfPromises);
-
-  if (FilmsForRender.length === 0) {
-    moviePaginationForWatched.currentPage -= 1;
-    return
-  }
     
   renderFilmList(FilmsForRender);
   moviePaginationForWatched.renderPaginationDisabled(
@@ -226,7 +226,7 @@ async function handlePageChangeQueue(page, elPerPage) {
     currentPageQueue * elPerPage,
   );
 
-  if (FilmsForRender.length === 0) {
+  if (FilmsIdForRender.length === 0) {
     moviePaginationForQueue.currentPage -= 1;
     return
   }
