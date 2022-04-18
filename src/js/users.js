@@ -104,7 +104,7 @@ export const usersUA = [
   },
   {
     id: '2',
-    name: 'Anna Nychyk',
+    name: 'Анна Ничик',
     role: 'Scrum-мастер',
     img: 'https://avatars.githubusercontent.com/u/88631065?v=4',
     ginHabLink: 'https://github.com/AnnaNychyk',

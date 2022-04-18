@@ -16,25 +16,25 @@ function onThemeSelected(event) {
   if (themeCheck === 'dark') {
     addToStorage('theme', `"dark"`);
     darkTheme();
-    refs.themeDarkIcon.style.color = '#ff6b01';
-    refs.themeLightIcon.style.color = '#ffffff';
+    // refs.themeDarkIcon.style.color = '#ff6b01';
+    // refs.themeLightIcon.style.color = '#ffffff';
   } else if (themeCheck === 'light') {
     addToStorage('theme', `"light"`);
     lightTheme();
-    refs.themeDarkIcon.style.color = '#ffffff';
-    refs.themeLightIcon.style.color = '#ff6b01';
+    // refs.themeDarkIcon.style.color = '#ffffff';
+    // refs.themeLightIcon.style.color = '#ff6b01';
   } else {
     addToStorage('theme', `"auto"`);
     autoTheme();
-    refs.themeDarkIcon.style.color = '#ffffff';
-    refs.themeLightIcon.style.color = '#ffffff';
+    // refs.themeDarkIcon.style.color = '#ffffff';
+    // refs.themeLightIcon.style.color = '#ffffff';
   }
   choiceMainRender();
 }
 
 function darkTheme() {
-  // document.body.style.backgroundColor = '#2C2B2B';
-  document.body.style.backgroundImage = `url("${darkThemeImage}")`;
+  document.body.style.backgroundColor = '#2C2B2B';
+  // document.body.style.backgroundImage = `url("${darkThemeImage}")`;
   refs.footer.style.backgroundColor = '#000000';
   refs.sliderTitle.style.color = '#FFFFFF';
   refs.footerSupp.style.color = '#FFFFFF';
@@ -44,11 +44,14 @@ function darkTheme() {
   refs.footerCopy.style.color = '#FFFFFF';
   // зміни для модалки фільму
   refs.modalMovie.style.backgroundColor = '#2C2B2B';
+
+  refs.themeDarkIcon.style.color = '#ff6b01';
+  refs.themeLightIcon.style.color = '#ffffff';
 }
 
 function lightTheme() {
   document.body.style.backgroundColor = '#FFFFFF';
-  document.body.style.backgroundImage = 'none';
+  // document.body.style.backgroundImage = 'none';
   refs.sliderTitle.style.color = '#000000';
   refs.footer.style.backgroundColor = '#F7F7F7';
   refs.footerSupp.style.color = '#545454';
@@ -60,13 +63,16 @@ function lightTheme() {
 
   // зміни для модалки фільму
   refs.modalMovie.style.backgroundColor = '#fff';
+
+  refs.themeDarkIcon.style.color = '#ffffff';
+  refs.themeLightIcon.style.color = '#ff6b01';
 }
 
 function autoTheme() {
   const date = new Date();
   const dateNow = date.getHours();
 
-  if (dateNow >= 6 && dateNow <= 22) {
+  if (dateNow > 6 && dateNow < 22) {
     lightTheme();
   } else {
     darkTheme();
