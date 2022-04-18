@@ -19,7 +19,8 @@ export const users = [
     ginHabLink: 'https://github.com/AnnaNychyk',
     FB_Link: 'https://www.facebook.com/profile.php?id=100014572051160',
     LN_Link: 'https://www.linkedin.com/in/anna-nychyk-529061238/',
-    discription: 'Great teamwork. All the people in the team are friendly and open. Helped each other at all stages of work. The team you want to work with.',
+    discription:
+      'Great teamwork. All the people in the team are friendly and open. Helped each other at all stages of work. The team you want to work with.',
   },
   {
     id: '3',
@@ -50,7 +51,8 @@ export const users = [
     ginHabLink: 'https://github.com/MViktoriia',
     FB_Link: 'https://www.facebook.com/viktoriya.petrachkova',
     LN_Link: 'https://www.linkedin.com/in/viktoriia-mykhalova-758b37237',
-    discription: 'I am very happy to be a part of this project and our team. We are just beginners in the frontend, but we are working hard to help the client achieve his business goals by providing a really cool product.',
+    discription:
+      'I am very happy to be a part of this project and our team. We are just beginners in the frontend, but we are working hard to help the client achieve his business goals by providing a really cool product.',
   },
   {
     id: '6',
@@ -81,7 +83,7 @@ export const users = [
     ginHabLink: 'https://github.com/SerhiiSakhno1994',
     FB_Link: 'https://www.facebook.com/sergeysakhno1',
     LN_Link: 'https://www.linkedin.com/in/serhii-sakhno-25934b229/',
-    discription: 'Hi to all. I am a GoIt student. He worked on the project in a super team.',
+    discription: 'Hi to all. I am a GoIT student who worked on the project in a super team.',
   },
   {
     id: '9',
@@ -116,7 +118,8 @@ export const usersUA = [
     ginHabLink: 'https://github.com/AnnaNychyk',
     FB_Link: 'https://www.facebook.com/profile.php?id=100014572051160',
     LN_Link: 'https://www.linkedin.com/in/anna-nychyk-529061238/',
-    discription: 'Чудова командна робота. Усі люди в команді доброзичливі та відкриті. Допомогали один одному на всіх етапах роботи. Команда з якою хочеться працювати.',
+    discription:
+      'Чудова командна робота. Усі люди в команді доброзичливі та відкриті. Допомогали один одному на всіх етапах роботи. Команда з якою хочеться працювати.',
   },
   {
     id: '3',
@@ -147,7 +150,8 @@ export const usersUA = [
     ginHabLink: 'https://github.com/MViktoriia',
     FB_Link: 'https://www.facebook.com/viktoriya.petrachkova',
     LN_Link: 'https://www.linkedin.com/in/viktoriia-mykhalova-758b37237',
-    discription: 'Я дуже рада бути частиною цього проекту та нашої команди. Ми лише початківці у фронтенді, але ми завзято робимо все можливе, щоб допомогти клієнту досягти його бізнес-цілей, надаючи дійсно крутий продукт.',
+    discription:
+      'Я дуже рада бути частиною цього проекту та нашої команди. Ми лише початківці у фронтенді, але ми завзято робимо все можливе, щоб допомогти клієнту досягти його бізнес-цілей, надаючи дійсно крутий продукт.',
   },
   {
     id: '6',
