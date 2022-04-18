@@ -203,6 +203,6 @@ const checkLanguageBtnQ = (id) => {
   if (dataFilmsByQueue.includes(id)) {
     return getFromStorage('language') === 'uk' ? 'видалити з черги' : 'remove from queue';
   } else {
-    return getFromStorage('language') === 'uk' ? 'Подивитися' : 'add to queue';
+    return getFromStorage('language') === 'uk' ? 'в чергу' : 'add to queue';
   }
 }
