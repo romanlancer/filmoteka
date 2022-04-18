@@ -109,23 +109,29 @@ async function onLoadMoreSearchHandler(event) {
 }
 
 function onPaginationSearchHandler(event) {
-  smoothScroll();
   if (
-    event.target.parentNode.classList.contains('pagination-prev') ||
-    event.target.classList.contains('pagination-prev')
+    event.target.parentNode.classList.contains('pagination-prev') &&
+    !event.target.parentNode.classList.contains('disabled') ||
+    event.target.classList.contains('pagination-prev') &&
+    !event.target.classList.contains('disabled')
   ) {
+    smoothScroll();
     moviePaginationForSearch.prevPage();
   }
   if (
-    event.target.parentNode.classList.contains('pagination-next') ||
-    event.target.classList.contains('pagination-next')
+    event.target.parentNode.classList.contains('pagination-next') &&
+    !event.target.parentNode.classList.contains('disabled') ||
+    event.target.classList.contains('pagination-next') &&
+    !event.target.classList.contains('disabled')
   ) {
+    smoothScroll();
     moviePaginationForSearch.nextPage();
   }
   if (
     event.target.parentNode.classList.contains('pagination-number') &&
     !event.target.parentNode.classList.contains('active')
   ) {
+    smoothScroll();
     const clickPage = parseInt(event.target.textContent);
     moviePaginationForSearch.currentPage = clickPage;
   }
@@ -133,6 +139,7 @@ function onPaginationSearchHandler(event) {
     event.target.classList.contains('pagination-number') &&
     !event.target.classList.contains('active')
   ) {
+    smoothScroll();
     const clickPage = parseInt(event.target.childNodes[0].textContent);
     moviePaginationForSearch.currentPage = clickPage;
   }

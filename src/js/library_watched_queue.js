@@ -66,7 +66,7 @@ const checkMovieInQueue = currentId => {
 
 const clickToWatchedInModal = event => {
   if (event.target.dataset.btn === 'watched') {
-    console.log(currentId)
+    // console.log(currentId)
     const refBtnQueue = event.target.closest('li').nextElementSibling.firstElementChild;
     event.target.classList.toggle('movie-data__button_active');
     if (event.target.classList.contains('movie-data__button_active')) {
@@ -127,7 +127,7 @@ const clickToWatchedOnCard = async event => {
     const refBtnQueue = event.target.closest('li').nextElementSibling.firstElementChild;    
     event.target.classList.toggle('movie-data__button_active');
     const cardsId = +event.target.closest('ul').closest('li').id;    
-    console.log((dataFilmsByWatched.includes(cardsId)))
+    // console.log((dataFilmsByWatched.includes(cardsId)))
     if (event.target.classList.contains('movie-data__button_active')) {
       if (dataFilmsByWatched.includes(currentId)) {
         return;

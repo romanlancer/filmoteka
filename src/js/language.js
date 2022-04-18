@@ -49,7 +49,6 @@ export function onButtonUa() {
 
 
   moviesApiService.lang = getFromStorage('language');
-  // renderPopular();
   renderSlideFilms();
   choiceMainRender();
 }
@@ -77,7 +76,6 @@ export function onButtonEng() {
   refs.themeLight.textContent = 'Light';
 
   moviesApiService.lang = getFromStorage('language');
-  // renderPopular();
   renderSlideFilms();
   choiceMainRender();
 }
