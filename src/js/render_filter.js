@@ -1,5 +1,6 @@
 import { addImgNodata, removeImgNodata } from './render_utils';
 import { refs } from './refs';
+import { renderPopular } from './render_popular';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { moviesApiService } from './render_popular';
 import { renderFilmList, addFilmListToContainer, clearContainer } from './filmCard';
@@ -13,8 +14,22 @@ refs.filterListLanguages.addEventListener('change', onLanguagesFilter);
 refs.filterListVoteAverage.addEventListener('change', onVotesFilter);
 refs.filterButtonOpen.addEventListener('click', onFilterOpen);
 refs.filterButtonClose.addEventListener('click', onFilterClose);
+refs.settingsButton.addEventListener('click', onSettingsClick);
+refs.filterResetButton.addEventListener('click', onFilterResetButton);
+
+function onFilterResetButton() {
+  renderPopular();
+}
+
+function onSettingsClick() {
+  refs.settingsContainer.classList.toggle('is-hidden');
+  refs.filterContainer.classList.add('is-hidden');
+  refs.filterButtonClose.classList.add('is-hidden');
+  refs.filterButtonOpen.classList.remove('is-hidden');
+}
 
 function onFilterOpen(e) {
+  refs.settingsContainer.classList.add('is-hidden');
   refs.filterContainer.classList.remove('is-hidden');
   refs.filterButtonClose.classList.remove('is-hidden');
   refs.filterButtonOpen.classList.add('is-hidden');

@@ -55,6 +55,9 @@ export const refs = {
   filterListVoteAverage: document.querySelector('.js-filter-vote_average'),
   filterButtonOpen: document.querySelector('.filter-icon'),
   filterButtonClose: document.querySelector('.filter-icon-close'),
+  filterResetButton: document.querySelector('.filters__reset'),
   filterContainer: document.querySelector('.filter-container'),
+  settingsButton: document.querySelector('.settings'),
+  settingsContainer: document.querySelector('.lang-theme__wrapper'),
   mainContent: document.querySelector('main'),
 };

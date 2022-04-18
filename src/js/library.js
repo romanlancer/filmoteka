@@ -5,13 +5,14 @@ const refs = {
   btnWatched: document.querySelector('#btn__watched'),
   btnQueue: document.querySelector('#btn__queue'),
   filterWrapper: document.querySelector('.filter__wrapper'),
+  filterContainer: document.querySelector('.filter-container'),
 };
 
 export function onLibrary() {
   const reference = {
     btnList: document.querySelector('.library__btn-list'),
   };
-
+  refs.filterContainer.classList.add('is-hidden');
   reference.btnList.classList.remove('visually-hidden');
   refs.filterWrapper.classList.add('visually-hidden');
   reference.btnList.addEventListener('click', onClickBtn);

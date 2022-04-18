@@ -34,3 +34,28 @@
 .filters__reset {
   background-color: transparent;
 }
+
+.filter-icon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.filter-icon-close {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.filter__wrapper {
+  display: flex;
+  margin-right: auto;
+}
+
+.filter__text {
+  margin-left: 10px;
+  font-size: 16px;
+  color: var(--first-text-color);
+}
