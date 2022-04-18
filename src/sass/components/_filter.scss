@@ -36,22 +36,23 @@
 }
 
 .filter-icon {
+  background-color: rgba(87, 61, 61, 0.315);
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
-  cursor: pointer;
-  background-color: transparent;
+  justify-content: center;
 }
-
-.filter-icon-close {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  background-color: transparent;
+.filter-icon__animation {
+  animation: Glow 0.5s ease infinite alternate;
 }
 
 .filter__wrapper {
   display: flex;
+  align-items: center;
   margin-right: auto;
+  margin-left: 15px;
 }
 
 .filter__text {

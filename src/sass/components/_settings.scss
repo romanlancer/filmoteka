@@ -48,11 +48,15 @@
 }
 
 .settings {
+  background-color: rgba(87, 61, 61, 0.315);
+  width: 120px;
+  height: 40px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
-  background-color: transparent;
+  justify-content: center;
   margin-left: auto;
-  margin-right: 10px;
+  margin-right: 15px;
 
   &__text {
     color: var(--first-text-color);

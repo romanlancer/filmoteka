@@ -47,7 +47,7 @@ function renderPageLibrary() {
 
   refs.home.classList.add('header__library');
   refs.btnHome.classList.remove('navigation__button--current');
-  refs.btnLibrary.classList.add('navigation__button--current');
+  refs.btnLibrary.classList.add('navigation__button--current2');
   refs.search.style.display = 'none';
   refs.btnLibraryHero.style.display = 'flex';
   refs.header.style.backgroundColor = '#0E0004';

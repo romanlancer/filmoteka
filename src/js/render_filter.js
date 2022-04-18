@@ -13,7 +13,7 @@ refs.filterListYears.addEventListener('change', onYearsFilter);
 refs.filterListLanguages.addEventListener('change', onLanguagesFilter);
 refs.filterListVoteAverage.addEventListener('change', onVotesFilter);
 refs.filterButtonOpen.addEventListener('click', onFilterOpen);
-refs.filterButtonClose.addEventListener('click', onFilterClose);
+
 refs.settingsButton.addEventListener('click', onSettingsClick);
 refs.filterResetButton.addEventListener('click', onFilterResetButton);
 
@@ -22,22 +22,18 @@ function onFilterResetButton() {
 }
 
 function onSettingsClick() {
+  refs.settingsButton.classList.toggle('filter-icon__animation');
+  refs.filterButtonOpen.classList.remove('filter-icon__animation');
   refs.settingsContainer.classList.toggle('is-hidden');
   refs.filterContainer.classList.add('is-hidden');
-  refs.filterButtonClose.classList.add('is-hidden');
   refs.filterButtonOpen.classList.remove('is-hidden');
 }
 
 function onFilterOpen(e) {
+  refs.settingsButton.classList.remove('filter-icon__animation');
+  refs.filterButtonOpen.classList.toggle('filter-icon__animation');
   refs.settingsContainer.classList.add('is-hidden');
-  refs.filterContainer.classList.remove('is-hidden');
-  refs.filterButtonClose.classList.remove('is-hidden');
-  refs.filterButtonOpen.classList.add('is-hidden');
-}
-function onFilterClose(e) {
   refs.filterContainer.classList.toggle('is-hidden');
-  refs.filterButtonClose.classList.toggle('is-hidden');
-  refs.filterButtonOpen.classList.toggle('is-hidden');
 }
 
 const moviePaginationForFilter = new Pagination({

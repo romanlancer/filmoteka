@@ -58,7 +58,7 @@ function renderPageHome() {
   };
 
   refs.home.classList.remove('header__library');
-  refs.btnLibrary.classList.remove('navigation__button--current');
+  refs.btnLibrary.classList.remove('navigation__button--current2');
   refs.btnHome.classList.add('navigation__button--current');
   refs.search.style.display = 'flex';
   refs.btnLibraryHero.style.display = 'none';
