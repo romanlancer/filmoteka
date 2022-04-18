@@ -52,7 +52,6 @@ async function handlePageChangeFilter(page) {
 
   Loading.hourglass();
   const movies = await moviesApiService.getFilteredMovies();
-  console.log(movies);
   const { results, total_pages } = movies;
   console.log(movies);
   if (results.length === 0) {
@@ -121,23 +120,29 @@ async function onLoadMoreFilterHandler(event) {
 }
 
 function onPaginationFilterHandler(event) {
-  smoothScroll();
   if (
-    event.target.parentNode.classList.contains('pagination-prev') ||
-    event.target.classList.contains('pagination-prev')
+    event.target.parentNode.classList.contains('pagination-prev') &&
+    !event.target.parentNode.classList.contains('disabled') ||
+    event.target.classList.contains('pagination-prev') &&
+    !event.target.classList.contains('disabled')
   ) {
+    smoothScroll();
     moviePaginationForFilter.prevPage();
   }
   if (
-    event.target.parentNode.classList.contains('pagination-next') ||
-    event.target.classList.contains('pagination-next')
+    event.target.parentNode.classList.contains('pagination-next') &&
+    !event.target.parentNode.classList.contains('disabled') ||
+    event.target.classList.contains('pagination-next') &&
+    !event.target.classList.contains('disabled')
   ) {
+    smoothScroll();
     moviePaginationForFilter.nextPage();
   }
   if (
     event.target.parentNode.classList.contains('pagination-number') &&
     !event.target.parentNode.classList.contains('active')
   ) {
+    smoothScroll();
     const clickPage = parseInt(event.target.textContent);
     moviePaginationForFilter.currentPage = clickPage;
   }
@@ -145,6 +150,7 @@ function onPaginationFilterHandler(event) {
     event.target.classList.contains('pagination-number') &&
     !event.target.classList.contains('active')
   ) {
+    smoothScroll();
     const clickPage = parseInt(event.target.childNodes[0].textContent);
     moviePaginationForFilter.currentPage = clickPage;
   }

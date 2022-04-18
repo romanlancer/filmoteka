@@ -39,7 +39,6 @@ async function handlePageChangePopular(page) {
   Loading.hourglass();
   const movies = await moviesApiService.getPopularFilms();
   const { results, total_pages } = movies;
-  setTimeout(() => {
     renderFilmList(results);
     moviePaginationForPopular.renderPaginationDisabled(
       document.querySelector('.pagination-list'),
@@ -54,7 +53,6 @@ async function handlePageChangePopular(page) {
     paginationChangeHandler(onPaginationPopularHandler);
     loadMoreChangeHandler(onLoadMorePopularHandler);
     Loading.remove();
-  }, 100);
 }
 
 async function onLoadMorePopularHandler(event) {
@@ -90,23 +88,29 @@ async function onLoadMorePopularHandler(event) {
 }
 
 function onPaginationPopularHandler(event) {
-  smoothScroll();
   if (
-    event.target.parentNode.classList.contains('pagination-prev') ||
-    event.target.classList.contains('pagination-prev')
+    event.target.parentNode.classList.contains('pagination-prev') &&
+    !event.target.parentNode.classList.contains('disabled') ||
+    event.target.classList.contains('pagination-prev') &&
+    !event.target.classList.contains('disabled')
   ) {
+    smoothScroll();
     moviePaginationForPopular.prevPage();
   }
   if (
-    event.target.parentNode.classList.contains('pagination-next') ||
-    event.target.classList.contains('pagination-next')
+    event.target.parentNode.classList.contains('pagination-next') &&
+    !event.target.parentNode.classList.contains('disabled') ||
+    event.target.classList.contains('pagination-next') &&
+    !event.target.classList.contains('disabled')
   ) {
+    smoothScroll();
     moviePaginationForPopular.nextPage();
   }
   if (
     event.target.parentNode.classList.contains('pagination-number') &&
     !event.target.parentNode.classList.contains('active')
   ) {
+    smoothScroll();
     const clickPage = parseInt(event.target.textContent);
     moviePaginationForPopular.currentPage = clickPage;
   }
@@ -114,6 +118,7 @@ function onPaginationPopularHandler(event) {
     event.target.classList.contains('pagination-number') &&
     !event.target.classList.contains('active')
   ) {
+    smoothScroll();
     const clickPage = parseInt(event.target.childNodes[0].textContent);
     moviePaginationForPopular.currentPage = clickPage;
   }

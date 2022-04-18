@@ -76,7 +76,6 @@ export function onButtonUa() {
   refs.themeLight.textContent = 'Світла';
 
   moviesApiService.lang = getFromStorage('language');
-  // renderPopular();
   renderSlideFilms();
   choiceMainRender();
 }
@@ -110,7 +109,6 @@ export function onButtonEng() {
   refs.themeLight.textContent = 'Light';
 
   moviesApiService.lang = getFromStorage('language');
-  // renderPopular();
   renderSlideFilms();
   choiceMainRender();
 }

@@ -70,13 +70,13 @@ const moviePaginationForQueue = new Pagination({
 });
 
 export function renderWatched(page) {
-  smoothScroll();
+
   if (page) moviePaginationForWatched.currentPage = page;
   else moviePaginationForWatched.currentPage = currentPageWatched;
 }
 
 export function renderQueue(page) {
-  smoothScroll();
+
   if (page) moviePaginationForQueue.currentPage = page;
   else moviePaginationForQueue.currentPage = currentPageQueue;
 }
@@ -175,23 +175,29 @@ async function onLoadMoreWatchedHandler(event) {
 }
 
 function onPaginationWatchedHandler(event) {
-  smoothScroll();
   if (
-    event.target.parentNode.classList.contains('pagination-prev') ||
-    event.target.classList.contains('pagination-prev')
+    event.target.parentNode.classList.contains('pagination-prev') &&
+    !event.target.parentNode.classList.contains('disabled') ||
+    event.target.classList.contains('pagination-prev') &&
+    !event.target.classList.contains('disabled')
   ) {
+    smoothScroll();
     moviePaginationForWatched.prevPage();
   }
   if (
-    event.target.parentNode.classList.contains('pagination-next') ||
-    event.target.classList.contains('pagination-next')
+    event.target.parentNode.classList.contains('pagination-next') &&
+    !event.target.parentNode.classList.contains('disabled') ||
+    event.target.classList.contains('pagination-next') &&
+    !event.target.classList.contains('disabled')
   ) {
+    smoothScroll();
     moviePaginationForWatched.nextPage();
   }
   if (
     event.target.parentNode.classList.contains('pagination-number') &&
     !event.target.parentNode.classList.contains('active')
   ) {
+    smoothScroll();
     const clickPage = parseInt(event.target.textContent);
     moviePaginationForWatched.currentPage = clickPage;
   }
@@ -199,6 +205,7 @@ function onPaginationWatchedHandler(event) {
     event.target.classList.contains('pagination-number') &&
     !event.target.classList.contains('active')
   ) {
+    smoothScroll();
     const clickPage = parseInt(event.target.childNodes[0].textContent);
     moviePaginationForWatched.currentPage = clickPage;
   }
@@ -299,23 +306,29 @@ async function onLoadMoreQueueHandler(event) {
 }
 
 function onPaginationQueueHandler(event) {
-  smoothScroll();
   if (
-    event.target.parentNode.classList.contains('pagination-prev') ||
-    event.target.classList.contains('pagination-prev')
+    event.target.parentNode.classList.contains('pagination-prev') &&
+    !event.target.parentNode.classList.contains('disabled') ||
+    event.target.classList.contains('pagination-prev') &&
+    !event.target.classList.contains('disabled')
   ) {
+    smoothScroll();
     moviePaginationForQueue.prevPage();
   }
   if (
-    event.target.parentNode.classList.contains('pagination-next') ||
-    event.target.classList.contains('pagination-next')
+    event.target.parentNode.classList.contains('pagination-next') &&
+    !event.target.parentNode.classList.contains('disabled') ||
+    event.target.classList.contains('pagination-next') &&
+    !event.target.classList.contains('disabled')
   ) {
+    smoothScroll();
     moviePaginationForQueue.nextPage();
   }
   if (
     event.target.parentNode.classList.contains('pagination-number') &&
     !event.target.parentNode.classList.contains('active')
   ) {
+    smoothScroll();
     const clickPage = parseInt(event.target.textContent);
     moviePaginationForQueue.currentPage = clickPage;
   }
@@ -323,6 +336,7 @@ function onPaginationQueueHandler(event) {
     event.target.classList.contains('pagination-number') &&
     !event.target.classList.contains('active')
   ) {
+    smoothScroll();
     const clickPage = parseInt(event.target.childNodes[0].textContent);
     moviePaginationForQueue.currentPage = clickPage;
   }
