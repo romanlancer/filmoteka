@@ -43,6 +43,10 @@ export function onButtonUa() {
   refs.iconGoogleEn.classList.add('is-hidden');
   refs.iconStoreUa.classList.remove('is-hidden');
   refs.iconStoreEn.classList.add('is-hidden');
+  refs.themeAuto.textContent = 'Авто';
+  refs.themeDark.textContent = 'Темна';
+  refs.themeLight.textContent = 'Світла';
+
 
   moviesApiService.lang = getFromStorage('language');
   // renderPopular();
@@ -68,6 +72,9 @@ export function onButtonEng() {
   refs.iconGoogleEn.classList.remove('is-hidden');
   refs.iconStoreUa.classList.add('is-hidden');
   refs.iconStoreEn.classList.remove('is-hidden');
+  refs.themeAuto.textContent = 'Auto';
+  refs.themeDark.textContent = 'Dark';
+  refs.themeLight.textContent = 'Light';
 
   moviesApiService.lang = getFromStorage('language');
   // renderPopular();
