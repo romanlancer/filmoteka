@@ -37,7 +37,7 @@
   padding-top: 20px;
   border-radius: 10px;
   overflow-y: scroll;
-  // background-image: linear-gradient(to right, rgba(124, 172, 102, 0.4), rgba(197, 199, 59, 0.4));
+
   background: linear-gradient(
     135deg,
     rgba(104, 104, 112, 1) 0%,
@@ -55,16 +55,14 @@
     width: 800px;
     height: 450px;
     overflow-y: scroll;
-    
+
     box-shadow: 0px 0px 100px 15px rgba(253, 254, 255, 0.2);
-    // background-position: 134% 62%;
   }
-    @media screen and(max-height:430px) {
-      height: 90vh;
-    
-      box-shadow: 0px 0px 100px 15px rgba(253, 254, 255, 0.2);
-      // background-position: 134% 62%;
-    }
+  @media screen and(max-height:430px) {
+    height: 90vh;
+
+    box-shadow: 0px 0px 100px 15px rgba(253, 254, 255, 0.2);
+  }
 }
 
 body.modal-open {
@@ -96,7 +94,8 @@ body.modal-open {
 
 .fa-xl {
   color: #e8eaee;
-
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
     transform: scale(1.2);
@@ -186,7 +185,7 @@ body.modal-open {
   font-weight: 600;
   line-height: 1.15;
   letter-spacing: 0.04em;
-  // color: var(--second-text-color);
+
   color: #99a1ca;
   margin-bottom: 10px;
   border-bottom: 2px solid #99a1ca;
@@ -202,7 +201,7 @@ body.modal-open {
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: 0.04em;
-  // color: var(--second-text-color);
+
   color: #e8eaee;
   margin-bottom: 10px;
   @media screen and(min-width:768px) {
@@ -217,7 +216,7 @@ body.modal-open {
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: 0.04em;
-  // color: var(--second-text-color);
+
   color: #76787e;
   margin-bottom: 10px;
   text-align: center;

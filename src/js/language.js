@@ -3,7 +3,6 @@ import genresUA from '../templates/filter_genres_ua.hbs';
 import genresUK from '../templates/filter_genres_uk.hbs';
 import languagesUA from '../templates/filter_languages_ua.hbs';
 import languagesUK from '../templates/filter_languages_uk.hbs';
-// import { renderPopular } from './render_popular';
 import { moviesApiService } from './render_popular';
 import { renderSlideFilms } from './slider_films';
 import { addToStorage, getFromStorage } from './storage';
@@ -15,7 +14,6 @@ function onLangSelected(event) {
     refs.btnLangUa.classList.toggle('active-select');
     refs.btnLangEn.classList.remove('active-select');
 
-    // refs.btnQueue.style.padding;
     addToStorage('language', `"${langCheck}"`);
     onButtonUa();
   }

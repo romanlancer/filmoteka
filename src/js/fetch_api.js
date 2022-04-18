@@ -41,7 +41,7 @@ export default class MoviesApiService {
         query: this.searchQuery,
         language: 'en-US',
         page: this.page,
-        include_adult: true,
+        include_adult: false,
       });
       const url = `${BASE_URL}search/movie?${searchParams}`;
       const response = await axios.get(url);
@@ -78,7 +78,7 @@ export default class MoviesApiService {
         language: this.lang,
         sort_by: 'popularity.desc',
         page: this.page,
-        include_adult: true,
+        include_adult: false,
         with_genres: this.genre,
         primary_release_year: this.year,
         with_original_language: this.originalLanguage,

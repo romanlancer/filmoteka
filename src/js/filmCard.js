@@ -5,7 +5,6 @@ import { refs } from './refs';
 import { getFromStorage } from './storage';
 import { removeImgNodata, choiceMainRender } from './render_utils'
 
-
 import {
   checkMovieInWatched,
   checkMovieInQueue,
@@ -16,11 +15,9 @@ import {
   checkLanguageBtnQ
 } from './library_watched_queue';
 
-
 const containerEl = document.querySelector('.cards__list');
 containerEl.addEventListener('click', clickToWatchedOnCard);
 containerEl.addEventListener('click', clickToQueueOnCard);
-// const filmRateRef = document.querySelector('.cards__item-vote-average');
 
 export const filmCard = filmData => {
   const {

@@ -1,5 +1,4 @@
 import { moviesApiService } from './render_popular';
-import YouTubePlayer from 'youtube-player';
 import defaultPoster from '../images/movie-poster-coming-soon.jpg';
 import movieInfoTrailer from '../templates/movie_trailer.hbs';
 import movieInfoTrailerUk from '../templates/movie_trailer_uk.hbs';
@@ -155,11 +154,6 @@ function openTrailer(event) {
   const iframe = document.getElementById('trailer-iframe');
   iframe.classList.remove('is-hidden');
 
-  // const player = YouTubePlayer('player-trailer', {
-  //   videoId: 'M7lc1UVf-VE',
-  // });
-
-  // player.playVideo();
 }
 
 function checkOverview(overview) {

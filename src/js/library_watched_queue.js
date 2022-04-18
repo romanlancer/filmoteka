@@ -10,7 +10,7 @@ import { choiceMainRender } from './render_utils';
 
 let dataFilmsByWatched = [];
 let dataFilmsByQueue = [];
-// const checkActiveBtn = event.target.classList.contains('movie-data__button_active')
+
 
 const checkStorageLibrary = () => {
   if (getFromStorage('dataFilmsByWatched')) {
@@ -127,7 +127,7 @@ const clickToWatchedOnCard = async event => {
     const refBtnQueue = event.target.closest('li').nextElementSibling.firstElementChild;    
     event.target.classList.toggle('movie-data__button_active');
     const cardsId = +event.target.closest('ul').closest('li').id;    
-    // console.log((dataFilmsByWatched.includes(cardsId)))
+    
     if (event.target.classList.contains('movie-data__button_active')) {
       if (dataFilmsByWatched.includes(currentId)) {
         return;

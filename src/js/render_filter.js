@@ -13,7 +13,6 @@ refs.filterListYears.addEventListener('change', onYearsFilter);
 refs.filterListLanguages.addEventListener('change', onLanguagesFilter);
 refs.filterListVoteAverage.addEventListener('change', onVotesFilter);
 refs.filterButtonOpen.addEventListener('click', onFilterOpen);
-// refs.filterContainer.addEventListener('click', onBackdropclick);
 refs.settingsButton.addEventListener('click', onSettingsClick);
 refs.filterResetButton.addEventListener('click', onFilterResetButton);
 
