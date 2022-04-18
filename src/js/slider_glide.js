@@ -34,7 +34,7 @@ export const options = {
   type: 'carousel',
   startAt: 0,
   perView: 1,
-  autoplay: 2000,
+  // autoplay: 2000,
   keyboard: true,
 };
 

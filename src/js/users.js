@@ -119,7 +119,7 @@ export const usersUA = [
   },
   {
     id: '3',
-    name: 'Lubov Danchenko',
+    name: 'Любов Данченко',
     role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/22094005?v=4',
     ginHabLink: 'https://github.com/LDanchenko',
@@ -139,7 +139,7 @@ export const usersUA = [
   },
   {
     id: '5',
-    name: 'Viktoria Mihalyova',
+    name: 'Вікторія Міхайлова',
     role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/88782163?v=4',
     ginHabLink: 'https://github.com/MViktoriia',
@@ -149,17 +149,17 @@ export const usersUA = [
   },
   {
     id: '6',
-    name: 'Aleksandr Serebro',
+    name: 'Олександр Серебро',
     role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/88261876?v=4',
     ginHabLink: 'https://github.com/AlexSerebro',
     FB_Link: 'https://www.facebook.com/',
     LN_Link: 'https://www.linkedin.com/',
-    discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    discription: 'Дуже приємно працювати в такій команді!!!',
   },
   {
     id: '7',
-    name: 'Ніколаєнко Олександр',
+    name: 'Олександр Ніколаєнко',
     role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/41318656?v=4',
     ginHabLink: 'https://github.com/aleksander-nikolaenko',
@@ -170,7 +170,7 @@ export const usersUA = [
   },
   {
     id: '8',
-    name: 'Serhii Sakhno',
+    name: 'Сергій Сахно',
     role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/89796587?v=4',
     ginHabLink: 'https://github.com/SerhiiSakhno1994',
@@ -180,7 +180,7 @@ export const usersUA = [
   },
   {
     id: '9',
-    name: 'Aleksandr Kashirin',
+    name: 'Олександр Каширін',
     role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/88508533?v=4',
     ginHabLink: 'https://github.com/Saniokkk',
