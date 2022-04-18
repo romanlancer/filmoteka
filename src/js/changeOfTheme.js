@@ -1,7 +1,7 @@
 import { refs } from './refs';
 import { choiceMainRender } from './render_utils';
 import { addToStorage, getFromStorage } from './storage';
-import darkThemeImage from '../images/bg-dark-theme.jpg'
+// import darkThemeImage from '../images/bg-dark-theme.jpg';
 
 // window.onload = autoTheme();
 window.onload = checkStorageOfTheme();
@@ -92,26 +92,3 @@ function checkStorageOfTheme() {
   }
 }
 
-function checkThemeAutoAttribute() {
-  if (refs.themeAuto.hasAttribute(selected)) {
-    refs.themeAuto.removeAttribute(selected);
-  } else {
-    refs.themeAuto.setAttribute(selected, true);
-  }
-}
-
-function checkThemeDarkAttribute() {
-  if (refs.themeDark.hasAttribute(selected)) {
-    refs.themeDark.removeAttribute(selected);
-  } else {
-    refs.themeDark.setAttribute(selected, true);
-  }
-}
-
-function checkThemeLightAttribute() {
-  if (refs.themeLight.hasAttribute(selected)) {
-    refs.themeLight.removeAttribute(selected);
-  } else {
-    refs.themeLight.setAttribute(selected, true);
-  }
-}
