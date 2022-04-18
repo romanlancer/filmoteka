@@ -25,8 +25,8 @@ export const users = [
     role: 'Developer',
     img: 'https://avatars.githubusercontent.com/u/22094005?v=4',
     ginHabLink: 'https://github.com/LDanchenko',
-    FB_Link: 'https://www.facebook.com/',
-    LN_Link: 'https://www.linkedin.com/',
+    FB_Link: 'https://www.facebook.com/profile.php?id=100013830070077',
+    LN_Link: 'https://www.linkedin.com/in/lubov-danchenko',
     discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
   },
   {
@@ -85,8 +85,8 @@ export const users = [
     role: 'Developer',
     img: 'https://avatars.githubusercontent.com/u/88508533?v=4',
     ginHabLink: 'https://github.com/Saniokkk',
-    FB_Link: 'https://www.facebook.com/',
-    LN_Link: 'https://www.linkedin.com/',
+    FB_Link: 'https://www.facebook.com/profile.php?id=100002548663025',
+    LN_Link: 'https://www.linkedin.com/in/kashirin-aleksandr-244b49237/',
     discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
   },
 ];
@@ -114,12 +114,12 @@ export const usersUA = [
   },
   {
     id: '3',
-    name: 'Lubov Danchenko',
+    name: 'Любов Данченко',
     role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/22094005?v=4',
     ginHabLink: 'https://github.com/LDanchenko',
-    FB_Link: 'https://www.facebook.com/',
-    LN_Link: 'https://www.linkedin.com/',
+    FB_Link: 'https://www.facebook.com/profile.php?id=100013830070077',
+    LN_Link: 'https://www.linkedin.com/in/lubov-danchenko',
     discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
   },
   {
@@ -178,8 +178,8 @@ export const usersUA = [
     role: 'Розробник',
     img: 'https://avatars.githubusercontent.com/u/88508533?v=4',
     ginHabLink: 'https://github.com/Saniokkk',
-    FB_Link: 'https://www.facebook.com/',
-    LN_Link: 'https://www.linkedin.com/',
+    FB_Link: 'https://www.facebook.com/profile.php?id=100002548663025',
+    LN_Link: 'https://www.linkedin.com/in/kashirin-aleksandr-244b49237/',
     discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
   },
 ];
