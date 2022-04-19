@@ -34,7 +34,7 @@
   width: 300px;
   height: 430px;
   background-color: rgb(177, 176, 176);
-  padding-top: 20px;
+  padding-top: 15px;
   border-radius: 10px;
   overflow-y: scroll;
 
@@ -105,9 +105,9 @@ body.modal-open {
 
 .footer__social {
   display: flex;
-  @media screen and(min-width:768px) {
-    margin-bottom: 20px;
-  }
+  // @media screen and(min-width:768px) {
+  //   margin-bottom: 15px;
+  // }
 }
 
 .footermodalbtn-close {
@@ -168,7 +168,7 @@ body.modal-open {
   border-right: 2px solid #434362;
   margin-bottom: 10px;
   @media screen and(min-width:768px) {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 }
 
@@ -181,7 +181,7 @@ body.modal-open {
 .student__name {
   font-family: 'Roboto';
   padding-bottom: 8px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 1.15;
   letter-spacing: 0.04em;
@@ -190,8 +190,8 @@ body.modal-open {
   margin-bottom: 10px;
   border-bottom: 2px solid #99a1ca;
   @media screen and(min-width:768px) {
-    font-size: 30px;
-    margin-bottom: 20px;
+    font-size: 25px;
+    margin-bottom: 15px;
   }
 }
 
@@ -206,7 +206,7 @@ body.modal-open {
   margin-bottom: 10px;
   @media screen and(min-width:768px) {
     font-size: 25px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 }
 
