@@ -26,12 +26,21 @@ export function paginationChangeHandler(handlerFunction) {
 }
 
 export function choiceMainRender() {
-  if (getFromStorage('mainState') === 'Popular') renderPopular();
-  if (getFromStorage('mainState') === 'Search') renderSearch();
-  if (getFromStorage('mainState') === 'Filter') renderFilter();
-  if (getFromStorage('mainState') === 'Library') {
-    if (getFromStorage('libraryState') === 'Watched') renderWatched();
-    if (getFromStorage('libraryState') === 'Queue') renderQueue();
+
+  switch (getFromStorage('mainState')) {
+  case 'Popular':
+    renderPopular();
+    break;
+  case 'Search':
+    renderSearch();
+      break;
+    case 'Library':
+      if (getFromStorage('libraryState') === 'Queue') renderQueue();
+      else renderWatched();
+      break;
+    default:
+      renderPopular();
+      break;
   }
 }
 

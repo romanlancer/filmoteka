@@ -175,7 +175,7 @@ function checkTheme() {
   if (theme === '"auto"') {
     const date = new Date();
     const dateNow = date.getHours();
-    if (!(dateNow >= 6 && dateNow <= 22)) {
+    if (!(dateNow > 6 && dateNow < 22)) {
       movieCard.classList.add('movie-card_dark');
       const raitingList = movieCard.querySelector('.movie-data-table');
       raitingList.classList.add('movie-data-table_dark');

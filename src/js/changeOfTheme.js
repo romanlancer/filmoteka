@@ -78,6 +78,7 @@ function checkStorageOfTheme() {
     lightTheme();
     refs.changeOfTheme.value = 'light';
   } else {
+    addToStorage('theme', `"auto"`);
     autoTheme();
     refs.changeOfTheme.value = 'auto';
   }

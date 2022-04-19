@@ -5,7 +5,6 @@ import { onButtonUa, onButtonEng } from './language';
 import { refs } from './refs';
 
 //after refresh and close browser start function
-addToStorage('mainState', `"Popular"`);
 onHome();
 
 //view localStorage by language and render page
