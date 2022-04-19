@@ -8,7 +8,7 @@
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 
-  @media screen and(min-width: 768px) {
+  @media screen and(min-width: $tablet) {
     flex-direction: row;
     justify-content: center;
   }
@@ -23,7 +23,9 @@
 }
 
 .filters__list:not(:last-child) {
-  margin-right: 20px;
+  @media screen and(min-width: $tablet) {
+    margin-right: 20px;
+  }
 }
 
 .filter-container {
@@ -33,6 +35,13 @@
 
 .filters__reset {
   background-color: transparent;
+}
+
+.filters__button {
+  margin: 0 auto;
+  @media screen and(min-width: $desktop) {
+    margin-left: 40px;
+  }
 }
 
 .filter-icon {
