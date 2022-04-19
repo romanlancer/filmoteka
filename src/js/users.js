@@ -30,7 +30,8 @@ export const users = [
     ginHabLink: 'https://github.com/LDanchenko',
     FB_Link: 'https://www.facebook.com/profile.php?id=100013830070077',
     LN_Link: 'https://www.linkedin.com/in/lubov-danchenko',
-    discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    discription:
+      'I am very thankful to our friendly team for good and interesting cooperation, and the GoIT company for the opportunity to improve my knowledge in such a project.',
   },
   {
     id: '4',
@@ -129,7 +130,8 @@ export const usersUA = [
     ginHabLink: 'https://github.com/LDanchenko',
     FB_Link: 'https://www.facebook.com/profile.php?id=100013830070077',
     LN_Link: 'https://www.linkedin.com/in/lubov-danchenko',
-    discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    discription:
+      'Дякую нашій дружній команді за плідну і цікаву співпрацю, а також проекту GoIT за можливість прокачати свої знання в такому  проекті.',
   },
   {
     id: '4',
