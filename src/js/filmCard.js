@@ -281,7 +281,7 @@ function defineOverlayBGColorByTheme() {
   } else {
     const date = new Date();
     const dateNow = date.getHours();
-    if (dateNow >= 6 && dateNow <= 22) {
+    if (dateNow > 6 && dateNow < 22) {
       overlayColor = lightOverlayColor;
     } else {
       overlayColor = darkOverlayColor;
@@ -303,7 +303,7 @@ function defineOverlayTextColorByTheme() {
   } else {
     const date = new Date();
     const dateNow = date.getHours();
-    if (dateNow >= 6 && dateNow <= 22) {
+    if (dateNow > 6 && dateNow < 22) {
       textColor = darkTextColor;
     } else {
       textColor = lightTextColor;
