@@ -12,28 +12,26 @@
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
 
-  @media screen and(min-height: 390px) and (min-width: 844px) {
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, 0) scale(1);
-    position: relative;
-  }
-
   position: relative;
   width: 280px;
   padding: 48px 20px 40px 20px;
 
-  @media screen and(min-width: $tablet) {
+  @media screen and(min-width: $tablet) and(max-height: 430px) {
     position: absolute;
     width: 704px;
-    top: 50%;
+
+    top: 0;
     left: 50%;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, 0) scale(1);
     padding: 40px 30px 40px 36px;
   }
   @media screen and(min-width: $desktop) {
     width: 814px;
     height: 558px;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%) scale(1);
     // padding: 40px 16px 40px 14px;
     padding: 40px 30px 40px 30px;
   }
