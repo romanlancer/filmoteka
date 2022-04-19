@@ -1,9 +1,7 @@
 .cards {
-  padding-top: 20px;
   padding-bottom: 20px;
 
   @media screen and (min-width: $tablet) {
-    padding-top: 30px;
     padding-bottom: 30px;
   }
 }
