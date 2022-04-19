@@ -27,10 +27,11 @@
 }
 
 .footer__backdrop {
-  z-index: 5;
+  z-index: 1000;
 }
 
 .footer-modal {
+  z-index: 1000;
   width: 300px;
   height: 430px;
   background-color: rgb(177, 176, 176);
