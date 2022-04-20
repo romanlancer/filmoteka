@@ -5,11 +5,13 @@ import { onButtonUa, onButtonEng } from './language';
 import { refs } from './refs';
 
 //after refresh and close browser start function
+
 function checkPage() {
   refs.header.addEventListener('click', onClickBtnHome);
   if (getFromStorage('mainState') === 'Library') {
     onLibrary();
   } else {
+    addToStorage('mainState', '"Popular"');
     onHome();
   }
 }

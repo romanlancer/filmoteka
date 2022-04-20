@@ -19,9 +19,6 @@ const moviePaginationForSearch = new Pagination({
 
 searchFormRef.addEventListener('submit', onSearch);
 
-
-
-
 function onSearch(e) {
   e.preventDefault();
   moviesApiService.query = e.currentTarget.elements.search.value;
@@ -56,20 +53,20 @@ async function handlePageChangeSearch(page) {
   const movies = await moviesApiService.getFilmsByName();
 
   const { results, total_pages } = movies;
-    renderFilmList(results);
-    moviePaginationForSearch.renderPaginationDisabled(
-      document.querySelector('.pagination-list'),
-      total_pages,
-      moviesApiService.page,
-    );
-    moviePaginationForSearch.renderPaginationLoadMore(
-      document.querySelector('.pagination'),
-      moviesApiService.page,
-      getFromStorage('language'),
-    );
-    paginationChangeHandler(onPaginationSearchHandler);
-    loadMoreChangeHandler(onLoadMoreSearchHandler);
-    Loading.remove();
+  renderFilmList(results);
+  moviePaginationForSearch.renderPaginationDisabled(
+    document.querySelector('.pagination-list'),
+    total_pages,
+    moviesApiService.page,
+  );
+  moviePaginationForSearch.renderPaginationLoadMore(
+    document.querySelector('.pagination'),
+    moviesApiService.page,
+    getFromStorage('language'),
+  );
+  paginationChangeHandler(onPaginationSearchHandler);
+  loadMoreChangeHandler(onLoadMoreSearchHandler);
+  Loading.remove();
 }
 
 async function onLoadMoreSearchHandler(event) {
@@ -81,48 +78,48 @@ async function onLoadMoreSearchHandler(event) {
 
   const { results, total_pages } = movies;
 
-    addFilmListToContainer(results);
-    moviePaginationForSearch.renderPaginationDisabled(
-      document.querySelector('.pagination-list'),
-      total_pages,
-      moviesApiService.page,
-    );
-    moviePaginationForSearch.renderPaginationLoadMore(
-      document.querySelector('.pagination'),
-      moviesApiService.page,
-      getFromStorage('language'),
-    );
-    loadMoreChangeHandler(onLoadMoreSearchHandler);
+  addFilmListToContainer(results);
+  moviePaginationForSearch.renderPaginationDisabled(
+    document.querySelector('.pagination-list'),
+    total_pages,
+    moviesApiService.page,
+  );
+  moviePaginationForSearch.renderPaginationLoadMore(
+    document.querySelector('.pagination'),
+    moviesApiService.page,
+    getFromStorage('language'),
+  );
+  loadMoreChangeHandler(onLoadMoreSearchHandler);
 
-    for (let i = 0; i < document.querySelector('.pagination-list').childNodes.length; i += 1) {
-      const number = parseInt(
-        document.querySelector('.pagination-list').childNodes[i].firstChild.textContent,
-      );
-      if (number >= moviePaginationForSearch.currentPage && number <= moviesApiService.page) {
-        if (document.querySelector('.pagination-list').childNodes[i].classList.contains('active')) {
-          document.querySelector('.pagination-list').childNodes[i].classList.remove('active');
-        }
-        document.querySelector('.pagination-list').childNodes[i].classList.add('loaded');
+  for (let i = 0; i < document.querySelector('.pagination-list').childNodes.length; i += 1) {
+    const number = parseInt(
+      document.querySelector('.pagination-list').childNodes[i].firstChild.textContent,
+    );
+    if (number >= moviePaginationForSearch.currentPage && number <= moviesApiService.page) {
+      if (document.querySelector('.pagination-list').childNodes[i].classList.contains('active')) {
+        document.querySelector('.pagination-list').childNodes[i].classList.remove('active');
       }
+      document.querySelector('.pagination-list').childNodes[i].classList.add('loaded');
     }
-    Loading.remove();
+  }
+  Loading.remove();
 }
 
 function onPaginationSearchHandler(event) {
   if (
-    event.target.parentNode.classList.contains('pagination-prev') &&
-    !event.target.parentNode.classList.contains('disabled') ||
-    event.target.classList.contains('pagination-prev') &&
-    !event.target.classList.contains('disabled')
+    (event.target.parentNode.classList.contains('pagination-prev') &&
+      !event.target.parentNode.classList.contains('disabled')) ||
+    (event.target.classList.contains('pagination-prev') &&
+      !event.target.classList.contains('disabled'))
   ) {
     smoothScroll();
     moviePaginationForSearch.prevPage();
   }
   if (
-    event.target.parentNode.classList.contains('pagination-next') &&
-    !event.target.parentNode.classList.contains('disabled') ||
-    event.target.classList.contains('pagination-next') &&
-    !event.target.classList.contains('disabled')
+    (event.target.parentNode.classList.contains('pagination-next') &&
+      !event.target.parentNode.classList.contains('disabled')) ||
+    (event.target.classList.contains('pagination-next') &&
+      !event.target.classList.contains('disabled'))
   ) {
     smoothScroll();
     moviePaginationForSearch.nextPage();
