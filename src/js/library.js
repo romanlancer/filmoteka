@@ -1,5 +1,7 @@
 import { renderWatched, renderQueue } from './render_library';
 import { smoothScroll } from './render_utils';
+import { addToStorage, getFromStorage } from './storage';
+import { onButtonUa, onButtonEng } from './language';
 
 const refs = {
   header: document.querySelector('#header'),
@@ -7,8 +9,13 @@ const refs = {
   btnQueue: document.querySelector('#btn__queue'),
   filterWrapper: document.querySelector('.filter__wrapper'),
   filterContainer: document.querySelector('.filter-container'),
+  btnLangUa: document.querySelector('.btn-ua'),
+  btnLangEn: document.querySelector('.btn-en'),
 };
 
+// window.onload = checkPage();
+
+console.log(getFromStorage('mainState'));
 export function onLibrary() {
   const reference = {
     btnList: document.querySelector('.library__btn-list'),
@@ -17,7 +24,17 @@ export function onLibrary() {
   reference.btnList.classList.remove('visually-hidden');
   refs.filterWrapper.classList.add('visually-hidden');
   reference.btnList.addEventListener('click', onClickBtn);
-
+  const lang = 'en';
+  if (getFromStorage('language') === 'uk') {
+    refs.btnLangUa.classList.add('active-select');
+    refs.btnLangEn.classList.remove('active-select');
+    onButtonUa();
+  } else {
+    addToStorage('language', `"${lang}"`);
+    refs.btnLangEn.classList.add('active-select');
+    refs.btnLangUa.classList.remove('active-select');
+    onButtonEng();
+  }
   renderPageLibrary();
   onCheckButtonLibrary();
 }

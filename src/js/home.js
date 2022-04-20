@@ -5,15 +5,23 @@ import { onButtonUa, onButtonEng } from './language';
 import { refs } from './refs';
 
 //after refresh and close browser start function
-onHome();
-
+function checkPage() {
+  refs.header.addEventListener('click', onClickBtnHome);
+  if (getFromStorage('mainState') === 'Library') {
+    onLibrary();
+  } else {
+    onHome();
+  }
+}
+// onHome();
+checkPage();
 //view localStorage by language and render page
 
 export function onHome() {
   const lang = 'en';
   renderPageHome();
   refs.btnListLibrary.classList.add('visually-hidden');
-  refs.header.addEventListener('click', onClickBtnHome);
+
   refs.filterWrapper.classList.remove('visually-hidden');
   if (getFromStorage('language') === 'uk') {
     refs.btnLangUa.classList.add('active-select');
