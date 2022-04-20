@@ -38,6 +38,11 @@
   &--link {
     margin-left: 3px;
     text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      animation: Glow 0.5s ease infinite alternate;
+    }
   }
 }
 .footer__logo__icon {
@@ -190,10 +195,10 @@
 }
 
 .sociale-item {
-@media screen and (min-width: 767px) {
-  margin-right: 4px;
-  margin-left: 4px;
-}
+  @media screen and (min-width: 767px) {
+    margin-right: 4px;
+    margin-left: 4px;
+  }
 }
 .sociale-item:not(:last-child) {
   @media screen and (min-width: 767px) {
