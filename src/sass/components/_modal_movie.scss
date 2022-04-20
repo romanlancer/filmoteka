@@ -16,7 +16,7 @@
   width: 280px;
   padding: 48px 20px 40px 20px;
 
-  @media screen and(min-width: $tablet) and(max-height: 430px) {
+  @media screen and(min-width: $tablet) and(min-height: 430px) {
     position: absolute;
     width: 704px;
 
@@ -25,15 +25,24 @@
     transform: translate(-50%, 0) scale(1);
     padding: 40px 30px 40px 36px;
   }
-  @media screen and(min-width: $desktop) {
-    width: 814px;
-    height: 558px;
+  @media screen and(min-width: $tablet) {
+    width: 700px;
+    height: 568px;
     left: 50%;
     top: 50%;
 
     transform: translate(-50%, -50%) scale(1);
     // padding: 40px 16px 40px 14px;
     padding: 40px 30px 40px 30px;
+  }
+
+  @media screen and(min-width: $desktop) {
+    width: 882px;
+  }
+
+  @media screen and(max-height:430px) {
+    height: 99vh;
+    overflow-y: auto;
   }
 }
 
