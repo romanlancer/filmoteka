@@ -13,9 +13,6 @@ const refs = {
   btnLangEn: document.querySelector('.btn-en'),
 };
 
-// window.onload = checkPage();
-
-console.log(getFromStorage('mainState'));
 export function onLibrary() {
   const reference = {
     btnList: document.querySelector('.library__btn-list'),

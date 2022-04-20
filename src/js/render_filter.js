@@ -52,7 +52,7 @@ async function handlePageChangeFilter(page) {
   Loading.hourglass();
   const movies = await moviesApiService.getFilteredMovies();
   const { results, total_pages } = movies;
-  console.log(movies);
+
   if (results.length === 0) {
     clearContainer();
     moviePaginationForFilter.paginationClear(document.querySelector('.pagination-list'));
