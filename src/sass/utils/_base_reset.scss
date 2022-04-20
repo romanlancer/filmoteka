@@ -2,6 +2,19 @@ body {
   font-family: 'Roboto', sans-serif;
   animation-name: Opacity;
   animation-duration: 1000ms;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    outline: none;
+    border-radius: 10px;
+  }
 }
 *,
 ::before,
