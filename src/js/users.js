@@ -94,7 +94,7 @@ export const users = [
     ginHabLink: 'https://github.com/Saniokkk',
     FB_Link: 'https://www.facebook.com/profile.php?id=100002548663025',
     LN_Link: 'https://www.linkedin.com/in/kashirin-aleksandr-244b49237/',
-    discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    discription: 'Well, we did another great project. Now we are much closer to our goal. Thank you for my team and GoIT for their knowledge and experience.',
   },
 ];
 
@@ -194,6 +194,6 @@ export const usersUA = [
     ginHabLink: 'https://github.com/Saniokkk',
     FB_Link: 'https://www.facebook.com/profile.php?id=100002548663025',
     LN_Link: 'https://www.linkedin.com/in/kashirin-aleksandr-244b49237/',
-    discription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    discription: 'Ну ось зробили ще один чудовий проект. Тепер ми стали набагато ближчі до своєї мети. Дякую моїй команді та компанії GoIT за надані знання та досвід.',
   },
 ];
