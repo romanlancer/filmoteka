@@ -1,5 +1,5 @@
-import imageNoDataLight from '../images/no-list-light.svg'
-import imageNoDataDark from '../images/no-list-dark.svg'
+import imageNoDataLight from '../images/no-list-light.svg';
+import imageNoDataDark from '../images/no-list-dark.svg';
 import { createElement } from './createElement';
 import { renderFilter } from './render_filter';
 import { renderPopular } from './render_popular';
@@ -26,13 +26,15 @@ export function paginationChangeHandler(handlerFunction) {
 }
 
 export function choiceMainRender() {
-
   switch (getFromStorage('mainState')) {
-  case 'Popular':
-    renderPopular();
-    break;
-  case 'Search':
-    renderSearch();
+    case 'Popular':
+      renderPopular();
+      break;
+    case 'Search':
+      renderSearch();
+      break;
+    case 'Filter':
+      renderFilter();
       break;
     case 'Library':
       if (getFromStorage('libraryState') === 'Queue') renderQueue();
@@ -52,27 +54,26 @@ export function addImgNodata() {
   const themeCheck = getFromStorage('theme');
   if (themeCheck === 'dark') {
     src = imageNoDataDark;
-    textClass = 'nodata-text dark'
+    textClass = 'nodata-text dark';
   } else if (themeCheck === 'light') {
     src = imageNoDataLight;
-    textClass = 'nodata-text light'
+    textClass = 'nodata-text light';
   } else {
     const date = new Date();
     const dateNow = date.getHours();
     if (dateNow >= 6 && dateNow <= 22) {
       src = imageNoDataLight;
-      textClass = 'nodata-text light'
+      textClass = 'nodata-text light';
     } else {
       src = imageNoDataDark;
-      textClass = 'nodata-text dark'
+      textClass = 'nodata-text dark';
     }
-  } 
+  }
   const langCheck = getFromStorage('language');
   if (langCheck === 'uk') {
     textContent = 'ПУСТО!!!';
     textDescription = 'У вашій колекції нічого немає';
-  }
-  else {
+  } else {
     textContent = 'Nothing!!!';
     textDescription = 'Your collection list is empty.';
   }
@@ -80,39 +81,40 @@ export function addImgNodata() {
   const img = createElement(
     'div',
     {
-      class: `nodata-container`
+      class: `nodata-container`,
     },
-    [createElement(
-      'img',
-      {
-        class: 'nodata-image',
-        src: `${src}`,
-        width: 400,
-        alt: 'image no data',
-        loading: 'lazy',
-      },
-      ''
-    ),
-    createElement(
-      'p',
-      {
-        class: `${textClass}`,
-      },
-      `${textContent}`
+    [
+      createElement(
+        'img',
+        {
+          class: 'nodata-image',
+          src: `${src}`,
+          width: 400,
+          alt: 'image no data',
+          loading: 'lazy',
+        },
+        '',
       ),
-    createElement(
-      'p',
-      {
-        class: 'nodata-text-description',
-      },
-      `${textDescription}`
-      )
-    ]
-    );
-    document.querySelector('.cards__list').before(img);
+      createElement(
+        'p',
+        {
+          class: `${textClass}`,
+        },
+        `${textContent}`,
+      ),
+      createElement(
+        'p',
+        {
+          class: 'nodata-text-description',
+        },
+        `${textDescription}`,
+      ),
+    ],
+  );
+  document.querySelector('.cards__list').before(img);
 }
 
 export function removeImgNodata() {
-  if(document.querySelector('.cards__list').previousElementSibling)
+  if (document.querySelector('.cards__list').previousElementSibling)
     document.querySelector('.cards__list').previousElementSibling.remove();
 }
