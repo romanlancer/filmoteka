@@ -58,10 +58,11 @@ async function handlePageChangeFilter(page) {
     moviePaginationForFilter.paginationClear(document.querySelector('.pagination-list'));
     removeImgNodata();
     addImgNodata();
+
     Loading.remove();
     return;
   }
-
+  clearContainer();
   renderFilmList(results);
   moviePaginationForFilter.renderPaginationDisabled(
     document.querySelector('.pagination-list'),
