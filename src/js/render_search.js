@@ -1,8 +1,9 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { addImgNodata, removeImgNodata } from './render_utils';
 import { moviesApiService } from './render_popular';
 import Pagination from './pagination';
-import { renderFilmList, addFilmListToContainer } from './filmCard';
+import { renderFilmList, addFilmListToContainer, clearContainer } from './filmCard';
 import { paginationChangeHandler, loadMoreChangeHandler, smoothScroll } from './render_utils';
 import { addToStorage, getFromStorage } from './storage';
 
@@ -53,6 +54,15 @@ async function handlePageChangeSearch(page) {
   const movies = await moviesApiService.getFilmsByName();
 
   const { results, total_pages } = movies;
+  if (results.length === 0) {
+    clearContainer();
+    moviePaginationForSearch.paginationClear(document.querySelector('.pagination-list'));
+
+    removeImgNodata();
+    addImgNodata();
+    Loading.remove();
+    return;
+  }
   renderFilmList(results);
   moviePaginationForSearch.renderPaginationDisabled(
     document.querySelector('.pagination-list'),
